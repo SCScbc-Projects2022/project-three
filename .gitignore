@@ -1,5 +1,6 @@
 # macOS Users
 .DS_Store
+.history
 
 # Logs
 logs
