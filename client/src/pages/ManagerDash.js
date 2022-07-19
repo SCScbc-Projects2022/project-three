@@ -7,12 +7,14 @@ const ManagerDash = () => {
     <>
       <AddEmployee />
       {/* Dynamically render list using > useQuery */}
+      {/* Need to update schema and create new Apollo queries to return employees */}
       <section id="active-employee-wrapper">
         <h3>
           <strong>Active Employees</strong>
         </h3>
         <hr></hr>
         <ul>
+          {/* Use employeeArr.map() method to render elements */}
           <li>
             <h5>Sample Employee - Waiter - Sample@hotmail.com</h5>
           </li>

@@ -10,6 +10,7 @@ const AddManager = () => {
     username: '',
     email: '',
     role: '',
+    // When creating schema, remove password parameter
     password: '00000',
     accountLevel: 'manager',
   });
@@ -36,6 +37,8 @@ const AddManager = () => {
         variables: { ...formState },
       });
       Auth.login(data.addUser.token);
+      // When submitting, make sure to refresh the page (pretty sure it does already) so that the next time they try to add a new manager,
+      // it allows them and auto increment in the database
     } catch (e) {
       console.error(e);
     }

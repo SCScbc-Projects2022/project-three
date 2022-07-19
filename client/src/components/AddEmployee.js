@@ -10,6 +10,7 @@ const AddEmployee = () => {
     username: '',
     email: '',
     role: '',
+    // When schemas are done, remove password parameter
     password: '00000',
     accountLevel: 'employee',
   });
@@ -36,6 +37,8 @@ const AddEmployee = () => {
         variables: { ...formState },
       });
       Auth.login(data.addUser.token);
+      // When submitting, make sure to refresh the page (pretty sure it does already) so that the next time they try to add a new employee,
+      // it allows them and auto increment in the database
     } catch (e) {
       console.error(e);
     }

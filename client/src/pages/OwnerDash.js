@@ -7,12 +7,14 @@ const OwnerDash = () => {
     <>
       <AddManager />
       {/* Dynamically render list using > useQuery */}
+      {/* Need to update schema and create new Apollo queries to return managers */}
       <section id="active-manager-wrapper">
         <h3>
           <strong>Active Managers</strong>
         </h3>
         <hr></hr>
         <ul>
+          {/* Use managerArr.map() method to render elements */}
           <li>
             <h5>Sample Manager - Kitchen - Sample@hotmail.com</h5>
           </li>
