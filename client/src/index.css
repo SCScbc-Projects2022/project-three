@@ -11,3 +11,7 @@
 li {
   list-style: none;
 }
+
+#home-header {
+  margin-bottom: 40px;
+}
