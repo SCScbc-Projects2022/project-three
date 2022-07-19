@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 
 import Home from './pages/Home';
+import Auth from './utils/auth';
 
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
@@ -42,8 +43,17 @@ function App() {
     Signup: false,
   });
 
+  const getAccountLevel = () => {
+    let data = Auth.getProfile();
+    return data.data.accountLevel;
+  };
+
   return (
     <ApolloProvider client={client}>
+      <h1>
+        Account Level:{' '}
+        {localStorage.getItem('id_token') == null ? '' : getAccountLevel()}
+      </h1>
       <main>
         <nav>
           <Navbar activePage={activePage} setActivePage={setActivePage} />

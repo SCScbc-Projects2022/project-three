@@ -34,7 +34,7 @@ class AuthService {
   }
 
   // set token to localStorage and reload page to homepage
-  login(idToken) {
+  login(idToken, data) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
 
@@ -45,7 +45,6 @@ class AuthService {
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem('id_token');
-    localStorage.removeItem('saved_books');
 
     // this will reload the page and reset the state of the application
     window.location.assign('/');

@@ -10,6 +10,7 @@ const SignupForm = () => {
     username: '',
     email: '',
     password: '',
+    accountLevel: '',
   });
 
   const handleChange = (event) => {
@@ -33,7 +34,6 @@ const SignupForm = () => {
       const { data } = await addUser({
         variables: { ...formState },
       });
-      console.log(data);
       Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
@@ -68,9 +68,27 @@ const SignupForm = () => {
           value={formState.password}
           required
         />
+        <select
+          defaultValue={'DEFAULT'}
+          name="accountLevel"
+          onChange={handleChange}
+          required
+        >
+          <option value="DEFAULT" disabled>
+            Account level
+          </option>
+          <option value="owner">Owner</option>
+          <option value="manager">Manager</option>
+          <option value="employee">Employee</option>
+        </select>
         <button
           disabled={
-            !(formState.username && formState.email && formState.password)
+            !(
+              formState.username &&
+              formState.email &&
+              formState.password &&
+              formState.accountLevel
+            )
           }
           type="submit"
           variant="success"
