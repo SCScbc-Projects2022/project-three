@@ -8,9 +8,6 @@ import Auth from './utils/auth';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 
-import AddEmployee from './components/AddEmployee';
-import AddManager from './components/AddManager';
-
 import { setContext } from '@apollo/client/link/context';
 
 import {
@@ -40,20 +37,23 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // Page controller
   const [activePage, setActivePage] = useState({
     Home: true,
     Login: false,
     Signup: false,
   });
 
+  // Extract accountLevel data from Auth
   const getAccountLevel = () => {
     let data = Auth.getProfile();
     return data.data.accountLevel;
   };
 
+  // Check first if user is logged in then check active account level
   let activeAccountLevel =
     localStorage.getItem('id_token') == null ? '' : getAccountLevel();
-  console.log(activeAccountLevel);
+
   return (
     <ApolloProvider client={client}>
       <h1>
@@ -66,18 +66,12 @@ function App() {
         </nav>
         <section id="main-wrapper">
           {activePage.Home ? (
-            <Home />
+            // Main Page
+            <Home activeAccountLevel={activeAccountLevel} />
           ) : activePage.Login ? (
             <LoginForm />
           ) : (
             <SignupForm />
-          )}
-          {activeAccountLevel == 'manager' ? (
-            <AddEmployee />
-          ) : activeAccountLevel == 'owner' ? (
-            <AddManager />
-          ) : (
-            ''
           )}
         </section>
       </main>

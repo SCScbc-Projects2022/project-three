@@ -1,9 +1,19 @@
 import React from 'react';
 
-const home = () => {
+import AddManager from '../components/AddManager';
+import ManagerDash from './ManagerDash';
+
+const home = ({ activeAccountLevel }) => {
   return (
     <>
-      <h1 id="home-header">Home Page</h1>
+      <h4 id="home-header">Home Page</h4>
+      {activeAccountLevel == 'manager' ? (
+        <ManagerDash />
+      ) : activeAccountLevel == 'owner' ? (
+        <AddManager />
+      ) : (
+        'Employee'
+      )}
     </>
   );
 };
