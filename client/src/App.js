@@ -8,7 +8,7 @@ import Auth from './utils/auth';
 import LoginForm from './components/LoginForm';
 import SignupForm from './components/SignupForm';
 
-import addEmployee from './components/AddEmployee';
+import AddEmployee from './components/AddEmployee';
 import AddManager from './components/AddManager';
 
 import { setContext } from '@apollo/client/link/context';
@@ -53,7 +53,7 @@ function App() {
 
   let activeAccountLevel =
     localStorage.getItem('id_token') == null ? '' : getAccountLevel();
-
+  console.log(activeAccountLevel);
   return (
     <ApolloProvider client={client}>
       <h1>
@@ -73,7 +73,7 @@ function App() {
             <SignupForm />
           )}
           {activeAccountLevel == 'manager' ? (
-            <addEmployee />
+            <AddEmployee />
           ) : activeAccountLevel == 'owner' ? (
             <AddManager />
           ) : (

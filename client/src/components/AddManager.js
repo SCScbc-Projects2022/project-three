@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddManager = () => {
+const addManager = () => {
   return (
     <>
       <button>Add Manager</button>
@@ -8,4 +8,4 @@ const AddManager = () => {
   );
 };
 
-export default AddManager;
+export default addManager;
