@@ -19,7 +19,8 @@ li {
 #add-employee-form {
   margin: 35px 0;
 }
-#active-employee-wrapper {
+#active-employee-wrapper,
+#active-manager-wrapper {
   margin: 35px 0;
   background-color: aliceblue;
 }

@@ -75,29 +75,6 @@ const AddEmployee = () => {
         </button>
         {error && <div>Sign up failed</div>}
       </form>
-
-      <section id="active-employee-wrapper">
-        <h5>Active Employee</h5>
-        <hr></hr>
-        <ul>
-          <li>
-            <h5>Sample Employee - Waiter - Sample@hotmail.com</h5>
-          </li>
-          <hr></hr>
-          <li>
-            <h5>Sample Employee - Waiter - Sample@hotmail.com</h5>
-          </li>
-          <hr></hr>
-          <li>
-            <h5>Sample Employee - Waiter - Sample@hotmail.com</h5>
-          </li>
-          <hr></hr>
-          <li>
-            <h5>Sample Employee - Waiter - Sample@hotmail.com</h5>
-          </li>
-          <hr></hr>
-        </ul>
-      </section>
     </>
   );
 };

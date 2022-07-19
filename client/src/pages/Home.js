@@ -1,7 +1,7 @@
 import React from 'react';
 
-import AddManager from '../components/AddManager';
 import ManagerDash from './ManagerDash';
+import OwnerDash from './OwnerDash';
 
 const home = ({ activeAccountLevel }) => {
   return (
@@ -10,7 +10,7 @@ const home = ({ activeAccountLevel }) => {
       {activeAccountLevel == 'manager' ? (
         <ManagerDash />
       ) : activeAccountLevel == 'owner' ? (
-        <AddManager />
+        <OwnerDash />
       ) : (
         'Employee'
       )}
