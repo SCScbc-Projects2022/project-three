@@ -1,19 +1,12 @@
 import React from 'react';
 
-import ManagerDash from './ManagerDash';
-import OwnerDash from './OwnerDash';
+import AdminDash from './AdminDash';
 
-const home = ({ activeAccountLevel }) => {
+const home = ({ loggedIn }) => {
   return (
     <>
       <h4 id="home-header">Home Page</h4>
-      {activeAccountLevel == 'manager' ? (
-        <ManagerDash />
-      ) : activeAccountLevel == 'owner' ? (
-        <OwnerDash />
-      ) : (
-        'Employee'
-      )}
+      {loggedIn ? <AdminDash /> : ''}
     </>
   );
 };

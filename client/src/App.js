@@ -44,22 +44,11 @@ function App() {
     Signup: false,
   });
 
-  // Extract accountLevel data from Auth
-  const getAccountLevel = () => {
-    let data = Auth.getProfile();
-    return data.data.accountLevel;
-  };
-
-  // Check first if user is logged in then check active account level
-  let activeAccountLevel =
-    localStorage.getItem('id_token') == null ? '' : getAccountLevel();
+  // Check first if user is logged in, 'if (loggedIn) { then do this }'
+  let loggedIn = localStorage.getItem('id_token') == null ? false : true;
 
   return (
     <ApolloProvider client={client}>
-      <h1>
-        Account Level:
-        {activeAccountLevel ? activeAccountLevel : 'N/A'}
-      </h1>
       <main>
         <nav>
           <Navbar activePage={activePage} setActivePage={setActivePage} />
@@ -67,7 +56,7 @@ function App() {
         <section id="main-wrapper">
           {activePage.Home ? (
             // Main Page
-            <Home activeAccountLevel={activeAccountLevel} />
+            <Home loggedIn={loggedIn} />
           ) : activePage.Login ? (
             <LoginForm />
           ) : (

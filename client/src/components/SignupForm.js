@@ -10,7 +10,6 @@ const SignupForm = () => {
     username: '',
     email: '',
     password: '',
-    accountLevel: '',
   });
 
   const handleChange = (event) => {
@@ -68,27 +67,10 @@ const SignupForm = () => {
           value={formState.password}
           required
         />
-        <select
-          defaultValue={'DEFAULT'}
-          name="accountLevel"
-          onChange={handleChange}
-          required
-        >
-          <option value="DEFAULT" disabled>
-            Account level
-          </option>
-          <option value="owner">Owner</option>
-          <option value="manager">Manager</option>
-          <option value="employee">Employee</option>
-        </select>
+
         <button
           disabled={
-            !(
-              formState.username &&
-              formState.email &&
-              formState.password &&
-              formState.accountLevel
-            )
+            !(formState.username && formState.email && formState.password)
           }
           type="submit"
           variant="success"
