@@ -23,7 +23,6 @@ const adminSchema = new Schema(
             required: true,
             minlength: 6
         },
-        // add management model arrays here
     }
 )
 
