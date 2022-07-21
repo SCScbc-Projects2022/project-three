@@ -1,6 +1,4 @@
 const { Schema, model } = require('mongoose');
-const locationSchema = require('./Location');
-const tagSchema = require('./Tag');
 
 // role, start and end time, additional information, under which manager, location
 // Tag: string
