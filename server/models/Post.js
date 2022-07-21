@@ -1,43 +1,33 @@
-const mongoose = require('mongoose');
-const Schema= mongoose.Schema;
+const { Schema, model } = require('mongoose');
+const locationSchema = require('./Location');
+const tagSchema = require('./Tag');
+
+// role, start and end time, additional information, under which manager, location
+// Tag: string
 
 const postSchema = new Schema(
     {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
+      role: {
+        type: String,
+        required: true
       },
-      job_position: {
-        type: DataTypes.STRING,
-        allowNull: false
+      shiftTime: {
+        type: Object,
+        required: true
       },
-      post_content: {
-        type: DataTypes.TEXT,
-        allowNull: true
+      location: [locationSchema],
+      additionalInfo: {
+        type: String
       },
-      location: {
-        type: DataTypes.TEXT,
-        allowNull: true
-      },
-      user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'user',
-          key: 'id'
-        }
-      }
+      tagId: [tagSchema]
     },
     {
-      sequelize,
-      freezeTableName: true,
-      underscored: true,
-      modelName: 'post',
-      timestamps: true
+      toJSON: {
+        virtuals: true,
+      },
     }
   );
- 
-  const Post = mongoose.model('Post', postSchema);
+
+  const Post = model('Post', postSchema);
 
   module.exports = Post;
