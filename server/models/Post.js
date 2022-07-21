@@ -2,6 +2,8 @@ const { Schema, model } = require('mongoose');
 const sequelize = require('../config/connection');
 
 // class Post extends Model {}
+// role, start and end time, additional information, under which manager, location
+// Tag: string
 
 const postSchema = new Schema(
     {

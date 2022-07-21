@@ -3,9 +3,14 @@ const bcrypt = require('bcrypt');
 
 const postSchema = require('./Post');
 const userSchema = require('./User');
+const locationSchema = require('./Location');
 
 const adminSchema = new Schema(
   {
+    company: {
+        type: String,
+        unique: true,
+    },
     username: {
       type: String,
       unique: true,
@@ -25,6 +30,7 @@ const adminSchema = new Schema(
     },
     postsArr: [postSchema],
     userArr: [userSchema],
+    locationArr: [locationSchema]
   },
   {
     toJSON: {
