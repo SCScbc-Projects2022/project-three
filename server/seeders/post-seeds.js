@@ -15,3 +15,11 @@ const seedPost = [
         location: 'north york'
     },
 ]
+
+const seedDB = async() => {
+    await Post.insertMany(seedPost);
+};
+
+seedDB().then(() => {
+    mongoose.connection.close();
+});
