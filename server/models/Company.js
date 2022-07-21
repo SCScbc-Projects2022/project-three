@@ -7,7 +7,7 @@ const locationSchema = require('./Location');
 
 const companySchema = new Schema(
   {
-    company: {
+    name: {
         type: String,
         unique: true,
     },

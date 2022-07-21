@@ -20,7 +20,7 @@
     "mongoose": "^5.9.9"
   },
   "devDependencies": {
-    "faker": "^6.6.6",
+    "faker": "^4.1.0",
     "nodemon": "^2.0.3"
   }
 }

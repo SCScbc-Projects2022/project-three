@@ -1,8 +1,20 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const locationSchema = require('./Location');
+
 const userSchema = new Schema(
   {
+    first: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    last: {
+      type: String,
+      required: true,
+      trim: true
+    },
     username: {
       type: String,
       required: true,
@@ -12,18 +24,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    manager: {
-      type: Boolean,
-      default: false
-    },
     role: { // don't let this be free type ?
       type:  String,
       required: true
     },
-    location: {
-      type: String,
-      required: true
-    },
+    // location: [locationSchema],
     email: {
       type: String,
       match: [/.+@.+\..+/, 'Must use a valid email address'],
