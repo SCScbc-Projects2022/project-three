@@ -7,10 +7,6 @@ const tagSchema = require('./Tag');
 
 const postSchema = new Schema(
   {
-    role: {
-      type: String,
-      required: true,
-    },
     shiftTime: {
       type: Object,
       required: true,
@@ -24,12 +20,15 @@ const postSchema = new Schema(
         ref: 'Location',
       },
     ],
-    tagId: [
+    role: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Tag',
+        ref: 'Role',
       },
     ],
+    tagId: {
+      type: String,
+    },
   },
   {
     toJSON: {
