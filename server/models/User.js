@@ -3,6 +3,16 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
+    firstName: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     username: {
       type: String,
       required: true,
@@ -12,15 +22,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    manager: {
-      type: Boolean,
-      default: false,
-    },
-    role: {
-      // don't let this be free type ?
-      type: String,
-      required: true,
-    },
+    role: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Role',
+      },
+    ],
     location: {
       type: String,
       required: true,
