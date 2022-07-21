@@ -23,46 +23,45 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <!-- NavBar -->
-    <nav class="navbar navbar-expand-lg bg-light sticky-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Locum</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-          </ul>
-          <span class="navbar-text"> Staffing. Revolutionized.</span>
+       <!-- NavBar -->
+       <nav class="navbar navbar-expand-lg bg-light sticky-top">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Locum</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarText"
+            aria-controls="navbarText"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="../html-sandbox/admin-dashboard.html"
+                  >Dashboard</a
+                >
+              </li>
+            </ul>
+            <span class="navbar-text"> Staffing. Revolutionized.</span>
+          </div>
         </div>
-      </div>
-    </nav>
-    <!-- END NavBar -->
+      </nav>
+      <!-- END NavBar -->
 
     <!-- TWO COLUMN DASHBOARD -->
     <div class="container-fluid mt-4">
       <div class="row">
         <h1 class="fw-bold">Dashboard</h1>
-        <h4>Company Name</h4>
-        <div class="col-2">
-          <!-- <div style="height: 100px"></div>
+        <h4 id="company-name">Company Name</h4>
+        <!-- <div class="col-2"> -->
+        <!-- <div style="height: 100px"></div>
           <div>
             <button type="button" class="btn btn-primary btn-sm">
               + Shift
@@ -79,39 +78,47 @@
               + Role
             </button>
           </div> -->
-        </div>
-        <div class="col-9 d-flex flex-column justify-content-center">
+        <!-- </div> -->
+
+       
+        <div class="col-12 d-flex flex-column justify-content-center">
           <div style="height: 50px"></div>
+
+           <!-- NEW OPENING SECTION -->
           <div class="d-flex mt-5 justify-content-center">
-            <button type="button" class="btn btn-primary btn-lg">
+            <a href="../html-sandbox/new-opening.html"><button type="button" class="btn btn-primary btn-lg">
               New Opening
-            </button>
+            </button></a>
           </div>
+           <!-- NEW OPENING SECTION - END -->
           <div style="height: 100px"></div>
           <div>
-            <h2>Employees<i class="bi bi-plus-circle ms-3"></i></h2>
+            <h2>Employees<a href="../html-sandbox/add-emp.html"><i class="bi bi-plus-circle ms-3"></a></i></h2>
             <ol>
-              <li>Name 1</li>
-              <li>Name 1</li>
-              <li>Name 1</li>
+              <li>Carlos Sabbah<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Ali Momen<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Veronica To<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Anna Liang<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Candice Hall<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Cory Sillaots<i class="bi bi-x-circle ms-2"></i></li>
             </ol>
           </div>
           <div style="height: 100px"></div>
           <div>
             <h2>Roles<i class="bi bi-plus-circle ms-3"></i></h2>
             <ol>
-              <li>Name 1</li>
-              <li>Name 1</li>
-              <li>Name 1</li>
+              <li>Name 1<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Name 1<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Name 1<i class="bi bi-x-circle ms-2"></i></li>
             </ol>
           </div>
           <div style="height: 100px"></div>
           <div>
             <h2>Locations<i class="bi bi-plus-circle ms-3"></i></h2>
             <ol>
-              <li>Name 1</li>
-              <li>Name 1</li>
-              <li>Name 1</li>
+              <li>Name 1<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Name 1<i class="bi bi-x-circle ms-2"></i></li>
+              <li>Name 1<i class="bi bi-x-circle ms-2"></i></li>
             </ol>
           </div>
         </div>
