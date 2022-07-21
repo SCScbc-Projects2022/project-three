@@ -15,11 +15,11 @@ const postSchema = new Schema(
         type: Object,
         required: true
       },
-      location: [locationSchema],
+      // location: [locationSchema],
       additionalInfo: {
         type: String
       },
-      tagId: [tagSchema]
+      // tagId: [tagSchema]
     },
     {
       toJSON: {

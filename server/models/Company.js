@@ -28,9 +28,9 @@ const companySchema = new Schema(
       required: true,
       minlength: 6,
     },
-    postsArr: [postSchema],
-    userArr: [userSchema],
-    locationArr: [locationSchema]
+    // postsArr: [postSchema],
+    // userArr: [userSchema],
+    // locationArr: [locationSchema]
   },
   {
     toJSON: {

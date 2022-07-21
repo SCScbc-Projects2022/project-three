@@ -11,7 +11,7 @@ const locationSchema = new Schema({
     trim: true,
   },
   storeId: Company,
-  employees: [userSchema],
+  // employees: [userSchema],
 });
 
 const Location = model('Location', locationSchema);
