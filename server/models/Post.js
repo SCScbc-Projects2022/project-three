@@ -6,28 +6,38 @@ const tagSchema = require('./Tag');
 // Tag: string
 
 const postSchema = new Schema(
-    {
-      role: {
-        type: String,
-        required: true
-      },
-      shiftTime: {
-        type: Object,
-        required: true
-      },
-      location: [locationSchema],
-      additionalInfo: {
-        type: String
-      },
-      tagId: [tagSchema]
+  {
+    role: {
+      type: String,
+      required: true,
     },
-    {
-      toJSON: {
-        virtuals: true,
+    shiftTime: {
+      type: Object,
+      required: true,
+    },
+    additionalInfo: {
+      type: String,
+    },
+    locationArr: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Location',
       },
-    }
-  );
+    ],
+    tagId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
+      },
+    ],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
+  }
+);
 
-  const Post = model('Post', postSchema);
+const Post = model('Post', postSchema);
 
-  module.exports = Post;
+module.exports = Post;

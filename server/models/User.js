@@ -14,23 +14,24 @@ const userSchema = new Schema(
     },
     manager: {
       type: Boolean,
-      default: false
+      default: false,
     },
-    role: { // don't let this be free type ?
-      type:  String,
-      required: true
+    role: {
+      // don't let this be free type ?
+      type: String,
+      required: true,
     },
     location: {
       type: String,
-      required: true
+      required: true,
     },
     email: {
       type: String,
       match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
     phone: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   // set this to use virtual below
   {

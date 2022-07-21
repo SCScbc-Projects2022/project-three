@@ -8,8 +8,8 @@ const locationSchema = require('./Location');
 const companySchema = new Schema(
   {
     company: {
-        type: String,
-        unique: true,
+      type: String,
+      unique: true,
     },
     username: {
       type: String,
@@ -28,9 +28,24 @@ const companySchema = new Schema(
       required: true,
       minlength: 6,
     },
-    postsArr: [postSchema],
-    userArr: [userSchema],
-    locationArr: [locationSchema]
+    postsArr: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Post',
+      },
+    ],
+    userArr: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
+    locationArr: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Location',
+      },
+    ],
   },
   {
     toJSON: {
