@@ -5,7 +5,7 @@ const postSchema = require('./Post');
 const userSchema = require('./User');
 const locationSchema = require('./Location');
 
-const adminSchema = new Schema(
+const companySchema = new Schema(
   {
     company: {
         type: String,
@@ -40,7 +40,7 @@ const adminSchema = new Schema(
 );
 
 // password hashing
-adminSchema.pre('save', async function (next) {
+companySchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
@@ -49,10 +49,10 @@ adminSchema.pre('save', async function (next) {
 });
 
 // custom method to compare and validate password for logging in
-adminSchema.methods.isCorrectPassword = async function (password) {
+companySchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const Admin = model('Admin', adminSchema);
+const Company = model('Company', companySchema);
 
-module.exports = Admin;
+module.exports = Company;

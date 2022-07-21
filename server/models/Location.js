@@ -11,26 +11,10 @@ const locationSchema = new Schema(
             unique: true,
             trim: true
         },
-        street: {
-            type: String,
+        address: {
+            type: Object,
             required: true,
-            unique: true,
-            trim: true
-        },
-        city: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        country: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        phone: {
-            type: Number,
-            required: true,
-            trim: true
+            unique: true
         },
         employees: [userSchema]
     }
