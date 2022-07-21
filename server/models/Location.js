@@ -34,6 +34,8 @@ const locationSchema = new Schema(
         },
         employees: [userSchema]
     }
-)
+);
+
+const Location = model('Location', locationSchema);
 
 module.exports = Location;
