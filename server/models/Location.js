@@ -4,10 +4,6 @@ const locationSchema = new Schema({
   address: {
     type: Object,
   },
-<<<<<<< HEAD
-  storeId: Company,
-  // employees: [userSchema],
-=======
   storeId: [
     {
       type: Schema.Types.ObjectId,
@@ -20,7 +16,6 @@ const locationSchema = new Schema({
       ref: 'User',
     },
   ],
->>>>>>> develop
 });
 
 const Location = model('Location', locationSchema);

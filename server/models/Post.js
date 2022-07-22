@@ -6,27 +6,10 @@ const tagSchema = require('./Tag');
 // Tag: string
 
 const postSchema = new Schema(
-<<<<<<< HEAD
-    {
-      role: {
-        type: String,
-        required: true
-      },
-      shiftTime: {
-        type: Object,
-        required: true
-      },
-      // location: [locationSchema],
-      additionalInfo: {
-        type: String
-      },
-      // tagId: [tagSchema]
-=======
   {
     role: {
       type: String,
       required: true,
->>>>>>> develop
     },
     shiftTime: {
       type: Object,

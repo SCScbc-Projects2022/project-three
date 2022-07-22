@@ -24,13 +24,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-<<<<<<< HEAD
-    role: { // don't let this be free type ?
-      type:  String,
-      required: true
-    },
-    // location: [locationSchema],
-=======
     manager: {
       type: Boolean,
       default: false,
@@ -44,7 +37,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
->>>>>>> develop
     email: {
       type: String,
       match: [/.+@.+\..+/, 'Must use a valid email address'],
