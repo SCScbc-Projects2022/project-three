@@ -22,12 +22,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    role: [
-      {
-        type: Schema.Types.String,
-        ref: 'Role',
-      },
-    ],
     location: {
       type: String,
       required: true,
@@ -39,6 +33,12 @@ const userSchema = new Schema(
     phone: {
       type: Number,
     },
+    role: [
+      {
+        type: Schema.Types.String,
+        ref: 'Role',
+      },
+    ],
   },
   // set this to use virtual below
   {
