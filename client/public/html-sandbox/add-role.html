@@ -57,7 +57,7 @@
 
     <div class="container-fluid mt-4">
       <div class="row">
-        <h1 class="fw-bold">Add an Employee</h1>
+        <h1 class="fw-bold">Add a Role</h1>
         <h4 id="company-name">Company Name</h4>
       </div>
     </div>
@@ -74,13 +74,13 @@
                 type="email"
                 class="form-control"
                 id="floatingInput"
-                placeholder="name@example.com"
-                value="Last, First"
+                placeholder="Jane Doe"
+                value="Server"
               />
-              <label for="floatingInput">Name</label>
+              <label for="floatingInput">Title</label>
             </div>
             <!-- SELECT ROLE - LIST SHOULD BE FILLED WITH JS USING IDS -->
-            <div class="form-floating mt-2">
+            <!-- <div class="form-floating mt-2">
               <select
                 class="form-select"
                 id="floatingSelect"
@@ -92,21 +92,9 @@
                 <option value="3">Host</option>
               </select>
               <label for="floatingSelect">Select Role</label>
-            </div>
+            </div> -->
           </div>
-          <div class="form-floating mt-2">
-            <select
-              class="form-select"
-              id="floatingSelect"
-              aria-label="Floating label select example"
-            >
-              <option selected>Downtown Toronto</option>
-              <option value="1">Greater Toronto Area</option>
-              <option value="2">Hamilton</option>
-              <option value="3">Montreal</option>
-            </select>
-            <label for="floatingSelect">City (or location tbd)</label>
-          </div>
+
           <button type="button" class="btn btn-outline-primary mt-5">
             Submit
           </button>
