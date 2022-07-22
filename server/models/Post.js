@@ -1,16 +1,7 @@
 const { Schema, model } = require('mongoose');
-const locationSchema = require('./Location');
-const tagSchema = require('./Tag');
-
-// role, start and end time, additional information, under which manager, location
-// Tag: string
 
 const postSchema = new Schema(
   {
-    role: {
-      type: String,
-      required: true,
-    },
     shiftTime: {
       type: Object,
       required: true,
@@ -24,9 +15,15 @@ const postSchema = new Schema(
         ref: 'Location',
       },
     ],
-    tagId: [
+    role: [
       {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
+        ref: 'Role',
+      },
+    ],
+    tags: [
+      {
+        type: Schema.Types.String,
         ref: 'Tag',
       },
     ],

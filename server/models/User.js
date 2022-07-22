@@ -1,19 +1,17 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const locationSchema = require('./Location');
-
 const userSchema = new Schema(
   {
-    first: {
+    firstName: {
       type: String,
       required: true,
-      trim: true
+      unique: true,
     },
-    last: {
+    lastName: {
       type: String,
       required: true,
-      trim: true
+      unique: true,
     },
     username: {
       type: String,
@@ -24,15 +22,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    manager: {
-      type: Boolean,
-      default: false,
-    },
-    role: {
-      // don't let this be free type ?
-      type: String,
-      required: true,
-    },
+    role: [
+      {
+        type: Schema.Types.String,
+        ref: 'Role',
+      },
+    ],
     location: {
       type: String,
       required: true,

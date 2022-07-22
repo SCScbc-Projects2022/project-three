@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const tagSchema = new Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
     },

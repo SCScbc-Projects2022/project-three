@@ -1,15 +1,11 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const postSchema = require('./Post');
-const userSchema = require('./User');
-const locationSchema = require('./Location');
-
 const companySchema = new Schema(
   {
     name: {
-        type: String,
-        unique: true,
+      type: String,
+      unique: true,
     },
     username: {
       type: String,
