@@ -11,11 +11,10 @@ export const GET_ME = gql`
 `;
 
 // Query Company
-
 export const GET_COMPANY = gql`
 {
-  query companies($name: String) {
-    company(name: $name){
+  query companies($id: ID) {
+    company(_id: $id){
       name
       username
       email
@@ -26,7 +25,6 @@ export const GET_COMPANY = gql`
         locationArr {
           _id
           address
-          storeId
           employees {
            _id
             firstName
@@ -48,15 +46,37 @@ export const GET_COMPANY = gql`
   }
 }`
 // Query Location
-
-export const GET_LOCATION = gql`
+export const GET_LOCATIONS = gql`
 {
-query locations()
+query locations($companyId: ID!)
+  locations(companyId: $companyId) {
+    intersection
+    address
+    employees {
+      _id
+       firstName
+       lastName
+       username
+       role
+       email
+       phone
+     }
+  }
 }`
 // Query Post
 export const GET_POSTS = gql`
 {
-query posts($id)
+query posts($location: ID)
+  posts(location: $location) {
+    shiftTime
+    additionalInfo
+    location {
+      address
+      intersection
+    }
+    role
+    tags
+  }
 }`
 
 // Query Role
