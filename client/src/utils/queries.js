@@ -12,7 +12,6 @@ export const GET_ME = gql`
 
 // Query Company
 export const GET_COMPANY = gql`
-{
   query companies($id: ID) {
     company(_id: $id){
       name
@@ -43,11 +42,9 @@ export const GET_COMPANY = gql`
         }
       }
     }
-  }
-}`
+  }`
 // Query Location
 export const GET_LOCATIONS = gql`
-{
 query locations($companyId: ID!)
   locations(companyId: $companyId) {
     intersection
@@ -61,11 +58,9 @@ query locations($companyId: ID!)
        email
        phone
      }
-  }
-}`
+  }`
 // Query Post
 export const GET_POSTS = gql`
-{
 query posts($location: ID)
   posts(location: $location) {
     shiftTime
@@ -76,8 +71,7 @@ query posts($location: ID)
     }
     role
     tags
-  }
-}`
+  }`
 
 // Query Role
 // Query Tag
