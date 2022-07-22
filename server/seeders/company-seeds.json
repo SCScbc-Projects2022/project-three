@@ -1,0 +1,39 @@
+ [
+    {
+       " name": "Burger King",
+        "username":"KingofBurgers1",
+        "email":"burger1@king.com",
+        "password":"passwordking"
+    },
+    {
+        " name": "Burger King",
+         "username":"KingofBurgers2",
+         "email":"burger2@king.com",
+         "password":"passwordking2"
+     },
+     {
+        " name": "Popeyes",
+         "username":"Popeyes1",
+         "email":"chicken1@popeyes.com",
+         "password":"passwordpopeyes1"
+     },
+     {
+        " name": "Popeyes",
+         "username":"Popeyes2",
+         "email":"chicken2@popeyes.com",
+         "password":"passwordpopeyes2"
+     }
+     ,{
+        " name": "Dominos",
+         "username":"Dominos1",
+         "email":"pizza1@dominos.com",
+         "password":"passwordpizza1"
+     },
+     {
+        " name": "Dominos",
+         "username":"Dominos2",
+         "email":"pizza2@dominos.com",
+         "password":"passwordpizza2"
+     }
+ 
+]
