@@ -9,3 +9,11 @@ export const GET_ME = gql`
     }
   }
 `;
+
+// Query Company
+// Query Location
+// Query Post
+
+// Query Role
+// Query Tag
+// Queyr User
