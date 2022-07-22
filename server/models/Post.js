@@ -1,8 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-// role, start and end time, additional information, under which manager, location
-// Tag: string
-
 const postSchema = new Schema(
   {
     shiftTime: {
@@ -20,13 +17,16 @@ const postSchema = new Schema(
     ],
     role: [
       {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: 'Role',
       },
     ],
-    tagId: {
-      type: String,
-    },
+    tags: [
+      {
+        type: Schema.Types.String,
+        ref: 'Tag',
+      },
+    ],
   },
   {
     toJSON: {
