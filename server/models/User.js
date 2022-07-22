@@ -3,6 +3,16 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
+    firstName: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+      unique: true,
+    },
     username: {
       type: String,
       required: true,
@@ -12,25 +22,23 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    manager: {
-      type: Boolean,
-      default: false
-    },
-    role: { // don't let this be free type ?
-      type:  String,
-      required: true
-    },
+    role: [
+      {
+        type: Schema.Types.String,
+        ref: 'Role',
+      },
+    ],
     location: {
       type: String,
-      required: true
+      required: true,
     },
     email: {
       type: String,
       match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
     phone: {
-      type: Number
-    }
+      type: Number,
+    },
   },
   // set this to use virtual below
   {

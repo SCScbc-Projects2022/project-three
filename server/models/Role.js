@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const tagSchema = new Schema(
+const roleSchema = new Schema(
   {
     title: {
       type: String,
@@ -14,6 +14,6 @@ const tagSchema = new Schema(
   }
 );
 
-const Tag = model('Tag', tagSchema);
+const Role = model('Role', roleSchema);
 
-module.exports = Tag;
+module.exports = Role;
