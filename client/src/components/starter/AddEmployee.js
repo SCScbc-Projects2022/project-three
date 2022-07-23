@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 import { useMutation } from '@apollo/client';
-import { ADD_EMPLOYEE } from '../utils/mutations';
+import { ADD_EMPLOYEE } from '../../utils/mutations';
 
 const AddEmployee = () => {
   const [formState, setFormState] = useState({

@@ -1,5 +1,5 @@
 import React from 'react';
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const Navbar = ({ setActivePage, activePage }) => {
   const logout = (event) => {

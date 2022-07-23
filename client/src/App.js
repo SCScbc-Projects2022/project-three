@@ -18,6 +18,8 @@ import Payment from './pages/Payment';
 import SignUp from './pages/SignUp';
 import Stripe from './pages/Stripe';
 
+import LoginForm from './components/starter/LoginForm';
+
 import { setContext } from '@apollo/client/link/context';
 
 import {
@@ -62,7 +64,7 @@ function App() {
     NewOpening: false,
     Payment: false,
     SignUp: false,
-    Stripe: false
+    Stripe: false,
   });
 
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
@@ -71,7 +73,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <main>
-          <Navigation activePage={activePage} setActivePage={setActivePage} />
+        <Navigation activePage={activePage} setActivePage={setActivePage} />
         <section id="main-wrapper">
           {activePage.Home ? (
             <Home loggedIn={loggedIn} />
