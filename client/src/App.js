@@ -1,12 +1,25 @@
 import React, { useState } from 'react';
 
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 
-import Home from './pages/Home';
 import Auth from './utils/auth';
 
-import LoginForm from './components/LoginForm';
-import SignupForm from './components/SignupForm';
+import Home from './pages/Home';
+import AddEmployee from './pages/AddEmployee';
+import AddLocation from './pages/AddLocation';
+import AddRole from './pages/AddRole';
+import AdminDashboard from './pages/AdminDashboard';
+import CompanyProfile from './pages/CompanyProfile';
+import EmployeeDashboard from './pages/EmployeeDashboard';
+import Login from './pages/Login';
+import NewOpening from './pages/NewOpening';
+import Payment from './pages/Payment';
+import SignUp from './pages/SignUp';
+import Stripe from './pages/Stripe';
+
+
+
 
 import { setContext } from '@apollo/client/link/context';
 
