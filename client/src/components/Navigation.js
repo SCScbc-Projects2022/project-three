@@ -9,7 +9,7 @@ const Navigation = ({ setActivePage, activePage }) => {
 
   const handlePage = (e) => {
     if (e.target.innerText == "Locum") {
-        setActivePage({[Home]: true});
+        setActivePage({"Home": true});
         document.title = `Proj3 - Home`;
     } else {
         setActivePage({ [e.target.innerText]: true });

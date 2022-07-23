@@ -75,8 +75,6 @@ function App() {
         <section id="main-wrapper">
           {activePage.Home ? (
             <Home loggedIn={loggedIn} />
-          ) : activePage.Login ? (
-            <LoginForm />
           ) : activePage.AddEmployee ? (
             <AddEmployee />
           ) : activePage.AddLocation ? (

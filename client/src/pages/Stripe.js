@@ -22,8 +22,8 @@ const Stripe = () => {
             </div>
 
             <link rel="stylesheet" href="checkout.css" />
-            <script src="https://js.stripe.com/v3/"></script>
-            <script src="checkout.js" defer></script>
+            <script src={require("https://js.stripe.com/v3/")}></script>
+            {/*<script src={require("checkout.js") defer></script>*/}
 
             <div
             style="background-color: dodgerblue; color: white"
