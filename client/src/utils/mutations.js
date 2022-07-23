@@ -130,6 +130,18 @@ export const ADD_ROLE = gql`
     }
   }
 `;
-// ADD_ROLE
+
+export const ADD_TAG = gql`
+  mutation addTag($title: String!) {
+    addTag(title: $title) {
+      token
+      tag {
+        _id
+        title
+      }
+    }
+  }
+`;
+
 // ADD_TAG
 // ADD_LOCATION
