@@ -50,7 +50,7 @@ export const ADD_EMPLOYEE = gql`
 `;
 
 export const ADD_COMPANY = gql`
-  mutation addCompany($name: String!, $username: String!, email: String!, password: String!, postsArr: [String], userArr: [String], locationArr: [String] ) {
+  mutation addCompany($name: String!, $username: String!, email: String!, password: String!, postsArr: postInput, userArr: userInput, locationArr: locationInput) {
     addCompany(
       name: $name, 
       username: $username
@@ -93,7 +93,7 @@ export const ADD_COMPANY = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($shiftTime: [String!], $additionalInfo: String, location: [String!], role: String!, tags: String) {
+  mutation addPost($shiftTime: shiftInput, $additionalInfo: String, location: locationInput, role: String!, tags: String) {
     addPost(
       shiftTime: $shiftTime, 
       additionalInfo: $additionalInfo
@@ -143,5 +143,42 @@ export const ADD_TAG = gql`
   }
 `;
 
-// ADD_TAG
-// ADD_LOCATION
+// Need to update the info that address returns (for now leave it as is)
+export const ADD_LOCATION = gql`
+  mutation addLocation(
+    $intersection: String!
+    $address: addressInput
+    $companyId: Int
+    $employees: employeeInput
+  ) {
+    addLocation(
+      intersection: $intersection
+      address: $address
+      companyId: $companyId
+      employees: $employees
+    ) {
+      token
+      location {
+        _id
+        intersection
+        address {
+          street
+          city
+        }
+        companyId {
+          _id
+          name
+        }
+        employees {
+          firstName
+          lastName
+          username
+          location
+          email
+          phone
+          role
+        }
+      }
+    }
+  }
+`;
