@@ -119,8 +119,17 @@ export const ADD_POST = gql`
   }
 `;
 
-// ADD_POST
-
+export const ADD_ROLE = gql`
+  mutation addRole($title: String!) {
+    addRole(title: $title) {
+      token
+      role {
+        _id
+        title
+      }
+    }
+  }
+`;
 // ADD_ROLE
 // ADD_TAG
 // ADD_LOCATION
