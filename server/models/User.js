@@ -28,6 +28,10 @@ const userSchema = new Schema(
         ref: 'Role',
       },
     ],
+    store: {
+      type: String,
+      require: true,
+    },
     location: {
       type: String,
       required: true,

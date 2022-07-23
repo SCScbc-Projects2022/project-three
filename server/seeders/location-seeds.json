@@ -2,6 +2,7 @@
 
     {
         "address":{
+            "storeName": "Burger King",
             "locationName":"East Site",
             "number":23,
             "street":"Maple",
@@ -12,6 +13,7 @@
     },
     {
         "address":{
+            "storeName":"Burger King",
             "locationName":"West Site",
             "number":26,
             "street":"Queen",
@@ -22,6 +24,7 @@
     },
     {
         "address":{
+            "storeName":"Popeyes",
             "locationName":"West Site",
             "number":2345,
             "street":"Bathurst",
@@ -32,6 +35,7 @@
     },
     {
         "address":{
+            "storeName":"Popeyes",
             "locationName":"East Site",
             "number":8745,
             "street":"Yonge",
@@ -42,6 +46,7 @@
     },
     {
         "address":{
+            "storeName":"Dominos",
             "locationName":"West Site",
             "number":6048,
             "street":"King",
@@ -52,6 +57,7 @@
     },
     {
         "address":{
+            "storeName":"Dominos",
             "locationName":"East Site",
             "number":3052,
             "street":"Woodlawn",
