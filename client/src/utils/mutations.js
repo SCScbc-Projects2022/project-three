@@ -50,15 +50,23 @@ export const ADD_EMPLOYEE = gql`
 `;
 
 export const ADD_COMPANY = gql`
-  mutation addCompany($name: String!, $username: String!, email: String!, password: String!, postsArr: postInput, userArr: userInput, locationArr: locationInput) {
+  mutation addCompany(
+    $name: String!
+    $username: String!
+    $email: String!
+    $password: String!
+    $postsArr: postInput
+    $userArr: userInput
+    $locationArr: locationInput
+  ) {
     addCompany(
-      name: $name, 
+      name: $name
       username: $username
       email: $email
       postsArr: $postsArr
       userArr: $userArr
       locationArr: $locationArr
-      ) {
+    ) {
       token
       company {
         _id
@@ -93,23 +101,29 @@ export const ADD_COMPANY = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($shiftTime: shiftInput, $additionalInfo: String, location: locationInput, role: String!, tags: String) {
+  mutation addPost(
+    $shiftTime: shiftInput
+    $additionalInfo: String
+    $location: locationInput
+    $role: String!
+    $tags: String
+  ) {
     addPost(
-      shiftTime: $shiftTime, 
+      shiftTime: $shiftTime
       additionalInfo: $additionalInfo
       location: $location
       role: $role
       tags: $tags
-      ) {
+    ) {
       token
       post {
         _id
         shiftTime
         additionalInfo
         location {
-          intersection,
-          address,
-          companyId,
+          intersection
+          address
+          companyId
           employees
         }
         role

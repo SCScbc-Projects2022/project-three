@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Auth from '../utils/auth';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { ADD_EMPLOYEE } from '../utils/mutations';
 
 const SignupForm = () => {
   const [formState, setFormState] = useState({
@@ -22,7 +22,7 @@ const SignupForm = () => {
     console.log(formState);
   };
 
-  const [addUser, { error }] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_EMPLOYEE);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
