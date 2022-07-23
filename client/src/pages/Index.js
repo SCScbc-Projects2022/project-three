@@ -4,7 +4,7 @@ const Index = () => {
     return (
         <>
     <div>
-      <img src="../assets/img/hero.jpg" width="100%" height="auto" alt="" />
+      <img src={require("../assets/img/hero.jpg")} width="100%" height="auto" alt="" />
     </div>
      <div
       class="d-flex flex-column justify-content-center align-items-center ms-5 me-5"
@@ -23,7 +23,7 @@ const Index = () => {
         </p>
       </div>
       <div class="container-fluid mt-5">
-        <img src="../assets/img/server.jpg" width="100%" height="auto" alt="" />
+        <img src={require("../assets/img/server.jpg")} width="100%" height="auto" alt="" />
       </div>
       <div class="mt-5">
         <h1 class="fw-bold text-center">

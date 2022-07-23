@@ -6,7 +6,7 @@ const SignUp = () => {
 
 <div class="">
   <img
-    src="../assets/img/hero-sign-up.jpg"
+    src={require('../assets/img/hero-sign-up.jpg')}
     width="100%"
     height="auto"
     alt=""

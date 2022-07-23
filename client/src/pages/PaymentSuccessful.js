@@ -34,7 +34,7 @@ const PaymentSuccessful = () => {
     </nav>
     <div class="">
       <img
-        src="../assets/img/thank-you.jpg"
+        src={require("../assets/img/thank-you.jpg")}
         width="100%"
         height="auto"
         alt=""

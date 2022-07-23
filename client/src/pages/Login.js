@@ -5,7 +5,7 @@ const Login = () => {
         <>
  <div class="">
       <img
-        src="../assets/img/welcome-banner.jpg"
+        src={require("../assets/img/welcome-banner.jpg")}
         width="100%"
         height="auto"
         alt=""

@@ -34,7 +34,7 @@ const Payment = () => {
     </nav>
     <div class="">
       <img
-        src="../assets/img/hero-payment.jpg"
+        src={require("../assets/img/hero-payment.jpg")}
         width="100%"
         height="auto"
         alt=""
