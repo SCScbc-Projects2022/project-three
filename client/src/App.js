@@ -60,7 +60,6 @@ function App() {
     AdminDashboard: false,
     CompanyProfile: false,
     EmployeeDashboard: false,
-    Login: false,
     NewOpening: false,
     Payment: false,
     SignUp: false,
