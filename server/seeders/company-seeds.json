@@ -1,18 +1,18 @@
  [
     {
-       " name": "Burger King",
+       "name": "Burger King",
         "username":"KingofBurgers1",
         "email":"burger1@king.com",
         "password":"passwordking"
     },
      {
-        " name": "Popeyes",
+        "name": "Popeyes",
          "username":"Popeyes1",
          "email":"chicken1@popeyes.com",
          "password":"passwordpopeyes1"
      },
      {
-        " name": "Dominos",
+        "name": "Dominos",
          "username":"Dominos1",
          "email":"pizza1@dominos.com",
          "password":"passwordpizza1"
