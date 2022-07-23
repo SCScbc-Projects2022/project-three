@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import Navbar from './components/Navbar';
+import Navigation from './components/Navigation';
 
 import Home from './pages/Home';
 import Auth from './utils/auth';
@@ -51,7 +51,7 @@ function App() {
     <ApolloProvider client={client}>
       <main>
         <nav>
-          <Navbar activePage={activePage} setActivePage={setActivePage} />
+          <Navigation activePage={activePage} setActivePage={setActivePage} />
         </nav>
         <section id="main-wrapper">
           {activePage.Home ? (

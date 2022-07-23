@@ -8,41 +8,44 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   const handlePage = (e) => {
-    setActivePage({ [e.target.innerText]: true });
-    document.title = `Proj3 - ${e.target.innerText}`;
+    if (e.target.innerText == "Locum") {
+        setActivePage({[Home]: true});
+        document.title = `Proj3 - Home`;
+    } else {
+        setActivePage({ [e.target.innerText]: true });
+        document.title = `Proj3 - ${e.target.innerText}`;
+    }
   };
 
   return (
     <>
-      <nav class="navbar navbar-expand-lg bg-light sticky-top">
-        <div class="container-fluid">
-            <a class={`navbar-brand navItem ${activePage.Home ? 'active' : ''}`}
-                href="#Home">Locum</a>
+      <nav className="navbar navbar-expand-lg bg-light sticky-top">
+        <div className="container-fluid">
+            <a 
+                className={`navbar-brand navItem ${activePage.Home ? 'active' : ''}`}
+                href="#Home"
+                onClick={(e) => handlePage(e)}
+            >
+                Locum
+            </a>
             <button
-                class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
             >
-                <span class="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <li>
-                    <a
-                        className={`navItem ${activePage.Home ? 'active' : ''}`}
-                        href="#Home"
-                        onClick={(e) => handlePage(e)}
-                    >
-                        Home
-                    </a>
-                </li>
+            <div className="collapse navbar-collapse" id="navbarText">
                 {Auth.loggedIn() ? (
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
                             <a
-                            class="nav-link active"
-                            aria-current="page"
-                            href="../html-sandbox/admin-dashboard.html">
+                                className={`nav-link navItem ${activePage.Dashboard ? 'active' : ''}`}
+                                aria-current="page"
+                                href="#Dashboard"
+                                onClick={(e) => handlePage(e)}
+                            >
                                 Dashboard
                             </a>
                         </li>
@@ -56,7 +59,8 @@ const Navigation = ({ setActivePage, activePage }) => {
                     <ul>
                         <li>
                             <a
-                                className={`navItem ${activePage.Login ? 'active' : ''}`}
+                                className={`nav-link navItem ${activePage.Login ? 'active' : ''}`}
+                                aria-current="page"
                                 href="#Login"
                                 onClick={(e) => handlePage(e)}
                             >
@@ -65,7 +69,8 @@ const Navigation = ({ setActivePage, activePage }) => {
                         </li>
                         <li>
                             <a
-                                className={`navItem ${activePage.Signup ? 'active' : ''}`}
+                                className={`nav-link navItem ${activePage.Signup ? 'active' : ''}`}
+                                aria-current="page"
                                 href="#Signup"
                                 onClick={(e) => handlePage(e)}
                             >
@@ -75,7 +80,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                     </ul>
                 )}
             </div>
-            <span class="navbar-text"> Staffing. Revolutionized.</span>
+            <span className="navbar-text"> Staffing. Revolutionized.</span>
         </div>
       </nav>
     </>
