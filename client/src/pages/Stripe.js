@@ -22,8 +22,8 @@ const Stripe = () => {
             </div>
 
             <link rel="stylesheet" href="checkout.css" />
-            <script src="https://js.stripe.com/v3/"></script>
-            <script src="checkout.js" defer></script>
+            <script src={require("https://js.stripe.com/v3/")}></script>
+            <script src={require("checkout.js")} defer></script>
 
             <div
             style="background-color: dodgerblue; color: white"
@@ -33,17 +33,17 @@ const Stripe = () => {
             </div>
 
             <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+            src={require("https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js")}
             integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
             crossorigin="anonymous"
             ></script>
             <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+            src={require("https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js")}
             integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
             crossorigin="anonymous"
             ></script>
             <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+            src={require("https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js")}
             integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
             crossorigin="anonymous"
             ></script>
