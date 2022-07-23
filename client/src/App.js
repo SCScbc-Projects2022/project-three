@@ -18,9 +18,6 @@ import Payment from './pages/Payment';
 import SignUp from './pages/SignUp';
 import Stripe from './pages/Stripe';
 
-
-
-
 import { setContext } from '@apollo/client/link/context';
 
 import {
@@ -55,6 +52,17 @@ function App() {
     Home: true,
     Login: false,
     Signup: false,
+    AddEmployee: false,
+    AddLocation: false,
+    AddRole: false,
+    AdminDashboard: false,
+    CompanyProfile: false,
+    EmployeeDashboard: false,
+    Login: false,
+    NewOpening: false,
+    Payment: false,
+    SignUp: false,
+    Stripe: false
   });
 
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
@@ -68,12 +76,32 @@ function App() {
         </nav>
         <section id="main-wrapper">
           {activePage.Home ? (
-            // Main Page
+            // this should 100% be an IIFE switch statement
             <Home loggedIn={loggedIn} />
           ) : activePage.Login ? (
             <LoginForm />
+          ) : activePage.AddEmployee ? (
+            <AddEmployee />
+          ) : activePage.AddLocation ? (
+            <AddLocation />
+          ) : activePage.AddRole ? (
+            <AddRole />
+          ) : activePage.AdminDashboard ? (
+            <AdminDashboard />
+          ) : activePage.CompanyProfile ? (
+            <CompanyProfile />
+          ) : activePage.EmployeeDashboard ? (
+            <EmployeeDashboard />
+          ) : activePage.Login ? (
+            <Login />
+          ) : activePage.NewOpening ? (
+            <NewOpening />
+          ) : activePage.Payment ? (
+            <Payment />
+          ) : activePage.SignUp ? (
+            <SignUp />
           ) : (
-            <SignupForm />
+            <Stripe />
           )}
         </section>
       </main>
