@@ -3,29 +3,29 @@ import React from 'react';
 const EmployeeDashboard = () => {
     return (
         <>
-<div class="container-fluid mt-4">
-      <div class="row">
-        <h1 class="fw-bold">Dashboard</h1>
+<div className="container-fluid mt-4">
+      <div className="row">
+        <h1 className="fw-bold">Dashboard</h1>
         <h4 id="employee-name">Employee Name</h4>
 
-        <div class="col-12 d-flex flex-column justify-content-center">
+        <div className="col-12 d-flex flex-column justify-content-center">
           <div style="height: 100px"></div>
-          <div class="d-flex justify-content-between">
+          <div className="d-flex justify-content-between">
             <h2>Openings</h2>
-            <div class="form-floating mb-3">
+            <div className="form-floating mb-3">
               <input
                 type="search"
-                class="form-control"
+                className="form-control"
                 id="floatingInput"
                 placeholder="name@example.com"
               />
               <label for="floatingInput"
-                ><i class="bi bi-search me-2"></i>Search</label
+                ><i className="bi bi-search me-2"></i>Search</label
               >
             </div>
           </div>
           <div>
-            <table class="table table-hover">
+            <table className="table table-hover">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -63,45 +63,45 @@ const EmployeeDashboard = () => {
           <div>
             <button
               type="button"
-              class="btn btn-primary mt-5"
+              className="btn btn-primary mt-5"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
               Select
             </button>
             <div
-              class="modal fade"
+              className="modal fade"
               id="exampleModal"
               tabindex="-1"
               aria-labelledby="exampleModalLabel"
               aria-hidden="true"
             >
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">
+              <div className="modal-dialog">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalLabel">
                       Confirm your shift
                     </h5>
                     <button
                       type="button"
-                      class="btn-close"
+                      className="btn-close"
                       data-bs-dismiss="modal"
                       aria-label="Close"
                     ></button>
                   </div>
-                  <div class="modal-body">
+                  <div className="modal-body">
                     <span>Yonge and Bloor</span
-                    ><span class="ms-3">5:00pm to 10:00pm</span>
+                    ><span className="ms-3">5:00pm to 10:00pm</span>
                   </div>
-                  <div class="modal-footer">
+                  <div className="modal-footer">
                     <button
                       type="button"
-                      class="btn btn-secondary"
+                      className="btn btn-secondary"
                       data-bs-dismiss="modal"
                     >
                       Close
                     </button>
-                    <button type="button" class="btn btn-primary">
+                    <button type="button" className="btn btn-primary">
                       Confirm
                     </button>
                   </div>

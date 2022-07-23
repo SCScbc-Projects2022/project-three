@@ -4,7 +4,7 @@ const SignUp = () => {
     return (
         <>
 
-<div class="">
+<div className="">
   <img
     src={require('../assets/img/hero-sign-up.jpg')}
     width="100%"
@@ -12,56 +12,56 @@ const SignUp = () => {
     alt=""
   />
 </div>
-<div class="mt-4 mb-4 text-center">
-  <h2 class="fw-bold">
+<div className="mt-4 mb-4 text-center">
+  <h2 className="fw-bold">
     Simply fill out your company's information below to get started
   </h2>
 </div>
 
-<div class="container-fluid mt-4 mb-4">
-  <form class="row g-3">
-    <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" />
+<div className="container-fluid mt-4 mb-4">
+  <form className="row g-3">
+    <div className="col-md-6">
+      <label for="inputEmail4" className="form-label">Email</label>
+      <input type="email" className="form-control" id="inputEmail4" />
     </div>
-    <div class="col-md-6">
-      <label for="inputPassword4" class="form-label">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" />
+    <div className="col-md-6">
+      <label for="inputPassword4" className="form-label">Password</label>
+      <input type="password" className="form-control" id="inputPassword4" />
     </div>
-    <div class="col-12">
-      <label for="inputCompany" class="form-label">Company Name</label>
+    <div className="col-12">
+      <label for="inputCompany" className="form-label">Company Name</label>
       <input
         type="text"
-        class="form-control"
+        className="form-control"
         id="inputCompany"
         placeholder="Company name"
       />
     </div>
-    <div class="col-12">
-      <label for="inputAddress" class="form-label">Address</label>
+    <div className="col-12">
+      <label for="inputAddress" className="form-label">Address</label>
       <input
         type="text"
-        class="form-control"
+        className="form-control"
         id="inputAddress"
         placeholder="1234 Main St"
       />
     </div>
-    <div class="col-12">
-      <label for="inputAddress2" class="form-label">Address 2</label>
+    <div className="col-12">
+      <label for="inputAddress2" className="form-label">Address 2</label>
       <input
         type="text"
-        class="form-control"
+        className="form-control"
         id="inputAddress2"
         placeholder="Apartment, studio, or floor"
       />
     </div>
-    <div class="col-md-6">
-      <label for="inputCity" class="form-label">City</label>
-      <input type="text" class="form-control" id="inputCity" />
+    <div className="col-md-6">
+      <label for="inputCity" className="form-label">City</label>
+      <input type="text" className="form-control" id="inputCity" />
     </div>
-    <div class="col-md-4">
-      <label for="inputState" class="form-label">Province</label>
-      <select id="inputState" class="form-select">
+    <div className="col-md-4">
+      <label for="inputState" className="form-label">Province</label>
+      <select id="inputState" className="form-select">
         <option selected>Choose...</option>
         <option>Alberta</option>
         <option>British Columbia</option>
@@ -74,21 +74,21 @@ const SignUp = () => {
         <option>Sasketchewan</option>
       </select>
     </div>
-    <div class="col-md-2">
-      <label for="inputZip" class="form-label">Postal Code</label>
-      <input type="text" class="form-control" id="inputZip" />
+    <div className="col-md-2">
+      <label for="inputZip" className="form-label">Postal Code</label>
+      <input type="text" className="form-control" id="inputZip" />
     </div>
-    <div class="col-12">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" id="gridCheck" />
-        <label class="form-check-label" for="gridCheck">
+    <div className="col-12">
+      <div className="form-check">
+        <input className="form-check-input" type="checkbox" id="gridCheck" />
+        <label className="form-check-label" for="gridCheck">
           Sign up for promotional emails
         </label>
       </div>
     </div>
-    <div class="col-12">
+    <div className="col-12">
       <a href="./payment.html"
-        ><button type="text" class="btn btn-primary">Sign up</button></a
+        ><button type="text" className="btn btn-primary">Sign up</button></a
       >
     </div>
   </form>

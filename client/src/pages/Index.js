@@ -7,12 +7,12 @@ const Index = () => {
       <img src={require("../assets/img/hero.jpg")} width="100%" height="auto" alt="" />
     </div>
      <div
-      class="d-flex flex-column justify-content-center align-items-center ms-5 me-5"
+      className="d-flex flex-column justify-content-center align-items-center ms-5 me-5"
     >
-      <div class="mt-5">
-        <h1 class="fw-bold">Never be short-staffed again</h1>
+      <div className="mt-5">
+        <h1 className="fw-bold">Never be short-staffed again</h1>
       </div>
-      <div class="text-center">
+      <div className="text-center">
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae
           velit aliquam a, earum excepturi cupiditate reiciendis atque esse in
@@ -22,15 +22,15 @@ const Index = () => {
           quisquam iste. Facere unde dolorum itaque?
         </p>
       </div>
-      <div class="container-fluid mt-5">
+      <div className="container-fluid mt-5">
         <img src={require("../assets/img/server.jpg")} width="100%" height="auto" alt="" />
       </div>
-      <div class="mt-5">
-        <h1 class="fw-bold text-center">
+      <div className="mt-5">
+        <h1 className="fw-bold text-center">
           Expand your available workforce instantly
         </h1>
       </div>
-      <div class="text-center">
+      <div className="text-center">
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae
           velit aliquam a, earum excepturi cupiditate reiciendis atque esse in
@@ -40,9 +40,9 @@ const Index = () => {
           quisquam iste. Facere unde dolorum itaque?
         </p>
       </div>
-      <div class="mb-5 mt-4">
+      <div className="mb-5 mt-4">
         <a href="./sign-up.html"
-          ><button type="button" class="btn btn-primary btn-lg">
+          ><button type="button" className="btn btn-primary btn-lg">
             Sign Up
           </button></a
         >

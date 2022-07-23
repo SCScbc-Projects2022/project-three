@@ -3,7 +3,7 @@ import React from 'react';
 const Login = () => {
     return (
         <>
- <div class="">
+ <div className="">
       <img
         src={require("../assets/img/welcome-banner.jpg")}
         width="100%"
@@ -11,25 +11,25 @@ const Login = () => {
         alt=""
       />
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
+    <div className="container">
+      <div className="row">
+        <div className="col-1"></div>
+        <div className="col-10">
           <div style="height: 100px"></div>
           <div><h2>Log-in</h2></div>
-          <div class="form-floating mb-3 mt-3">
+          <div className="form-floating mb-3 mt-3">
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="floatingInput"
               placeholder="name@example.com"
             />
             <label for="floatingInput">Email address</label>
           </div>
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="password"
-              class="form-control"
+              className="form-control"
               id="floatingPassword"
               placeholder="Password"
             />
@@ -37,7 +37,7 @@ const Login = () => {
           </div>
         </div>
         <div style="height: 100px"></div>
-        <div class="col-1"></div>
+        <div className="col-1"></div>
       </div>
     </div>
         </>

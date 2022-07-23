@@ -3,24 +3,24 @@ import React from 'react';
 const AddEmployee = () => {
     return (
         <>
- <div class="container-fluid mt-4">
-      <div class="row">
-        <h1 class="fw-bold">Add an Employee</h1>
+ <div className="container-fluid mt-4">
+      <div className="row">
+        <h1 className="fw-bold">Add an Employee</h1>
         <h4 id="company-name">Company Name</h4>
       </div>
     </div>
 
     <div style="height: 100px"></div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
+    <div className="container">
+      <div className="row">
+        <div className="col-1"></div>
+        <div className="col-10">
           <div>
-            <div class="form-floating mb-3">
+            <div className="form-floating mb-3">
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 id="floatingInput"
                 placeholder="name@example.com"
                 value="Last, First"
@@ -28,10 +28,10 @@ const AddEmployee = () => {
               <label for="floatingInput">Name</label>
             </div>
             <div>
-              <form class="form-floating">
+              <form className="form-floating">
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="floatingInputValue"
                   placeholder="name@example.com"
                   value="test@jacastors.com"
@@ -40,10 +40,10 @@ const AddEmployee = () => {
               </form>
             </div>
             <div>
-              <form class="form-floating mt-2">
+              <form className="form-floating mt-2">
                 <input
                   type="password"
-                  class="form-control"
+                  className="form-control"
                   id=""
                   placeholder="12345"
                   value="2343"
@@ -51,9 +51,9 @@ const AddEmployee = () => {
                 <label for="floatingInputValue">Create a Password</label>
               </form>
             </div>
-            <div class="form-floating mt-2">
+            <div className="form-floating mt-2">
               <select
-                class="form-select"
+                className="form-select"
                 id="floatingSelect"
                 aria-label="Floating label select example"
               >
@@ -65,9 +65,9 @@ const AddEmployee = () => {
               <label for="floatingSelect">Select Role</label>
             </div>
           </div>
-          <div class="form-floating mt-2">
+          <div className="form-floating mt-2">
             <select
-              class="form-select"
+              className="form-select"
               id="floatingSelect"
               aria-label="Floating label select example"
             >
@@ -79,46 +79,46 @@ const AddEmployee = () => {
             <label for="floatingSelect">Original Location</label>
           </div>
           <div>
-            <h5 class="mt-3">Preferred locations</h5>
-            <div class="form-check form-check-inline mt-2">
+            <h5 className="mt-3">Preferred locations</h5>
+            <div className="form-check form-check-inline mt-2">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="inlineCheckbox1"
                 value="option1"
               />
-              <label class="form-check-label" for="inlineCheckbox1"
+              <label className="form-check-label" for="inlineCheckbox1"
                 >Jarvis and Front</label
               >
             </div>
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="inlineCheckbox2"
                 value="option2"
               />
-              <label class="form-check-label" for="inlineCheckbox2"
+              <label className="form-check-label" for="inlineCheckbox2"
                 >Yonge and Bloor</label
               >
             </div>
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="inlineCheckbox2"
                 value="option2"
               />
-              <label class="form-check-label" for="inlineCheckbox2"
+              <label className="form-check-label" for="inlineCheckbox2"
                 >Dudas and Ossington</label
               >
             </div>
           </div>
-          <button type="button" class="btn btn-outline-primary mt-5">
+          <button type="button" className="btn btn-outline-primary mt-5">
             Submit
           </button>
         </div>
-        <div class="col-1"></div>
+        <div className="col-1"></div>
       </div>
     </div>
         </>
