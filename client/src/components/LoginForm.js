@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import Auth from '../utils/auth';
 
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
+import { LOGIN } from '../utils/mutations';
 
 const LoginForm = () => {
-  const [login, { error }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN);
 
   // submit form
   const handleFormSubmit = async (event) => {
