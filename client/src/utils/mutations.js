@@ -91,6 +91,34 @@ export const ADD_COMPANY = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+  mutation addPost($shiftTime: [String!], $additionalInfo: String, location: [String!], role: String!, tags: String) {
+    addPost(
+      shiftTime: $shiftTime, 
+      additionalInfo: $additionalInfo
+      location: $location
+      role: $role
+      tags: $tags
+      ) {
+      token
+      post {
+        _id
+        shiftTime
+        additionalInfo
+        location {
+          intersection,
+          address,
+          companyId,
+          employees
+        }
+        role
+        tags
+      }
+    }
+  }
+`;
+
 // ADD_POST
 
 // ADD_ROLE
