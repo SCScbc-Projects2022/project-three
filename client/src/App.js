@@ -75,7 +75,11 @@ function App() {
         <Navigation activePage={activePage} setActivePage={setActivePage} />
         <section id="main-wrapper">
           {activePage.Home ? (
-            <Home loggedIn={loggedIn} />
+            <Home
+              loggedIn={loggedIn}
+              activePage={activePage}
+              setActivePage={setActivePage}
+            />
           ) : activePage.Login ? (
             <LoginForm />
           ) : activePage.AddEmployee ? (
@@ -96,10 +100,12 @@ function App() {
             <NewOpening />
           ) : activePage.Payment ? (
             <Payment />
-          ) : activePage.SignUp ? (
+          ) : activePage.Signup ? (
             <SignUp />
-          ) : (
+          ) : activePage.Stripe ? (
             <Stripe />
+          ) : (
+            ''
           )}
         </section>
         <Footer />

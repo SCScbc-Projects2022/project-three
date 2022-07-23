@@ -1,6 +1,11 @@
 import React from 'react';
 
-const Home = () => {
+const Home = ({ setActivePage, activePage }) => {
+  const handlePage = () => {
+    setActivePage({ Signup: true });
+    document.title = `Proj3 - Signup`;
+  };
+
   return (
     <>
       <div>
@@ -49,11 +54,13 @@ const Home = () => {
           </p>
         </div>
         <div className="mb-5 mt-4">
-          <a href="./sign-up.html">
-            <button type="button" className="btn btn-primary btn-lg">
-              Sign Up
-            </button>
-          </a>
+          <button
+            onClick={() => handlePage()}
+            type="button"
+            className="btn btn-primary btn-lg"
+          >
+            Sign Up
+          </button>
         </div>
       </div>
     </>
