@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
 
-import Navbar from './components/Navbar';
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 
-import Home from './pages/Home';
 import Auth from './utils/auth';
 
-import LoginForm from './components/LoginForm';
-import SignupForm from './components/SignupForm';
+import Home from './pages/Home';
+import AddEmployee from './pages/AddEmployee';
+import AddLocation from './pages/AddLocation';
+import AddRole from './pages/AddRole';
+import AdminDashboard from './pages/AdminDashboard';
+import CompanyProfile from './pages/CompanyProfile';
+import EmployeeDashboard from './pages/EmployeeDashboard';
+import Login from './pages/Login';
+import NewOpening from './pages/NewOpening';
+import Payment from './pages/Payment';
+import SignUp from './pages/SignUp';
+import Stripe from './pages/Stripe';
 
 import { setContext } from '@apollo/client/link/context';
 
@@ -42,6 +52,17 @@ function App() {
     Home: true,
     Login: false,
     Signup: false,
+    AddEmployee: false,
+    AddLocation: false,
+    AddRole: false,
+    AdminDashboard: false,
+    CompanyProfile: false,
+    EmployeeDashboard: false,
+    Login: false,
+    NewOpening: false,
+    Payment: false,
+    SignUp: false,
+    Stripe: false
   });
 
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
@@ -50,19 +71,37 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <main>
-        <nav>
-          <Navbar activePage={activePage} setActivePage={setActivePage} />
-        </nav>
+          <Navigation activePage={activePage} setActivePage={setActivePage} />
         <section id="main-wrapper">
           {activePage.Home ? (
-            // Main Page
             <Home loggedIn={loggedIn} />
           ) : activePage.Login ? (
             <LoginForm />
+          ) : activePage.AddEmployee ? (
+            <AddEmployee />
+          ) : activePage.AddLocation ? (
+            <AddLocation />
+          ) : activePage.AddRole ? (
+            <AddRole />
+          ) : activePage.AdminDashboard ? (
+            <AdminDashboard />
+          ) : activePage.CompanyProfile ? (
+            <CompanyProfile />
+          ) : activePage.EmployeeDashboard ? (
+            <EmployeeDashboard />
+          ) : activePage.Login ? (
+            <Login />
+          ) : activePage.NewOpening ? (
+            <NewOpening />
+          ) : activePage.Payment ? (
+            <Payment />
+          ) : activePage.SignUp ? (
+            <SignUp />
           ) : (
-            <SignupForm />
+            <Stripe />
           )}
         </section>
+        <Footer />
       </main>
     </ApolloProvider>
   );
