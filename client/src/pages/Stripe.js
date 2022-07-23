@@ -26,7 +26,7 @@ const Stripe = () => {
       {/* <script src={require("checkout.js")} defer></script> */}
 
       <div
-        style="background-color: dodgerblue; color: white"
+        style={{ backgroundColor: 'dodgerblue', color: 'white' }}
         className="text-center sticky-bottom mt-5"
       >
         <div className="card card-footer">Made with ♥ by the Dinglebops</div>

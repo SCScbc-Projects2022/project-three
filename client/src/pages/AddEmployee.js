@@ -10,7 +10,7 @@ const AddEmployee = () => {
         </div>
       </div>
 
-      <div style="height: 100px"></div>
+      <div style={{ height: '100px' }}></div>
 
       <div className="container">
         <div className="row">

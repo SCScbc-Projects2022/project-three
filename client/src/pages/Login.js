@@ -15,7 +15,7 @@ const Login = () => {
         <div className="row">
           <div className="col-1"></div>
           <div className="col-10">
-            <div style="height: 100px"></div>
+            <div style={{ height: '100px' }}></div>
             <div>
               <h2>Log-in</h2>
             </div>
@@ -38,7 +38,7 @@ const Login = () => {
               <label for="floatingPassword">Password</label>
             </div>
           </div>
-          <div style="height: 100px"></div>
+          <div style={{ height: '100px' }}></div>
           <div className="col-1"></div>
         </div>
       </div>

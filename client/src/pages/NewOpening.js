@@ -10,7 +10,7 @@ const NewOpening = () => {
         </div>
       </div>
 
-      <div style="height: 100px"></div>
+      <div style={{ height: '100px' }}></div>
       <div className="container">
         <div className="row">
           <div className="col-1"></div>
@@ -64,7 +64,7 @@ const NewOpening = () => {
               </label>
             </div>
 
-            <div style="height: 25px"></div>
+            <div style={{ height: '25px' }}></div>
             <div>
               <h4>Date</h4>
 
@@ -78,7 +78,7 @@ const NewOpening = () => {
               />
             </div>
 
-            <div style="height: 25px"></div>
+            <div style={{ height: '25px' }}></div>
             <h4>Time</h4>
             <div className="mt-3">
               <div className="mt-2">

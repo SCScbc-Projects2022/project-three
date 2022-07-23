@@ -9,7 +9,7 @@ const EmployeeDashboard = () => {
           <h4 id="employee-name">Employee Name</h4>
 
           <div className="col-12 d-flex flex-column justify-content-center">
-            <div style="height: 100px"></div>
+            <div style={{ height: '100px' }}></div>
             <div className="d-flex justify-content-between">
               <h2>Openings</h2>
               <div className="form-floating mb-3">

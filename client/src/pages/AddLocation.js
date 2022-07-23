@@ -10,7 +10,7 @@ const AddLocation = () => {
         </div>
       </div>
 
-      <div style="height: 100px"></div>
+      <div style={{ height: '100px' }}></div>
 
       <div className="container">
         <div className="row">
@@ -25,7 +25,7 @@ const AddLocation = () => {
               />
               <label for="floatingInput">Location Name</label>
             </div>
-            <div style="height: 50px"></div>
+            <div style={{ height: '50px' }}></div>
             <form className="row g-3" />
 
             <div className="col-12">

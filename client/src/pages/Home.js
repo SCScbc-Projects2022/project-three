@@ -16,7 +16,7 @@ const Home = () => {
           <h1 className="fw-bold">Never be short-staffed again</h1>
         </div>
         <div className="text-center">
-          <p style={{ color: 'red' }}>
+          <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit.
             Repudiandae velit aliquam a, earum excepturi cupiditate reiciendis
             atque esse in ipsum similique delectus fugit, debitis cum maiores!

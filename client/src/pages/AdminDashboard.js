@@ -8,7 +8,7 @@ const AdminDashboard = () => {
           <h1 className="fw-bold">Dashboard</h1>
           <h4 id="company-name">Company Name</h4>
           <div className="col-12 d-flex flex-column justify-content-center">
-            <div style="height: 50px"></div>
+            <div style={{ height: '50px' }}></div>
             <div className="d-flex mt-5 justify-content-center">
               <a href="../html-sandbox/new-opening.html">
                 <button type="button" className="btn btn-primary btn-lg">
@@ -16,7 +16,7 @@ const AdminDashboard = () => {
                 </button>
               </a>
             </div>
-            <div style="height: 100px"></div>
+            <div style={{ height: '100px' }}></div>
             <div>
               <h2>
                 Employees
@@ -45,7 +45,7 @@ const AdminDashboard = () => {
                 </li>
               </ol>
             </div>
-            <div style="height: 100px"></div>
+            <div style={{ height: '100px' }}></div>
             <div>
               <h2>
                 Roles
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
                 </li>
               </ol>
             </div>
-            <div style="height: 100px"></div>
+            <div style={{ height: '100px' }}></div>
             <div>
               <h2>
                 Locations
