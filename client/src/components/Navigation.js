@@ -18,7 +18,6 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   return (
-    <>
       <nav className="navbar navbar-expand-lg bg-light sticky-top">
         <div className="container-fluid">
             <a 
@@ -83,7 +82,6 @@ const Navigation = ({ setActivePage, activePage }) => {
             <span className="navbar-text"> Staffing. Revolutionized.</span>
         </div>
       </nav>
-    </>
   );
 };
 

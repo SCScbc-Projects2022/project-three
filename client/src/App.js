@@ -71,12 +71,9 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <main>
-        <nav>
           <Navigation activePage={activePage} setActivePage={setActivePage} />
-        </nav>
         <section id="main-wrapper">
           {activePage.Home ? (
-            // this should 100% be an IIFE switch statement
             <Home loggedIn={loggedIn} />
           ) : activePage.Login ? (
             <LoginForm />
@@ -104,6 +101,7 @@ function App() {
             <Stripe />
           )}
         </section>
+        <Footer />
       </main>
     </ApolloProvider>
   );
