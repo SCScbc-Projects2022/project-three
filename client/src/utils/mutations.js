@@ -21,10 +21,10 @@ export const ADD_EMPLOYEE = gql`
     $password: String!
     $location: String!
     $email: String!
-    $phone: Number!
+    $phone: Int!
     $role: String!
   ) {
-    addUser(
+    addEmployee(
       firstName: $firstName
       lastName: $lastName
       username: $username
@@ -49,8 +49,48 @@ export const ADD_EMPLOYEE = gql`
   }
 `;
 
-// LOGIN_COMPANY
-// ADD_COMPANY
+export const ADD_COMPANY = gql`
+  mutation addCompany($name: String!, $username: String!, email: String!, password: String!, postsArr: [String], userArr: [String], locationArr: [String] ) {
+    addCompany(
+      name: $name, 
+      username: $username
+      email: $email
+      postsArr: $postsArr
+      userArr: $userArr
+      locationArr: $locationArr
+      ) {
+      token
+      company {
+        _id
+        name
+        username
+        email
+        postsArr {
+          shiftTime
+          additionalInfo
+          location
+          role
+          tags
+        }
+        userArr {
+          firstName
+          lastName
+          username
+          location
+          email
+          phone
+          role
+        }
+        locationArr {
+          intersection
+          address
+          companyId
+          employees
+        }
+      }
+    }
+  }
+`;
 // ADD_POST
 
 // ADD_ROLE
