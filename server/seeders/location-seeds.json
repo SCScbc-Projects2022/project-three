@@ -1,0 +1,70 @@
+[
+
+    {
+        "address":{
+            "storeName": "Burger King",
+            "locationName":"East Site",
+            "number":23,
+            "street":"Maple",
+            "postalCode":"L2M4R7",
+            "city":"Toronto",
+            "country":"Canada"
+        }
+    },
+    {
+        "address":{
+            "storeName":"Burger King",
+            "locationName":"West Site",
+            "number":26,
+            "street":"Queen",
+            "postalCode":"M2P4R3",
+            "city":"Toronto",
+            "country":"Canada"
+        }
+    },
+    {
+        "address":{
+            "storeName":"Popeyes",
+            "locationName":"West Site",
+            "number":2345,
+            "street":"Bathurst",
+            "postalCode":"M2R4R2",
+            "city":"Richmond Hill",
+            "country":"Canada"
+        }
+    },
+    {
+        "address":{
+            "storeName":"Popeyes",
+            "locationName":"East Site",
+            "number":8745,
+            "street":"Yonge",
+            "postalCode":"M2T3R2",
+            "city":"Richmond Hill",
+            "country":"Canada"
+        }
+    },
+    {
+        "address":{
+            "storeName":"Dominos",
+            "locationName":"West Site",
+            "number":6048,
+            "street":"King",
+            "postalCode":"M2K2R7",
+            "city":"North York",
+            "country":"Canada"
+        }
+    },
+    {
+        "address":{
+            "storeName":"Dominos",
+            "locationName":"East Site",
+            "number":3052,
+            "street":"Woodlawn",
+            "postalCode":"E6H9R2",
+            "city":"North York",
+            "country":"Canada"
+        }
+    }
+
+]
