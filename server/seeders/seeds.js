@@ -59,9 +59,6 @@ db.once('open', async () => {
     })),
   ]);
 
-
-
-
   // add the postArr and locationsArr to the companies we created
   const companyArrays = companies.map(async (company) => {
     //looked for the locations that match the company store name anddress
