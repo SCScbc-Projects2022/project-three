@@ -18,8 +18,6 @@ import Payment from './pages/Payment';
 import SignUp from './pages/SignUp';
 import Stripe from './pages/Stripe';
 
-import LoginForm from './components/starter/LoginForm';
-
 import { setContext } from '@apollo/client/link/context';
 
 import {
@@ -80,8 +78,6 @@ function App() {
               activePage={activePage}
               setActivePage={setActivePage}
             />
-          ) : activePage.Login ? (
-            <LoginForm />
           ) : activePage.AddEmployee ? (
             <AddEmployee />
           ) : activePage.AddLocation ? (

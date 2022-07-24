@@ -4,7 +4,7 @@ const RoleData = require('./roles-seeds.json');
 const PostData = require('./post-seeds.json');
 const LocationData = require('./location-seeds.json');
 const CompanyData = require('./company-seeds.json');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const { Company, Location, Post, Role, Tag, User } = require('../models');
 const db = require('../config/connection');
 db.once('open', async () => {
@@ -22,7 +22,7 @@ db.once('open', async () => {
   const companies = await Company.insertMany(CompanyData);
   const locations = await Location.insertMany(LocationData);
 
-  // Added to each location the company id and users mapping through the results from the original inserts 
+  // Added to each location the company id and users mapping through the results from the original inserts
   const locationsStores = locations.map(async (location) => {
     //I looked inside the companies array for the one that matched the current location in the loop that had the same storename inside the address object
     const company = companies.find(
@@ -39,7 +39,7 @@ db.once('open', async () => {
     const locationUsersIds = locationUsers.map((user) => user._id);
     //[12adasd1123,ewd3214ed32d3d,eded3er32dedd,d32ed32d32da,]
 
-    //using the formatted and arranged data from above we finally send the update to the current location 
+    //using the formatted and arranged data from above we finally send the update to the current location
     const updateStore = await Location.updateOne(
       { _id: location._id },
       { $push: { storeId: [company._id], employees: locationUsersIds } },
@@ -49,7 +49,6 @@ db.once('open', async () => {
   });
   //we use a promise so each update goes through before continuing the code
   const insertLocations = await Promise.all(locationsStores);
-
 
   //add locations to this post from the original results
   const posts = await Post.insertMany([
@@ -63,16 +62,16 @@ db.once('open', async () => {
   const companyArrays = companies.map(async (company) => {
     //looked for the locations that match the company store name anddress
     const locations = await Location.find({
-      "address.storeName": { $in: [company.name] },
+      'address.storeName': { $in: [company.name] },
     });
 
-    //from those locations mapped the ids 
+    //from those locations mapped the ids
     const locationsIds = locations.map((location) => location._id);
     //looked for the posts that matched the locations ids on the locationArr
     const posts = await Post.find({ locationArr: { $in: locationsIds } });
-    //from those posts I mapped the posts ids 
+    //from those posts I mapped the posts ids
     const postsIds = posts.map((post) => post._id);
-   
+
     //and I updated the company with both arrays
     return (updateStore = await Company.updateOne(
       { _id: company._id },
@@ -82,6 +81,6 @@ db.once('open', async () => {
   });
   const insertCompanyArrays = await Promise.all(companyArrays);
   console.log(insertCompanyArrays);
-  console.log("testing");
+  console.log('testing');
   process.exit(0);
 });
