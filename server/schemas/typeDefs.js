@@ -96,7 +96,7 @@ const typeDefs = gql`
     user(_id: ID!): User
     locations(companyId: ID!): [Location]
     location(_id: ID!): Location
-    posts(location: ID!): [Post]
+    posts: [Post]
     post(_id: ID!): Post
     roles(companyId: ID!): [Role]
     role(_id: ID!): Role

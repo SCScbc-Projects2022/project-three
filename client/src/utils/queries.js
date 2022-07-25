@@ -131,16 +131,31 @@ export const GET_LOCATIONS = gql`
 
 // Query Post
 export const GET_POSTS = gql`
-  query posts($location: ID) {
-    posts(location: $location) {
-      shiftTime
+  query posts {
+    posts {
+      shiftTime {
+        hour
+        date
+      }
       additionalInfo
       location {
-        address
+        address {
+          locationName
+          number
+          street
+          city
+          country
+          postalCode
+        }
         intersection
       }
-      role
-      tags
+      role {
+        title
+        companyId
+      }
+      tags {
+        title
+      }
     }
   }
 `;

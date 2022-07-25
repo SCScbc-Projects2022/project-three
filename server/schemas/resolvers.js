@@ -38,14 +38,12 @@ const resolvers = {
         .populate('companyId')
         .populate('employees');
     },
-    posts: async (parent, { location }) => {
-      // the property is location, but it should be locationId
-      return Post.find({ location })
-        .populate('companyId')
-        .populate('employees');
+
+    posts: async (parent) => {
+      return Post.find();
     },
     post: async (parent, { _id }) => {
-      return Post.findOne({ _id }).populate('companyId').populate('employees');
+      return Post.findOne({ _id });
     },
     roles: async (parent, { companyId }) => {
       return Role.find({ companyId }).populate('companyId');
