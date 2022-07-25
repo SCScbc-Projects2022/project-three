@@ -124,9 +124,9 @@ const resolvers = {
 
     addLocation: async (parent, args) => {
       const location = await Location.create(args);
-      const token = signToken(tag);
+      // const token = signToken(tag);
 
-      return { token, location };
+      return { location };
     },
   },
 };

@@ -137,11 +137,11 @@ const typeDefs = gql`
     addRole(companyId: ID!, title: String!): Role
     addTag(companyId: ID!, title: String!): Tag
     addLocation(
-      intersection: String
+      intersection: String!
       address: addressInput!
-      companyId: String!
+      companyId: ID!
       employees: userInput
-    ): Auth
+    ): Location
   }
 
   type User {

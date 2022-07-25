@@ -155,9 +155,9 @@ export const ADD_TAG = gql`
 export const ADD_LOCATION = gql`
   mutation addLocation(
     $intersection: String!
-    $address: addressInput
-    $companyId: Int
-    $employees: employeeInput
+    $address: addressInput!
+    $companyId: ID!
+    $employees: userInput
   ) {
     addLocation(
       intersection: $intersection
@@ -165,17 +165,11 @@ export const ADD_LOCATION = gql`
       companyId: $companyId
       employees: $employees
     ) {
-      token
-      location {
         _id
         intersection
         address {
           street
           city
-        }
-        companyId {
-          _id
-          name
         }
         employees {
           firstName
@@ -184,7 +178,10 @@ export const ADD_LOCATION = gql`
           location
           email
           phone
-          role
+          role {
+            title
+            companyId
+          }
         }
       }
     }
