@@ -133,15 +133,14 @@ export const GET_LOCATIONS = gql`
 // Query Post -
 export const GET_POSTS = gql`
   query posts {
-    _id
     posts {
+      _id
       shiftTime {
         hour
         date
       }
       additionalInfo
       location {
-        _id
         address {
           locationName
           number

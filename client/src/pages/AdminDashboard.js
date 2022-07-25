@@ -1,20 +1,25 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_COMPANIES, GET_COMPANY } from '../utils/queries';
+import { GET_POSTS } from '../utils/queries';
 
 const AdminDashboard = () => {
   // Returns specific company
-  const { loading, data } = useQuery(GET_COMPANY, {
-    variables: { id: '62defba37f343926565282c2' },
-  });
-  const company = data?.company || [];
-  console.log(company);
+  // const { loading, data } = useQuery(GET_COMPANY, {
+  //   variables: { id: '62defba37f343926565282c2' },
+  // });
+  // const company = data?.company || [];
+  // console.log(company);
 
   // Returns all companies
   // const { loading, data } = useQuery(GET_COMPANIES);
   // const companies = data?.companies || [];
   // console.log(companies);
 
+  // Returns all posts
+  const { loading, data } = useQuery(GET_POSTS);
+  const posts = data?.posts || [];
+  console.log(posts);
   return (
     <>
       <div className="container-fluid mt-4">
