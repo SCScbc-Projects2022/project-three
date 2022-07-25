@@ -13,23 +13,41 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
-    company: async (parent) => {
+    companies: async () => {
       
     },
-    locations: async (parent) => {
+    company: async (parent, {_id}) => {
+
+    },
+    locations: async (parent, {companyId}) => {
       
     },
-    posts: async (parent) => {
+    location: async (parent, {_id}) => {
+
+    },
+    posts: async (parent, {location}) => { // the property is location, but it should be locationId
       
     },
-    roles: async (parent) => {
+    post: async (parent, {_id}) => {
+
+    },
+    roles: async (parent, {companyId}) => {
       
     },
-    tags: async (parent) => {
+    role: async (parent, {_id}) => {
+
+    },
+    tags: async (parent, {companyId}) => {
       
     },
-    users: async (parent) => {
+    tag: async (parent, {_id}) => {
+
+    },
+    users: async (parent, {companyId}) => {
       
+    },
+    user: async (parent, {_id}) => {
+
     }
   },
   Mutation: {
