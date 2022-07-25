@@ -53,18 +53,25 @@ const resolvers = {
       return { token, employee };
     },
 
-    addPost: async(parent, args) => {
+    addPost: async (parent, args) => {
      const post = await Post.create(args);
      const token = signToken(post);
      
      return {token, post };
     },
 
-    addRole: async(parent, args) => {
+    addRole: async (parent, args) => {
       const role = await Role.create(args);
       const token = signToken(role);
 
       return { token, role };
+    },
+
+    addTag: async (parent, args) => {
+      const tag = await Tag.create(args);
+      const token = signToken(tag);
+
+      return { token, tag };
     },
 
     
