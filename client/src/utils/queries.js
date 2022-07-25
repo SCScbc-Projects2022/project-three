@@ -73,7 +73,7 @@ query posts($location: ID)
     tags
   }`
 
-// Query Role
+// Query Roles
 export const GET_ROLES = gql`
   query roles($companyId: ID!) {
     roles(companyId: $companyId) {
@@ -82,7 +82,17 @@ export const GET_ROLES = gql`
     }
   }
 `
-// Query Tag
+// Query Role
+export const GET_ROLE = gql`
+  query role($companyId: ID!) {
+    role(companyId: $companyId) {
+      _id
+      title
+    }
+  }
+`
+
+// Query Tags
 export const GET_TAGS = gql`
   query tags($companyId: ID!) {
     tags(companyId: $companyId) {
@@ -91,10 +101,43 @@ export const GET_TAGS = gql`
     }
   }
 `
-// Query User
+// Query Tag
+export const GET_TAG = gql`
+  query tag($_id: ID!) {
+    tag(_id: $companyId) {
+      _id
+      title
+    }
+  }
+`
+
+// Query Users
 export const GET_USERS = gql`
   query users($companyId: ID!) {
     users(companyId: $companyId) {
+      _id
+      firstName
+      lastName
+      username
+      password
+      role {
+        _id
+        title
+      }
+      location {
+        _id
+        intersection
+        address
+      }
+      email
+      phone
+    }
+  }
+`
+// Query Users
+export const GET_USER = gql`
+  query user($_id: ID!) {
+    user(_id: $_id) {
       _id
       firstName
       lastName

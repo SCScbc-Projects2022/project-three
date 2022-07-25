@@ -8,7 +8,7 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   const handlePage = (e) => {
-    if (e.target.innerText == 'Locum') {
+    if (e.target.dataset.page === 'logo') {
       setActivePage({ Home: true });
       document.title = `Proj3 - Home`;
     } else {
@@ -25,7 +25,7 @@ const Navigation = ({ setActivePage, activePage }) => {
           href="#Home"
           onClick={(e) => handlePage(e)}
         >
-          Locum
+          <img data-page='logo' src={require('../assets/img/logos/Locum-logos.jpeg')} style={{ height: '100px' }} alt='logo'></img>
         </a>
         <button
           className="navbar-toggler"
