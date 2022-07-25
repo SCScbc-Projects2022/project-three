@@ -74,7 +74,12 @@ const resolvers = {
       return { token, tag };
     },
 
-    
+    addLocation: async (parent, args) => {
+      const location = await Location.create(args);
+      const token = signToken(tag);
+
+      return { token, location };
+    },
   },
 };
 
