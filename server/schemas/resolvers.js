@@ -59,6 +59,9 @@ const resolvers = {
     tag: async (parent, { _id }) => {
       return Tag.findOne({ _id }).populate('companyId');
     },
+    allUsers: (async) => {
+      return User.find();
+    },
     users: async (parent, { companyId }) => {
       return User.find({ companyId }).populate('companyId');
     },
@@ -89,6 +92,12 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+
+    addEmployee: async (parent, args) => {
+      const user = await User.create(args);
+
+      return { user };
     },
   },
 };

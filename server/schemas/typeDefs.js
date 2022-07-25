@@ -55,6 +55,7 @@ const typeDefs = gql`
     me: User
     companies: [Company]
     company(_id: ID!): Company
+    allUsers: [User]
     users(companyId: ID!): [User]
     user(_id: ID!): User
     locations(companyId: ID!): [Location]
@@ -70,6 +71,16 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
+    addEmployee(
+      firstName: String!
+      lastName: String!
+      username: String!
+      password: String!
+      location: String!
+      email: String!
+      phone: Int!
+      role: String!
+    ): User
   }
 
   type User {
@@ -77,6 +88,7 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     username: String
+    location: String
     email: String
     phone: String
     role: Role

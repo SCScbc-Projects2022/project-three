@@ -1,6 +1,14 @@
 import React from 'react';
 
+import { useQuery } from '@apollo/client';
+import { GET_ALL_USERS } from '../utils/queries';
+
 const AddEmployee = () => {
+  // Returns all Employees
+  const { loading, data } = useQuery(GET_ALL_USERS, {});
+  const allUsers = data?.allUsers || [];
+  console.log(allUsers);
+
   return (
     <>
       <div className="container-fluid mt-4">

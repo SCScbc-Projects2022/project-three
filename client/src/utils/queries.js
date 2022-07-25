@@ -162,6 +162,23 @@ export const GET_TAG = gql`
   }
 `;
 
+// Added this query for testing purposes
+export const GET_ALL_USERS = gql`
+  query allUsers {
+    allUsers {
+      _id
+      firstName
+      lastName
+      username
+      role {
+        title
+      }
+      location
+      email
+      phone
+    }
+  }
+`;
 // Query Users
 export const GET_USERS = gql`
   query users($companyId: ID!) {
