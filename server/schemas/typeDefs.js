@@ -78,10 +78,12 @@ const typeDefs = gql`
   }
 
   type Role {
+    companyId: String
     title: String
   }
 
   input roleInput {
+    companyId: String
     title: String
   }
 

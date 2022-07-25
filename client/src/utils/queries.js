@@ -215,16 +215,10 @@ export const GET_USER = gql`
       firstName
       lastName
       username
-      password
       role {
-        _id
         title
       }
-      location {
-        _id
-        intersection
-        address
-      }
+      location
       email
       phone
     }
