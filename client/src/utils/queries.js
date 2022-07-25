@@ -105,13 +105,23 @@ export const GET_LOCATIONS = gql`
   query locations($companyId: ID!) {
     locations(companyId: $companyId) {
       intersection
-      address
+      address {
+        locationName
+        number
+        street
+        city
+        country
+        postalCode
+      }
       employees {
         _id
         firstName
         lastName
         username
-        role
+        role {
+          title
+          companyId
+        }
         email
         phone
       }
