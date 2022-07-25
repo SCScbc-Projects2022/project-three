@@ -5,7 +5,7 @@ import { GET_COMPANIES, GET_COMPANY } from '../utils/queries';
 const AdminDashboard = () => {
   // Returns specific company
   const { loading, data } = useQuery(GET_COMPANY, {
-    variables: { id: '62dd9ab6ffea43e02e5bec22' },
+    variables: { id: '62defba37f343926565282c2' },
   });
   const company = data?.company || [];
   console.log(company);

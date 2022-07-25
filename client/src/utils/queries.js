@@ -18,6 +18,7 @@ export const GET_COMPANY = gql`
       username
       email
       locationArr {
+        intersection
         address {
           city
           country
@@ -140,6 +141,7 @@ export const GET_POSTS = gql`
       }
       additionalInfo
       location {
+        _id
         address {
           locationName
           number
@@ -170,7 +172,8 @@ export const GET_POST = gql`
         date
       }
       additionalInfo
-      location {
+      locationArr {
+        _id
         address {
           locationName
           number
