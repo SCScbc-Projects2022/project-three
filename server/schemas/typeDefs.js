@@ -70,6 +70,8 @@ const typeDefs = gql`
   }
 
   type Tag {
+    _id: ID
+    companyId: String
     title: String
   }
 
@@ -78,6 +80,7 @@ const typeDefs = gql`
   }
 
   type Role {
+    _id: ID
     companyId: String
     title: String
   }
@@ -132,7 +135,7 @@ const typeDefs = gql`
       tags: tagInput
     ): Auth
     addRole(companyId: ID!, title: String!): Role
-    addTag(companyId: ID!, title: String!): Auth
+    addTag(companyId: ID!, title: String!): Tag
     addLocation(
       intersection: String
       address: addressInput!

@@ -143,13 +143,10 @@ export const ADD_ROLE = gql`
 `;
 
 export const ADD_TAG = gql`
-  mutation addTag($title: String!) {
-    addTag(title: $title) {
-      token
-      tag {
-        _id
-        title
-      }
+  mutation addTag($title: String!, $companyId: ID!) {
+    addTag(title: $title, companyId: $companyId) {
+      title
+      companyId
     }
   }
 `;
