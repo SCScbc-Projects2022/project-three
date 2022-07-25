@@ -1,5 +1,4 @@
 const { User, Company, Location, Post, Role, Tag } = require('../models');
-
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 

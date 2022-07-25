@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-
+// location, role should be required
 const postSchema = new Schema(
   {
     shiftTime: {
