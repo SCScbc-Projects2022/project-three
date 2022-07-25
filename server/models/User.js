@@ -3,6 +3,12 @@ const bcrypt = require('bcrypt');
 
 const userSchema = new Schema(
   {
+    companyId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+      }
+    ],
     firstName: {
       type: String,
       required: true,
