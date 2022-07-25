@@ -115,22 +115,24 @@ export const GET_TAG = gql`
 export const GET_USERS = gql`
   query users($companyId: ID!) {
     users(companyId: $companyId) {
-      _id
-      firstName
-      lastName
-      username
-      password
-      role {
+      userArr {
         _id
-        title
+        firstName
+        lastName
+        username
+        password
+        role {
+          _id
+          title
+        }
+        location {
+          _id
+          intersection
+          address
+        }
+        email
+        phone
       }
-      location {
-        _id
-        intersection
-        address
-      }
-      email
-      phone
     }
   }
 `
