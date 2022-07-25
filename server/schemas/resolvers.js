@@ -61,8 +61,13 @@ const resolvers = {
     },
 
     addRole: async(parent, args) => {
-      
-    }
+      const role = await Role.create(args);
+      const token = signToken(role);
+
+      return { token, role };
+    },
+
+    
   },
 };
 
