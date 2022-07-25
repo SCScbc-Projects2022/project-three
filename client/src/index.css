@@ -24,3 +24,8 @@ li {
   margin: 35px 0;
   background-color: aliceblue;
 }
+
+nav img {
+  max-width: 150px;
+  margin-left: -2rem;
+}
