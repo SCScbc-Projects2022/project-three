@@ -14,6 +14,7 @@ const AdminDashboard = () => {
   // const { loading, data } = useQuery(GET_COMPANIES);
   // const companies = data?.companies || [];
   // console.log(companies);
+
   return (
     <>
       <div className="container-fluid mt-4">

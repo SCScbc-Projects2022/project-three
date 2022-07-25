@@ -3,8 +3,6 @@ const { Company, User, Location, Role, Post, Tag } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
-
-
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
@@ -61,6 +59,9 @@ const resolvers = {
     tag: async (parent, { _id }) => {
       return Tag.findOne({ _id }).populate('companyId');
     },
+    allUsers: (async) => {
+      return User.find();
+    },
     users: async (parent, { companyId }) => {
       return User.find({ companyId }).populate('companyId');
     },
@@ -97,16 +98,16 @@ const resolvers = {
 
     addEmployee: async (parent, args) => {
       const employee = await User.create(args);
-      const token = signToken(employee);
+      // const token = signToken(employee);
 
-      return { token, employee };
+      return { employee };
     },
 
     addPost: async (parent, args) => {
-     const post = await Post.create(args);
-     const token = signToken(post);
-     
-     return {token, post };
+      const post = await Post.create(args);
+      const token = signToken(post);
+
+      return { token, post };
     },
 
     addRole: async (parent, args) => {

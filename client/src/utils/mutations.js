@@ -34,16 +34,15 @@ export const ADD_EMPLOYEE = gql`
       phone: $phone
       role: $role
     ) {
-      token
-      user {
-        _id
-        firstName
-        lastName
-        username
-        location
-        email
-        phone
-        role
+      _id
+      firstName
+      lastName
+      username
+      location
+      email
+      phone
+      role {
+        title
       }
     }
   }

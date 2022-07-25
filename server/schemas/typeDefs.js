@@ -16,11 +16,28 @@ const typeDefs = gql`
     _id: ID
     intersection: String
     address: Address
-    companyId: [Company]
+    companyId: ID!
     employees: [User]
   }
 
+  input locationInput {
+    _id: ID
+    intersection: String
+    address: addressInput
+    companyId: ID!
+    employeeIds: [ID]
+  }
+
   type Address {
+    locationName: String
+    number: Int
+    street: String
+    city: String
+    country: String
+    postalCode: String
+  }
+
+  input addressInput {
     locationName: String
     number: Int
     street: String
@@ -33,9 +50,18 @@ const typeDefs = gql`
     _id: ID
     shiftTime: ShiftTime
     additionalInfo: String
-    location: [Location]
-    role: [Role]
+    location: Location
+    role: Role
     tags: [Tag]
+  }
+
+  input postInput {
+    _id: ID
+    shiftTime: [String!]
+    additionalInfo: String
+    location: [String]
+    role: [String!]
+    tags: [String!]
   }
 
   type ShiftTime {
@@ -47,7 +73,15 @@ const typeDefs = gql`
     title: String
   }
 
+  input tagInput {
+    title: String
+  }
+
   type Role {
+    title: String
+  }
+
+  input roleInput {
     title: String
   }
 
@@ -55,6 +89,7 @@ const typeDefs = gql`
     me: User
     companies: [Company]
     company(_id: ID!): Company
+    allUsers: [User]
     users(companyId: ID!): [User]
     user(_id: ID!): User
     locations(companyId: ID!): [Location]
@@ -69,12 +104,39 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addEmployee(username: String!, email: String!, password: String!): Auth
-    addCompany(name: String!, username: String!, password: String!, postsArr: Object, userArr: Object, locationArr: Object): Auth
-    addPost(shiftTime: Object!, additionalInfo: String, location: Object, role: Object, tags: Object): Auth
-    addRole(companyId: Object, title: String!): Auth
-    addTag(companyId: Object, title: String!): Auth
-    addLocation(intersection: String, address: Object!, companyId: Object, employees: Object): Auth
+    addEmployee(
+      firstName: String!
+      lastName: String!
+      username: String!
+      password: String!
+      location: String!
+      email: String!
+      phone: Int!
+      role: String!
+    ): User
+    addCompany(
+      name: String!
+      username: String!
+      password: String!
+      postsArr: postInput
+      userArr: userInput
+      locationArr: locationInput
+    ): Auth
+    addPost(
+      shiftTime: [String]!
+      additionalInfo: String
+      location: locationInput
+      role: roleInput
+      tags: tagInput
+    ): Auth
+    addRole(companyId: ID!, title: String!): Auth
+    addTag(companyId: ID!, title: String!): Auth
+    addLocation(
+      intersection: String
+      address: addressInput!
+      companyId: String!
+      employees: userInput
+    ): Auth
   }
 
   type User {
@@ -82,9 +144,21 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     username: String
+    location: String
     email: String
     phone: String
     role: Role
+  }
+
+  input userInput {
+    _id: ID
+    firstName: String
+    lastName: String
+    username: String
+    location: String
+    email: String
+    phone: String
+    role: roleInput
   }
 
   type Auth {
