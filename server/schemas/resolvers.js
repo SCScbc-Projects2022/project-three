@@ -63,7 +63,7 @@ const resolvers = {
       return User.find();
     },
     users: async (parent, { companyId }) => {
-      return User.find({ companyId }).populate('companyId');
+      return User.find({ companyId });
     },
     user: async (parent, { _id }) => {
       return User.findOne({ _id }).populate('companyId');

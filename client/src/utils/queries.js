@@ -191,27 +191,19 @@ export const GET_ALL_USERS = gql`
   }
 `;
 // Query Users
-export const GET_USERS = gql`
+export const GET_COMPANY_USERS = gql`
   query users($companyId: ID!) {
     users(companyId: $companyId) {
-      userArr {
-        _id
-        firstName
-        lastName
-        username
-        password
-        role {
-          _id
-          title
-        }
-        location {
-          _id
-          intersection
-          address
-        }
-        email
-        phone
+      _id
+      firstName
+      lastName
+      username
+      role {
+        title
       }
+      location
+      email
+      phone
     }
   }
 `;
