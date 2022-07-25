@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Company, Location, Post, Role, Tag } = require('../models');
 
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
@@ -20,7 +20,7 @@ const resolvers = {
     },
   },
 
-  //login, add_employee, add_company, add_post, add_role, add_tag, add_location
+  //login, addEmployee, addCompany, addPost, addRole, addTag, addLocation
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -39,12 +39,30 @@ const resolvers = {
       return { token, user };
     },
 
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
+    addCompany: async (parent, args) => {
+      const company = await Company.create(args);
+      const token = signToken(company);
 
-      return { token, user };
+      return { token, company };
     },
+
+    addEmployee: async (parent, args) => {
+      const employee = await User.create(args);
+      const token = signToken(employee);
+
+      return { token, employee };
+    },
+
+    addPost: async(parent, args) => {
+     const post = await Post.create(args);
+     const token = signToken(post);
+     
+     return {token, post };
+    },
+
+    addRole: async(parent, args) => {
+      
+    }
   },
 };
 
