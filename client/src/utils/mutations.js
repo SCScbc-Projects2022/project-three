@@ -65,7 +65,7 @@ export const ADD_COMPANY = gql`
       username: $username
       email: $email
       address: $address
-      $address2: $address2
+      address2: $address2
       city: $city
       province: $province
       postalCode: $postalCode
