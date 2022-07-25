@@ -12,68 +12,119 @@ export const GET_ME = gql`
 
 // Query Company
 export const GET_COMPANY = gql`
-  query companies($id: ID) {
-    company(_id: $id){
+  query company($id: ID!) {
+    company(_id: $id) {
       name
       username
       email
       postsArr {
         _id
-        shiftTime
+        shiftTime {
+          hour
+          date
+        }
         additionalInfo
-        locationArr {
+        location {
           _id
-          address
+          intersection
           employees {
-           _id
+            _id
             firstName
             lastName
             username
-            role
+            role {
+              title
+            }
             email
             phone
-            location
           }
-        },
-        role
+        }
+        role {
+          title
+        }
         tags {
-          _id
           title
         }
       }
     }
-  }`
+  }
+`;
+
+export const GET_COMPANIES = gql`
+  query companies {
+    companies {
+      name
+      username
+      email
+      postsArr {
+        _id
+        shiftTime {
+          hour
+          date
+        }
+        additionalInfo
+        location {
+          _id
+          intersection
+          employees {
+            _id
+            firstName
+            lastName
+            username
+            role {
+              title
+            }
+            email
+            phone
+          }
+        }
+        role {
+          title
+        }
+        tags {
+          title
+        }
+      }
+    }
+  }
+`;
+
 // Query Location
 export const GET_LOCATIONS = gql`
-query locations($companyId: ID!)
-  locations(companyId: $companyId) {
-    intersection
-    address
-    employees {
-      _id
-       firstName
-       lastName
-       username
-       role
-       email
-       phone
-     }
-  }`
+  query locations($companyId: ID!) {
+    locations(companyId: $companyId) {
+      intersection
+      address
+      employees {
+        _id
+        firstName
+        lastName
+        username
+        role
+        email
+        phone
+      }
+    }
+  }
+`;
+
 // Query Post
 export const GET_POSTS = gql`
-query posts($location: ID)
-  posts(location: $location) {
-    shiftTime
-    additionalInfo
-    location {
-      address
-      intersection
+  query posts($location: ID) {
+    posts(location: $location) {
+      shiftTime
+      additionalInfo
+      location {
+        address
+        intersection
+      }
+      role
+      tags
     }
-    role
-    tags
-  }`
+  }
+`;
 
-// Query Role
+// Query Roles
 export const GET_ROLES = gql`
   query roles($companyId: ID!) {
     roles(companyId: $companyId) {
@@ -81,8 +132,18 @@ export const GET_ROLES = gql`
       title
     }
   }
-`
-// Query Tag
+`;
+// Query Role
+export const GET_ROLE = gql`
+  query role($companyId: ID!) {
+    role(companyId: $companyId) {
+      _id
+      title
+    }
+  }
+`;
+
+// Query Tags
 export const GET_TAGS = gql`
   query tags($companyId: ID!) {
     tags(companyId: $companyId) {
@@ -90,11 +151,46 @@ export const GET_TAGS = gql`
       title
     }
   }
-`
-// Query User
+`;
+// Query Tag
+export const GET_TAG = gql`
+  query tag($_id: ID!) {
+    tag(_id: $companyId) {
+      _id
+      title
+    }
+  }
+`;
+
+// Query Users
 export const GET_USERS = gql`
   query users($companyId: ID!) {
     users(companyId: $companyId) {
+      userArr {
+        _id
+        firstName
+        lastName
+        username
+        password
+        role {
+          _id
+          title
+        }
+        location {
+          _id
+          intersection
+          address
+        }
+        email
+        phone
+      }
+    }
+  }
+`;
+// Query Users
+export const GET_USER = gql`
+  query user($_id: ID!) {
+    user(_id: $_id) {
       _id
       firstName
       lastName
@@ -113,4 +209,4 @@ export const GET_USERS = gql`
       phone
     }
   }
-`
+`;

@@ -71,6 +71,7 @@ function App() {
     <ApolloProvider client={client}>
       <main>
         <Navigation activePage={activePage} setActivePage={setActivePage} />
+        <AdminDashboard />
         <section id="main-wrapper">
           {activePage.Home ? (
             <Home
