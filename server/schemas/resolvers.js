@@ -71,27 +71,27 @@ const resolvers = {
   //login, addEmployee, addCompany, addPost, addRole, addTag, addLocation
   Mutation: {
     login: async (parent, { email, password }) => {
-      const user = await User.findOne({ email });
+      const companyLogin = await Company.findOne({ email });
 
-      if (!user) {
+      if (!companyLogin) {
         throw new AuthenticationError('Incorrect credentials');
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await companyLogin.isCorrectPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
 
-      const token = signToken(user);
-      return { token, user };
+      const token = signToken(companyLogin);
+      return { token, companyLogin };
     },
 
     addCompany: async (parent, args) => {
       const company = await Company.create(args);
-      const token = signToken(company);
+      // const token = signToken(company);
 
-      return { token, company };
+      return { company };
     },
 
     addEmployee: async (parent, args) => {
@@ -103,23 +103,23 @@ const resolvers = {
 
     addPost: async (parent, args) => {
       const post = await Post.create(args);
-      const token = signToken(post);
+      // const token = signToken(post);
 
-      return { token, post };
+      return { post };
     },
 
     addRole: async (parent, args) => {
       const role = await Role.create(args);
-      const token = signToken(role);
+      // const token = signToken(role);
 
-      return { token, role };
+      return { role };
     },
 
     addTag: async (parent, args) => {
       const tag = await Tag.create(args);
-      const token = signToken(tag);
+      // const token = signToken(tag);
 
-      return { token, tag };
+      return { tag };
     },
 
     addLocation: async (parent, args) => {

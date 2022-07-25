@@ -5,10 +5,6 @@ export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
-      user {
-        _id
-        username
-      }
     }
   }
 `;
@@ -63,39 +59,12 @@ export const ADD_COMPANY = gql`
       name: $name
       username: $username
       email: $email
+      password: $password
       postsArr: $postsArr
       userArr: $userArr
       locationArr: $locationArr
     ) {
       token
-      company {
-        _id
-        name
-        username
-        email
-        postsArr {
-          shiftTime
-          additionalInfo
-          location
-          role
-          tags
-        }
-        userArr {
-          firstName
-          lastName
-          username
-          location
-          email
-          phone
-          role
-        }
-        locationArr {
-          intersection
-          address
-          companyId
-          employees
-        }
-      }
     }
   }
 `;

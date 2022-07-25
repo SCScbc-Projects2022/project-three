@@ -129,9 +129,10 @@ const typeDefs = gql`
       name: String!
       username: String!
       password: String!
+      email: String!
       postsArr: postInput
       userArr: userInput
-      location: locationInput
+      locationArr: locationInput
     ): Auth
     addPost(
       shiftTime: shiftTimeInput
