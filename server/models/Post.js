@@ -9,7 +9,7 @@ const postSchema = new Schema(
     additionalInfo: {
       type: String,
     },
-    location: [
+    locationArr: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Location',
