@@ -16,6 +16,24 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    company: async (parent) => {
+      
+    },
+    locations: async (parent) => {
+      
+    },
+    posts: async (parent) => {
+      
+    },
+    roles: async (parent) => {
+      
+    },
+    tags: async (parent) => {
+      
+    },
+    users: async (parent) => {
+      
+    }
   },
   Mutation: {
     login: async (parent, { email, password }) => {
