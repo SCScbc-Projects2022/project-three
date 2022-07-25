@@ -3,6 +3,18 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type Query {
     me: User
+    users:
+    user:
+    companies:
+    company:
+    locations:
+    location:
+    posts:
+    post:
+    roles:
+    role:
+    tags:
+    tag:
   }
 
   type Mutation {
