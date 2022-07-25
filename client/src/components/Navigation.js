@@ -25,8 +25,8 @@ const Navigation = ({ setActivePage, activePage }) => {
           href="#Home"
           onClick={(e) => handlePage(e)}
         >
-          Locum
-        </a>
+         <img src={require('../assets/img/logos/Locum-logos.jpeg')}/>
+          </a>
         <button
           className="navbar-toggler"
           type="button"

@@ -3,3 +3,34 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+body {
+  margin: 30px;
+}
+
+.navItem.active {
+  color: red;
+}
+
+li {
+  list-style: none;
+}
+
+#add-employee-form {
+  margin: 35px 0;
+}
+#active-employee-wrapper,
+#active-manager-wrapper {
+  margin: 35px 0;
+  background-color: aliceblue;
+}
+
+nav img {
+  max-width: 100px;
+  margin-left: -2rem;
+}
+
+.card.card-footer a {
+color: white;
+display: inline;
+}
