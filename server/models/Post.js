@@ -17,13 +17,13 @@ const postSchema = new Schema(
     ],
     role: [
       {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: 'Role',
       },
     ],
     tags: [
       {
-        type: Schema.Types.ObjectId,
+        type: Schema.Types.String,
         ref: 'Tag',
       },
     ],
