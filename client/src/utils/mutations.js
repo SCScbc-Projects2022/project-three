@@ -50,6 +50,11 @@ export const ADD_COMPANY = gql`
     $name: String!
     $username: String!
     $email: String!
+    $address: String!
+    $address2: String
+    $city: String!
+    $province: String!
+    $postalCode: String!
     $password: String!
     $postsArr: postInput
     $userArr: userInput
@@ -59,6 +64,11 @@ export const ADD_COMPANY = gql`
       name: $name
       username: $username
       email: $email
+      address: $address
+      $address2: $address2
+      city: $city
+      province: $province
+      postalCode: $postalCode
       password: $password
       postsArr: $postsArr
       userArr: $userArr
