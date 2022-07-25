@@ -26,6 +26,11 @@ li {
 }
 
 nav img {
-  max-width: 150px;
+  max-width: 100px;
   margin-left: -2rem;
+}
+
+.card.card-footer a {
+color: white;
+display: inline;
 }
