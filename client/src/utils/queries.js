@@ -221,12 +221,10 @@ export const GET_TAGS = gql`
 `;
 // Query Tag
 export const GET_TAG = gql`
-  query tag($_id: ID!) {
-    tag(_id: $companyId) {
-      _id
+   query tag($id: ID!) {
+    tag(_id: $id) {
       title
     }
-  }
 `;
 
 // Added this query for testing purposes
