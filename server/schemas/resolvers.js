@@ -3,6 +3,8 @@ const { User } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
+
+
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
@@ -17,6 +19,8 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
   },
+
+  //login, add_employee, add_company, add_post, add_role, add_tag, add_location
   Mutation: {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
