@@ -13,6 +13,7 @@ export const LOGIN = gql`
   }
 `;
 
+// -
 export const ADD_EMPLOYEE = gql`
   mutation addEmployee(
     $firstName: String!
@@ -133,13 +134,10 @@ export const ADD_POST = gql`
 `;
 
 export const ADD_ROLE = gql`
-  mutation addRole($title: String!) {
-    addRole(title: $title) {
-      token
-      role {
-        _id
-        title
-      }
+  mutation addRole($title: String!, $companyId: ID!) {
+    addRole(title: $title, companyId: $companyId) {
+      companyId
+      title
     }
   }
 `;

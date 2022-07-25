@@ -131,7 +131,7 @@ const typeDefs = gql`
       role: roleInput
       tags: tagInput
     ): Auth
-    addRole(companyId: ID!, title: String!): Auth
+    addRole(companyId: ID!, title: String!): Role
     addTag(companyId: ID!, title: String!): Auth
     addLocation(
       intersection: String
