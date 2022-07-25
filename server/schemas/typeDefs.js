@@ -7,7 +7,7 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    postArr: [Post]
+    postsArr: [Post]
     userArr: [User]
     locationArr: [Location]
   }
