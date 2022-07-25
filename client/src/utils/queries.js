@@ -203,9 +203,8 @@ export const GET_ROLES = gql`
 `;
 // Query Role
 export const GET_ROLE = gql`
-  query role($companyId: ID!) {
-    role(companyId: $companyId) {
-      _id
+  query role($id: ID!) {
+    role(_id: $id) {
       title
     }
   }
