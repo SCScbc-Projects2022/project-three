@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-
+//Candice doing user, tag and role
 const typeDefs = gql`
   type Query {
     me: User
@@ -17,6 +17,8 @@ const typeDefs = gql`
 
   type User {
     _id: ID
+    firstName: String
+    lastName: String
     username: String
     email: String
   }
