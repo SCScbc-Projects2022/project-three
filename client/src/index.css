@@ -1,11 +1,11 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
+} */
 
 body {
-  margin: 30px;
+  font-family: 'Inter', sans-serif;
 }
 
 .navItem.active {
@@ -25,9 +25,19 @@ li {
   background-color: aliceblue;
 }
 
-nav img {
+/* nav img {
   max-width: 100px;
   margin-left: -2rem;
+} */
+
+.navbar {
+  background-color: dodgerblue;
+  opacity: 95%;
+  color: white;
+}
+
+.footer {
+  opacity: 95%;
 }
 
 .card.card-footer a {
