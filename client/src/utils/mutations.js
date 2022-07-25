@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
 
 // Company and User Model would both require the same parameters for logging in
-export const LOGIN = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+export const LOGIN_ADMIN = gql`
+  mutation loginAdmin($email: String!, $password: String!) {
+    loginAdmin(email: $email, password: $password) {
       token
     }
   }
