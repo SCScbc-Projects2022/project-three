@@ -66,17 +66,21 @@ function App() {
 
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
   let loggedIn = localStorage.getItem('id_token') == null ? false : true;
-
+  console.log(loggedIn);
   return (
     <ApolloProvider client={client}>
       <main>
         <Navigation activePage={activePage} setActivePage={setActivePage} />
+        {/* Components below can successfully add to the database */}
+        {/* <NewOpening /> */}
+        {/* <SignUp /> */}
+
+        {/* Components below still need to be setup */}
         {/* <AdminDashboard /> */}
         {/* <EmployeeDashboard /> */}
         {/* <AddEmployee /> */}
         {/* <AddRole /> */}
         {/* <AddLocation /> */}
-        <NewOpening />
         {/* <Payment /> */}
         <section id="main-wrapper">
           {activePage.Home ? (

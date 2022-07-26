@@ -180,6 +180,7 @@ const typeDefs = gql`
 
   type Auth {
     token: ID!
+    company: Company
     user: User
   }
 `;
