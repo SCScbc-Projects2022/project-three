@@ -89,19 +89,6 @@ const Navigation = ({ setActivePage, activePage }) => {
               <li className="nav-item">
                 <a
                   className={`nav-link navItem ${
-                    activePage.EmployeeDashboard ? 'active' : ''
-                  }`}
-                  name="EmployeeDashboard"
-                  aria-current="page"
-                  href="#EmployeeDashboard"
-                  onClick={(e) => handlePage(e)}
-                >
-                  Employee Dashboard
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className={`nav-link navItem ${
                     activePage.AddLocation ? 'active' : ''
                   }`}
                   name="AddLocation"

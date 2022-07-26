@@ -96,7 +96,10 @@ function App() {
           ) : activePage.AddRole ? (
             <AddRole />
           ) : activePage.AdminDashboard ? (
-            <AdminDashboard />
+            <AdminDashboard
+              activePage={activePage}
+              setActivePage={setActivePage}
+            />
           ) : activePage.CompanyProfile ? (
             <CompanyProfile />
           ) : activePage.EmployeeDashboard ? (
