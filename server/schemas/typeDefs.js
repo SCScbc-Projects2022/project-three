@@ -161,10 +161,11 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     username: String
-    location: String
+    location: [Location]
     email: String
     phone: String
-    role: Role
+    role: [Role]
+    tags: [Tag]
   }
 
   input userInput {
