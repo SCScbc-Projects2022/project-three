@@ -111,15 +111,16 @@ const resolvers = {
     addRole: async (parent, args) => {
       const role = await Role.create(args);
       // const token = signToken(role);
+      console.log(role);
 
-      return { role };
+      return  role;
     },
 
     addTag: async (parent, args) => {
       const tag = await Tag.create(args);
       // const token = signToken(tag);
 
-      return { tag };
+      return tag;
     },
 
     addLocation: async (parent, args) => {

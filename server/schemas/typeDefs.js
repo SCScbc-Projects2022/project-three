@@ -82,7 +82,7 @@ const typeDefs = gql`
 
   type Role {
     _id: ID
-    companyId: String
+    companyId: ID
     title: String
   }
 
@@ -92,7 +92,7 @@ const typeDefs = gql`
   }
 
   input roleInput {
-    companyId: String
+    companyId: ID
     title: String
   }
 
