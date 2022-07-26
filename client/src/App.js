@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
-import Auth from './utils/auth';
+// import Auth from './utils/auth';
 
 import Home from './pages/Home';
 import AddEmployee from './pages/AddEmployee';

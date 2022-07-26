@@ -76,13 +76,13 @@ const typeDefs = gql`
 
   type Tag {
     _id: ID
-    companyId: String
+    companyId: [Company]
     title: String
   }
 
   type Role {
     _id: ID
-    companyId: String
+    companyId: [Company]
     title: String
   }
 
