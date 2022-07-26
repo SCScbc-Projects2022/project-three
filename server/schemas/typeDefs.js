@@ -51,7 +51,7 @@ const typeDefs = gql`
     shiftTime: ShiftTime
     additionalInfo: String
     location: [Location]
-    role: Role
+    role: [Role]
     tags: [Tag]
   }
 
