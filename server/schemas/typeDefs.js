@@ -124,7 +124,7 @@ const typeDefs = gql`
       email: String!
       phone: Int!
       role: String!
-    ): User
+    ): Auth
     addCompany(
       name: String!
       username: String!

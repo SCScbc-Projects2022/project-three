@@ -23,7 +23,7 @@ export const ADD_EMPLOYEE = gql`
     $location: String!
     $email: String!
     $phone: Int!
-    $role: roleInput!
+    $role: String!
   ) {
     addEmployee(
       firstName: $firstName
@@ -35,15 +35,9 @@ export const ADD_EMPLOYEE = gql`
       phone: $phone
       role: $role
     ) {
-      _id
-      firstName
-      lastName
-      username
-      location
-      email
-      phone
-      role {
-        title
+      token
+      user {
+        username
       }
     }
   }

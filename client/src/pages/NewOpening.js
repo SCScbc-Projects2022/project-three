@@ -61,6 +61,25 @@ const NewOpening = () => {
       Auth.login(data.addPost.token);
     } catch (e) {
       console.error(e);
+      // Clear form state
+      setFormState({
+        shiftTime: { date: '', hour: '' },
+        additionalInfo: '',
+        role: '',
+        tags: 'this tag',
+        location: {
+          intersection: '',
+          address: {
+            locationName: 'test location',
+            number: 33,
+            street: 'this tsteet',
+            city: 'brampton',
+            country: 'canada',
+            postalCode: '3esds',
+          },
+          companyId: '62defba37f343926565282c1',
+        },
+      });
     }
   };
 
