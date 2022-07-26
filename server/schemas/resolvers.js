@@ -70,7 +70,7 @@ const resolvers = {
 
   //login, addEmployee, addCompany, addPost, addRole, addTag, addLocation
   Mutation: {
-    loginAdmin: async (parent, { email, password }) => {
+    login: async (parent, { email, password }) => {
       const companyLogin = await Company.findOne({ email });
 
       if (!companyLogin) {

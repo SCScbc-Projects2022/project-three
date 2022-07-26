@@ -44,6 +44,17 @@ const SignUp = () => {
 
       Auth.login(data.addCompany.token);
     } catch (e) {
+      // Clear state
+      setFormState({
+        name: '',
+        username: '',
+        email: '',
+        password: '',
+        address: '',
+        city: '',
+        province: '',
+        postalCode: '',
+      });
       console.error(e);
     }
   };
@@ -196,6 +207,7 @@ const SignUp = () => {
               Sign up
             </button>
           </div>
+          {error && <div>Login failed</div>}
         </form>
       </div>
     </>
