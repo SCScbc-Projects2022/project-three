@@ -63,19 +63,6 @@ const Navigation = ({ setActivePage, activePage }) => {
               <li className="nav-item">
                 <a
                   className={`nav-link navItem ${
-                    activePage.CompanyProfile ? 'active' : ''
-                  }`}
-                  name="CompanyProfile"
-                  aria-current="page"
-                  href="#CompanyProfile"
-                  onClick={(e) => handlePage(e)}
-                >
-                  Company Profile
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className={`nav-link navItem ${
                     activePage.AdminDashboard ? 'active' : ''
                   }`}
                   name="AdminDashboard"
@@ -83,7 +70,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   href="#AdminDashboard"
                   onClick={(e) => handlePage(e)}
                 >
-                  Admin Dashboard
+                  Company Dashboard
                 </a>
               </li>
               <li className="nav-item">

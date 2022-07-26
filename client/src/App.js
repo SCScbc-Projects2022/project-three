@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
-// import Auth from './utils/auth';
+import Auth from './utils/auth';
 
 import Home from './pages/Home';
 import AddEmployee from './pages/AddEmployee';
 import AddLocation from './pages/AddLocation';
 import AddRole from './pages/AddRole';
 import AdminDashboard from './pages/AdminDashboard';
-import CompanyProfile from './pages/CompanyProfile';
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import Login from './pages/Login';
 import NewOpening from './pages/NewOpening';
@@ -56,7 +55,6 @@ function App() {
     AddLocation: false,
     AddRole: false,
     AdminDashboard: false,
-    CompanyProfile: false,
     EmployeeDashboard: false,
     NewOpening: false,
     Payment: false,
@@ -66,6 +64,16 @@ function App() {
 
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
   let loggedIn = localStorage.getItem('id_token') == null ? false : true;
+
+  // const getCompany = () => {
+  //   let data = Auth.getProfile();
+  //   console.log(data);
+  // };
+
+  // if (loggedIn) {
+  //   getCompany();
+  // }
+
   return (
     <ApolloProvider client={client}>
       <main>
@@ -100,8 +108,6 @@ function App() {
               activePage={activePage}
               setActivePage={setActivePage}
             />
-          ) : activePage.CompanyProfile ? (
-            <CompanyProfile />
           ) : activePage.EmployeeDashboard ? (
             <EmployeeDashboard />
           ) : activePage.Login ? (
