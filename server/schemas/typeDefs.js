@@ -87,12 +87,12 @@ const typeDefs = gql`
   }
 
   input tagInput {
-    companyId: String
+    companyId: ID
     title: String
   }
 
   input roleInput {
-    companyId: String
+    companyId: ID
     title: String
   }
 
