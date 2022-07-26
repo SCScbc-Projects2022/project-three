@@ -76,13 +76,13 @@ const typeDefs = gql`
 
   type Tag {
     _id: ID
-    companyId: String
+    companyId: [Company]
     title: String
   }
 
   type Role {
     _id: ID
-    companyId: ID
+    companyId: [Company]
     title: String
   }
 
@@ -92,7 +92,7 @@ const typeDefs = gql`
   }
 
   input roleInput {
-    companyId: ID
+    companyId: String
     title: String
   }
 
