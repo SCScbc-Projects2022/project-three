@@ -4,27 +4,21 @@
         "hour":"16:30",
         "date":"26/07/2022"
       },
-      "additionalInfo":"the regular employee quitted today",
-      "role":["Server"],
-      "tags":["urgent"]
+      "additionalInfo":"the regular employee quitted today"
     },
     {
         "shiftTime":{
           "hour":"13:00",
           "date":"25/07/2022"
         },
-        "additionalInfo":"called in sick",
-        "role":["Bartender"],
-        "tags":["advanced skills needed"]
+        "additionalInfo":"called in sick"
       },
       {
         "shiftTime":{
           "hour":"17:00",
           "date":"24/07/2022"
         },
-        "additionalInfo":"holiday pay",
-        "role":["Server"],
-        "tags":["double pay"]
+        "additionalInfo":"holiday pay"
       }
   
 ]
