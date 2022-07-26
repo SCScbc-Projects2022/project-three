@@ -28,7 +28,7 @@ const Navigation = ({ setActivePage, activePage }) => {
          <img width="10%" height="auto" src={require('../assets/img/logos/Locum-logos_transparent.png')}/>
           </a>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler bg-white"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
