@@ -115,7 +115,10 @@ export const ADD_POST = gql`
 export const ADD_ROLE = gql`
   mutation addRole($title: String!, $companyId: ID!) {
     addRole(title: $title, companyId: $companyId) {
-      companyId
+      _id
+      companyId {
+        _id
+      }
       title
     }
   }
@@ -124,8 +127,11 @@ export const ADD_ROLE = gql`
 export const ADD_TAG = gql`
   mutation addTag($title: String!, $companyId: ID!) {
     addTag(title: $title, companyId: $companyId) {
+      _id
       title
-      companyId
+      companyId {
+        _id
+      }
     }
   }
 `;

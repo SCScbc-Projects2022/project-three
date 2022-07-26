@@ -200,6 +200,9 @@ export const GET_ROLES = gql`
     roles(companyId: $companyId) {
       _id
       title
+      companyId {
+        _id
+      }
     }
   }
 `;
@@ -207,6 +210,9 @@ export const GET_ROLES = gql`
 export const GET_ROLE = gql`
   query role($id: ID!) {
     role(_id: $id) {
+      companyId {
+        _id
+      }
       title
     }
   }
@@ -218,6 +224,9 @@ export const GET_TAGS = gql`
     tags(companyId: $companyId) {
       _id
       title
+      companyId {
+        _id
+      }
     }
   }
 `;
@@ -226,6 +235,9 @@ export const GET_TAG = gql`
   query tag($id: ID!) {
     tag(_id: $id) {
       title
+      companyId {
+        _id
+      }
     }
   }
 `;
