@@ -42,7 +42,7 @@ db.once('open', async () => {
     //using the formatted and arranged data from above we finally send the update to the current location
     const updateStore = await Location.updateOne(
       { _id: location._id },
-      { $push: { storeId: [company._id], employees: locationUsersIds } },
+      { $push: { companyId: [company._id], employees: locationUsersIds } },
       { new: true }
     );
     return updateStore;
@@ -81,6 +81,6 @@ db.once('open', async () => {
   });
   const insertCompanyArrays = await Promise.all(companyArrays);
   console.log(insertCompanyArrays);
-  console.log('testing');
+  console.log('\n DATABASE SEEDED');
   process.exit(0);
 });

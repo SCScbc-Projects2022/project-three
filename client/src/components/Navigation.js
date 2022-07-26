@@ -8,7 +8,7 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   const handlePage = (e) => {
-    if (e.target.innerText == 'Locum') {
+    if (e.target.innerText === 'Locum') {
       setActivePage({ Home: true });
       document.title = `Proj3 - Home`;
     } else {
@@ -25,7 +25,7 @@ const Navigation = ({ setActivePage, activePage }) => {
           href="#Home"
           onClick={(e) => handlePage(e)}
         >
-         <img width="10%" height="auto" src={require('../assets/img/logos/Locum-logos_transparent.png')}/>
+         <img width="10%" height="auto" src={require('../assets/img/logos/Locum-logos_transparent.png')} alt='logo'/>
           </a>
         <button
           className="navbar-toggler"
