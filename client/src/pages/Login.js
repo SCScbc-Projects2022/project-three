@@ -37,7 +37,13 @@ const Login = () => {
               />
               <label for="floatingPassword">Password</label>
             </div>
+            <div className="col-12 mt-4">
+              <button type="submit" className="btn btn-primary">
+                Sign up
+              </button>
+            </div>
           </div>
+
           <div style={{ height: '100px' }}></div>
           <div className="col-1"></div>
         </div>

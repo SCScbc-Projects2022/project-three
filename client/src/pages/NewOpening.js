@@ -58,8 +58,7 @@ const NewOpening = () => {
       const { data } = await addPost({
         variables: { ...formState },
       });
-      console.log(`Data added \n\n\n ${JSON.stringify(formState)}`);
-      // Auth.login(data.addPost.token);
+      Auth.login(data.addPost.token);
     } catch (e) {
       console.error(e);
     }

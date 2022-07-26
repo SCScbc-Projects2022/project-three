@@ -75,6 +75,10 @@ export const ADD_COMPANY = gql`
       locationArr: $locationArr
     ) {
       token
+      company {
+        email
+        username
+      }
     }
   }
 `;

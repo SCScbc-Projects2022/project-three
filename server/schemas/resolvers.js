@@ -89,9 +89,9 @@ const resolvers = {
 
     addCompany: async (parent, args) => {
       const company = await Company.create(args);
-      // const token = signToken(company);
+      const token = signToken(company);
 
-      return { company };
+      return { token, company };
     },
 
     addEmployee: async (parent, args) => {
@@ -103,9 +103,9 @@ const resolvers = {
 
     addPost: async (parent, args) => {
       const post = await Post.create(args);
-      // const token = signToken(post);
+      const token = signToken(post);
 
-      return { post };
+      return { token, post };
     },
 
     addRole: async (parent, args) => {
@@ -113,7 +113,7 @@ const resolvers = {
       // const token = signToken(role);
       console.log(role);
 
-      return  role;
+      return role;
     },
 
     addTag: async (parent, args) => {
