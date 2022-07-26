@@ -129,6 +129,11 @@ const typeDefs = gql`
       name: String!
       username: String!
       password: String!
+      address: String!
+      address2: String
+      city: String!
+      province: String!
+      postalCode: String!
       email: String!
       postsArr: postInput
       userArr: userInput
