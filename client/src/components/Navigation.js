@@ -8,7 +8,6 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   const handlePage = (e) => {
-    console.log(e.target.name == '');
     if (e.target.name == '') {
       setActivePage({ Home: true });
       document.title = `Proj3 - Home`;
@@ -152,6 +151,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   className={`nav-link navItem ${
                     activePage.Login ? 'active' : ''
                   }`}
+                  name="Login"
                   aria-current="page"
                   href="#Login"
                   onClick={(e) => handlePage(e)}
@@ -165,10 +165,11 @@ const Navigation = ({ setActivePage, activePage }) => {
                     activePage.Signup ? 'active' : ''
                   }`}
                   aria-current="page"
+                  name="Signup"
                   href="#Signup"
                   onClick={(e) => handlePage(e)}
                 >
-                  Signup
+                  Sign up
                 </a>
               </li>
             </ul>

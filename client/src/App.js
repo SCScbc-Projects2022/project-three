@@ -66,7 +66,6 @@ function App() {
 
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
   let loggedIn = localStorage.getItem('id_token') == null ? false : true;
-  console.log(loggedIn);
   return (
     <ApolloProvider client={client}>
       <main>
