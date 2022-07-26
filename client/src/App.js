@@ -74,6 +74,7 @@ function App() {
         {/* Components below can successfully add to the database */}
         {/* <NewOpening /> */}
         {/* <SignUp /> */}
+        {/* <Login /> */}
 
         {/* Components below still need to be setup */}
         {/* <AdminDashboard /> */}
