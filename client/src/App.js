@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
-import Auth from './utils/auth';
+// import Auth from './utils/auth';
 
 import Home from './pages/Home';
 import AddEmployee from './pages/AddEmployee';
@@ -71,7 +71,7 @@ function App() {
     <ApolloProvider client={client}>
       <main>
         <Navigation activePage={activePage} setActivePage={setActivePage} />
-        <AdminDashboard />
+        {/* <AdminDashboard /> */}
         {/* <AddEmployee /> */}
         <section id="main-wrapper">
           {activePage.Home ? (
