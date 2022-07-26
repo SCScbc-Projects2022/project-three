@@ -81,7 +81,7 @@ export const ADD_COMPANY = gql`
 
 export const ADD_POST = gql`
   mutation addPost(
-    $shiftTime: shiftInput
+    $shiftTime: shiftTimeInput
     $additionalInfo: String
     $location: locationInput
     $role: String!
@@ -94,19 +94,9 @@ export const ADD_POST = gql`
       role: $role
       tags: $tags
     ) {
-      token
-      post {
-        _id
-        shiftTime
-        additionalInfo
-        location {
-          intersection
-          address
-          companyId
-          employees
-        }
-        role
-        tags
+      _id
+      shiftTime {
+        date
       }
     }
   }
@@ -150,23 +140,22 @@ export const ADD_LOCATION = gql`
       companyId: $companyId
       employees: $employees
     ) {
-        _id
-        intersection
-        address {
-          street
-          city
-        }
-        employees {
-          firstName
-          lastName
-          username
-          location
-          email
-          phone
-          role {
-            title
-            companyId
-          }
+      _id
+      intersection
+      address {
+        street
+        city
+      }
+      employees {
+        firstName
+        lastName
+        username
+        location
+        email
+        phone
+        role {
+          title
+          companyId
         }
       }
     }

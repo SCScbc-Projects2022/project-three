@@ -121,7 +121,6 @@ export const GET_LOCATIONS = gql`
         username
         role {
           title
-          companyId
         }
         email
         phone
@@ -153,7 +152,6 @@ export const GET_POSTS = gql`
       }
       role {
         title
-        companyId
       }
       tags {
         title
@@ -185,7 +183,6 @@ export const GET_POST = gql`
       }
       role {
         title
-        companyId
       }
       tags {
         title

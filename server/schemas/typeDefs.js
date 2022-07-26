@@ -144,7 +144,7 @@ const typeDefs = gql`
       additionalInfo: String
       location: locationInput
       role: String!
-      tags: String!
+      tags: String
     ): Post
     addRole(companyId: ID!, title: String!): Role
     addTag(companyId: ID!, title: String!): Tag

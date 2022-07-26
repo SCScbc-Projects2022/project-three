@@ -72,7 +72,12 @@ function App() {
       <main>
         <Navigation activePage={activePage} setActivePage={setActivePage} />
         {/* <AdminDashboard /> */}
+        {/* <EmployeeDashboard /> */}
         {/* <AddEmployee /> */}
+        {/* <AddRole /> */}
+        {/* <AddLocation /> */}
+        <NewOpening />
+        {/* <Payment /> */}
         <section id="main-wrapper">
           {activePage.Home ? (
             <Home

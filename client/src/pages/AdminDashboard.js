@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_COMPANIES, GET_COMPANY } from '../utils/queries';
 import { GET_POSTS } from '../utils/queries';
@@ -17,9 +16,9 @@ const AdminDashboard = () => {
   // console.log(companies);
 
   // Returns all posts
-  const { loading, data } = useQuery(GET_POSTS);
-  const posts = data?.posts || [];
-  console.log(posts);
+  // const { loading, data } = useQuery(GET_POSTS);
+  // const posts = data?.posts || [];
+  // console.log(posts);
   return (
     <>
       <div className="container-fluid mt-4">
