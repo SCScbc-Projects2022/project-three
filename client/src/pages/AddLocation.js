@@ -23,13 +23,13 @@ const AddLocation = () => {
                 id="floatingInput"
                 placeholder="name@example.com"
               />
-              <label for="floatingInput">Location Name</label>
+              <label htmlFor="floatingInput">Location Name</label>
             </div>
             <div style={{ height: '50px' }}></div>
             <form className="row g-3" />
 
             <div className="col-12">
-              <label for="inputAddress" className="form-label">
+              <label htmlFor="inputAddress" className="form-label">
                 Address
               </label>
               <input
@@ -40,7 +40,7 @@ const AddLocation = () => {
               />
             </div>
             <div className="col-12">
-              <label for="inputAddress2" className="form-label">
+              <label htmlFor="inputAddress2" className="form-label">
                 Address 2
               </label>
               <input
@@ -51,13 +51,13 @@ const AddLocation = () => {
               />
             </div>
             <div className="col-md-6">
-              <label for="inputCity" className="form-label">
+              <label htmlFor="inputCity" className="form-label">
                 City
               </label>
               <input type="text" className="form-control" id="inputCity" />
             </div>
             <div className="col-md-4">
-              <label for="inputState" className="form-label">
+              <label htmlFor="inputState" className="form-label">
                 Province
               </label>
               <select id="inputState" className="form-select">
@@ -66,7 +66,7 @@ const AddLocation = () => {
               </select>
             </div>
             <div className="col-md-2">
-              <label for="inputZip" className="form-label">
+              <label htmlFor="inputZip" className="form-label">
                 Postal
               </label>
               <input type="text" className="form-control" id="inputZip" />

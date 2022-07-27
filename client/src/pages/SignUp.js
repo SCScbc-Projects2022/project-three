@@ -83,7 +83,7 @@ const SignUp = () => {
           className="row g-3"
         >
           <div className="col-md-5">
-            <label for="inputEmail4" className="form-label">
+            <label htmlFor="inputEmail4" className="form-label">
               Email
             </label>
             <input
@@ -94,7 +94,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-md-4">
-            <label for="inputUsername" className="form-label">
+            <label htmlFor="inputUsername" className="form-label">
               Username
             </label>
             <input
@@ -105,7 +105,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-md-3">
-            <label for="inputPassword4" className="form-label">
+            <label htmlFor="inputPassword4" className="form-label">
               Password
             </label>
             <input
@@ -116,7 +116,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-12">
-            <label for="inputCompany" className="form-label">
+            <label htmlFor="inputCompany" className="form-label">
               Company Name
             </label>
             <input
@@ -128,7 +128,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-12">
-            <label for="inputAddress" className="form-label">
+            <label htmlFor="inputAddress" className="form-label">
               Address
             </label>
             <input
@@ -140,7 +140,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-12">
-            <label for="inputAddress2" className="form-label">
+            <label htmlFor="inputAddress2" className="form-label">
               Address 2
             </label>
             <input
@@ -152,7 +152,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-md-6">
-            <label for="inputCity" className="form-label">
+            <label htmlFor="inputCity" className="form-label">
               City
             </label>
             <input
@@ -163,7 +163,7 @@ const SignUp = () => {
             />
           </div>
           <div className="col-md-4">
-            <label for="inputState" className="form-label">
+            <label htmlFor="inputState" className="form-label">
               Province
             </label>
             <select name="province" id="inputState" className="form-select">
@@ -180,7 +180,7 @@ const SignUp = () => {
             </select>
           </div>
           <div className="col-md-2">
-            <label for="inputZip" className="form-label">
+            <label htmlFor="inputZip" className="form-label">
               Postal Code
             </label>
             <input
@@ -197,7 +197,7 @@ const SignUp = () => {
                 type="checkbox"
                 id="gridCheck"
               />
-              <label className="form-check-label" for="gridCheck">
+              <label className="form-check-label" htmlFor="gridCheck">
                 Sign up for promotional emails
               </label>
             </div>

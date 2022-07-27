@@ -25,7 +25,7 @@ const AddRole = () => {
                   placeholder="Jane Doe"
                   value="Server"
                 />
-                <label for="floatingInput">Title</label>
+                <label htmlFor="floatingInput">Title</label>
               </div>
             </div>
 
