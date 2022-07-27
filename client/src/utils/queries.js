@@ -26,6 +26,7 @@ export const GET_COMPANY = gql`
         }
       }
       userArr {
+        _id
         firstName
         lastName
       }

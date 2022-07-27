@@ -1,6 +1,6 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_COMPANY } from '../utils/queries';
-import { REMOVE_POST } from '../utils/mutations';
+import { REMOVE_POST, REMOVE_EMPLOYEE } from '../utils/mutations';
 
 const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   const handlePage = (e) => {
@@ -16,12 +16,23 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   const company = data?.company || [];
   console.log(true, company);
 
-  const [removePost, { error }] = useMutation(REMOVE_POST);
+  const [removePost, { postError }] = useMutation(REMOVE_POST);
+  const [removeEmployee, { userError }] = useMutation(REMOVE_EMPLOYEE);
 
   const deleteData = async (data, Id) => {
     if (data == 'post') {
       try {
         await removePost({
+          variables: { Id, companyId },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    if (data == 'user') {
+      console.log(Id);
+      try {
+        await removeEmployee({
           variables: { Id, companyId },
         });
       } catch (err) {
@@ -96,7 +107,15 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                   company.userArr.map((employee, index) => {
                     return (
                       <li key={index}>
-                        <button>X</button>
+                        <button
+                          name="user"
+                          id={employee._id}
+                          onClick={(e) =>
+                            deleteData(e.target.name, e.target.id)
+                          }
+                        >
+                          X
+                        </button>
                         {employee.firstName} - {employee.lastName}{' '}
                       </li>
                     );

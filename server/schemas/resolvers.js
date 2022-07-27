@@ -107,6 +107,16 @@ const resolvers = {
       return { updateUserArr, employee, token };
     },
 
+    removeEmployee: async (parent, { Id, companyId }) => {
+      const updateUserArr = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $pull: { userArr: Id } },
+        { new: true }
+      );
+
+      return updateUserArr;
+    },
+
     addPost: async (parent, { postToSave }) => {
       const post = await Post.create(postToSave);
       console.log(true, postToSave);

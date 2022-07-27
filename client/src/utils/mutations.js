@@ -19,6 +19,15 @@ export const ADD_EMPLOYEE = gql`
     addEmployee(employeeToSave: $employeeToSave) {
       firstName
       lastName
+      _id
+    }
+  }
+`;
+
+export const REMOVE_EMPLOYEE = gql`
+  mutation removeEmployee($Id: String!, $companyId: String!) {
+    removeEmployee(Id: $Id, companyId: $companyId) {
+      username
     }
   }
 `;
