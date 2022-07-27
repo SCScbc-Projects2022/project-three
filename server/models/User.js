@@ -29,12 +29,9 @@ const userSchema = new Schema(
     phone: {
       type: String,
     },
-    location: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Company',
-      }
-    ],
+    location: {
+      type: String,
+    },
     role: [
       {
         type: Schema.Types.String,

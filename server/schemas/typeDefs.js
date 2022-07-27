@@ -158,9 +158,9 @@ const typeDefs = gql`
     location: String
     password: String
     email: String
-    companyId: String
     phone: Int
     role: String
+    companyId: String
   }
 
   type Auth {

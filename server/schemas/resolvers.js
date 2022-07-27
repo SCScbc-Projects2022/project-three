@@ -123,7 +123,6 @@ const resolvers = {
     addPost: async (parent, { postToSave }) => {
       const post = await Post.create(postToSave);
 
-      console.log(true, postToSave, post);
       const updatePostArr = await Company.findOneAndUpdate(
         { _id: postToSave.companyId },
         { $addToSet: { postsArr: post } },
