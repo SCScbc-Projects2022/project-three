@@ -14,6 +14,19 @@ export const LOGIN_ADMIN = gql`
   }
 `;
 
+export const LOGIN_EMPLOYEE = gql`
+  mutation loginEmployee($email: String!, $password: String!) {
+    loginEmployee(email: $email, password: $password) {
+      token
+      company {
+        _id
+        email
+        username
+      }
+    }
+  }
+`;
+
 export const ADD_EMPLOYEE = gql`
   mutation addEmployee($employeeToSave: userInput) {
     addEmployee(employeeToSave: $employeeToSave) {

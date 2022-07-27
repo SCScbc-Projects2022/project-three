@@ -71,7 +71,6 @@ const resolvers = {
     },
   },
 
-  //login, addEmployee, addCompany, addPost, addRole, addTag, addLocation
   Mutation: {
     login: async (parent, { email, password }) => {
       const companyLogin = await Company.findOne({ email });
@@ -88,6 +87,23 @@ const resolvers = {
 
       const token = signToken(companyLogin);
       return { token, companyLogin };
+    },
+
+    loginEmployee: async (parent, { email, password }) => {
+      const userLogin = await User.findOne({ email });
+
+      if (!userLogin) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPw = await userLogin.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(userLogin);
+      return { token, userLogin };
     },
 
     addCompany: async (parent, args) => {
