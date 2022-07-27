@@ -153,8 +153,9 @@ const typeDefs = gql`
     lastName: String
     username: String
     location: String
+    password: String
     email: String
-    phone: String
+    phone: Int
     role: Role
   }
 
@@ -164,9 +165,11 @@ const typeDefs = gql`
     lastName: String
     username: String
     location: String
+    password: String
     email: String
-    phone: String
-    role: roleInput
+    companyId: String
+    phone: Int
+    role: String
   }
 
   type Auth {

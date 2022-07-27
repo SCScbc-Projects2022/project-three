@@ -64,15 +64,14 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add employee +
               </button>
               <ol>
-                {/* {allUsers.map((employee, index) => {
+                {company.userArr.map((employee, index) => {
                   return (
                     <li key={index}>
-                      {employee.firstName} - {employee.lastName} -{' '}
-                      {employee.phone} - {employee.email}
+                      {employee.firstName} - {employee.lastName}{' '}
                       <i className="bi bi-x-circle ms-2"></i>
                     </li>
                   );
-                })} */}
+                })}
               </ol>
             </div>
             <div style={{ height: '100px' }}></div>

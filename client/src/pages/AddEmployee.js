@@ -6,7 +6,7 @@ import { ADD_EMPLOYEE } from '../utils/mutations';
 import Auth from '../utils/auth';
 
 const AddEmployee = ({ companyId }) => {
-  const [employeeToSave, setEmployeeToSave] = useState({
+  const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
     username: '',
@@ -15,8 +15,10 @@ const AddEmployee = ({ companyId }) => {
     email: '',
     phone: 0,
     role: '',
+    companyId,
   });
 
+  console.log(companyId);
   const [addEmployee, { error }] = useMutation(ADD_EMPLOYEE);
 
   const handleSubmit = async (e) => {
@@ -26,28 +28,26 @@ const AddEmployee = ({ companyId }) => {
     let passAndUser = e.target.firstName.value + e.target.lastName.value;
     let phone = parseInt(e.target.phone.value);
 
-    setEmployeeToSave(
-      ((employeeToSave.firstName += e.target.firstName.value),
-      (employeeToSave.lastName += e.target.lastName.value),
-      (employeeToSave.username += passAndUser),
-      (employeeToSave.password += passAndUser),
-      (employeeToSave.location += e.target.location.value)),
-      (employeeToSave.email += e.target.email.value),
-      (employeeToSave.phone = phone),
-      (employeeToSave.role += e.target.role.value)
+    setFormState(
+      ((formState.firstName += e.target.firstName.value),
+      (formState.lastName += e.target.lastName.value),
+      (formState.username += passAndUser),
+      (formState.password += passAndUser),
+      (formState.location += e.target.location.value)),
+      (formState.email += e.target.email.value),
+      (formState.phone = phone),
+      (formState.role += e.target.role.value)
     );
 
     try {
-      console.log(employeeToSave);
-
       await addEmployee({
-        variables: { ...employeeToSave, companyId },
+        variables: { employeeToSave: formState },
       });
       // Auth.login(data.addEmployee.token);
     } catch (e) {
       console.error(e);
       // Clear Form state
-      setEmployeeToSave({
+      setFormState({
         firstName: '',
         lastName: '',
         username: '',
