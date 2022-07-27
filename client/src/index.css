@@ -9,7 +9,7 @@ body {
 }
 
 .navItem.active {
-  color: red;
+  color: blue;
 }
 
 li {

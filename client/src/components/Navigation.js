@@ -18,8 +18,8 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top">
-      <div className="container-fluid">
+    <nav className="navbar navbar-expand-lg sticky-top d-flex">
+      <div className="container-fluid d-flex">
         <a
           className={`navbar-brand ${activePage.Home ? 'active' : ''}`}
           href="#Home"
@@ -33,21 +33,9 @@ const Navigation = ({ setActivePage, activePage }) => {
             alt="logo"
           />
         </a>
-        <button
-          className="navbar-toggler bg-white"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
           {Auth.loggedIn() ? (
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex list-inline justify-content-end">
-              <li className="nav-item">
+            <ul className="mb-2 mb-lg-0 d-flex list-inline justify-content-end">
+              <li className="mx-2 nav-item">
                 <a
                   className={`nav-link navItem ${
                     activePage.AdminDashboard ? 'active' : ''
@@ -60,7 +48,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Dashboard
                 </a>
               </li>
-              <li className="nav-item">
+              <li className="mx-2 nav-item">
                 <a
                   className={`nav-link navItem ${
                     activePage.Payment ? 'active' : ''
@@ -80,8 +68,8 @@ const Navigation = ({ setActivePage, activePage }) => {
               </li>
             </ul>
           ) : (
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex list-inline justify-content-end">
-              <li className="me-2 nav-item">
+            <ul className="mb-2 mb-lg-0 d-flex list-inline justify-content-end">
+              <li className="mx-2 nav-item">
                 <a
                   className={`nav-link navItem ${
                     activePage.Login ? 'active' : ''
@@ -94,7 +82,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Login
                 </a>
               </li>
-              <li className='nav-item'>
+              <li className='mx-2 nav-item'>
                 <a
                   className={`nav-link navItem ${
                     activePage.Signup ? 'active' : ''
@@ -113,7 +101,6 @@ const Navigation = ({ setActivePage, activePage }) => {
         <div>
           <h6 className="navbar-text text-white mx-3"> Staffing. Revolutionized.</h6>
         </div>
-      </div>
     </nav>
   );
 };
