@@ -26,6 +26,34 @@ db.once('open', async () => {
   const companies = await Company.insertMany(CompanyData);
   const locations = await Location.insertMany(LocationData);
 
+  function RNG3() {
+    return Math.floor(Math.random() * 3);
+  }
+
+  // add locations to company
+  async function lc() {
+    for (i = 0; i < locations.length; i++) {
+      await Company.findByIdAndUpdate(
+        {_id: companies[0]._id},
+        {$addToSet: {locationArr: locations[i]._id}},
+        {new: true}
+      )
+    }
+  }
+  lc();
+
+  function cl() {
+    locations.map(async (l) => {
+      let update = await Location.findByIdAndUpdate(
+        {_id: l._id},
+        {$addToSet: {companyId: companies[0]._id}},
+        {new: true}
+      )
+    console.log(update);
+    })
+  }
+  cl();
+
   // Added to each location the company id and users mapping through the results from the original inserts
   const locationsStores = locations.map(async (location) => {
     //I looked inside the companies array for the one that matched the current location in the loop that had the same storename inside the address object
@@ -84,7 +112,7 @@ db.once('open', async () => {
     ));
   });
   const insertCompanyArrays = await Promise.all(companyArrays);
-  console.log(insertCompanyArrays);
+  // console.log(insertCompanyArrays);
   console.log('\n DATABASE SEEDED');
   process.exit(0);
 });

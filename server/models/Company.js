@@ -23,11 +23,11 @@ const companySchema = new Schema(
       type: String,
       required: true,
       minlength: 6,
-    },
-    postsArr: [
+    },    
+    locationArr: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Post',
+        ref: 'Location',
       },
     ],
     userArr: [
@@ -36,10 +36,10 @@ const companySchema = new Schema(
         ref: 'User',
       },
     ],
-    locationArr: [
+    postsArr: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Location',
+        ref: 'Post',
       },
     ],
   },
