@@ -52,7 +52,6 @@
     "lastName": "Jones",
     "username": "LindseyJ",
     "password": "password7",
-    "location": "East Site",
     "email": "LindseyJ@brking.com",
     "phone": 3894672839
   },
@@ -61,7 +60,6 @@
     "lastName": "Frick",
     "username": "RayF",
     "password": "password8",
-    "location": "West Site",
     "email": "RayF@brking.com",
     "phone": 2344552743
   },
@@ -70,7 +68,6 @@
     "lastName": "Grant",
     "username": "NicoleG",
     "password": "password9",
-    "location": "East Site",
     "email": "NicoleG@brking.com",
     "phone": 2342942971
   },
@@ -79,7 +76,6 @@
     "lastName": "Wood",
     "username": "RoseW",
     "password": "password10",
-    "location": "West Site",
     "email": "RoseW@brking.com",
     "phone": 2344538726
   },
@@ -88,7 +84,6 @@
     "lastName": "Hughes",
     "username": "JaneH",
     "password": "password11",
-    "location": "East Site",
     "email": "JaneH@brking.com",
     "phone": 2344947832
   },
@@ -97,7 +92,6 @@
     "lastName": "Kim",
     "username": "AveryK",
     "password": "password12",
-    "location": "West Site",
     "email": "AveryK@brking.com",
     "phone": 2345802788
   },
@@ -106,7 +100,6 @@
     "lastName": "Lee",
     "username": "KelseyL",
     "password": "password13",
-    "location": "East Site",
     "email": "KelseyL@brking.com",
     "phone": 2342781990
   },
@@ -115,7 +108,6 @@
     "lastName": "Martin",
     "username": "JacobM",
     "password": "password14",
-    "location": "West Site",
     "email": "Jakemartin@brking.com",
     "phone": 2344980553
   },
@@ -124,7 +116,6 @@
     "lastName": "Ramirez",
     "username": "GwenRami",
     "password": "password15",
-    "location": "East Site",
     "email": "GwenRami@brking.com",
     "phone": 2738927364
   },
@@ -133,7 +124,6 @@
     "lastName": "Sartori",
     "username": "JaiSartori",
     "password": "password16",
-    "location": "West Site",
     "email": "SartoriJ@brking.com",
     "phone": 2343894892
   },
@@ -142,7 +132,6 @@
     "lastName": "White",
     "username": "VickyW",
     "password": "password17",
-    "location": "East Site",
     "email": "VickWhite@brking.com",
     "phone": 2343847792
   },
@@ -151,7 +140,6 @@
     "lastName": "Bond",
     "username": "JamesBond",
     "password": "password007",
-    "location": "West Site",
     "email": "JamesB@brking.com",
     "phone": 2783893938
   }

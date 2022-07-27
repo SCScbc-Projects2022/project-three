@@ -21,7 +21,8 @@ db.once('open', async () => {
   
   //bulk create each model
   const tags = await Tag.insertMany(TagData);
-  const role = await Role.insertMany(RoleData);
+  const roles = await Role.insertMany(RoleData);
+  const posts = await Post.insertMany(PostData);
   const users = await User.insertMany(UserData);
   const companies = await Company.insertMany(CompanyData);
   const locations = await Location.insertMany(LocationData);
@@ -31,41 +32,49 @@ db.once('open', async () => {
   }
 
   // add locations to company
-    locations.map(l => {
-      Company.findByIdAndUpdate(
-        {_id: companies[0]._id},
-        {$addToSet: {locationArr: l._id}},
-        {new: true}
-      )
-    })
-
-
-  // for (i = 0; i < locations.length; i++) {
-  //   let lc = await Company.findByIdAndUpdate(
-  //     {_id: companies[0]._id},
-  //     {$addToSet: {locationArr: locations[i]._id}},
-  //     {new: true}
-  //   )
-  //   // console.log(lc);
-  // }
-
-  // add company to locations
-  locations.map(l => {
-    Location.findByIdAndUpdate(
-      {_id: l._id},
-      {$addToSet: {companyId: companies[0]._id}},
+  for (i = 0; i < locations.length; i++) {
+    await Company.findByIdAndUpdate(
+      {_id: companies[0]._id},
+      {$addToSet: {locationArr: locations[i]._id}},
       {new: true}
     )
-  })
-  // add users to company
-  // for (i = 0; i < users.length; i++) {
-  //   let uc = await Company.findByIdAndUpdate(
-  //     {_id: companies[0]._id},
-  //     {$addToSet: {userArr: users[i]._id}},
+  }
+
+    // add users to company
+    for (i = 0; i < users.length; i++) {
+      await Company.findByIdAndUpdate(
+        {_id: companies[0]._id},
+        {$addToSet: {userArr: users[i]._id}},
+        {new: true}
+      )
+    }
+
+    // add posts to company
+    for (i = 0; i < posts.length; i++) {
+      await Company.findByIdAndUpdate(
+        {_id: companies[0]._id},
+        {$addToSet: {postsArr: posts[i]._id}},
+        {new: true}
+      )
+    }
+
+    // add roles to company
+    for (i = 0; i < roles.length; i++) {
+      await Company.findByIdAndUpdate(
+        {_id: companies[0]._id},
+        {$addToSet: {rolesArr: roles[i]._id}},
+        {new: true}
+      )
+    }
+
+  // // add company to locations
+  // locations.map(l => {
+  //   Location.findByIdAndUpdate(
+  //     {_id: l._id},
+  //     {$addToSet: {companyId: companies[0]._id}},
   //     {new: true}
   //   )
-  //   // console.log(uc)
-  // }
+  // })
 
   // add posts to company
   // add employees to location
