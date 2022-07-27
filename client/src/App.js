@@ -65,31 +65,19 @@ function App() {
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
   let loggedIn = localStorage.getItem('id_token') == null ? false : true;
 
-  // const getCompany = () => {
-  //   let data = Auth.getProfile();
-  //   console.log(data);
-  // };
+  const getCompany = () => {
+    let data = Auth.getProfile();
+    return data.data._id;
+  };
 
-  // if (loggedIn) {
-  //   getCompany();
-  // }
+  if (loggedIn) {
+    getCompany();
+  }
 
   return (
     <ApolloProvider client={client}>
       <main>
         <Navigation activePage={activePage} setActivePage={setActivePage} />
-        {/* Components below can successfully add to the database */}
-        {/* <NewOpening /> */}
-        {/* <SignUp /> */}
-        {/* <Login /> */}
-
-        {/* Components below still need to be setup */}
-        {/* <AdminDashboard /> */}
-        {/* <EmployeeDashboard /> */}
-        {/* <AddEmployee /> */}
-        {/* <AddRole /> */}
-        {/* <AddLocation /> */}
-        {/* <Payment /> */}
         <section id="main-wrapper">
           {activePage.Home ? (
             <Home
@@ -98,13 +86,14 @@ function App() {
               setActivePage={setActivePage}
             />
           ) : activePage.AddEmployee ? (
-            <AddEmployee />
+            <AddEmployee companyId={getCompany()} />
           ) : activePage.AddLocation ? (
             <AddLocation />
           ) : activePage.AddRole ? (
             <AddRole />
           ) : activePage.AdminDashboard ? (
             <AdminDashboard
+              companyId={getCompany()}
               activePage={activePage}
               setActivePage={setActivePage}
             />

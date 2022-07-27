@@ -94,11 +94,19 @@ const resolvers = {
       return { token, company };
     },
 
-    addEmployee: async (parent, args) => {
-      const employee = await User.create(args);
-      const token = signToken(employee);
+    addEmployee: async (parent, { employeeToSave, companyId }) => {
+      const updateUserArr = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $addToSet: { userArr: employeeToSave } },
+        { new: true }
+      ).populate('userArr');
 
-      return { token, employee };
+      return { updateUserArr };
+
+      // const employee = await User.create(args);
+      // const token = signToken(employee);
+
+      // return { token, employee };
     },
 
     addPost: async (parent, args) => {
