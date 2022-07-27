@@ -9,7 +9,7 @@ body {
 }
 
 .navItem.active {
-  color: red;
+  color: blue;
 }
 
 li {
@@ -43,4 +43,21 @@ li {
 .card.card-footer a {
 color: white;
 display: inline;
+}
+
+#logo {
+  max-width: 8rem;
+}
+
+d-flex justify-content-between
+
+#navbar {
+  justify-content: space-between;
+  display: flex;
+}
+
+@media screen and (max-width: 575px) {
+  #navbar {
+    justify-content: center;
+  }
 }

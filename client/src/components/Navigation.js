@@ -18,49 +18,24 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top">
-      <div className="container-fluid">
-        <a
-          className={`navbar-brand ${activePage.Home ? 'active' : ''}`}
+    <nav className="navbar sticky-top d-flex">
+      <div className="container-fluid" id="navbar">
+        <a className={`${activePage.Home ? 'active' : ''}`}
           href="#Home"
           name="Home"
           onClick={(e) => handlePage(e)}
         >
           <img
-            width="10%"
-            height="auto"
             src={require('../assets/img/logos/Locum-logos_transparent.png')}
             alt="logo"
+            className="m-2"
+            id="logo"
           />
         </a>
-        <button
-          className="navbar-toggler bg-white"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className='d-flex flex-wrap align-items-center justify-content-center'>
           {Auth.loggedIn() ? (
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a
-                  className={`nav-link navItem ${
-                    activePage.NewOpening ? 'active' : ''
-                  }`}
-                  name="NewOpening"
-                  aria-current="page"
-                  href="#NewOpening"
-                  onClick={(e) => handlePage(e)}
-                >
-                  New openings
-                </a>
-              </li>
-              <li className="nav-item">
+            <ul className="mb-2 mb-lg-0 d-flex align-items-center">
+              <li className="mx-3 nav-item">
                 <a
                   className={`nav-link navItem ${
                     activePage.AdminDashboard ? 'active' : ''
@@ -70,36 +45,10 @@ const Navigation = ({ setActivePage, activePage }) => {
                   href="#AdminDashboard"
                   onClick={(e) => handlePage(e)}
                 >
-                  Company Dashboard
+                  Dashboard
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  className={`nav-link navItem ${
-                    activePage.AddLocation ? 'active' : ''
-                  }`}
-                  name="AddLocation"
-                  aria-current="page"
-                  href="#AddLocation"
-                  onClick={(e) => handlePage(e)}
-                >
-                  Add Location
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className={`nav-link navItem ${
-                    activePage.AddRole ? 'active' : ''
-                  }`}
-                  name="AddRole"
-                  aria-current="page"
-                  href="#AddRole"
-                  onClick={(e) => handlePage(e)}
-                >
-                  Add Role
-                </a>
-              </li>
-              <li className="nav-item">
+              <li className="mx-3 nav-item">
                 <a
                   className={`nav-link navItem ${
                     activePage.Payment ? 'active' : ''
@@ -112,15 +61,15 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Payment
                 </a>
               </li>
-              <li>
-                <a href="/" onClick={logout}>
+              <li className='nav-item'>
+                <a href="/" className='nav-link navItem' onClick={logout}>
                   Logout
                 </a>
               </li>
             </ul>
           ) : (
-            <ul className="d-flex">
-              <li className="me-2">
+            <ul className="mb-2 mb-lg-0 d-flex align-items-center">
+              <li className="mx-3 nav-item">
                 <a
                   className={`nav-link navItem ${
                     activePage.Login ? 'active' : ''
@@ -133,7 +82,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Login
                 </a>
               </li>
-              <li>
+              <li className='mx-3 nav-item'>
                 <a
                   className={`nav-link navItem ${
                     activePage.Signup ? 'active' : ''
@@ -148,9 +97,7 @@ const Navigation = ({ setActivePage, activePage }) => {
               </li>
             </ul>
           )}
-        </div>
-        <div>
-          <h6 className="navbar-text text-white"> Staffing. Revolutionized.</h6>
+          <h6 className="text-white mx-3 mb-0"> Staffing. Revolutionized.</h6>
         </div>
       </div>
     </nav>
