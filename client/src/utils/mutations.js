@@ -63,20 +63,8 @@ export const ADD_COMPANY = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost(
-    $shiftTime: shiftTimeInput
-    $additionalInfo: String
-    $location: locationInput
-    $role: String!
-    $tags: String
-  ) {
-    addPost(
-      shiftTime: $shiftTime
-      additionalInfo: $additionalInfo
-      location: $location
-      role: $role
-      tags: $tags
-    ) {
+  mutation addPost($postToSave: postInput) {
+    addPost(postToSave: $postToSave) {
       _id
       shiftTime {
         date

@@ -63,7 +63,12 @@ function App() {
   });
 
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
-  let loggedIn = localStorage.getItem('id_token') == null ? false : true;
+  let loggedIn =
+    localStorage.getItem('id_token') == null
+      ? false
+      : localStorage.getItem('id_token') == 'undefined'
+      ? false
+      : true;
 
   const getCompany = () => {
     let data = Auth.getProfile();
@@ -102,7 +107,7 @@ function App() {
           ) : activePage.Login ? (
             <Login />
           ) : activePage.NewOpening ? (
-            <NewOpening />
+            <NewOpening companyId={getCompany()} />
           ) : activePage.Payment ? (
             <Payment />
           ) : activePage.Signup ? (

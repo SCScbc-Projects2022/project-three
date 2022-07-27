@@ -95,7 +95,6 @@ const resolvers = {
     },
 
     addEmployee: async (parent, { employeeToSave }) => {
-      // Try first to create the User model
       const employee = await User.create(employeeToSave);
       const token = signToken(employee);
 
@@ -108,11 +107,17 @@ const resolvers = {
       return { updateUserArr, employee, token };
     },
 
-    addPost: async (parent, args) => {
-      const post = await Post.create(args);
-      const token = signToken(post);
+    addPost: async (parent, { postToSave }) => {
+      const post = await Post.create(postToSave);
+      console.log(true, postToSave);
 
-      return { token, post };
+      const updatePostArr = await Company.findOneAndUpdate(
+        { _id: postToSave.companyId },
+        { $addToSet: { postsArr: post } },
+        { new: true }
+      ).populate('postsArr');
+
+      return { updatePostArr, post };
     },
 
     addRole: async (parent, args) => {

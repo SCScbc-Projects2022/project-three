@@ -60,8 +60,9 @@ const typeDefs = gql`
     shiftTime: shiftTimeInput
     additionalInfo: String
     location: locationInput
-    role: roleInput!
-    tags: tagInput!
+    role: String
+    tags: String
+    companyId: String
   }
 
   type ShiftTime {
@@ -130,13 +131,7 @@ const typeDefs = gql`
       userArr: userInput
       locationArr: locationInput
     ): Auth
-    addPost(
-      shiftTime: shiftTimeInput
-      additionalInfo: String
-      location: locationInput
-      role: String!
-      tags: String
-    ): Post
+    addPost(postToSave: postInput): Post
     addRole(companyId: ID!, title: String!): Role
     addTag(companyId: ID!, title: String!): Tag
     addLocation(

@@ -16,20 +16,6 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   const company = data?.company || [];
   console.log(true, company);
 
-  // Returns all companies
-  // const { loading, data } = useQuery(GET_COMPANIES);
-  // const companies = data?.companies || [];
-  // console.log(companies);
-
-  // Returns all posts
-  // const { loading, data } = useQuery(GET_POSTS);
-  // const posts = data?.posts || [];
-  // console.log(true, posts);
-
-  // // Returns all Employees
-  // const { loading, data } = useQuery(GET_ALL_USERS, {});
-  // const allUsers = data?.allUsers || [];
-  // console.log(allUsers);
   return (
     <>
       <div className="container-fluid mt-4">
@@ -38,7 +24,8 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
           <h4 id="company-name">Company Name</h4>
           <div className="col-12 d-flex flex-column justify-content-center">
             <div style={{ height: '50px' }}></div>
-            <div className="d-flex mt-5 justify-content-center">
+            <div>
+              <h2>Openings</h2>
               <button
                 onClick={(e) => {
                   handlePage(e);
@@ -47,10 +34,27 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 type="button"
                 className="btn btn-primary btn-lg"
               >
-                New openings
+                Add opening +
               </button>
+              <ol>
+                {company.userArr == undefined ? (
+                  <li>No Openings</li>
+                ) : (
+                  company.postsArr.map((post, index) => {
+                    return (
+                      <li key={index}>
+                        <button>X</button>
+                        Shift Time: {post.shiftTime.hour} - Additional info:{' '}
+                        {post.additionalInfo == ''
+                          ? 'N/A'
+                          : post.additionalInfo}
+                      </li>
+                    );
+                  })
+                )}
+              </ol>
             </div>
-            <div style={{ height: '100px' }}></div>
+            <div style={{ height: '25px' }}></div>
             <div>
               <h2>Employees</h2>
               <button
@@ -64,17 +68,21 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add employee +
               </button>
               <ol>
-                {company.userArr.map((employee, index) => {
-                  return (
-                    <li key={index}>
-                      {employee.firstName} - {employee.lastName}{' '}
-                      <i className="bi bi-x-circle ms-2"></i>
-                    </li>
-                  );
-                })}
+                {company.userArr == undefined ? (
+                  <li>No Employees</li>
+                ) : (
+                  company.userArr.map((employee, index) => {
+                    return (
+                      <li key={index}>
+                        <button>X</button>
+                        {employee.firstName} - {employee.lastName}{' '}
+                      </li>
+                    );
+                  })
+                )}
               </ol>
             </div>
-            <div style={{ height: '100px' }}></div>
+            <div style={{ height: '25px' }}></div>
             <div>
               <h2>Roles</h2>
               <button
@@ -92,7 +100,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 <li>Role 2</li>
               </ol>
             </div>
-            <div style={{ height: '100px' }}></div>
+            <div style={{ height: '25px' }}></div>
             <div>
               <h2>Locations</h2>
               <button

@@ -18,7 +18,6 @@ const AddEmployee = ({ companyId }) => {
     companyId,
   });
 
-  console.log(companyId);
   const [addEmployee, { error }] = useMutation(ADD_EMPLOYEE);
 
   const handleSubmit = async (e) => {
