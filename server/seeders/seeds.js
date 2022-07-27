@@ -68,32 +68,16 @@ db.once('open', async () => {
   }
 
   // add company to locations
-  locations.map(l => {
-    Location.findByIdAndUpdate(
-      {_id: l._id},
+  for (i = 0; i < locations.length; i++) {
+    await Location.findByIdAndUpdate(
+      {_id: locations[i]._id},
       {$addToSet: {companyId: companies[0]._id}},
       {new: true}
     )
-  })
+  }
 
   // add employees to locations
-  // locations.map(l => {
-  //   const employeeDist = {
-  //     0: [0, 1, 2],
-  //     1: [3, 4, 5],
-  //     2: [6, 7, 8],
-  //     3: [9, 10, 11],
-  //     4: [12, 13, 14],
-  //     5: [15, 16, 17],
-  //   }
-
-  //   Location.findByIdAndUpdate(
-  //     {_id: l._id},
-  //     {$addToSet: {employees: {$each: [users[employeeDist[l][0]]._id, users[employeeDist[l][1]]._id, users[employeeDist[l][2]]._id]}}},
-  //     {new: true}
-  //   )
-  // })
-
+  
   const employeeDist = {
     0: [0, 1, 2],
     1: [3, 4, 5],
@@ -103,9 +87,14 @@ db.once('open', async () => {
     5: [15, 16, 17],
   }
 
-  for (i = 0; i < 6; i++) {
-    console.log([users[employeeDist[i][0]]._id])
+  for (i = 0; i < locations.length; i++) {
+    await Location.findByIdAndUpdate(
+      {_id: locations[i]._id},
+      {$addToSet: {employees: {$each: [users[employeeDist[i][0]]._id, users[employeeDist[i][1]]._id, users[employeeDist[i][2]]._id]}}},
+      {new: true}
+    )
   }
+
 //   // Added to each location the company id and users mapping through the results from the original inserts
 //   const locationsStores = locations.map(async (location) => {
 //     //I looked inside the companies array for the one that matched the current location in the loop that had the same storename inside the address object
