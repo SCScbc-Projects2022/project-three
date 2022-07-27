@@ -135,6 +135,7 @@ const typeDefs = gql`
     removeRole(Id: String!, companyId: String!): Role
     addTag(companyId: ID!, title: String!): Tag
     addLocation(locationToSave: locationInput): Location
+    removeLocation(Id: String!, companyId: String!): Location
   }
 
   type User {
