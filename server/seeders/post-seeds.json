@@ -1,21 +1,24 @@
  [
     {
       "shiftTime":{
-        "hour":"16:30",
+        "start":"16:30",
+        "end": "19:00",
         "date":"26/07/2022"
       },
       "additionalInfo":"the regular employee quitted today"
     },
     {
         "shiftTime":{
-          "hour":"13:00",
+          "start":"13:00",
+          "end": "18:00",
           "date":"25/07/2022"
         },
         "additionalInfo":"called in sick"
       },
       {
         "shiftTime":{
-          "hour":"17:00",
+          "start":"17:00",
+          "end": "01:00",
           "date":"24/07/2022"
         },
         "additionalInfo":"holiday pay"

@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
 
 const locationSchema = new Schema({
-  intersection: {
-    type: String
-  },
   address: {
     type: Object,
     required: true
+  },
+  intersection: {
+    type: String
   },
   companyId: [
     {

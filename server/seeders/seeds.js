@@ -6,8 +6,11 @@ const LocationData = require('./location-seeds.json');
 const CompanyData = require('./company-seeds.json');
 const mongoose = require('mongoose');
 const { Company, Location, Post, Role, Tag, User } = require('../models');
+
 const db = require('../config/connection');
+
 db.once('open', async () => {
+
   // clean database
   await Post.deleteMany({});
   await Location.deleteMany({});
@@ -15,6 +18,7 @@ db.once('open', async () => {
   await Company.deleteMany({});
   await Role.deleteMany({});
   await Tag.deleteMany({});
+  
   //bulk create each model
   const tags = await Tag.insertMany(TagData);
   const role = await Role.insertMany(RoleData);
