@@ -91,12 +91,9 @@ export const REMOVE_POST = gql`
 `;
 
 export const ADD_ROLE = gql`
-  mutation addRole($title: String!, $companyId: ID!) {
-    addRole(title: $title, companyId: $companyId) {
+  mutation addRole($roleToSave: roleInput) {
+    addRole(roleToSave: $roleToSave) {
       _id
-      companyId {
-        _id
-      }
       title
     }
   }

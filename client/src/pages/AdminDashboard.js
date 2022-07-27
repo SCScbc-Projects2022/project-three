@@ -62,7 +62,9 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add opening +
               </button>
               <ol>
-                {company.userArr == undefined ? (
+                {company.postsArr == undefined ? (
+                  <li>No Openings</li>
+                ) : company.postsArr == '' ? (
                   <li>No Openings</li>
                 ) : (
                   company.postsArr.map((post, index) => {
@@ -103,6 +105,8 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
               <ol>
                 {company.userArr == undefined ? (
                   <li>No Employees</li>
+                ) : company.userArr == '' ? (
+                  <li>No Employees</li>
                 ) : (
                   company.userArr.map((employee, index) => {
                     return (
@@ -137,8 +141,28 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add Role +
               </button>
               <ol>
-                <li>Role 1</li>
-                <li>Role 2</li>
+                {company.rolesArr == undefined ? (
+                  <li>No Roles</li>
+                ) : company.rolesArr == '' ? (
+                  <li>No Roles</li>
+                ) : (
+                  company.rolesArr.map((role, index) => {
+                    return (
+                      <li key={index}>
+                        <button
+                          name="role"
+                          id={role._id}
+                          onClick={(e) =>
+                            deleteData(e.target.name, e.target.id)
+                          }
+                        >
+                          X
+                        </button>
+                        Role 1 - Role Id: {role._id}
+                      </li>
+                    );
+                  })
+                )}
               </ol>
             </div>
             <div style={{ height: '25px' }}></div>

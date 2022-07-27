@@ -9,6 +9,7 @@ const typeDefs = gql`
     password: String
     postsArr: [Post]
     userArr: [User]
+    rolesArr: [Role]
     locationArr: [Location]
   }
 
@@ -77,23 +78,21 @@ const typeDefs = gql`
 
   type Tag {
     _id: ID
-    companyId: [Company]
     title: String
   }
 
   type Role {
     _id: ID
-    companyId: [Company]
     title: String
   }
 
   input tagInput {
-    companyId: ID
+    companyId: String
     title: String
   }
 
   input roleInput {
-    companyId: ID
+    companyId: String
     title: String
   }
 
@@ -131,10 +130,11 @@ const typeDefs = gql`
       postsArr: postInput
       userArr: userInput
       locationArr: locationInput
+      rolesArr: roleInput
     ): Auth
     addPost(postToSave: postInput): Post
     removePost(Id: String!, companyId: String!): Post
-    addRole(companyId: ID!, title: String!): Role
+    addRole(roleToSave: roleInput): Role
     addTag(companyId: ID!, title: String!): Tag
     addLocation(
       intersection: String!

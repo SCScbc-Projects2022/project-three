@@ -95,7 +95,7 @@ function App() {
           ) : activePage.AddLocation ? (
             <AddLocation />
           ) : activePage.AddRole ? (
-            <AddRole />
+            <AddRole companyId={getCompany()} />
           ) : activePage.AdminDashboard ? (
             <AdminDashboard
               companyId={getCompany()}

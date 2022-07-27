@@ -119,7 +119,6 @@ const resolvers = {
 
     addPost: async (parent, { postToSave }) => {
       const post = await Post.create(postToSave);
-      console.log(true, postToSave);
 
       const updatePostArr = await Company.findOneAndUpdate(
         { _id: postToSave.companyId },
@@ -140,11 +139,16 @@ const resolvers = {
       return updatedPosts;
     },
 
-    addRole: async (parent, args) => {
-      const role = await Role.create(args);
-      // const token = signToken(role);
+    addRole: async (parent, { roleToSave }) => {
+      const role = await Role.create(roleToSave);
 
-      return role;
+      const updatedRoleArr = await Company.findOneAndUpdate(
+        { _id: roleToSave.companyId },
+        { $addToSet: { rolesArr: role } },
+        { new: true }
+      ).populate('rolesArr');
+
+      return { updatedRoleArr };
     },
 
     addTag: async (parent, args) => {

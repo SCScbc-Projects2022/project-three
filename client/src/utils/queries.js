@@ -30,6 +30,10 @@ export const GET_COMPANY = gql`
         firstName
         lastName
       }
+      rolesArr {
+        _id
+        title
+      }
       postsArr {
         _id
         shiftTime {
