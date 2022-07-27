@@ -39,8 +39,6 @@ const SignUp = () => {
       const { data } = await addCompany({
         variables: { ...formState },
       });
-      console.log(data);
-      console.log(`Data added \n\n\n ${JSON.stringify(formState)}`);
 
       Auth.login(data.addCompany.token);
     } catch (e) {

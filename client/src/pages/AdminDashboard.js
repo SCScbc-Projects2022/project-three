@@ -1,6 +1,6 @@
-import { useQuery } from '@apollo/client';
-import { GET_COMPANIES, GET_COMPANY, GET_ALL_USERS } from '../utils/queries';
-import { GET_POSTS } from '../utils/queries';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_COMPANY } from '../utils/queries';
+import { REMOVE_POST, REMOVE_EMPLOYEE, REMOVE_ROLE } from '../utils/mutations';
 
 const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   const handlePage = (e) => {
@@ -16,20 +16,41 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   const company = data?.company || [];
   console.log(true, company);
 
-  // Returns all companies
-  // const { loading, data } = useQuery(GET_COMPANIES);
-  // const companies = data?.companies || [];
-  // console.log(companies);
+  const [removePost, { postError }] = useMutation(REMOVE_POST);
+  const [removeEmployee, { userError }] = useMutation(REMOVE_EMPLOYEE);
+  const [removeRole, { roleerror }] = useMutation(REMOVE_ROLE);
 
-  // Returns all posts
-  // const { loading, data } = useQuery(GET_POSTS);
-  // const posts = data?.posts || [];
-  // console.log(true, posts);
+  const deleteData = async (data, Id) => {
+    if (data == 'post') {
+      try {
+        await removePost({
+          variables: { Id, companyId },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    if (data == 'user') {
+      try {
+        await removeEmployee({
+          variables: { Id, companyId },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
 
-  // // Returns all Employees
-  // const { loading, data } = useQuery(GET_ALL_USERS, {});
-  // const allUsers = data?.allUsers || [];
-  // console.log(allUsers);
+    if (data == 'role') {
+      try {
+        await removeRole({
+          variables: { Id, companyId },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
   return (
     <>
       <div className="container-fluid mt-4">
@@ -38,7 +59,8 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
           <h4 id="company-name">Company Name</h4>
           <div className="col-12 d-flex flex-column justify-content-center">
             <div style={{ height: '50px' }}></div>
-            <div className="d-flex mt-5 justify-content-center">
+            <div>
+              <h2>Openings</h2>
               <button
                 onClick={(e) => {
                   handlePage(e);
@@ -47,10 +69,39 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 type="button"
                 className="btn btn-primary btn-lg"
               >
-                New openings
+                Add opening +
               </button>
+              <ol>
+                {company.postsArr == undefined ? (
+                  <li>No Openings</li>
+                ) : company.postsArr == '' ? (
+                  <li>No Openings</li>
+                ) : (
+                  company.postsArr.map((post, index) => {
+                    return (
+                      <li key={index}>
+                        <button
+                          name="post"
+                          id={post._id}
+                          onClick={(e) =>
+                            deleteData(e.target.name, e.target.id)
+                          }
+                        >
+                          X
+                        </button>
+                        Role: N/A - Location - N/A Shift - Time:{' '}
+                        {post.shiftTime.hour} - Additional info:{' '}
+                        {post.additionalInfo == ''
+                          ? 'N/A'
+                          : post.additionalInfo}{' '}
+                        - Tags: [N/A]
+                      </li>
+                    );
+                  })
+                )}
+              </ol>
             </div>
-            <div style={{ height: '100px' }}></div>
+            <div style={{ height: '25px' }}></div>
             <div>
               <h2>Employees</h2>
               <button
@@ -64,20 +115,34 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add employee +
               </button>
               <ol>
-                {/* {allUsers.map((employee, index) => {
-                  return (
-                    <li key={index}>
-                      {employee.firstName} - {employee.lastName} -{' '}
-                      {employee.phone} - {employee.email}
-                      <i className="bi bi-x-circle ms-2"></i>
-                    </li>
-                  );
-                })} */}
+                {company.userArr == undefined ? (
+                  <li>No Employees</li>
+                ) : company.userArr == '' ? (
+                  <li>No Employees</li>
+                ) : (
+                  company.userArr.map((employee, index) => {
+                    return (
+                      <li key={index}>
+                        <button
+                          name="user"
+                          id={employee._id}
+                          onClick={(e) =>
+                            deleteData(e.target.name, e.target.id)
+                          }
+                        >
+                          X
+                        </button>
+                        {employee.firstName} - {employee.lastName} - Email:{' '}
+                        {employee.email} - Phone: {employee.phone} - Role: N/A
+                      </li>
+                    );
+                  })
+                )}
               </ol>
             </div>
-            <div style={{ height: '100px' }}></div>
+            <div style={{ height: '25px' }}></div>
             <div>
-              <h2>Roles</h2>
+              <h2>Active Roles</h2>
               <button
                 onClick={(e) => {
                   handlePage(e);
@@ -89,11 +154,31 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add Role +
               </button>
               <ol>
-                <li>Role 1</li>
-                <li>Role 2</li>
+                {company.rolesArr == undefined ? (
+                  <li>No Roles</li>
+                ) : company.rolesArr == '' ? (
+                  <li>No Roles</li>
+                ) : (
+                  company.rolesArr.map((role, index) => {
+                    return (
+                      <li key={index}>
+                        <button
+                          name="role"
+                          id={role._id}
+                          onClick={(e) =>
+                            deleteData(e.target.name, e.target.id)
+                          }
+                        >
+                          X
+                        </button>
+                        Title - {role.title}
+                      </li>
+                    );
+                  })
+                )}
               </ol>
             </div>
-            <div style={{ height: '100px' }}></div>
+            <div style={{ height: '25px' }}></div>
             <div>
               <h2>Locations</h2>
               <button

@@ -16,15 +16,6 @@ const AddLocation = () => {
         <div className="row">
           <div className="col-1"></div>
           <div className="col-10">
-            <div className="form-floating mb-3">
-              <input
-                type="text"
-                className="form-control"
-                id="floatingInput"
-                placeholder="name@example.com"
-              />
-              <label htmlFor="floatingInput">Location Name</label>
-            </div>
             <div style={{ height: '50px' }}></div>
             <form className="row g-3" />
 

@@ -19,6 +19,7 @@ const resolvers = {
         .select('-__v -password')
         .populate('postsArr')
         .populate('userArr')
+        .populate('rolesArr')
         .populate('locationArr');
     },
     company: async (parent, { _id }) => {
@@ -26,11 +27,13 @@ const resolvers = {
         .select('-__v -password')
         .populate('postsArr')
         .populate('userArr')
+        .populate('rolesArr')
         .populate('locationArr');
     },
     locations: async (parent, { companyId }) => {
       return Location.find({ companyId })
         .populate('companyId')
+        .populate('address')
         .populate('employees');
     },
     location: async (parent, { _id }) => {
@@ -40,7 +43,7 @@ const resolvers = {
     },
 
     posts: async (parent) => {
-      return Post.find();
+      return Post.find().populate('locationArr');
     },
     post: async (parent, { _id }) => {
       return Post.findOne({ _id });
@@ -94,33 +97,72 @@ const resolvers = {
       return { token, company };
     },
 
-    addEmployee: async (parent, { employeeToSave, companyId }) => {
-      // Try first to create the User model
-      // const employee = await User.create(employeeToSave);
-      // const token = signToken(employee);
+    addEmployee: async (parent, { employeeToSave }) => {
+      const employee = await User.create(employeeToSave);
+      const token = signToken(employee);
 
-      // Then find the company and add the user _id  (i.e. (userArr: employee._id))
       const updateUserArr = await Company.findOneAndUpdate(
-        { _id: companyId },
-        { $addToSet: { userArr: employeeToSave } },
+        { _id: employeeToSave.companyId },
+        { $addToSet: { userArr: employee } },
         { new: true }
       ).populate('userArr');
 
-      return { updateUserArr };
+      return { updateUserArr, employee, token };
     },
 
-    addPost: async (parent, args) => {
-      const post = await Post.create(args);
-      const token = signToken(post);
+    removeEmployee: async (parent, { Id, companyId }) => {
+      const updateUserArr = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $pull: { userArr: Id } },
+        { new: true }
+      );
 
-      return { token, post };
+      return updateUserArr;
     },
 
-    addRole: async (parent, args) => {
-      const role = await Role.create(args);
-      // const token = signToken(role);
+    addPost: async (parent, { postToSave }) => {
+      const post = await Post.create(postToSave);
 
-      return role;
+      console.log(true, postToSave, post);
+      const updatePostArr = await Company.findOneAndUpdate(
+        { _id: postToSave.companyId },
+        { $addToSet: { postsArr: post } },
+        { new: true }
+      ).populate('postsArr');
+
+      return { updatePostArr, post };
+    },
+
+    removePost: async (parent, { Id, companyId }) => {
+      const updatedPosts = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $pull: { postsArr: Id } },
+        { new: true }
+      );
+
+      return updatedPosts;
+    },
+
+    addRole: async (parent, { roleToSave }) => {
+      const role = await Role.create(roleToSave);
+
+      const updatedRoleArr = await Company.findOneAndUpdate(
+        { _id: roleToSave.companyId },
+        { $addToSet: { rolesArr: role } },
+        { new: true }
+      ).populate('rolesArr');
+
+      return { updatedRoleArr };
+    },
+
+    removeRole: async (parent, { Id, companyId }) => {
+      const updatedRoles = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $pull: { rolesArr: Id } },
+        { new: true }
+      );
+
+      return updatedRoles;
     },
 
     addTag: async (parent, args) => {

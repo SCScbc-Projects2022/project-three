@@ -42,6 +42,12 @@ const companySchema = new Schema(
         ref: 'Location',
       },
     ],
+    rolesArr: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Role',
+      },
+    ],
   },
   {
     toJSON: {
