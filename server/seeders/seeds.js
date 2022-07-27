@@ -123,6 +123,15 @@ db.once('open', async () => {
     )
   }
 
+  // add company to role
+  for (i = 0; i < roles.length; i++) {
+    await Role.findByIdAndUpdate(
+      {_id: roles[i]._id},
+      {$addToSet: {companyId: companies[0]._id}},
+      {new: true}
+    )
+  }
+
   console.log('\n DATABASE SEEDED');
   process.exit(0);
 });
