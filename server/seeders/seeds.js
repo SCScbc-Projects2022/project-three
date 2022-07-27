@@ -1,86 +1,168 @@
 const UserData = require('./user-seeds.json');
-const TagData = require('./tag-seeds.json');
 const RoleData = require('./roles-seeds.json');
 const PostData = require('./post-seeds.json');
 const LocationData = require('./location-seeds.json');
 const CompanyData = require('./company-seeds.json');
 const mongoose = require('mongoose');
 const { Company, Location, Post, Role, Tag, User } = require('../models');
+
 const db = require('../config/connection');
+
 db.once('open', async () => {
+
   // clean database
   await Post.deleteMany({});
   await Location.deleteMany({});
   await User.deleteMany({});
   await Company.deleteMany({});
   await Role.deleteMany({});
-  await Tag.deleteMany({});
+  
   //bulk create each model
-  const tags = await Tag.insertMany(TagData);
-  const role = await Role.insertMany(RoleData);
+  const tags = ["urgent", "picking up shift", "double pay", "advanced skills needed"];
+  const roles = await Role.insertMany(RoleData);
+  const posts = await Post.insertMany(PostData);
   const users = await User.insertMany(UserData);
   const companies = await Company.insertMany(CompanyData);
   const locations = await Location.insertMany(LocationData);
 
-  // Added to each location the company id and users mapping through the results from the original inserts
-  const locationsStores = locations.map(async (location) => {
-    //I looked inside the companies array for the one that matched the current location in the loop that had the same storename inside the address object
-    const company = companies.find(
-      (company) => company.name == location.address.storeName
-    );
-    // I looked inside the user array for the one that matched the current location in the loop that had the same locationname inside the address object
-    //and the company name from the previous method that matched the store on the user
-    const locationUsers = users.filter(
-      (user) =>
-        user.location == location.address.locationName &&
-        user.store == company.name
-    );
-    //mapped through the results from above to get only the _id generated on mongodb
-    const locationUsersIds = locationUsers.map((user) => user._id);
-    //[12adasd1123,ewd3214ed32d3d,eded3er32dedd,d32ed32d32da,]
+  function RNG3() {
+    return Math.floor(Math.random() * 3);
+  }
 
-    //using the formatted and arranged data from above we finally send the update to the current location
-    const updateStore = await Location.updateOne(
-      { _id: location._id },
-      { $push: { companyId: [company._id], employees: locationUsersIds } },
-      { new: true }
-    );
-    return updateStore;
-  });
-  //we use a promise so each update goes through before continuing the code
-  const insertLocations = await Promise.all(locationsStores);
+  function RNG6() {
+    return Math.floor(Math.random() * 6);
+  }
 
-  //add locations to this post from the original results
-  const posts = await Post.insertMany([
-    ...PostData.map((post) => ({
-      ...post,
-      locationArr: locations.map((location) => location._id),
-    })),
-  ]);
+  // add locations to company
+  for (i = 0; i < locations.length; i++) {
+    await Company.findByIdAndUpdate(
+      {_id: companies[0]._id},
+      {$addToSet: {locationArr: locations[i]._id}},
+      {new: true}
+    )
+  }
 
-  // add the postArr and locationsArr to the companies we created
-  const companyArrays = companies.map(async (company) => {
-    //looked for the locations that match the company store name anddress
-    const locations = await Location.find({
-      'address.storeName': { $in: [company.name] },
-    });
+  // add users to company
+  for (i = 0; i < users.length; i++) {
+    await Company.findByIdAndUpdate(
+      {_id: companies[0]._id},
+      {$addToSet: {userArr: users[i]._id}},
+      {new: true}
+    )
+  }
 
-    //from those locations mapped the ids
-    const locationsIds = locations.map((location) => location._id);
-    //looked for the posts that matched the locations ids on the locationArr
-    const posts = await Post.find({ locationArr: { $in: locationsIds } });
-    //from those posts I mapped the posts ids
-    const postsIds = posts.map((post) => post._id);
+  // add posts to company
+  for (i = 0; i < posts.length; i++) {
+    await Company.findByIdAndUpdate(
+      {_id: companies[0]._id},
+      {$addToSet: {postsArr: posts[i]._id}},
+      {new: true}
+    )
+  }
 
-    //and I updated the company with both arrays
-    return (updateStore = await Company.updateOne(
-      { _id: company._id },
-      { $push: { postsArr: postsIds, locationArr: locationsIds } },
-      { new: true }
-    ));
-  });
-  const insertCompanyArrays = await Promise.all(companyArrays);
-  console.log(insertCompanyArrays);
+  // add roles to company
+  for (i = 0; i < roles.length; i++) {
+    await Company.findByIdAndUpdate(
+      {_id: companies[0]._id},
+      {$addToSet: {rolesArr: roles[i]._id}},
+      {new: true}
+    )
+  }
+
+  // add employees to locations
+  const employeeDist = {
+    0: [0, 1, 2],
+    1: [3, 4, 5],
+    2: [6, 7, 8],
+    3: [9, 10, 11],
+    4: [12, 13, 14],
+    5: [15, 16, 17],
+  }
+
+  for (i = 0; i < locations.length; i++) {
+    await Location.findByIdAndUpdate(
+      {_id: locations[i]._id},
+      {$addToSet: {employees: {$each: [users[employeeDist[i][0]]._id, users[employeeDist[i][1]]._id, users[employeeDist[i][2]]._id]}}},
+      {new: true}
+    )
+  }
+
+  // add location to post
+  for (i = 0; i < posts.length; i++) {
+    await Post.findByIdAndUpdate(
+      {_id: posts[i]._id},
+      {$addToSet: {locationArr: locations[RNG6()]._id}},
+      {new: true}
+    )
+  }
+
+  // add role to post
+  for (i = 0; i < posts.length; i++) {
+    await Post.findByIdAndUpdate(
+      {_id: posts[i]._id},
+      {$addToSet: {role: roles[RNG6()].title}},
+      {new: true}
+    )
+  }
+
+  // add tags to post
+  for (i = 0; i < posts.length; i++) {
+    await Post.findByIdAndUpdate(
+      {_id: posts[i]._id},
+      {$addToSet: {tags: tags[RNG3()]}},
+      {new: true}
+    )
+  }
+
+  // add company to role
+  for (i = 0; i < roles.length; i++) {
+    await Role.findByIdAndUpdate(
+      {_id: roles[i]._id},
+      {$addToSet: {companyId: companies[0]._id}},
+      {new: true}
+    )
+  }
+
+  // add location to user
+ let place = 0;
+
+  for (i = 0; i < users.length; i++) {
+    switch (i) {
+      case 0 || 1 || 2:
+        place = 0;
+        break;
+      case 3 || 4 || 5:
+        place = 1;
+        break;
+      case 6 || 7 || 8:
+        place = 2;
+        break;
+      case 9 || 10 || 11:
+        place = 3;
+        break;
+      case 12 || 13 || 14:
+        place = 4;
+        break;
+      case 15 || 16 || 17:
+        place = 5;
+        break;
+    }
+    await User.findByIdAndUpdate(
+      {_id: users[i]._id},
+      {$addToSet: {location: locations[place]._id}},
+      {new: true}
+    )
+  }
+
+  // add role to user
+  for (i = 0; i < users.length; i++) {
+    await User.findByIdAndUpdate(
+      {_id: users[i]._id},
+      {$addToSet: {role: roles[RNG6()].title}},
+      {new: true}
+    )
+  }
+
   console.log('\n DATABASE SEEDED');
   process.exit(0);
 });

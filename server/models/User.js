@@ -22,17 +22,19 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    location: {
-      type: String,
-      required: true,
-    },
     email: {
       type: String,
       match: [/.+@.+\..+/, 'Must use a valid email address'],
     },
     phone: {
-      type: Number,
+      type: String,
     },
+    location: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Company',
+      }
+    ],
     role: [
       {
         type: Schema.Types.String,
@@ -40,7 +42,6 @@ const userSchema = new Schema(
       },
     ],
   },
-  // set this to use virtual below
   {
     toJSON: {
       virtuals: true,
