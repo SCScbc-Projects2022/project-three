@@ -149,7 +149,7 @@ db.once('open', async () => {
     }
     await User.findByIdAndUpdate(
       {_id: users[i]._id},
-      {$addToSet: {location: locations[place]._id}},
+      {$addToSet: {location: locations[place].intersection}},
       {new: true}
     )
   }

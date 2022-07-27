@@ -19,7 +19,7 @@ const Navigation = ({ setActivePage, activePage }) => {
 
   return (
     <nav className="navbar sticky-top d-flex">
-      <div className="container-fluid d-flex justify-content-between">
+      <div className="container-fluid" id="navbar">
         <a className={`${activePage.Home ? 'active' : ''}`}
           href="#Home"
           name="Home"
@@ -32,9 +32,9 @@ const Navigation = ({ setActivePage, activePage }) => {
             id="logo"
           />
         </a>
-        <div className='d-flex flex-wrap align-items-center'>
+        <div className='d-flex flex-wrap align-items-center justify-content-center'>
           {Auth.loggedIn() ? (
-            <ul className="mb-2 mb-lg-0 d-flex justify-content-end align-items-center">
+            <ul className="mb-2 mb-lg-0 d-flex align-items-center">
               <li className="mx-3 nav-item">
                 <a
                   className={`nav-link navItem ${
@@ -68,7 +68,7 @@ const Navigation = ({ setActivePage, activePage }) => {
               </li>
             </ul>
           ) : (
-            <ul className="mb-2 mb-lg-0 d-flex justify-content-end align-items-center">
+            <ul className="mb-2 mb-lg-0 d-flex align-items-center">
               <li className="mx-3 nav-item">
                 <a
                   className={`nav-link navItem ${
