@@ -51,7 +51,7 @@ const typeDefs = gql`
     _id: ID
     shiftTime: ShiftTime
     additionalInfo: String
-    location: [Location]
+    locationArr: [Location]
     role: Role
     tags: [Tag]
   }

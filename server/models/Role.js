@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const roleSchema = new Schema(
   {
-    role: {
+    title: {
       type: String,
       required: true,
     },

@@ -41,7 +41,7 @@ export const GET_COMPANY = gql`
           date
         }
         additionalInfo
-        location {
+        locationArr {
           _id
           intersection
           employees {
@@ -80,7 +80,7 @@ export const GET_COMPANIES = gql`
           date
         }
         additionalInfo
-        location {
+        locationArr {
           _id
           intersection
           employees {
@@ -144,7 +144,7 @@ export const GET_POSTS = gql`
         date
       }
       additionalInfo
-      location {
+      locationArr {
         address {
           locationName
           number

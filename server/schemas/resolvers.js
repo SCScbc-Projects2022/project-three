@@ -19,6 +19,7 @@ const resolvers = {
         .select('-__v -password')
         .populate('postsArr')
         .populate('userArr')
+        .populate('rolesArr')
         .populate('locationArr');
     },
     company: async (parent, { _id }) => {
@@ -26,11 +27,13 @@ const resolvers = {
         .select('-__v -password')
         .populate('postsArr')
         .populate('userArr')
+        .populate('rolesArr')
         .populate('locationArr');
     },
     locations: async (parent, { companyId }) => {
       return Location.find({ companyId })
         .populate('companyId')
+        .populate('address')
         .populate('employees');
     },
     location: async (parent, { _id }) => {
@@ -40,7 +43,7 @@ const resolvers = {
     },
 
     posts: async (parent) => {
-      return Post.find();
+      return Post.find().populate('locationArr');
     },
     post: async (parent, { _id }) => {
       return Post.findOne({ _id });

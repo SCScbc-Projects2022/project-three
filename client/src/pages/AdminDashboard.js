@@ -139,7 +139,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
             </div>
             <div style={{ height: '25px' }}></div>
             <div>
-              <h2>Roles</h2>
+              <h2>Active Roles</h2>
               <button
                 onClick={(e) => {
                   handlePage(e);
@@ -168,7 +168,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                         >
                           X
                         </button>
-                        Role 1 - Role Id: {role._id}
+                        Title - {role.title}
                       </li>
                     );
                   })
