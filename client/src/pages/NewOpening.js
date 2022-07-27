@@ -1,6 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Slider from '@mui/material/Slider';
+
+import { useMutation } from '@apollo/client';
+import { ADD_POST } from '../utils/mutations';
+
+import Auth from '../utils/auth';
 
 const NewOpening = () => {
+  const [formState, setFormState] = useState({
+    shiftTime: { date: '', hour: '' },
+    additionalInfo: '',
+    role: '',
+    tags: 'this tag',
+    location: {
+      intersection: '',
+      address: {
+        locationName: 'test location',
+        number: 33,
+        street: 'this tsteet',
+        city: 'brampton',
+        country: 'canada',
+        postalCode: '3esds',
+      },
+      companyId: '62defba37f343926565282c1',
+    },
+  });
+
+  const [value, setValue] = useState([0, 24]);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    let tempValue = [0, 0];
+    tempValue[0] += value[0];
+    tempValue[1] += value[1];
+  };
+
+  function valueLabelFormat(value) {
+    return `${value}:00`;
+  }
+
+  const [addPost, { error }] = useMutation(ADD_POST);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let hour = `${value[0]}:00-${value[1]}:00`;
+
+    setFormState(
+      ((formState.location.intersection += e.target.location.value),
+      (formState.role += e.target.role.value),
+      (formState.shiftTime.hour += hour),
+      (formState.shiftTime.date += e.target.date.value))
+    );
+
+    try {
+      const { data } = await addPost({
+        variables: { ...formState },
+      });
+      Auth.login(data.addPost.token);
+    } catch (e) {
+      console.error(e);
+      // Clear form state
+      setFormState({
+        shiftTime: { date: '', hour: '' },
+        additionalInfo: '',
+        role: '',
+        tags: 'this tag',
+        location: {
+          intersection: '',
+          address: {
+            locationName: 'test location',
+            number: 33,
+            street: 'this tsteet',
+            city: 'brampton',
+            country: 'canada',
+            postalCode: '3esds',
+          },
+          companyId: '62defba37f343926565282c1',
+        },
+      });
+    }
+  };
+
   return (
     <>
       <div className="container-fluid mt-4">
@@ -11,110 +93,59 @@ const NewOpening = () => {
       </div>
 
       <div style={{ height: '100px' }}></div>
-      <div className="container">
+      <form onSubmit={(e) => handleSubmit(e)} className="container">
         <div className="row">
           <div className="col-1"></div>
           <div className="col-10">
             <div>
               <h4>Role and Location</h4>
-              <div className="form-floating mt-2">
-                <select
-                  className="form-select mt-2"
-                  id="floatingSelect"
-                  aria-label="Floating label select example"
-                />
-                <option selected>Server</option>
-                <option value="1">Kitchen Staff</option>
-                <option value="2">Bartender</option>
-                <option value="3">Host</option>
+              <div className="col-md-4">
+                <select name="role" id="inputState" className="form-select">
+                  <option selected>Choose Role</option>
+                  <option>Server</option>
+                  <option>Kitchen</option>
+                  <option>Bartender</option>
+                  <option>Host</option>
+                </select>
+                <select name="location" id="inputState" className="form-select">
+                  <option selected>Choose Location</option>
+                  <option>Jarvis and Front</option>
+                  <option>Younge and Bloor</option>
+                  <option>Dundas and Ossington</option>
+                </select>
               </div>
-              <label for="floatingSelect">Select Role</label>
             </div>
-            <div className="form-check form-check-inline mt-3">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox1"
-                value="option1"
-              />
-              <label className="form-check-label" for="inlineCheckbox1">
-                Jarvis and Front
-              </label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox2"
-                value="option2"
-              />
-              <label className="form-check-label" for="inlineCheckbox2">
-                Yonge and Bloor
-              </label>
-            </div>
-            <div className="form-check form-check-inline">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox2"
-                value="option2"
-              />
-              <label className="form-check-label" for="inlineCheckbox2">
-                Dudas and Ossington
-              </label>
-            </div>
-
             <div style={{ height: '25px' }}></div>
             <div>
               <h4>Date</h4>
-
               <input
                 type="date"
                 id="start"
-                name="work-date"
-                value="2022-07-21"
+                name="date"
                 min="2022-01-01"
                 max="2025-12-31"
               />
             </div>
-
             <div style={{ height: '25px' }}></div>
             <h4>Time</h4>
-            <div className="mt-3">
-              <div className="mt-2">
-                <label for="customRange2" className="form-label">
-                  Start
-                </label>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="12am"
-                  max="12pm"
-                  id="customRange2"
-                />
-              </div>
-              <div className="mt-2">
-                <label for="customRange2" className="form-label">
-                  Finish
-                </label>
-                <input
-                  type="range"
-                  className="form-range"
-                  min="12am"
-                  max="12pm"
-                  id="customRange2"
-                />
-              </div>
-            </div>
+            <Box className="ml-4" sx={{ width: 250 }}>
+              <Slider
+                valueLabelFormat={valueLabelFormat}
+                value={value}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                max={24}
+              />
+            </Box>
             <div>
-              <button type="button" className="btn btn-outline-primary mt-4">
+              <button type="submit" className="btn btn-outline-primary mt-4">
                 Submit
               </button>
             </div>
           </div>
           <div className="col-1"></div>
         </div>
-      </div>
+      </form>
     </>
   );
 };

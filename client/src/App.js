@@ -10,7 +10,6 @@ import AddEmployee from './pages/AddEmployee';
 import AddLocation from './pages/AddLocation';
 import AddRole from './pages/AddRole';
 import AdminDashboard from './pages/AdminDashboard';
-import CompanyProfile from './pages/CompanyProfile';
 import EmployeeDashboard from './pages/EmployeeDashboard';
 import Login from './pages/Login';
 import NewOpening from './pages/NewOpening';
@@ -56,7 +55,6 @@ function App() {
     AddLocation: false,
     AddRole: false,
     AdminDashboard: false,
-    CompanyProfile: false,
     EmployeeDashboard: false,
     NewOpening: false,
     Payment: false,
@@ -67,12 +65,24 @@ function App() {
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
   let loggedIn = localStorage.getItem('id_token') == null ? false : true;
 
+  const getCompany = () => {
+    let data = Auth.getProfile();
+    return data.data._id;
+  };
+
+  if (loggedIn) {
+    getCompany();
+  }
+
   return (
     <ApolloProvider client={client}>
       <main>
         <Navigation activePage={activePage} setActivePage={setActivePage} />
+<<<<<<< HEAD
         {/* <AdminDashboard /> */}
         {/* <AddEmployee /> */}
+=======
+>>>>>>> 1dd8102f3f46035ba1f299e1163424ab00e70def
         <section id="main-wrapper">
           {activePage.Home ? (
             <Home
@@ -81,15 +91,17 @@ function App() {
               setActivePage={setActivePage}
             />
           ) : activePage.AddEmployee ? (
-            <AddEmployee />
+            <AddEmployee companyId={getCompany()} />
           ) : activePage.AddLocation ? (
             <AddLocation />
           ) : activePage.AddRole ? (
             <AddRole />
           ) : activePage.AdminDashboard ? (
-            <AdminDashboard />
-          ) : activePage.CompanyProfile ? (
-            <CompanyProfile />
+            <AdminDashboard
+              companyId={getCompany()}
+              activePage={activePage}
+              setActivePage={setActivePage}
+            />
           ) : activePage.EmployeeDashboard ? (
             <EmployeeDashboard />
           ) : activePage.Login ? (

@@ -2,45 +2,23 @@ import { gql } from '@apollo/client';
 
 // Company and User Model would both require the same parameters for logging in
 export const LOGIN_ADMIN = gql`
-  mutation loginAdmin($email: String!, $password: String!) {
-    loginAdmin(email: $email, password: $password) {
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       token
+      company {
+        _id
+        email
+        username
+      }
     }
   }
 `;
 
-// -
 export const ADD_EMPLOYEE = gql`
-  mutation addEmployee(
-    $firstName: String!
-    $lastName: String!
-    $username: String!
-    $password: String!
-    $location: String!
-    $email: String!
-    $phone: Int!
-    $role: roleInput!
-  ) {
-    addEmployee(
-      firstName: $firstName
-      lastName: $lastName
-      username: $username
-      password: $password
-      location: $location
-      email: $email
-      phone: $phone
-      role: $role
-    ) {
-      _id
+  mutation addEmployee($employeeToSave: userInput) {
+    addEmployee(employeeToSave: $employeeToSave) {
       firstName
       lastName
-      username
-      location
-      email
-      phone
-      role {
-        title
-      }
     }
   }
 `;
@@ -50,6 +28,11 @@ export const ADD_COMPANY = gql`
     $name: String!
     $username: String!
     $email: String!
+    $address: String!
+    $address2: String
+    $city: String!
+    $province: String!
+    $postalCode: String!
     $password: String!
     $postsArr: postInput
     $userArr: userInput
@@ -59,19 +42,29 @@ export const ADD_COMPANY = gql`
       name: $name
       username: $username
       email: $email
+      address: $address
+      address2: $address2
+      city: $city
+      province: $province
+      postalCode: $postalCode
       password: $password
       postsArr: $postsArr
       userArr: $userArr
       locationArr: $locationArr
     ) {
       token
+      company {
+        _id
+        email
+        username
+      }
     }
   }
 `;
 
 export const ADD_POST = gql`
   mutation addPost(
-    $shiftTime: shiftInput
+    $shiftTime: shiftTimeInput
     $additionalInfo: String
     $location: locationInput
     $role: String!
@@ -84,19 +77,9 @@ export const ADD_POST = gql`
       role: $role
       tags: $tags
     ) {
-      token
-      post {
-        _id
-        shiftTime
-        additionalInfo
-        location {
-          intersection
-          address
-          companyId
-          employees
-        }
-        role
-        tags
+      _id
+      shiftTime {
+        date
       }
     }
   }
@@ -105,7 +88,10 @@ export const ADD_POST = gql`
 export const ADD_ROLE = gql`
   mutation addRole($title: String!, $companyId: ID!) {
     addRole(title: $title, companyId: $companyId) {
-      companyId
+      _id
+      companyId {
+        _id
+      }
       title
     }
   }
@@ -114,8 +100,11 @@ export const ADD_ROLE = gql`
 export const ADD_TAG = gql`
   mutation addTag($title: String!, $companyId: ID!) {
     addTag(title: $title, companyId: $companyId) {
+      _id
       title
-      companyId
+      companyId {
+        _id
+      }
     }
   }
 `;
@@ -134,23 +123,22 @@ export const ADD_LOCATION = gql`
       companyId: $companyId
       employees: $employees
     ) {
-        _id
-        intersection
-        address {
-          street
-          city
-        }
-        employees {
-          firstName
-          lastName
-          username
-          location
-          email
-          phone
-          role {
-            title
-            companyId
-          }
+      _id
+      intersection
+      address {
+        street
+        city
+      }
+      employees {
+        firstName
+        lastName
+        username
+        location
+        email
+        phone
+        role {
+          title
+          companyId
         }
       }
     }

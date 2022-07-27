@@ -70,7 +70,7 @@ const resolvers = {
 
   //login, addEmployee, addCompany, addPost, addRole, addTag, addLocation
   Mutation: {
-    loginAdmin: async (parent, { email, password }) => {
+    login: async (parent, { email, password }) => {
       const companyLogin = await Company.findOne({ email });
 
       if (!companyLogin) {
@@ -89,37 +89,45 @@ const resolvers = {
 
     addCompany: async (parent, args) => {
       const company = await Company.create(args);
-      // const token = signToken(company);
+      const token = signToken(company);
 
-      return { company };
+      return { token, company };
     },
 
-    addEmployee: async (parent, args) => {
-      const employee = await User.create(args);
+    addEmployee: async (parent, { employeeToSave, companyId }) => {
+      // Try first to create the User model
+      // const employee = await User.create(employeeToSave);
       // const token = signToken(employee);
 
-      return { employee };
+      // Then find the company and add the user _id  (i.e. (userArr: employee._id))
+      const updateUserArr = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $addToSet: { userArr: employeeToSave } },
+        { new: true }
+      ).populate('userArr');
+
+      return { updateUserArr };
     },
 
     addPost: async (parent, args) => {
       const post = await Post.create(args);
-      // const token = signToken(post);
+      const token = signToken(post);
 
-      return { post };
+      return { token, post };
     },
 
     addRole: async (parent, args) => {
       const role = await Role.create(args);
       // const token = signToken(role);
 
-      return { role };
+      return role;
     },
 
     addTag: async (parent, args) => {
       const tag = await Tag.create(args);
       // const token = signToken(tag);
 
-      return { tag };
+      return tag;
     },
 
     addLocation: async (parent, args) => {

@@ -8,49 +8,108 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   const handlePage = (e) => {
-    if (e.target.innerText == 'Locum') {
+    if (e.target.name == '') {
       setActivePage({ Home: true });
       document.title = `Proj3 - Home`;
     } else {
-      setActivePage({ [e.target.innerText]: true });
+      setActivePage({ [e.target.name]: true });
       document.title = `Proj3 - ${e.target.innerText}`;
     }
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-light sticky-top">
+    <nav className="navbar navbar-expand-lg sticky-top">
       <div className="container-fluid">
         <a
-          className={`navbar-brand navItem ${activePage.Home ? 'active' : ''}`}
+          className={`navbar-brand ${activePage.Home ? 'active' : ''}`}
           href="#Home"
+          name="Home"
           onClick={(e) => handlePage(e)}
         >
-         <img src={require('../assets/img/logos/Locum-logos.jpeg')}/>
-          </a>
+          <img
+            width="10%"
+            height="auto"
+            src={require('../assets/img/logos/Locum-logos_transparent.png')}
+            alt="logo"
+          />
+        </a>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler bg-white"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarText"
-          aria-controls="navbarText"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarText">
+        <div className="collapse navbar-collapse" id="navbarNav">
           {Auth.loggedIn() ? (
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a
                   className={`nav-link navItem ${
-                    activePage.Dashboard ? 'active' : ''
+                    activePage.NewOpening ? 'active' : ''
                   }`}
+                  name="NewOpening"
                   aria-current="page"
-                  href="#Dashboard"
+                  href="#NewOpening"
                   onClick={(e) => handlePage(e)}
                 >
-                  Dashboard
+                  New openings
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={`nav-link navItem ${
+                    activePage.AdminDashboard ? 'active' : ''
+                  }`}
+                  name="AdminDashboard"
+                  aria-current="page"
+                  href="#AdminDashboard"
+                  onClick={(e) => handlePage(e)}
+                >
+                  Company Dashboard
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={`nav-link navItem ${
+                    activePage.AddLocation ? 'active' : ''
+                  }`}
+                  name="AddLocation"
+                  aria-current="page"
+                  href="#AddLocation"
+                  onClick={(e) => handlePage(e)}
+                >
+                  Add Location
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={`nav-link navItem ${
+                    activePage.AddRole ? 'active' : ''
+                  }`}
+                  name="AddRole"
+                  aria-current="page"
+                  href="#AddRole"
+                  onClick={(e) => handlePage(e)}
+                >
+                  Add Role
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={`nav-link navItem ${
+                    activePage.Payment ? 'active' : ''
+                  }`}
+                  name="Payment"
+                  aria-current="page"
+                  href="#Payment"
+                  onClick={(e) => handlePage(e)}
+                >
+                  Payment
                 </a>
               </li>
               <li>
@@ -60,12 +119,13 @@ const Navigation = ({ setActivePage, activePage }) => {
               </li>
             </ul>
           ) : (
-            <ul>
-              <li>
+            <ul className="d-flex">
+              <li className="me-2">
                 <a
                   className={`nav-link navItem ${
                     activePage.Login ? 'active' : ''
                   }`}
+                  name="Login"
                   aria-current="page"
                   href="#Login"
                   onClick={(e) => handlePage(e)}
@@ -79,16 +139,19 @@ const Navigation = ({ setActivePage, activePage }) => {
                     activePage.Signup ? 'active' : ''
                   }`}
                   aria-current="page"
+                  name="Signup"
                   href="#Signup"
                   onClick={(e) => handlePage(e)}
                 >
-                  Signup
+                  Sign up
                 </a>
               </li>
             </ul>
           )}
         </div>
-        <span className="navbar-text"> Staffing. Revolutionized.</span>
+        <div>
+          <h6 className="navbar-text text-white"> Staffing. Revolutionized.</h6>
+        </div>
       </div>
     </nav>
   );

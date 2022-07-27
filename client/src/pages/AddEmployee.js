@@ -1,13 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { useQuery } from '@apollo/client';
-import { GET_ALL_USERS } from '../utils/queries';
+import { useMutation } from '@apollo/client';
+import { ADD_EMPLOYEE } from '../utils/mutations';
 
-const AddEmployee = () => {
-  // Returns all Employees
-  const { loading, data } = useQuery(GET_ALL_USERS, {});
-  const allUsers = data?.allUsers || [];
-  console.log(allUsers);
+import Auth from '../utils/auth';
+
+const AddEmployee = ({ companyId }) => {
+  const [employeeToSave, setEmployeeToSave] = useState({
+    firstName: '',
+    lastName: '',
+    username: '',
+    password: '',
+    location: '',
+    email: '',
+    phone: 0,
+    role: '',
+  });
+
+  const [addEmployee, { error }] = useMutation(ADD_EMPLOYEE);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // build password and username based on first and last name of employee
+    let passAndUser = e.target.firstName.value + e.target.lastName.value;
+    let phone = parseInt(e.target.phone.value);
+
+    setEmployeeToSave(
+      ((employeeToSave.firstName += e.target.firstName.value),
+      (employeeToSave.lastName += e.target.lastName.value),
+      (employeeToSave.username += passAndUser),
+      (employeeToSave.password += passAndUser),
+      (employeeToSave.location += e.target.location.value)),
+      (employeeToSave.email += e.target.email.value),
+      (employeeToSave.phone = phone),
+      (employeeToSave.role += e.target.role.value)
+    );
+
+    try {
+      console.log(employeeToSave);
+
+      await addEmployee({
+        variables: { ...employeeToSave, companyId },
+      });
+      // Auth.login(data.addEmployee.token);
+    } catch (e) {
+      console.error(e);
+      // Clear Form state
+      setEmployeeToSave({
+        firstName: '',
+        lastName: '',
+        username: '',
+        password: '',
+        location: '',
+        email: '',
+        phone: '',
+        role: '',
+      });
+    }
+  };
 
   return (
     <>
@@ -23,66 +74,85 @@ const AddEmployee = () => {
       <div className="container">
         <div className="row">
           <div className="col-1"></div>
-          <div className="col-10">
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+            className="col-10"
+          >
             <div>
-              <div className="form-floating mb-3">
+              <div className="form-floating mb-2">
                 <input
-                  type="email"
+                  name="firstName"
+                  type="text"
                   className="form-control"
                   id="floatingInput"
-                  placeholder="name@example.com"
-                  value="Last, First"
                 />
-                <label for="floatingInput">Name</label>
+                <label for="floatingInput">First Name</label>
+              </div>
+              <div className="form-floating mb-2">
+                <input
+                  name="lastName"
+                  type="text"
+                  className="form-control"
+                  id="floatingInput"
+                />
+                <label for="floatingInput">Last Name</label>
               </div>
               <div>
-                <form className="form-floating">
+                <div className="form-floating mb-2">
                   <input
+                    name="email"
                     type="email"
                     className="form-control"
                     id="floatingInputValue"
-                    placeholder="name@example.com"
-                    value="test@jacastors.com"
                   />
                   <label for="floatingInputValue">Contact email</label>
-                </form>
+                </div>
               </div>
               <div>
-                <form className="form-floating mt-2">
+                <div className="form-floating">
                   <input
-                    type="password"
+                    name="phone"
+                    type="number"
                     className="form-control"
-                    id=""
-                    placeholder="12345"
-                    value="2343"
+                    id="floatingInputValue"
                   />
-                  <label for="floatingInputValue">Create a Password</label>
-                </form>
+                  <label for="floatingInputValue">Contact number</label>
+                </div>
               </div>
               <div className="form-floating mt-2">
                 <select
+                  name="role"
                   className="form-select"
                   id="floatingSelect"
                   aria-label="Floating label select example"
                 >
-                  <option selected>Server</option>
-                  <option value="1">Kitchen Staff</option>
-                  <option value="2">Bartender</option>
-                  <option value="3">Host</option>
+                  <option value="Server" selected>
+                    Server
+                  </option>
+                  <option value="Kitchen Staff">Kitchen Staff</option>
+                  <option value="Bartender">Bartender</option>
+                  <option value="Host">Host</option>
                 </select>
                 <label for="floatingSelect">Select Role</label>
               </div>
             </div>
             <div className="form-floating mt-2">
               <select
+                name="location"
                 className="form-select"
                 id="floatingSelect"
                 aria-label="Floating label select example"
               >
-                <option selected>Downtown Toronto</option>
-                <option value="1">Greater Toronto Area</option>
-                <option value="2">Hamilton</option>
-                <option value="3">Montreal</option>
+                <option value="Downtown Toronto" selected>
+                  Downtown Toronto
+                </option>
+                <option value="Greater Toronto Area">
+                  Greater Toronto Area
+                </option>
+                <option value="Hamilton">Hamilton</option>
+                <option value="Montreal">Montreal</option>
               </select>
               <label for="floatingSelect">Original Location</label>
             </div>
@@ -122,10 +192,11 @@ const AddEmployee = () => {
                 </label>
               </div>
             </div>
-            <button type="button" className="btn btn-outline-primary mt-5">
+            <button type="submit" className="btn btn-outline-primary mt-5">
               Submit
             </button>
-          </div>
+            {error && <div>Failed to add Employee!</div>}
+          </form>
           <div className="col-1"></div>
         </div>
       </div>

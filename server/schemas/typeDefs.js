@@ -51,7 +51,7 @@ const typeDefs = gql`
     shiftTime: ShiftTime
     additionalInfo: String
     location: [Location]
-    role: Role
+    role: [Role]
     tags: [Tag]
   }
 
@@ -76,23 +76,23 @@ const typeDefs = gql`
 
   type Tag {
     _id: ID
-    companyId: String
+    companyId: [Company]
     title: String
   }
 
   type Role {
     _id: ID
-    companyId: String
+    companyId: [Company]
     title: String
   }
 
   input tagInput {
-    companyId: String
+    companyId: ID
     title: String
   }
 
   input roleInput {
-    companyId: String
+    companyId: ID
     title: String
   }
 
@@ -114,21 +114,17 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    loginAdmin(email: String!, password: String!): Auth
-    addEmployee(
-      firstName: String!
-      lastName: String!
-      username: String!
-      password: String!
-      location: String!
-      email: String!
-      phone: Int!
-      role: String!
-    ): User
+    login(email: String!, password: String!): Auth
+    addEmployee(employeeToSave: userInput): User
     addCompany(
       name: String!
       username: String!
       password: String!
+      address: String!
+      address2: String
+      city: String!
+      province: String!
+      postalCode: String!
       email: String!
       postsArr: postInput
       userArr: userInput
@@ -139,7 +135,7 @@ const typeDefs = gql`
       additionalInfo: String
       location: locationInput
       role: String!
-      tags: String!
+      tags: String
     ): Post
     addRole(companyId: ID!, title: String!): Role
     addTag(companyId: ID!, title: String!): Tag
@@ -156,10 +152,11 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     username: String
-    location: String
+    location: [Location]
     email: String
     phone: String
-    role: Role
+    role: [Role]
+    tags: [Tag]
   }
 
   input userInput {
@@ -175,6 +172,7 @@ const typeDefs = gql`
 
   type Auth {
     token: ID!
+    company: Company
     user: User
   }
 `;

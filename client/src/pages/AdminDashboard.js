@@ -1,15 +1,20 @@
-import React from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_COMPANIES, GET_COMPANY } from '../utils/queries';
+import { GET_COMPANIES, GET_COMPANY, GET_ALL_USERS } from '../utils/queries';
 import { GET_POSTS } from '../utils/queries';
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
+  const handlePage = (e) => {
+    console.log(e.target.name);
+    setActivePage({ [e.target.name]: true });
+    document.title = `Proj3 - ${e.target.innerText}`;
+  };
+
   // Returns specific company
-  // const { loading, data } = useQuery(GET_COMPANY, {
-  //   variables: { id: '62defba37f343926565282c2' },
-  // });
-  // const company = data?.company || [];
-  // console.log(company);
+  const { loading, data } = useQuery(GET_COMPANY, {
+    variables: { id: companyId },
+  });
+  const company = data?.company || [];
+  console.log(true, company);
 
   // Returns all companies
   // const { loading, data } = useQuery(GET_COMPANIES);
@@ -17,9 +22,14 @@ const AdminDashboard = () => {
   // console.log(companies);
 
   // Returns all posts
-  const { loading, data } = useQuery(GET_POSTS);
-  const posts = data?.posts || [];
-  console.log(posts);
+  // const { loading, data } = useQuery(GET_POSTS);
+  // const posts = data?.posts || [];
+  // console.log(true, posts);
+
+  // // Returns all Employees
+  // const { loading, data } = useQuery(GET_ALL_USERS, {});
+  // const allUsers = data?.allUsers || [];
+  // console.log(allUsers);
   return (
     <>
       <div className="container-fluid mt-4">
@@ -29,79 +39,76 @@ const AdminDashboard = () => {
           <div className="col-12 d-flex flex-column justify-content-center">
             <div style={{ height: '50px' }}></div>
             <div className="d-flex mt-5 justify-content-center">
-              <a href="../html-sandbox/new-opening.html">
-                <button type="button" className="btn btn-primary btn-lg">
-                  New Opening
-                </button>
-              </a>
+              <button
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                name="NewOpening"
+                type="button"
+                className="btn btn-primary btn-lg"
+              >
+                New openings
+              </button>
             </div>
             <div style={{ height: '100px' }}></div>
             <div>
-              <h2>
-                Employees
-                <a href="../html-sandbox/add-emp.html">
-                  <i className="bi bi-plus-circle ms-3"></i>
-                </a>
-              </h2>
+              <h2>Employees</h2>
+              <button
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                name="AddEmployee"
+                type="button"
+                className="btn btn-primary btn-lg"
+              >
+                Add employee +
+              </button>
               <ol>
-                <li>
-                  Carlos Sabbah<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Ali Momen<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Veronica To<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Anna Liang<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Candice Hall<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Cory Sillaots<i className="bi bi-x-circle ms-2"></i>
-                </li>
+                {/* {allUsers.map((employee, index) => {
+                  return (
+                    <li key={index}>
+                      {employee.firstName} - {employee.lastName} -{' '}
+                      {employee.phone} - {employee.email}
+                      <i className="bi bi-x-circle ms-2"></i>
+                    </li>
+                  );
+                })} */}
               </ol>
             </div>
             <div style={{ height: '100px' }}></div>
             <div>
-              <h2>
-                Roles
-                <a href="../html-sandbox/add-role.html">
-                  {/*<i className="bi bi-plus-circle ms-3"></i>*/}
-                </a>
-              </h2>
+              <h2>Roles</h2>
+              <button
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                name="AddRole"
+                type="button"
+                className="btn btn-primary btn-lg"
+              >
+                Add Role +
+              </button>
               <ol>
-                <li>
-                  Name 1<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Name 1<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Name 1<i className="bi bi-x-circle ms-2"></i>
-                </li>
+                <li>Role 1</li>
+                <li>Role 2</li>
               </ol>
             </div>
             <div style={{ height: '100px' }}></div>
             <div>
-              <h2>
-                Locations
-                <a href="../html-sandbox/add-location.html">
-                  {/*<i className="bi bi-plus-circle ms-3"></i>*/}
-                </a>
-              </h2>
+              <h2>Locations</h2>
+              <button
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                name="AddLocation"
+                type="button"
+                className="btn btn-primary btn-lg"
+              >
+                Add Location +
+              </button>
               <ol>
-                <li>
-                  Name 1<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Name 1<i className="bi bi-x-circle ms-2"></i>
-                </li>
-                <li>
-                  Name 1<i className="bi bi-x-circle ms-2"></i>
-                </li>
+                <li>Company location 1</li>
+                <li>Company location 2 </li>
               </ol>
             </div>
           </div>

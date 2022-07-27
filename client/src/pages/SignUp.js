@@ -1,6 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+import { useMutation } from '@apollo/client';
+import { ADD_COMPANY } from '../utils/mutations';
+
+import Auth from '../utils/auth';
 
 const SignUp = () => {
+  const [addCompany, { error }] = useMutation(ADD_COMPANY);
+
+  const [formState, setFormState] = useState({
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+    address: '',
+    city: '',
+    province: '',
+    postalCode: '',
+  });
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+
+    setFormState(
+      ((formState.name += e.target.name.value),
+      (formState.username += e.target.username.value),
+      (formState.email += e.target.email.value)),
+      (formState.password += e.target.password.value),
+      (formState.address += e.target.address.value),
+      (formState.city += e.target.city.value),
+      (formState.province += e.target.province.value),
+      (formState.postalCode += e.target.postalCode.value)
+    );
+
+    // use try/catch instead of promises to handle errors
+    try {
+      // execute addCompany mutation and pass in variable data from form
+      const { data } = await addCompany({
+        variables: { ...formState },
+      });
+      console.log(data);
+      console.log(`Data added \n\n\n ${JSON.stringify(formState)}`);
+
+      Auth.login(data.addCompany.token);
+    } catch (e) {
+      // Clear state
+      setFormState({
+        name: '',
+        username: '',
+        email: '',
+        password: '',
+        address: '',
+        city: '',
+        province: '',
+        postalCode: '',
+      });
+      console.error(e);
+    }
+  };
+
   return (
     <>
       <div className="">
@@ -18,28 +76,51 @@ const SignUp = () => {
       </div>
 
       <div className="container-fluid mt-4 mb-4">
-        <form className="row g-3">
-          <div className="col-md-6">
-            <label for="inputEmail4" className="form-label">
+        <form
+          onSubmit={(e) => {
+            handleFormSubmit(e);
+          }}
+          className="row g-3"
+        >
+          <div className="col-md-5">
+            <label htmlFor="inputEmail4" className="form-label">
               Email
             </label>
-            <input type="email" className="form-control" id="inputEmail4" />
+            <input
+              name="email"
+              type="email"
+              className="form-control"
+              id="inputEmail4"
+            />
           </div>
-          <div className="col-md-6">
-            <label for="inputPassword4" className="form-label">
+          <div className="col-md-4">
+            <label htmlFor="inputUsername" className="form-label">
+              Username
+            </label>
+            <input
+              name="username"
+              type="text"
+              className="form-control"
+              id="inputUsername"
+            />
+          </div>
+          <div className="col-md-3">
+            <label htmlFor="inputPassword4" className="form-label">
               Password
             </label>
             <input
+              name="password"
               type="password"
               className="form-control"
               id="inputPassword4"
             />
           </div>
           <div className="col-12">
-            <label for="inputCompany" className="form-label">
+            <label htmlFor="inputCompany" className="form-label">
               Company Name
             </label>
             <input
+              name="name"
               type="text"
               className="form-control"
               id="inputCompany"
@@ -47,10 +128,11 @@ const SignUp = () => {
             />
           </div>
           <div className="col-12">
-            <label for="inputAddress" className="form-label">
+            <label htmlFor="inputAddress" className="form-label">
               Address
             </label>
             <input
+              name="address"
               type="text"
               className="form-control"
               id="inputAddress"
@@ -58,10 +140,11 @@ const SignUp = () => {
             />
           </div>
           <div className="col-12">
-            <label for="inputAddress2" className="form-label">
+            <label htmlFor="inputAddress2" className="form-label">
               Address 2
             </label>
             <input
+              name="address2"
               type="text"
               className="form-control"
               id="inputAddress2"
@@ -69,16 +152,21 @@ const SignUp = () => {
             />
           </div>
           <div className="col-md-6">
-            <label for="inputCity" className="form-label">
+            <label htmlFor="inputCity" className="form-label">
               City
             </label>
-            <input type="text" className="form-control" id="inputCity" />
+            <input
+              name="city"
+              type="text"
+              className="form-control"
+              id="inputCity"
+            />
           </div>
           <div className="col-md-4">
-            <label for="inputState" className="form-label">
+            <label htmlFor="inputState" className="form-label">
               Province
             </label>
-            <select id="inputState" className="form-select">
+            <select name="province" id="inputState" className="form-select">
               <option selected>Choose...</option>
               <option>Alberta</option>
               <option>British Columbia</option>
@@ -92,10 +180,15 @@ const SignUp = () => {
             </select>
           </div>
           <div className="col-md-2">
-            <label for="inputZip" className="form-label">
+            <label htmlFor="inputZip" className="form-label">
               Postal Code
             </label>
-            <input type="text" className="form-control" id="inputZip" />
+            <input
+              name="postalCode"
+              type="text"
+              className="form-control"
+              id="inputZip"
+            />
           </div>
           <div className="col-12">
             <div className="form-check">
@@ -104,18 +197,17 @@ const SignUp = () => {
                 type="checkbox"
                 id="gridCheck"
               />
-              <label className="form-check-label" for="gridCheck">
+              <label className="form-check-label" htmlFor="gridCheck">
                 Sign up for promotional emails
               </label>
             </div>
           </div>
           <div className="col-12">
-            <a href="./payment.html">
-              <button type="text" className="btn btn-primary">
-                Sign up
-              </button>
-            </a>
+            <button type="submit" className="btn btn-primary">
+              Sign up
+            </button>
           </div>
+          {error && <div>Signup failed</div>}
         </form>
       </div>
     </>
