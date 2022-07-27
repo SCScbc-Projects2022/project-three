@@ -3,14 +3,14 @@
     {
         "address":{
             "storeName": "Burger King",
-            "locationName":"East Site",
+            "locationName":"West Side",
             "number":23,
             "street":"Maple",
             "postalCode":"L2M4R7",
             "city":"Toronto",
             "country":"Canada"
         },
-        "intersection": "Newland Ave & Acacia Glas"
+        "intersection": "University Ave & Richmond St"
     },
     {
         "address":{
@@ -22,11 +22,11 @@
             "city":"Toronto",
             "country":"Canada"
         },
-        "intersection": "Trinity Villas & Ashwood Downs"
+        "intersection": "Portland & Smith"
     },
     {
         "address":{
-            "storeName":"Popeyes",
+            "storeName":"Burger King",
             "locationName":"West Site",
             "number":2345,
             "street":"Bathurst",
@@ -34,11 +34,11 @@
             "city":"Richmond Hill",
             "country":"Canada"
         },
-        "intersection": "Brooklyn Meadows & 777th Ave"
+        "intersection": "Main St & Kingsway Ave"
     },
     {
         "address":{
-            "storeName":"Popeyes",
+            "storeName":"Burger King",
             "locationName":"East Site",
             "number":8745,
             "street":"Yonge",
@@ -46,11 +46,11 @@
             "city":"Richmond Hill",
             "country":"Canada"
         },
-        "intersection": "Wakefield Crt & Glade Blvd"
+        "intersection": "Beverley St & College St"
     },
     {
         "address":{
-            "storeName":"Dominos",
+            "storeName":"Burger King",
             "locationName":"West Site",
             "number":6048,
             "street":"King",
@@ -58,11 +58,11 @@
             "city":"North York",
             "country":"Canada"
         },
-        "intersection": "Sylvan Leas & Mercer Lane"
+        "intersection": "Oxford St & Bathurst St"
     },
     {
         "address":{
-            "storeName":"Dominos",
+            "storeName":"Burger King",
             "locationName":"East Site",
             "number":3052,
             "street":"Woodlawn",
@@ -70,7 +70,7 @@
             "city":"North York",
             "country":"Canada"
         },
-        "intersection": "Chapel Copse & Kindar Rd"
+        "intersection": "Harbord St & Borden St"
     }
 
 ]
