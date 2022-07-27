@@ -93,7 +93,7 @@ function App() {
           ) : activePage.AddEmployee ? (
             <AddEmployee companyId={getCompany()} />
           ) : activePage.AddLocation ? (
-            <AddLocation />
+            <AddLocation companyId={getCompany()} />
           ) : activePage.AddRole ? (
             <AddRole companyId={getCompany()} />
           ) : activePage.AdminDashboard ? (

@@ -165,18 +165,16 @@ const resolvers = {
       return updatedRoles;
     },
 
-    addTag: async (parent, args) => {
-      const tag = await Tag.create(args);
-      // const token = signToken(tag);
+    addLocation: async (parent, { locationToSave }) => {
+      const location = await Location.create(locationToSave);
 
-      return tag;
-    },
+      const updatedLocation = await Company.findOneAndUpdate(
+        { _id: locationToSave.companyId },
+        { $addToSet: { locationArr: location } },
+        { new: true }
+      ).populate('locationArr');
 
-    addLocation: async (parent, args) => {
-      const location = await Location.create(args);
-      // const token = signToken(tag);
-
-      return { location };
+      return { updatedLocation };
     },
   },
 };

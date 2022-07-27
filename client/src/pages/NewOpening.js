@@ -15,7 +15,6 @@ const NewOpening = ({ companyId }) => {
     location: {
       intersection: '',
       address: {
-        locationName: 'test location',
         number: 33,
         street: 'this tsteet',
         city: 'brampton',
@@ -100,6 +99,7 @@ const NewOpening = ({ companyId }) => {
             <div>
               <h4>Role and Location</h4>
               <div className="col-md-4">
+                <p>Dynamically render the nav items</p>
                 <select name="role" id="inputState" className="form-select">
                   <option selected>Choose Role</option>
                   <option>Server</option>
@@ -107,6 +107,7 @@ const NewOpening = ({ companyId }) => {
                   <option>Bartender</option>
                   <option>Host</option>
                 </select>
+                <p>Dynamically render the nav items</p>
                 <select name="location" id="inputState" className="form-select">
                   <option selected>Choose Location</option>
                   <option>Jarvis and Front</option>
@@ -150,6 +151,7 @@ const NewOpening = ({ companyId }) => {
               <button type="submit" className="btn btn-outline-primary mt-4">
                 Submit
               </button>
+              {error && <div>Add position failed</div>}
             </div>
           </div>
           <div className="col-1"></div>

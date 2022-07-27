@@ -54,6 +54,7 @@ const AddRole = ({ companyId }) => {
             <button type="submit" className="btn btn-outline-primary mt-5">
               Submit
             </button>
+            {error && <div>Add Role failed</div>}
           </form>
           <div className="col-1"></div>
         </div>

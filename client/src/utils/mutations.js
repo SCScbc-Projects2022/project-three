@@ -121,36 +121,9 @@ export const ADD_TAG = gql`
 
 // Need to update the info that address returns (for now leave it as is)
 export const ADD_LOCATION = gql`
-  mutation addLocation(
-    $intersection: String!
-    $address: addressInput!
-    $companyId: ID!
-    $employees: userInput
-  ) {
-    addLocation(
-      intersection: $intersection
-      address: $address
-      companyId: $companyId
-      employees: $employees
-    ) {
+  mutation addLocation($locationToSave: locationInput) {
+    addLocation(locationToSave: $locationToSave) {
       _id
-      intersection
-      address {
-        street
-        city
-      }
-      employees {
-        firstName
-        lastName
-        username
-        location
-        email
-        phone
-        role {
-          title
-          companyId
-        }
-      }
     }
   }
 `;
