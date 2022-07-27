@@ -1,6 +1,11 @@
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_COMPANY } from '../utils/queries';
-import { REMOVE_POST, REMOVE_EMPLOYEE, REMOVE_ROLE } from '../utils/mutations';
+import {
+  REMOVE_POST,
+  REMOVE_EMPLOYEE,
+  REMOVE_ROLE,
+  REMOVE_LOCATION,
+} from '../utils/mutations';
 
 const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   const handlePage = (e) => {
@@ -18,7 +23,8 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
 
   const [removePost, { postError }] = useMutation(REMOVE_POST);
   const [removeEmployee, { userError }] = useMutation(REMOVE_EMPLOYEE);
-  const [removeRole, { roleerror }] = useMutation(REMOVE_ROLE);
+  const [removeRole, { roleError }] = useMutation(REMOVE_ROLE);
+  const [removeLocation, { locationError }] = useMutation(REMOVE_LOCATION);
 
   const deleteData = async (data, Id) => {
     if (data == 'post') {
@@ -43,6 +49,16 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
     if (data == 'role') {
       try {
         await removeRole({
+          variables: { Id, companyId },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    if (data == 'location') {
+      try {
+        await removeLocation({
           variables: { Id, companyId },
         });
       } catch (err) {

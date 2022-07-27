@@ -176,6 +176,16 @@ const resolvers = {
 
       return { updatedLocation };
     },
+
+    removeLocation: async (parent, { Id, companyId }) => {
+      const updatedLocation = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $pull: { locationArr: Id } },
+        { new: true }
+      );
+
+      return updatedLocation;
+    },
   },
 };
 

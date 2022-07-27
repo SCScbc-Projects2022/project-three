@@ -18,6 +18,7 @@ export const GET_COMPANY = gql`
       username
       email
       locationArr {
+        _id
         intersection
         address {
           city

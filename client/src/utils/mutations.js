@@ -127,3 +127,11 @@ export const ADD_LOCATION = gql`
     }
   }
 `;
+
+export const REMOVE_LOCATION = gql`
+  mutation removeLocation($Id: String!, $companyId: String!) {
+    removeLocation(Id: $Id, companyId: $companyId) {
+      _id
+    }
+  }
+`;
