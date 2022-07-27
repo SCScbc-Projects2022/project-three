@@ -151,6 +151,16 @@ const resolvers = {
       return { updatedRoleArr };
     },
 
+    removeRole: async (parent, { Id, companyId }) => {
+      const updatedRoles = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $pull: { rolesArr: Id } },
+        { new: true }
+      );
+
+      return updatedRoles;
+    },
+
     addTag: async (parent, args) => {
       const tag = await Tag.create(args);
       // const token = signToken(tag);

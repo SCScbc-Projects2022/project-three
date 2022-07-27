@@ -99,6 +99,14 @@ export const ADD_ROLE = gql`
   }
 `;
 
+export const REMOVE_ROLE = gql`
+  mutation removeRole($Id: String!, $companyId: String!) {
+    removeRole(Id: $Id, companyId: $companyId) {
+      title
+    }
+  }
+`;
+
 export const ADD_TAG = gql`
   mutation addTag($title: String!, $companyId: ID!) {
     addTag(title: $title, companyId: $companyId) {
