@@ -44,22 +44,9 @@ const Navigation = ({ setActivePage, activePage }) => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
           {Auth.loggedIn() ? (
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a
-                  className={`nav-link navItem ${
-                    activePage.NewOpening ? 'active' : ''
-                  }`}
-                  name="NewOpening"
-                  aria-current="page"
-                  href="#NewOpening"
-                  onClick={(e) => handlePage(e)}
-                >
-                  New openings
-                </a>
-              </li>
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex list-inline justify-content-end">
               <li className="nav-item">
                 <a
                   className={`nav-link navItem ${
@@ -70,33 +57,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   href="#AdminDashboard"
                   onClick={(e) => handlePage(e)}
                 >
-                  Company Dashboard
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className={`nav-link navItem ${
-                    activePage.AddLocation ? 'active' : ''
-                  }`}
-                  name="AddLocation"
-                  aria-current="page"
-                  href="#AddLocation"
-                  onClick={(e) => handlePage(e)}
-                >
-                  Add Location
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className={`nav-link navItem ${
-                    activePage.AddRole ? 'active' : ''
-                  }`}
-                  name="AddRole"
-                  aria-current="page"
-                  href="#AddRole"
-                  onClick={(e) => handlePage(e)}
-                >
-                  Add Role
+                  Dashboard
                 </a>
               </li>
               <li className="nav-item">
@@ -112,15 +73,15 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Payment
                 </a>
               </li>
-              <li>
-                <a href="/" onClick={logout}>
+              <li className='nav-item'>
+                <a href="/" className='nav-link navItem' onClick={logout}>
                   Logout
                 </a>
               </li>
             </ul>
           ) : (
-            <ul className="d-flex">
-              <li className="me-2">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex list-inline justify-content-end">
+              <li className="me-2 nav-item">
                 <a
                   className={`nav-link navItem ${
                     activePage.Login ? 'active' : ''
@@ -133,7 +94,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Login
                 </a>
               </li>
-              <li>
+              <li className='nav-item'>
                 <a
                   className={`nav-link navItem ${
                     activePage.Signup ? 'active' : ''
@@ -150,7 +111,7 @@ const Navigation = ({ setActivePage, activePage }) => {
           )}
         </div>
         <div>
-          <h6 className="navbar-text text-white"> Staffing. Revolutionized.</h6>
+          <h6 className="navbar-text text-white mx-3"> Staffing. Revolutionized.</h6>
         </div>
       </div>
     </nav>
