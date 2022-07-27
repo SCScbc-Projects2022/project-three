@@ -44,3 +44,7 @@ li {
 color: white;
 display: inline;
 }
+
+#logo {
+  max-width: 8rem;
+}
