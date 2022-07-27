@@ -18,8 +18,8 @@ const Navigation = ({ setActivePage, activePage }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg sticky-top d-flex">
-      <div className="container-fluid d-flex">
+    <nav className="navbar sticky-top d-flex">
+      <div className="container-fluid d-flex justify-content-between">
         <a
           className={`navbar-brand ${activePage.Home ? 'active' : ''}`}
           href="#Home"
@@ -27,14 +27,17 @@ const Navigation = ({ setActivePage, activePage }) => {
           onClick={(e) => handlePage(e)}
         >
           <img
-            width="10%"
+            width="15%"
             height="auto"
             src={require('../assets/img/logos/Locum-logos_transparent.png')}
             alt="logo"
+            className="m-2 d-inline"
           />
         </a>
+        <div className='d-flex flex-wrap align-items-center'>
+          <h6 className="text-white mb-0"> Staffing. Revolutionized.</h6>
           {Auth.loggedIn() ? (
-            <ul className="mb-2 mb-lg-0 d-flex list-inline justify-content-end">
+            <ul className="mb-2 mb-lg-0 d-flex justify-content-end align-items-center">
               <li className="mx-2 nav-item">
                 <a
                   className={`nav-link navItem ${
@@ -68,7 +71,7 @@ const Navigation = ({ setActivePage, activePage }) => {
               </li>
             </ul>
           ) : (
-            <ul className="mb-2 mb-lg-0 d-flex list-inline justify-content-end">
+            <ul className="mb-2 mb-lg-0 d-flex justify-content-end align-items-center">
               <li className="mx-2 nav-item">
                 <a
                   className={`nav-link navItem ${
@@ -98,9 +101,7 @@ const Navigation = ({ setActivePage, activePage }) => {
             </ul>
           )}
         </div>
-        <div>
-          <h6 className="navbar-text text-white mx-3"> Staffing. Revolutionized.</h6>
-        </div>
+      </div>
     </nav>
   );
 };
