@@ -73,6 +73,14 @@ export const ADD_POST = gql`
   }
 `;
 
+export const REMOVE_POST = gql`
+  mutation removePost($Id: String!, $companyId: String!) {
+    removePost(Id: $Id, companyId: $companyId) {
+      additionalInfo
+    }
+  }
+`;
+
 export const ADD_ROLE = gql`
   mutation addRole($title: String!, $companyId: ID!) {
     addRole(title: $title, companyId: $companyId) {

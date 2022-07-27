@@ -1,6 +1,6 @@
-import { useQuery } from '@apollo/client';
-import { GET_COMPANIES, GET_COMPANY, GET_ALL_USERS } from '../utils/queries';
-import { GET_POSTS } from '../utils/queries';
+import { useQuery, useMutation } from '@apollo/client';
+import { GET_COMPANY } from '../utils/queries';
+import { REMOVE_POST } from '../utils/mutations';
 
 const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   const handlePage = (e) => {
@@ -15,6 +15,20 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   });
   const company = data?.company || [];
   console.log(true, company);
+
+  const [removePost, { error }] = useMutation(REMOVE_POST);
+
+  const deleteData = async (data, Id) => {
+    if (data == 'post') {
+      try {
+        await removePost({
+          variables: { Id, companyId },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
 
   return (
     <>
@@ -43,7 +57,15 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                   company.postsArr.map((post, index) => {
                     return (
                       <li key={index}>
-                        <button>X</button>
+                        <button
+                          name="post"
+                          id={post._id}
+                          onClick={(e) =>
+                            deleteData(e.target.name, e.target.id)
+                          }
+                        >
+                          X
+                        </button>
                         Shift Time: {post.shiftTime.hour} - Additional info:{' '}
                         {post.additionalInfo == ''
                           ? 'N/A'

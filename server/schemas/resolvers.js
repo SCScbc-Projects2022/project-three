@@ -120,6 +120,16 @@ const resolvers = {
       return { updatePostArr, post };
     },
 
+    removePost: async (parent, { Id, companyId }) => {
+      const updatedPosts = await Company.findOneAndUpdate(
+        { _id: companyId },
+        { $pull: { postsArr: Id } },
+        { new: true }
+      );
+
+      return updatedPosts;
+    },
+
     addRole: async (parent, args) => {
       const role = await Role.create(args);
       // const token = signToken(role);

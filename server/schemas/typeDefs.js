@@ -132,6 +132,7 @@ const typeDefs = gql`
       locationArr: locationInput
     ): Auth
     addPost(postToSave: postInput): Post
+    removePost(Id: String!, companyId: String!): Post
     addRole(companyId: ID!, title: String!): Role
     addTag(companyId: ID!, title: String!): Tag
     addLocation(
