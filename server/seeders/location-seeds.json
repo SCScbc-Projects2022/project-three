@@ -2,8 +2,6 @@
 
     {
         "address":{
-            "storeName": "Burger King",
-            "locationName":"West Side",
             "number":23,
             "street":"Maple",
             "postalCode":"L2M4R7",
@@ -14,8 +12,6 @@
     },
     {
         "address":{
-            "storeName":"Burger King",
-            "locationName":"West Site",
             "number":26,
             "street":"Queen",
             "postalCode":"M2P4R3",
@@ -26,8 +22,6 @@
     },
     {
         "address":{
-            "storeName":"Burger King",
-            "locationName":"West Site",
             "number":2345,
             "street":"Bathurst",
             "postalCode":"M2R4R2",
@@ -38,8 +32,6 @@
     },
     {
         "address":{
-            "storeName":"Burger King",
-            "locationName":"East Site",
             "number":8745,
             "street":"Yonge",
             "postalCode":"M2T3R2",
@@ -50,8 +42,6 @@
     },
     {
         "address":{
-            "storeName":"Burger King",
-            "locationName":"West Site",
             "number":6048,
             "street":"King",
             "postalCode":"M2K2R7",
@@ -62,8 +52,6 @@
     },
     {
         "address":{
-            "storeName":"Burger King",
-            "locationName":"East Site",
             "number":3052,
             "street":"Woodlawn",
             "postalCode":"E6H9R2",
