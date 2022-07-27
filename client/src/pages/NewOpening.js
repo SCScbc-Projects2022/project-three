@@ -143,6 +143,10 @@ const NewOpening = ({ companyId }) => {
               <input name="additionalInfo" type="text" />
             </div>
             <div>
+              <h4>Tags</h4>
+              <input name="additionalInfo" type="text" />
+            </div>
+            <div>
               <button type="submit" className="btn btn-outline-primary mt-4">
                 Submit
               </button>

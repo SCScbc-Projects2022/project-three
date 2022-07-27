@@ -89,10 +89,12 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                         >
                           X
                         </button>
-                        Shift Time: {post.shiftTime.hour} - Additional info:{' '}
+                        Role: N/A - Location - N/A Shift - Time:{' '}
+                        {post.shiftTime.hour} - Additional info:{' '}
                         {post.additionalInfo == ''
                           ? 'N/A'
-                          : post.additionalInfo}
+                          : post.additionalInfo}{' '}
+                        - Tags: [N/A]
                       </li>
                     );
                   })
@@ -130,7 +132,8 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                         >
                           X
                         </button>
-                        {employee.firstName} - {employee.lastName}{' '}
+                        {employee.firstName} - {employee.lastName} - Email:{' '}
+                        {employee.email} - Phone: {employee.phone} - Role: N/A
                       </li>
                     );
                   })

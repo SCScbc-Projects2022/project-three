@@ -27,6 +27,9 @@ export const GET_COMPANY = gql`
       }
       userArr {
         _id
+        location
+        phone
+        email
         firstName
         lastName
       }
