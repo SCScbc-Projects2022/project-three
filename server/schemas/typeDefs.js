@@ -9,6 +9,7 @@ const typeDefs = gql`
     password: String
     postsArr: [Post]
     userArr: [User]
+    rolesArr: [Role]
     locationArr: [Location]
   }
 
@@ -50,8 +51,8 @@ const typeDefs = gql`
     _id: ID
     shiftTime: ShiftTime
     additionalInfo: String
-    location: [Location]
-    role: [Role]
+    locationArr: [Location]
+    role: Role
     tags: [Tag]
   }
 
@@ -60,8 +61,9 @@ const typeDefs = gql`
     shiftTime: shiftTimeInput
     additionalInfo: String
     location: locationInput
-    role: roleInput!
-    tags: tagInput!
+    role: String
+    tags: String
+    companyId: String
   }
 
   type ShiftTime {
@@ -76,23 +78,21 @@ const typeDefs = gql`
 
   type Tag {
     _id: ID
-    companyId: [Company]
     title: String
   }
 
   type Role {
     _id: ID
-    companyId: [Company]
     title: String
   }
 
   input tagInput {
-    companyId: ID
+    companyId: String
     title: String
   }
 
   input roleInput {
-    companyId: ID
+    companyId: String
     title: String
   }
 
@@ -116,6 +116,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addEmployee(employeeToSave: userInput): User
+    removeEmployee(Id: String!, companyId: String!): User
     addCompany(
       name: String!
       username: String!
@@ -129,15 +130,12 @@ const typeDefs = gql`
       postsArr: postInput
       userArr: userInput
       locationArr: locationInput
+      rolesArr: roleInput
     ): Auth
-    addPost(
-      shiftTime: shiftTimeInput
-      additionalInfo: String
-      location: locationInput
-      role: String!
-      tags: String
-    ): Post
-    addRole(companyId: ID!, title: String!): Role
+    addPost(postToSave: postInput): Post
+    removePost(Id: String!, companyId: String!): Post
+    addRole(roleToSave: roleInput): Role
+    removeRole(Id: String!, companyId: String!): Role
     addTag(companyId: ID!, title: String!): Tag
     addLocation(
       intersection: String!
@@ -152,11 +150,11 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     username: String
-    location: [Location]
+    location: String
+    password: String
     email: String
-    phone: String
-    role: [Role]
-    tags: [Tag]
+    phone: Int
+    role: Role
   }
 
   input userInput {
@@ -165,9 +163,11 @@ const typeDefs = gql`
     lastName: String
     username: String
     location: String
+    password: String
     email: String
-    phone: String
-    role: roleInput
+    companyId: String
+    phone: Int
+    role: String
   }
 
   type Auth {

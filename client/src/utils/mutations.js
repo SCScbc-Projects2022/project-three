@@ -19,6 +19,15 @@ export const ADD_EMPLOYEE = gql`
     addEmployee(employeeToSave: $employeeToSave) {
       firstName
       lastName
+      _id
+    }
+  }
+`;
+
+export const REMOVE_EMPLOYEE = gql`
+  mutation removeEmployee($Id: String!, $companyId: String!) {
+    removeEmployee(Id: $Id, companyId: $companyId) {
+      username
     }
   }
 `;
@@ -63,20 +72,8 @@ export const ADD_COMPANY = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost(
-    $shiftTime: shiftTimeInput
-    $additionalInfo: String
-    $location: locationInput
-    $role: String!
-    $tags: String
-  ) {
-    addPost(
-      shiftTime: $shiftTime
-      additionalInfo: $additionalInfo
-      location: $location
-      role: $role
-      tags: $tags
-    ) {
+  mutation addPost($postToSave: postInput) {
+    addPost(postToSave: $postToSave) {
       _id
       shiftTime {
         date
@@ -85,13 +82,26 @@ export const ADD_POST = gql`
   }
 `;
 
+export const REMOVE_POST = gql`
+  mutation removePost($Id: String!, $companyId: String!) {
+    removePost(Id: $Id, companyId: $companyId) {
+      additionalInfo
+    }
+  }
+`;
+
 export const ADD_ROLE = gql`
-  mutation addRole($title: String!, $companyId: ID!) {
-    addRole(title: $title, companyId: $companyId) {
+  mutation addRole($roleToSave: roleInput) {
+    addRole(roleToSave: $roleToSave) {
       _id
-      companyId {
-        _id
-      }
+      title
+    }
+  }
+`;
+
+export const REMOVE_ROLE = gql`
+  mutation removeRole($Id: String!, $companyId: String!) {
+    removeRole(Id: $Id, companyId: $companyId) {
       title
     }
   }

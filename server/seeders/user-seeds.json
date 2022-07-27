@@ -52,7 +52,8 @@
     "lastName": "Jones",
     "username": "LindseyJ",
     "password": "password7",
-    "email": "LindseyJ@dominos.com",
+    "location": "East Site",
+    "email": "LindseyJ@brking.com",
     "phone": 3894672839
   },
   {
@@ -60,7 +61,8 @@
     "lastName": "Frick",
     "username": "RayF",
     "password": "password8",
-    "email": "RayF@dominos.com",
+    "location": "West Site",
+    "email": "RayF@brking.com",
     "phone": 2344552743
   },
   {
@@ -68,7 +70,8 @@
     "lastName": "Grant",
     "username": "NicoleG",
     "password": "password9",
-    "email": "NicoleG@dominos.com",
+    "location": "East Site",
+    "email": "NicoleG@brking.com",
     "phone": 2342942971
   },
   {
@@ -76,7 +79,8 @@
     "lastName": "Wood",
     "username": "RoseW",
     "password": "password10",
-    "email": "RoseW@dominos.com",
+    "location": "West Site",
+    "email": "RoseW@brking.com",
     "phone": 2344538726
   },
   {
@@ -84,7 +88,8 @@
     "lastName": "Hughes",
     "username": "JaneH",
     "password": "password11",
-    "email": "JaneH@dominos.com",
+    "location": "East Site",
+    "email": "JaneH@brking.com",
     "phone": 2344947832
   },
   {
@@ -92,7 +97,8 @@
     "lastName": "Kim",
     "username": "AveryK",
     "password": "password12",
-    "email": "AveryK@dominos.com",
+    "location": "West Site",
+    "email": "AveryK@brking.com",
     "phone": 2345802788
   },
   {
@@ -100,7 +106,8 @@
     "lastName": "Lee",
     "username": "KelseyL",
     "password": "password13",
-    "email": "KelseyL@popeyes.com",
+    "location": "East Site",
+    "email": "KelseyL@brking.com",
     "phone": 2342781990
   },
   {
@@ -108,7 +115,8 @@
     "lastName": "Martin",
     "username": "JacobM",
     "password": "password14",
-    "email": "Jakemartin@popeyes.com",
+    "location": "West Site",
+    "email": "Jakemartin@brking.com",
     "phone": 2344980553
   },
   {
@@ -116,7 +124,8 @@
     "lastName": "Ramirez",
     "username": "GwenRami",
     "password": "password15",
-    "email": "GwenRami@popeyes.com",
+    "location": "East Site",
+    "email": "GwenRami@brking.com",
     "phone": 2738927364
   },
   {
@@ -124,7 +133,8 @@
     "lastName": "Sartori",
     "username": "JaiSartori",
     "password": "password16",
-    "email": "SartoriJ@popeyes.com",
+    "location": "West Site",
+    "email": "SartoriJ@brking.com",
     "phone": 2343894892
   },
   {
@@ -132,7 +142,8 @@
     "lastName": "White",
     "username": "VickyW",
     "password": "password17",
-    "email": "VickWhite@popeyes.com",
+    "location": "East Site",
+    "email": "VickWhite@brking.com",
     "phone": 2343847792
   },
   {
@@ -140,7 +151,8 @@
     "lastName": "Bond",
     "username": "JamesBond",
     "password": "password007",
-    "email": "JamesB@popeyes.com",
+    "location": "West Site",
+    "email": "JamesB@brking.com",
     "phone": 2783893938
   }
 ]

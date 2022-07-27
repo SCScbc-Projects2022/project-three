@@ -26,8 +26,16 @@ export const GET_COMPANY = gql`
         }
       }
       userArr {
+        _id
+        location
+        phone
+        email
         firstName
         lastName
+      }
+      rolesArr {
+        _id
+        title
       }
       postsArr {
         _id
@@ -36,7 +44,7 @@ export const GET_COMPANY = gql`
           date
         }
         additionalInfo
-        location {
+        locationArr {
           _id
           intersection
           employees {
@@ -75,7 +83,7 @@ export const GET_COMPANIES = gql`
           date
         }
         additionalInfo
-        location {
+        locationArr {
           _id
           intersection
           employees {
@@ -139,7 +147,7 @@ export const GET_POSTS = gql`
         date
       }
       additionalInfo
-      location {
+      locationArr {
         address {
           locationName
           number

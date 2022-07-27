@@ -6,14 +6,12 @@ import Slider from '@mui/material/Slider';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 
-import Auth from '../utils/auth';
-
-const NewOpening = () => {
+const NewOpening = ({ companyId }) => {
   const [formState, setFormState] = useState({
     shiftTime: { date: '', hour: '' },
     additionalInfo: '',
     role: '',
-    tags: 'this tag',
+    tags: 'TAG',
     location: {
       intersection: '',
       address: {
@@ -24,8 +22,9 @@ const NewOpening = () => {
         country: 'canada',
         postalCode: '3esds',
       },
-      companyId: '62defba37f343926565282c1',
+      companyId: companyId,
     },
+    companyId,
   });
 
   const [value, setValue] = useState([0, 24]);
@@ -51,14 +50,14 @@ const NewOpening = () => {
       ((formState.location.intersection += e.target.location.value),
       (formState.role += e.target.role.value),
       (formState.shiftTime.hour += hour),
+      (formState.additionalInfo += e.target.additionalInfo.value),
       (formState.shiftTime.date += e.target.date.value))
     );
 
     try {
-      const { data } = await addPost({
-        variables: { ...formState },
+      await addPost({
+        variables: { postToSave: formState },
       });
-      Auth.login(data.addPost.token);
     } catch (e) {
       console.error(e);
       // Clear form state
@@ -77,8 +76,9 @@ const NewOpening = () => {
             country: 'canada',
             postalCode: '3esds',
           },
-          companyId: '62defba37f343926565282c1',
+          companyId: companyId,
         },
+        companyId,
       });
     }
   };
@@ -137,6 +137,15 @@ const NewOpening = () => {
                 max={24}
               />
             </Box>
+            <div style={{ height: '25px' }}></div>
+            <div>
+              <h4>Additional Info</h4>
+              <input name="additionalInfo" type="text" />
+            </div>
+            <div>
+              <h4>Tags</h4>
+              <input name="additionalInfo" type="text" />
+            </div>
             <div>
               <button type="submit" className="btn btn-outline-primary mt-4">
                 Submit

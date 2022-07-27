@@ -63,7 +63,12 @@ function App() {
   });
 
   // Check first if user is logged in, 'if (loggedIn) { then do this }'
-  let loggedIn = localStorage.getItem('id_token') == null ? false : true;
+  let loggedIn =
+    localStorage.getItem('id_token') == null
+      ? false
+      : localStorage.getItem('id_token') == 'undefined'
+      ? false
+      : true;
 
   const getCompany = () => {
     let data = Auth.getProfile();
@@ -78,11 +83,6 @@ function App() {
     <ApolloProvider client={client}>
       <main>
         <Navigation activePage={activePage} setActivePage={setActivePage} />
-<<<<<<< HEAD
-        {/* <AdminDashboard /> */}
-        {/* <AddEmployee /> */}
-=======
->>>>>>> 1dd8102f3f46035ba1f299e1163424ab00e70def
         <section id="main-wrapper">
           {activePage.Home ? (
             <Home
@@ -95,7 +95,7 @@ function App() {
           ) : activePage.AddLocation ? (
             <AddLocation />
           ) : activePage.AddRole ? (
-            <AddRole />
+            <AddRole companyId={getCompany()} />
           ) : activePage.AdminDashboard ? (
             <AdminDashboard
               companyId={getCompany()}
@@ -107,7 +107,7 @@ function App() {
           ) : activePage.Login ? (
             <Login />
           ) : activePage.NewOpening ? (
-            <NewOpening />
+            <NewOpening companyId={getCompany()} />
           ) : activePage.Payment ? (
             <Payment />
           ) : activePage.Signup ? (
