@@ -23,6 +23,8 @@ export const GET_COMPANY = gql`
           city
           country
           postalCode
+          number
+          street
         }
       }
       userArr {
@@ -47,17 +49,6 @@ export const GET_COMPANY = gql`
         locationArr {
           _id
           intersection
-          employees {
-            _id
-            firstName
-            lastName
-            username
-            role {
-              title
-            }
-            email
-            phone
-          }
         }
         role {
           title

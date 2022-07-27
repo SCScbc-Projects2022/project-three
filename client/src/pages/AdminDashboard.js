@@ -89,8 +89,9 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                         >
                           X
                         </button>
-                        Role: N/A - Location - N/A Shift - Time:{' '}
-                        {post.shiftTime.hour} - Additional info:{' '}
+                        Role: N/A - Location - N/A - Shift Time:{' '}
+                        {post.shiftTime.hour} - Shift Date {post.shiftTime.date}{' '}
+                        - Additional info:{' '}
                         {post.additionalInfo == ''
                           ? 'N/A'
                           : post.additionalInfo}{' '}
@@ -192,8 +193,30 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add Location +
               </button>
               <ol>
-                <li>Company location 1</li>
-                <li>Company location 2 </li>
+                {company.locationArr == undefined ? (
+                  <li>No Locations</li>
+                ) : company.locationArr == '' ? (
+                  <li>No Locations</li>
+                ) : (
+                  company.locationArr.map((location, index) => {
+                    return (
+                      <li key={index}>
+                        <button
+                          name="location"
+                          id={location._id}
+                          onClick={(e) =>
+                            deleteData(e.target.name, e.target.id)
+                          }
+                        >
+                          X
+                        </button>
+                        {location.address.number}- {location.intersection} -{' '}
+                        {location.address.city} - {location.address.country} -{' '}
+                        {location.address.postalCode}
+                      </li>
+                    );
+                  })
+                )}
               </ol>
             </div>
           </div>

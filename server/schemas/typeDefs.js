@@ -18,19 +18,16 @@ const typeDefs = gql`
     intersection: String
     address: Address
     companyId: ID!
-    employees: [User]
   }
 
   input locationInput {
     _id: ID
     intersection: String
     address: addressInput
-    companyId: ID!
-    employeeIds: [ID]
+    companyId: String
   }
 
   type Address {
-    locationName: String
     number: Int
     street: String
     city: String
@@ -137,12 +134,7 @@ const typeDefs = gql`
     addRole(roleToSave: roleInput): Role
     removeRole(Id: String!, companyId: String!): Role
     addTag(companyId: ID!, title: String!): Tag
-    addLocation(
-      intersection: String!
-      address: addressInput!
-      companyId: ID!
-      employees: userInput
-    ): Location
+    addLocation(locationToSave: locationInput): Location
   }
 
   type User {
