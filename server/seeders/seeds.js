@@ -69,15 +69,6 @@ db.once('open', async () => {
     )
   }
 
-  // add company to locations
-  for (i = 0; i < locations.length; i++) {
-    await Location.findByIdAndUpdate(
-      {_id: locations[i]._id},
-      {$addToSet: {companyId: companies[0]._id}},
-      {new: true}
-    )
-  }
-
   // add employees to locations
   const employeeDist = {
     0: [0, 1, 2],
@@ -128,6 +119,46 @@ db.once('open', async () => {
     await Role.findByIdAndUpdate(
       {_id: roles[i]._id},
       {$addToSet: {companyId: companies[0]._id}},
+      {new: true}
+    )
+  }
+
+  // add location to user
+ let place = 0;
+
+  for (i = 0; i < users.length; i++) {
+    switch (i) {
+      case 0 || 1 || 2:
+        place = 0;
+        break;
+      case 3 || 4 || 5:
+        place = 1;
+        break;
+      case 6 || 7 || 8:
+        place = 2;
+        break;
+      case 9 || 10 || 11:
+        place = 3;
+        break;
+      case 12 || 13 || 14:
+        place = 4;
+        break;
+      case 15 || 16 || 17:
+        place = 5;
+        break;
+    }
+    await User.findByIdAndUpdate(
+      {_id: users[i]._id},
+      {$addToSet: {location: locations[place]._id}},
+      {new: true}
+    )
+  }
+
+  // add role to user
+  for (i = 0; i < users.length; i++) {
+    await User.findByIdAndUpdate(
+      {_id: users[i]._id},
+      {$addToSet: {role: roles[RNG6()]._id}},
       {new: true}
     )
   }
