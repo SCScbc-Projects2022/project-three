@@ -3,13 +3,14 @@
     {
         "address":{
             "storeName": "Burger King",
-            "locationName":"East Site",
+            "locationName":"West Side",
             "number":23,
             "street":"Maple",
             "postalCode":"L2M4R7",
             "city":"Toronto",
             "country":"Canada"
-        }
+        },
+        "intersection": "University Ave & Richmond St"
     },
     {
         "address":{
@@ -20,51 +21,56 @@
             "postalCode":"M2P4R3",
             "city":"Toronto",
             "country":"Canada"
-        }
+        },
+        "intersection": "Portland & Smith"
     },
     {
         "address":{
-            "storeName":"Popeyes",
+            "storeName":"Burger King",
             "locationName":"West Site",
             "number":2345,
             "street":"Bathurst",
             "postalCode":"M2R4R2",
             "city":"Richmond Hill",
             "country":"Canada"
-        }
+        },
+        "intersection": "Main St & Kingsway Ave"
     },
     {
         "address":{
-            "storeName":"Popeyes",
+            "storeName":"Burger King",
             "locationName":"East Site",
             "number":8745,
             "street":"Yonge",
             "postalCode":"M2T3R2",
             "city":"Richmond Hill",
             "country":"Canada"
-        }
+        },
+        "intersection": "Beverley St & College St"
     },
     {
         "address":{
-            "storeName":"Dominos",
+            "storeName":"Burger King",
             "locationName":"West Site",
             "number":6048,
             "street":"King",
             "postalCode":"M2K2R7",
             "city":"North York",
             "country":"Canada"
-        }
+        },
+        "intersection": "Oxford St & Bathurst St"
     },
     {
         "address":{
-            "storeName":"Dominos",
+            "storeName":"Burger King",
             "locationName":"East Site",
             "number":3052,
             "street":"Woodlawn",
             "postalCode":"E6H9R2",
             "city":"North York",
             "country":"Canada"
-        }
+        },
+        "intersection": "Harbord St & Borden St"
     }
 
 ]
