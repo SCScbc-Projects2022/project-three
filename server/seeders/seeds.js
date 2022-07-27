@@ -158,7 +158,7 @@ db.once('open', async () => {
   for (i = 0; i < users.length; i++) {
     await User.findByIdAndUpdate(
       {_id: users[i]._id},
-      {$addToSet: {role: roles[RNG6()]._id}},
+      {$addToSet: {role: roles[RNG6()].title}},
       {new: true}
     )
   }
