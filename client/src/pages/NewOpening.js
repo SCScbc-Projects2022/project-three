@@ -164,7 +164,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                 placeholder="Separate tags with commas"
               />
             </div>
-            <div>
+            <div class="mt-2">
               {company.rolesArr == undefined ? (
                 <button
                   name="AddRole"
@@ -172,7 +172,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                   onClick={(e) => {
                     handlePage(e);
                   }}
-                  className="btn btn-outline-primary mt-5"
+                  className="btn btn-outline-primary"
                 >
                   Add Role
                 </button>
@@ -183,7 +183,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                     handlePage(e);
                   }}
                   type="submit"
-                  className="btn btn-outline-primary mt-5"
+                  className="btn btn-outline-primary"
                 >
                   Add Role
                 </button>
@@ -197,7 +197,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                   onClick={(e) => {
                     handlePage(e);
                   }}
-                  className="btn btn-outline-primary mt-5"
+                  className="btn btn-outline-primary"
                 >
                   Add Location
                 </button>
@@ -208,7 +208,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                     handlePage(e);
                   }}
                   type="submit"
-                  className="btn btn-outline-primary mt-5"
+                  className="btn btn-outline-primary mx-2"
                 >
                   Add Location
                 </button>

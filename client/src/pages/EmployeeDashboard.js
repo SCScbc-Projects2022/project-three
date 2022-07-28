@@ -1,13 +1,18 @@
 import React from 'react';
 
+import { useQuery } from '@apollo/client';
+import { GET_COMPANIES } from '../utils/queries';
+
 const EmployeeDashboard = () => {
+  // Returns specific company
+  const { loading, data } = useQuery(GET_COMPANIES, {});
+  const companies = data?.companies || [];
+
   return (
     <>
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Dashboard</h1>
-          {/* <h4 id="employee-name">Employee Name</h4> */}
-
           <div className="col-12 d-flex flex-column justify-content-center">
             <div style={{ height: '100px' }}></div>
             <div className="d-flex justify-content-between">
@@ -29,35 +34,82 @@ const EmployeeDashboard = () => {
                 <thead>
                   <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Location</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Start Time</th>
-                    <th scope="col">End Time</th>
+                    <th scope="col">Time and Date</th>
+                    <th scope="col">Additional info</th>
+                    <th scope="col">Tags</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Yonge and Bloor</td>
-                    <td>Server</td>
-                    <td>5:00pm</td>
-                    <td>10:00pm</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Dundas and Ossington</td>
-                    <td>Bartender</td>
-                    <td>12:00pm</td>
-                    <td>4:00pm</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Bathurst and St. Clair</td>
-                    <td>Otto</td>
-                    <td>6:00pm</td>
-                    <td>11:00pm</td>
-                  </tr>
-                </tbody>
+                {companies.map((company) => {
+                  if (
+                    company.postsArr == undefined ||
+                    company.postsArr == '' ||
+                    company.postsArr.length == 0
+                  ) {
+                    return <p style={{ color: 'red' }}>No Openings</p>;
+                  } else {
+                    company.postsArr.map((post, index) => {
+                      console.log(post);
+                      return (
+                        <tbody key={index}>
+                          {
+                            <tr>
+                              <td>
+                                <button
+                                  class="delete-btn"
+                                  name="post"
+                                  id={post._id}
+                                >
+                                  X
+                                </button>
+                              </td>
+                              <td>{post.role}</td>
+                              <td>{post.location}</td>
+                              <td>
+                                {post.shiftTime.hour} - {post.shiftTime.date}
+                              </td>
+                              <td>{post.additionalInfo}</td>
+                              <td>{post.tags}</td>
+                            </tr>
+                          }
+                        </tbody>
+                      );
+                    });
+                  }
+                })}
+                {/* {companies.postsArr == undefined ? (
+                  <p style={{ color: 'red' }}>No Openings</p>
+                ) : companies.postsArr == '' ? (
+                  <p style={{ color: 'red' }}>No Openings</p>
+                ) : (
+                  companies.postsArr.map((post, index) => {
+                    return (
+                      <tbody key={index}>
+                        {
+                          <tr>
+                            <td>
+                              <button
+                                class="delete-btn"
+                                name="post"
+                                id={post._id}
+                              >
+                                X
+                              </button>
+                            </td>
+                            <td>{post.role}</td>
+                            <td>{post.location}</td>
+                            <td>
+                              {post.shiftTime.hour} - {post.shiftTime.date}
+                            </td>
+                            <td>{post.additionalInfo}</td>
+                            <td>{post.tags}</td>
+                          </tr>
+                        }
+                      </tbody>
+                    );
+                  })
+                )} */}
               </table>
             </div>
             <div>

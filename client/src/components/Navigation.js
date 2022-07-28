@@ -39,7 +39,9 @@ const Navigation = ({ setActivePage, activePage, account }) => {
               <li className="mx-3 nav-item">
                 <a
                   className={`nav-link navItem ${
-                    activePage.AdminDashboard ? 'active' : ''
+                    activePage.AdminDashboard || activePage.EmployeeDashboard
+                      ? 'active'
+                      : ''
                   }`}
                   name={
                     account == 'company'

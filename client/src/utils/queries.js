@@ -63,6 +63,31 @@ export const GET_COMPANIES = gql`
       name
       username
       email
+      locationArr {
+        _id
+        intersection
+        address {
+          city
+          country
+          postalCode
+          number
+          street
+        }
+      }
+      userArr {
+        _id
+        location
+        phone
+        email
+        role
+        location
+        firstName
+        lastName
+      }
+      rolesArr {
+        _id
+        title
+      }
       postsArr {
         _id
         shiftTime {
@@ -70,27 +95,9 @@ export const GET_COMPANIES = gql`
           date
         }
         additionalInfo
-        locationArr {
-          _id
-          intersection
-          employees {
-            _id
-            firstName
-            lastName
-            username
-            role {
-              title
-            }
-            email
-            phone
-          }
-        }
-        role {
-          title
-        }
-        tags {
-          title
-        }
+        location
+        role
+        tags
       }
     }
   }

@@ -94,7 +94,7 @@ const Login = () => {
               />
               <label htmlFor="floatingPassword">Password</label>
             </div>
-            <div className="col-12 mt-4">
+            <div className="col-12 mt-3">
               <button type="submit" className="btn btn-primary">
                 Login
               </button>
@@ -132,7 +132,7 @@ const Login = () => {
               />
               <label for="floatingPassword">Password</label>
             </div>
-            <div className="col-12 mt-4">
+            <div className="col-12 mt-3">
               <button type="submit" className="btn btn-primary">
                 Login
               </button>

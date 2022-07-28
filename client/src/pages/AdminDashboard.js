@@ -180,12 +180,28 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                                 X
                               </button>
                             </td>
-                            <td>{employee.role}</td>
                             <td>
-                              {employee.firstName} {employee.lastName} -{' '}
-                              {employee.email}
+                              {employee.role
+                                ? employee.role
+                                : 'Data not inputted'}
                             </td>
-                            <td>{employee.phone}</td>
+                            <td>
+                              {employee.firstName
+                                ? employee.firstName
+                                : 'Data not inputted'}{' '}
+                              {employee.lastName
+                                ? employee.lastName
+                                : 'Data not inputted'}{' '}
+                              -{' '}
+                              {employee.email
+                                ? employee.email
+                                : 'Data not inputted'}
+                            </td>
+                            <td>
+                              {employee.phone
+                                ? employee.phone
+                                : 'Data not inputted'}
+                            </td>
                           </tr>
                         }
                       </tbody>
@@ -294,10 +310,26 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                                 X
                               </button>
                             </td>
-                            <td>{location.intersection}</td>
-                            <td>{location.address.city}</td>
-                            <td>{location.address.country}</td>
-                            <td>{location.address.postalCode}</td>
+                            <td>
+                              {location.intersection
+                                ? location.intersection
+                                : 'Data not inputted'}
+                            </td>
+                            <td>
+                              {location.address.city
+                                ? location.city
+                                : 'Data not inputted'}
+                            </td>
+                            <td>
+                              {location.address.country
+                                ? location.country
+                                : 'Data not inputted'}
+                            </td>
+                            <td>
+                              {location.address.postalCode
+                                ? location.postalCode
+                                : 'Data not inputted'}
+                            </td>
                           </tr>
                         }
                       </tbody>

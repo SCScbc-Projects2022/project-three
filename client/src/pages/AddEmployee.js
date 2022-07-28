@@ -235,10 +235,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                 Submit
               </button>
             ) : (
-              <button
-                type="submit"
-                className="mx-2  btn-outline-primary btn mt-5"
-              >
+              <button type="submit" className=" btn-outline-primary btn mt-2">
                 Submit
               </button>
             )}

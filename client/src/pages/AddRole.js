@@ -52,7 +52,7 @@ const AddRole = ({ companyId }) => {
                 <label for="floatingInput">Title</label>
               </div>
             </div>
-            <button type="submit" className="btn btn-outline-primary mt-5">
+            <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
             {error && <div>Add Role failed</div>}
