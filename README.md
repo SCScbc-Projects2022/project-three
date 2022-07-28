@@ -2,7 +2,7 @@
   # Locum - Staffing. Revolutionized.
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)</br></br>
     
-  In the age of COVID, side-hustles, and the gig economy, staffing has become increasingly challenging. Named after the Latin term "Locum Tenens" which refers to an individual who temporarily fulfills the duties of another, Locum allows chain business owners to easily and efficiently leverage their existing talent pool to meet last-minute 
+  In the age of COVID, side-hustles, and the gig economy, staffing has become increasingly challenging. Named after the Latin term "Locum Tenens" which refers to an individual who temporarily fulfills the duties of another, Locum allows chain business owners to easily and efficiently leverage their existing talent pool to meet last-minute staffing needs.
   
   ## Table of Contents
   
