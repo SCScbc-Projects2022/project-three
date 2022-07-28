@@ -32,7 +32,7 @@
   * Bcrypt
 
   ## Usage Information<a name="usage"></a>
-  [Locum - Staffing. Revolutionized.](herokuapp.com)</br>
+  [Locum - Staffing. Revolutionized.](https://locum-staffing.herokuapp.com)</br>
     
   This application was built with scalability and adaptability in mind. With customizable features, Locum is suitable for chain companies in a wide variety of industries, from healthcare to food service.</br>
   </br>![Locum - Staffing. Revolutionized.](./client/src/assets/img/locum.png "Locum - Staffing. Revolutionized.")</br>
