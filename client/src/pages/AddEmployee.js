@@ -145,8 +145,12 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   ) : company.rolesArr.length == 0 ? (
                     <option value="no">No Available Roles</option>
                   ) : (
-                    company.rolesArr.map((role) => {
-                      return <option value={role.title}>{role.title}</option>;
+                    company.rolesArr.map((role, index) => {
+                      return (
+                        <option key={index} value={role.title}>
+                          {role.title}
+                        </option>
+                      );
                     })
                   )}
                 </select>
@@ -160,51 +164,82 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                 id="floatingSelect"
                 aria-label="Floating label select example"
               >
-                <option value="Downtown Toronto" selected>
-                  Downtown Toronto
-                </option>
-                <option value="Greater Toronto Area">
-                  Greater Toronto Area
-                </option>
-                <option value="Hamilton">Hamilton</option>
-                <option value="Montreal">Montreal</option>
+                {company.locationArr == undefined ? (
+                  <option value="no">No Available Locations</option>
+                ) : company.locationArr.length == 0 ? (
+                  <option value="no">No Available Locations</option>
+                ) : (
+                  company.locationArr.map((location, index) => {
+                    return (
+                      <option key={index} value={location.intersection}>
+                        {location.intersection}
+                      </option>
+                    );
+                  })
+                )}
               </select>
               <label for="floatingSelect">Choose Location</label>
             </div>
             {company.rolesArr == undefined ? (
-              <>
-                <button
-                  name="AddRole"
-                  type="submit"
-                  onClick={(e) => {
-                    handlePage(e);
-                  }}
-                  className="btn btn-outline-primary mt-5"
-                >
-                  Add Role
-                </button>
-                <button disabled type="submit" className="mx-2 btn mt-5">
-                  Submit
-                </button>
-              </>
+              <button
+                name="AddRole"
+                type="submit"
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                className="btn btn-outline-primary mt-5"
+              >
+                Add Role
+              </button>
             ) : company.rolesArr.length == 0 ? (
-              <>
-                <button
-                  name="AddRole"
-                  onClick={(e) => {
-                    handlePage(e);
-                  }}
-                  type="submit"
-                  className="btn btn-outline-primary mt-5"
-                >
-                  Add Role
-                </button>
-                <button disabled type="submit" className="mx-2 btn mt-5">
-                  Submit
-                </button>
-              </>
+              <button
+                name="AddRole"
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                type="submit"
+                className="btn btn-outline-primary mt-5"
+              >
+                Add Role
+              </button>
             ) : (
-              <button type="submit" className="btn btn-outline-primary mt-5">
+              ''
+            )}
+            {company.locationArr == undefined ? (
+              <button
+                name="AddLocation"
+                type="submit"
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                className="btn btn-outline-primary mt-5"
+              >
+                Add Location
+              </button>
+            ) : company.locationArr.length == 0 ? (
+              <button
+                name="AddLocation"
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                type="submit"
+                className="btn btn-outline-primary mt-5"
+              >
+                Add Location
+              </button>
+            ) : (
+              ''
+            )}
+
+            {company.rolesArr.length == 0 || company.locationArr.length == 0 ? (
+              <button type="submit" className="disabled mx-2 btn mt-5">
+                Submit
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="mx-2  btn-outline-primary btn mt-5"
+              >
                 Submit
               </button>
             )}
