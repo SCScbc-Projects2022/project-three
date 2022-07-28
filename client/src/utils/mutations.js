@@ -7,8 +7,7 @@ export const LOGIN_ADMIN = gql`
       token
       company {
         _id
-        email
-        username
+        name
       }
     }
   }
@@ -18,10 +17,9 @@ export const LOGIN_EMPLOYEE = gql`
   mutation loginEmployee($email: String!, $password: String!) {
     loginEmployee(email: $email, password: $password) {
       token
-      company {
+      user {
         _id
-        email
-        username
+        lastName
       }
     }
   }

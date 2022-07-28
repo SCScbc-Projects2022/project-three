@@ -1,7 +1,7 @@
 import React from 'react';
 import Auth from '../utils/auth';
 
-const Navigation = ({ setActivePage, activePage }) => {
+const Navigation = ({ setActivePage, activePage, account }) => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
@@ -20,7 +20,8 @@ const Navigation = ({ setActivePage, activePage }) => {
   return (
     <nav className="navbar sticky-top d-flex">
       <div className="container-fluid" id="navbar">
-        <a className={`${activePage.Home ? 'active' : ''}`}
+        <a
+          className={`${activePage.Home ? 'active' : ''}`}
           href="#Home"
           name="Home"
           onClick={(e) => handlePage(e)}
@@ -32,7 +33,7 @@ const Navigation = ({ setActivePage, activePage }) => {
             id="logo"
           />
         </a>
-        <div className='d-flex flex-wrap align-items-center justify-content-center'>
+        <div className="d-flex flex-wrap align-items-center justify-content-center">
           {Auth.loggedIn() ? (
             <ul className="mb-2 mb-lg-0 d-flex align-items-center">
               <li className="mx-3 nav-item">
@@ -40,12 +41,20 @@ const Navigation = ({ setActivePage, activePage }) => {
                   className={`nav-link navItem ${
                     activePage.AdminDashboard ? 'active' : ''
                   }`}
-                  name="AdminDashboard"
+                  name={
+                    account == 'company'
+                      ? 'AdminDashboard'
+                      : 'EmployeeDashboard'
+                  }
                   aria-current="page"
-                  href="#AdminDashboard"
+                  href={
+                    account == 'company'
+                      ? '#AdminDashboard'
+                      : '#EmployeeDashboard'
+                  }
                   onClick={(e) => handlePage(e)}
                 >
-                  Dashboard
+                  {account == 'company' ? 'Company' : 'Employee'} Dashboard
                 </a>
               </li>
               <li className="mx-3 nav-item">
@@ -61,8 +70,9 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Payment
                 </a>
               </li>
-              <li className='nav-item'>
-                <a href="/" className='nav-link navItem' onClick={logout}>
+
+              <li className="nav-item">
+                <a href="/" className="nav-link navItem" onClick={logout}>
                   Logout
                 </a>
               </li>
@@ -82,7 +92,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Login
                 </a>
               </li>
-              <li className='mx-3 nav-item'>
+              <li className="mx-3 nav-item">
                 <a
                   className={`nav-link navItem ${
                     activePage.Signup ? 'active' : ''

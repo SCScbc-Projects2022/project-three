@@ -75,14 +75,24 @@ function App() {
     return data.data._id;
   };
 
+  const getAccount = () => {
+    let data = Auth.getAccount();
+    return data;
+  };
+
   if (loggedIn) {
     getCompany();
+    getAccount();
   }
 
   return (
     <ApolloProvider client={client}>
       <main>
-        <Navigation activePage={activePage} setActivePage={setActivePage} />
+        <Navigation
+          account={getAccount()}
+          activePage={activePage}
+          setActivePage={setActivePage}
+        />
         <section id="main-wrapper">
           {activePage.Home ? (
             <Home

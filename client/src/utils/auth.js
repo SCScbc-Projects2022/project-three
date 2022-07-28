@@ -33,10 +33,25 @@ class AuthService {
     return localStorage.getItem('id_token');
   }
 
+  getAccount() {
+    // Retrieves the user token from localStorage
+    return localStorage.getItem('account');
+  }
+
   // set token to localStorage and reload page to homepage
   login(idToken, data) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
+    localStorage.setItem('account', 'company');
+
+    window.location.assign('/');
+  }
+
+  // set token to localStorage and reload page to homepage
+  loginEmployee(idToken, data) {
+    // Saves user token to localStorage
+    localStorage.setItem('id_token', idToken);
+    localStorage.setItem('account', 'employee');
 
     window.location.assign('/');
   }
@@ -45,6 +60,7 @@ class AuthService {
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem('id_token');
+    localStorage.removeItem('account');
 
     // this will reload the page and reset the state of the application
     window.location.assign('/');
