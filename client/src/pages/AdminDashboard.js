@@ -86,37 +86,53 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
               >
                 Add opening +
               </button>
-              <ol>
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Time and Date</th>
+                    <th scope="col">Additional info</th>
+                    <th scope="col">Tags</th>
+                  </tr>
+                </thead>
                 {company.postsArr == undefined ? (
-                  <li>No Openings</li>
+                  <p style={{ color: 'red' }}>No Openings</p>
                 ) : company.postsArr == '' ? (
-                  <li>No Openings</li>
+                  <p style={{ color: 'red' }}>No Openings</p>
                 ) : (
                   company.postsArr.map((post, index) => {
                     return (
-                      <li key={index}>
-                        <button
-                          class="delete-btn"
-                          name="post"
-                          id={post._id}
-                          onClick={(e) =>
-                            deleteData(e.target.name, e.target.id)
-                          }
-                        >
-                          X
-                        </button>
-                        Role: {post.role} - Location - {post.location} - Shift
-                        Time: {post.shiftTime.hour} - Shift Date{' '}
-                        {post.shiftTime.date} - Additional info:{' '}
-                        {post.additionalInfo == ''
-                          ? 'N/A'
-                          : post.additionalInfo}{' '}
-                        - Tags: {post.tags}
-                      </li>
+                      <tbody key={index}>
+                        {
+                          <tr>
+                            <td>
+                              <button
+                                class="delete-btn"
+                                name="post"
+                                id={post._id}
+                                onClick={(e) =>
+                                  deleteData(e.target.name, e.target.id)
+                                }
+                              >
+                                X
+                              </button>
+                            </td>
+                            <td>{post.role}</td>
+                            <td>{post.location}</td>
+                            <td>
+                              {post.shiftTime.hour} - {post.shiftTime.date}
+                            </td>
+                            <td>{post.additionalInfo}</td>
+                            <td>{post.tags}</td>
+                          </tr>
+                        }
+                      </tbody>
                     );
                   })
                 )}
-              </ol>
+              </table>
             </div>
             <div style={{ height: '15px' }}></div>
             <hr></hr>
@@ -133,33 +149,50 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
               >
                 Add employee +
               </button>
-              <ol>
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Employee Role</th>
+                    <th scope="col">Employee Name and Email</th>
+                    <th scope="col">Employee Number</th>
+                  </tr>
+                </thead>
                 {company.userArr == undefined ? (
-                  <li>No Employees</li>
+                  <p style={{ color: 'red' }}>No Employees</p>
                 ) : company.userArr == '' ? (
-                  <li>No Employees</li>
+                  <p style={{ color: 'red' }}>No Employees</p>
                 ) : (
                   company.userArr.map((employee, index) => {
                     return (
-                      <li key={index}>
-                        <button
-                          class="delete-btn"
-                          name="user"
-                          id={employee._id}
-                          onClick={(e) =>
-                            deleteData(e.target.name, e.target.id)
-                          }
-                        >
-                          X
-                        </button>
-                        {employee.role} @ {employee.location} -{' '}
-                        {employee.firstName} {employee.lastName} - Email:{' '}
-                        {employee.email} - Phone: {employee.phone}
-                      </li>
+                      <tbody key={index}>
+                        {
+                          <tr>
+                            <td>
+                              <button
+                                class="delete-btn"
+                                name="user"
+                                id={employee._id}
+                                onClick={(e) =>
+                                  deleteData(e.target.name, e.target.id)
+                                }
+                              >
+                                X
+                              </button>
+                            </td>
+                            <td>{employee.role}</td>
+                            <td>
+                              {employee.firstName} {employee.lastName} -{' '}
+                              {employee.email}
+                            </td>
+                            <td>{employee.phone}</td>
+                          </tr>
+                        }
+                      </tbody>
                     );
                   })
                 )}
-              </ol>
+              </table>
             </div>
             <div style={{ height: '15px' }}></div>
             <hr></hr>
@@ -188,62 +221,90 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
               </button>
               <div style={{ height: '15px' }}></div>
               <h2>Active Roles</h2>
-              <ol>
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Role Title</th>
+                  </tr>
+                </thead>
                 {company.rolesArr == undefined ? (
-                  <li>No Roles</li>
+                  <p style={{ color: 'red' }}>No Roles</p>
                 ) : company.rolesArr == '' ? (
-                  <li>No Roles</li>
+                  <p style={{ color: 'red' }}>No Roles</p>
                 ) : (
                   company.rolesArr.map((role, index) => {
                     return (
-                      <li key={index}>
-                        <button
-                          class="delete-btn"
-                          name="role"
-                          id={role._id}
-                          onClick={(e) =>
-                            deleteData(e.target.name, e.target.id)
-                          }
-                        >
-                          X
-                        </button>
-                        Title - {role.title}
-                      </li>
+                      <tbody key={index}>
+                        {
+                          <tr>
+                            <td>
+                              <button
+                                class="delete-btn"
+                                name="role"
+                                id={role._id}
+                                onClick={(e) =>
+                                  deleteData(e.target.name, e.target.id)
+                                }
+                              >
+                                X
+                              </button>
+                            </td>
+                            <td>{role.title}</td>
+                          </tr>
+                        }
+                      </tbody>
                     );
                   })
                 )}
-              </ol>
+              </table>
             </div>
             <div style={{ height: '5px' }}></div>
             <div>
               <h2>Active Locations</h2>
-              <ol>
+              <table className="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Major intersection</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Postal</th>
+                  </tr>
+                </thead>
                 {company.locationArr == undefined ? (
-                  <li>No Locations</li>
+                  <p style={{ color: 'red' }}>No Locations</p>
                 ) : company.locationArr == '' ? (
-                  <li>No Locations</li>
+                  <p style={{ color: 'red' }}>No Locations</p>
                 ) : (
                   company.locationArr.map((location, index) => {
                     return (
-                      <li key={index}>
-                        <button
-                          class="delete-btn"
-                          name="location"
-                          id={location._id}
-                          onClick={(e) =>
-                            deleteData(e.target.name, e.target.id)
-                          }
-                        >
-                          X
-                        </button>
-                        {location.address.number}- {location.intersection} -{' '}
-                        {location.address.city} - {location.address.country} -{' '}
-                        {location.address.postalCode}
-                      </li>
+                      <tbody key={index}>
+                        {
+                          <tr>
+                            <td>
+                              <button
+                                class="delete-btn"
+                                name="location"
+                                id={location._id}
+                                onClick={(e) =>
+                                  deleteData(e.target.name, e.target.id)
+                                }
+                              >
+                                X
+                              </button>
+                            </td>
+                            <td>{location.intersection}</td>
+                            <td>{location.address.city}</td>
+                            <td>{location.address.country}</td>
+                            <td>{location.address.postalCode}</td>
+                          </tr>
+                        }
+                      </tbody>
                     );
                   })
                 )}
-              </ol>
+              </table>
             </div>
           </div>
         </div>
