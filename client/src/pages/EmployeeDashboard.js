@@ -17,10 +17,10 @@ const EmployeeDashboard = () => {
 
   var [active, setActive] = useState({});
   const activeChoices = document.querySelectorAll('.user_posts');
-  const handleActive = (index, e) => {
+  const handleActive = (e) => {
     activeChoices.forEach((post) => {
       post.className = 'user_posts';
-      e.target.parentNode.className = 'user_posts active';
+      e.className = 'user_posts active';
     });
 
     activeChoices.forEach((post) => {
@@ -73,14 +73,12 @@ const EmployeeDashboard = () => {
                 ) : (
                   activeData.map((post, index) => {
                     return (
-                      <tbody key={index}>
+                      <tbody
+                        key={index}
+                        onClick={(e) => handleActive(e.target.parentNode)}
+                      >
                         {
-                          <tr
-                            onClick={(e) => {
-                              handleActive(index, e);
-                            }}
-                            class="user_posts"
-                          >
+                          <tr class="user_posts">
                             <td>{index}</td>
                             <td>{post.role}</td>
                             <td>{post.location}</td>
