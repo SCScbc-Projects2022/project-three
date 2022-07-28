@@ -128,7 +128,6 @@ function App() {
             ''
           )}
         </section>
-        </div>
         <Footer />
       </main>
     </ApolloProvider>
