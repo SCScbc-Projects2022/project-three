@@ -97,7 +97,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   className="form-control"
                   id="floatingInput"
                 />
-                <label for="floatingInput">First Name</label>
+                <label htmlFor="floatingInput">First Name</label>
               </div>
               <div className="form-floating mb-2">
                 <input
@@ -106,7 +106,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   className="form-control"
                   id="floatingInput"
                 />
-                <label for="floatingInput">Last Name</label>
+                <label htmlFor="floatingInput">Last Name</label>
               </div>
               <div>
                 <div className="form-floating mb-2">
@@ -116,7 +116,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                     className="form-control"
                     id="floatingInputValue"
                   />
-                  <label for="floatingInputValue">Contact email</label>
+                  <label htmlFor="floatingInputValue">Contact email</label>
                 </div>
               </div>
               <div>
@@ -127,7 +127,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                     className="form-control"
                     id="floatingInputValue"
                   />
-                  <label for="floatingInputValue">Contact number</label>
+                  <label htmlFor="floatingInputValue">Contact number</label>
                 </div>
               </div>
               <div className="form-floating mt-2">
@@ -151,7 +151,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                     })
                   )}
                 </select>
-                <label for="floatingSelect">Select Role</label>
+                <label htmlFor="floatingSelect">Select Role</label>
               </div>
             </div>
             <div className="form-floating mt-2">
@@ -175,7 +175,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   })
                 )}
               </select>
-              <label for="floatingSelect">Choose Location</label>
+              <label htmlFor="floatingSelect">Choose Location</label>
             </div>
             {company.rolesArr == undefined ? (
               <button

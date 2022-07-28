@@ -150,7 +150,7 @@ const AddLocation = ({ companyId }) => {
                 Province
               </label>
               <select name="province" id="inputState" className="form-select">
-                <option selected>Choose...</option>
+                <option defaultValue>Choose...</option>
                 <option>Ontario</option>
                 <option>Quebec</option>
                 <option>Yukon</option>

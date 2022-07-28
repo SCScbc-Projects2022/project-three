@@ -49,7 +49,7 @@ const EmployeeDashboard = () => {
                   id="floatingInput"
                   placeholder="name@example.com"
                 />
-                <label for="floatingInput">
+                <label htmlFor="floatingInput">
                   <i className="bi bi-search me-2"></i>Search
                 </label>
               </div>
@@ -108,7 +108,7 @@ const EmployeeDashboard = () => {
               <div
                 className="modal fade"
                 id="exampleModal"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
               >

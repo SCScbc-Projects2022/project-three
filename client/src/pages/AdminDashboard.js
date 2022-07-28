@@ -110,7 +110,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                           <tr>
                             <td>
                               <button
-                                class="delete-btn"
+                                className="delete-btn"
                                 name="post"
                                 id={post._id}
                                 onClick={(e) =>
@@ -172,7 +172,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                           <tr>
                             <td>
                               <button
-                                class="delete-btn"
+                                className="delete-btn"
                                 name="user"
                                 id={employee._id}
                                 onClick={(e) =>
@@ -242,7 +242,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                           <tr>
                             <td>
                               <button
-                                class="delete-btn"
+                                className="delete-btn"
                                 name="role"
                                 id={role._id}
                                 onClick={(e) =>
@@ -286,7 +286,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                           <tr>
                             <td>
                               <button
-                                class="delete-btn"
+                                className="delete-btn"
                                 name="location"
                                 id={location._id}
                                 onClick={(e) =>

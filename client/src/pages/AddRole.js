@@ -47,7 +47,7 @@ const AddRole = ({ companyId }) => {
             <div>
               <div className="form-floating mb-3">
                 <input name="title" type="text" className="form-control" />
-                <label for="floatingInput">Title</label>
+                <label htmlFor="floatingInput">Title</label>
               </div>
             </div>
             <button type="submit" className="btn btn-outline-primary">
