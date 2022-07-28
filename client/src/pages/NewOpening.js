@@ -24,6 +24,11 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
     companyId,
   });
 
+  const handlePage = (e) => {
+    setActivePage({ [e.target.name]: true });
+    document.title = `Proj3 - ${e.target.innerText}`;
+  };
+
   const [value, setValue] = useState([0, 24]);
 
   const handleChange = (event, newValue) => {
@@ -88,20 +93,39 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
             <div>
               <h4>Role and Location</h4>
               <div className="col-md-4">
-                <p>Dynamically render the nav items</p>
                 <select name="role" id="inputState" className="form-select">
-                  <option selected>Choose Role</option>
-                  <option>Server</option>
-                  <option>Kitchen</option>
-                  <option>Bartender</option>
-                  <option>Host</option>
+                  {company.rolesArr == undefined ? (
+                    <option value="no">No Available Roles</option>
+                  ) : company.rolesArr.length == 0 ? (
+                    <option value="no">No Available Roles</option>
+                  ) : (
+                    company.rolesArr.map((role, index) => {
+                      return (
+                        <option key={index} value={role.title}>
+                          {role.title}
+                        </option>
+                      );
+                    })
+                  )}
                 </select>
-                <p>Dynamically render the nav items</p>
-                <select name="location" id="inputState" className="form-select">
-                  <option selected>Choose Location</option>
-                  <option>Jarvis and Front</option>
-                  <option>Younge and Bloor</option>
-                  <option>Dundas and Ossington</option>
+                <select
+                  name="location"
+                  id="inputState"
+                  className="my-2 form-select"
+                >
+                  {company.locationArr == undefined ? (
+                    <option value="no">No Available Locations</option>
+                  ) : company.locationArr.length == 0 ? (
+                    <option value="no">No Available Locations</option>
+                  ) : (
+                    company.locationArr.map((location, index) => {
+                      return (
+                        <option key={index} value={location.intersection}>
+                          {location.intersection}
+                        </option>
+                      );
+                    })
+                  )}
                 </select>
               </div>
             </div>
@@ -127,12 +151,13 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                 max={24}
               />
             </Box>
-            <div style={{ height: '25px' }}></div>
+            <div style={{ height: '15px' }}></div>
             <div>
               <h4>Additional Info</h4>
               <input name="additionalInfo" type="text" />
             </div>
             <div>
+              <div style={{ height: '25px' }}></div>
               <h4>Tags</h4>
               <input
                 name="tags"
@@ -141,9 +166,67 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
               />
             </div>
             <div>
-              <button type="submit" className="btn btn-outline-primary mt-4">
-                Submit
-              </button>
+              {company.rolesArr == undefined ? (
+                <button
+                  name="AddRole"
+                  type="submit"
+                  onClick={(e) => {
+                    handlePage(e);
+                  }}
+                  className="btn btn-outline-primary mt-5"
+                >
+                  Add Role
+                </button>
+              ) : company.rolesArr.length == 0 ? (
+                <button
+                  name="AddRole"
+                  onClick={(e) => {
+                    handlePage(e);
+                  }}
+                  type="submit"
+                  className="btn btn-outline-primary mt-5"
+                >
+                  Add Role
+                </button>
+              ) : (
+                ''
+              )}
+              {company.locationArr == undefined ? (
+                <button
+                  name="AddLocation"
+                  type="submit"
+                  onClick={(e) => {
+                    handlePage(e);
+                  }}
+                  className="btn btn-outline-primary mt-5"
+                >
+                  Add Location
+                </button>
+              ) : company.locationArr.length == 0 ? (
+                <button
+                  name="AddLocation"
+                  onClick={(e) => {
+                    handlePage(e);
+                  }}
+                  type="submit"
+                  className="btn btn-outline-primary mt-5"
+                >
+                  Add Location
+                </button>
+              ) : (
+                ''
+              )}
+
+              {company.rolesArr.length == 0 ||
+              company.locationArr.length == 0 ? (
+                <button type="submit" className="disabled my-2 btn">
+                  Submit
+                </button>
+              ) : (
+                <button type="submit" className="btn-outline-primary my-2 btn">
+                  Submit
+                </button>
+              )}
               {error && <div>Add position failed</div>}
             </div>
           </div>

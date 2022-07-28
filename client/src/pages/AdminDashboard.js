@@ -71,6 +71,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
       <div className="container-fluid mt-4 admin-dash">
         <div className="row">
           <h1 className="fw-bold">Dashboard - {company.name}</h1>
+          <div style={{ height: '25px' }}></div>
           <div className="col-12 d-flex flex-column justify-content-center">
             <div>
               <h2>Openings</h2>
