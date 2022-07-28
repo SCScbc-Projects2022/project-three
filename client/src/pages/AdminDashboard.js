@@ -9,7 +9,6 @@ import {
 
 const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   const handlePage = (e) => {
-    console.log(e.target.name);
     setActivePage({ [e.target.name]: true });
     document.title = `Proj3 - ${e.target.innerText}`;
   };
@@ -19,7 +18,6 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
     variables: { id: companyId },
   });
   const company = data?.company || [];
-  console.log(true, company);
 
   const [removePost, { postError }] = useMutation(REMOVE_POST);
   const [removeEmployee, { userError }] = useMutation(REMOVE_EMPLOYEE);

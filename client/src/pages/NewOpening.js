@@ -3,10 +3,18 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
+import { GET_COMPANY } from '../utils/queries';
 
-const NewOpening = ({ companyId }) => {
+const NewOpening = ({ activePage, setActivePage, companyId }) => {
+  // Returns specific company
+  const { loading, data } = useQuery(GET_COMPANY, {
+    variables: { id: companyId },
+  });
+  const company = data?.company || [];
+  console.log(true, company);
+
   const [formState, setFormState] = useState({
     shiftTime: { date: '', hour: '' },
     additionalInfo: '',

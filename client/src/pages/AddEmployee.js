@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
 
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
+
+import { GET_COMPANY } from '../utils/queries';
 import { ADD_EMPLOYEE } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
-const AddEmployee = ({ companyId }) => {
+const AddEmployee = ({ activePage, setActivePage, companyId }) => {
+  const handlePage = (e) => {
+    setActivePage({ [e.target.name]: true });
+    document.title = `Proj3 - ${e.target.innerText}`;
+  };
+
+  // Returns specific company
+  const { loading, data } = useQuery(GET_COMPANY, {
+    variables: { id: companyId },
+  });
+  const company = data?.company || [];
+  console.log(true, company);
+
   const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
@@ -126,12 +140,15 @@ const AddEmployee = ({ companyId }) => {
                   id="floatingSelect"
                   aria-label="Floating label select example"
                 >
-                  <option value="Server" selected>
-                    Server
-                  </option>
-                  <option value="Kitchen Staff">Kitchen Staff</option>
-                  <option value="Bartender">Bartender</option>
-                  <option value="Host">Host</option>
+                  {company.rolesArr == undefined ? (
+                    <option value="no">No Available Roles</option>
+                  ) : company.rolesArr.length == 0 ? (
+                    <option value="no">No Available Roles</option>
+                  ) : (
+                    company.rolesArr.map((role) => {
+                      return <option value={role.title}>{role.title}</option>;
+                    })
+                  )}
                 </select>
                 <label for="floatingSelect">Select Role</label>
               </div>
@@ -154,9 +171,43 @@ const AddEmployee = ({ companyId }) => {
               </select>
               <label for="floatingSelect">Choose Location</label>
             </div>
-            <button type="submit" className="btn btn-outline-primary mt-5">
-              Submit
-            </button>
+            {company.rolesArr == undefined ? (
+              <>
+                <button
+                  name="AddRole"
+                  type="submit"
+                  onClick={(e) => {
+                    handlePage(e);
+                  }}
+                  className="btn btn-outline-primary mt-5"
+                >
+                  Add Role
+                </button>
+                <button disabled type="submit" className="mx-2 btn mt-5">
+                  Submit
+                </button>
+              </>
+            ) : company.rolesArr.length == 0 ? (
+              <>
+                <button
+                  name="AddRole"
+                  onClick={(e) => {
+                    handlePage(e);
+                  }}
+                  type="submit"
+                  className="btn btn-outline-primary mt-5"
+                >
+                  Add Role
+                </button>
+                <button disabled type="submit" className="mx-2 btn mt-5">
+                  Submit
+                </button>
+              </>
+            ) : (
+              <button type="submit" className="btn btn-outline-primary mt-5">
+                Submit
+              </button>
+            )}
             {error && <div>Failed to add Employee!</div>}
           </form>
           <div className="col-1"></div>

@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_ROLE } from '../utils/mutations';
+import { GET_COMPANY } from '../utils/queries';
 
-const AddRole = ({ companyId }) => {
+const AddRole = ({ activePage, setActivePage, companyId }) => {
+  // Returns specific company
+  const { loading, data } = useQuery(GET_COMPANY, {
+    variables: { id: companyId },
+  });
+  const company = data?.company || [];
+  console.log(true, company);
+
   const [formState, setFormState] = useState({
     title: '',
     companyId,

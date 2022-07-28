@@ -101,11 +101,23 @@ function App() {
               setActivePage={setActivePage}
             />
           ) : activePage.AddEmployee ? (
-            <AddEmployee companyId={getCompany()} />
+            <AddEmployee
+              companyId={getCompany()}
+              activePage={activePage}
+              setActivePage={setActivePage}
+            />
           ) : activePage.AddLocation ? (
-            <AddLocation companyId={getCompany()} />
+            <AddLocation
+              companyId={getCompany()}
+              activePage={activePage}
+              setActivePage={setActivePage}
+            />
           ) : activePage.AddRole ? (
-            <AddRole companyId={getCompany()} />
+            <AddRole
+              companyId={getCompany()}
+              activePage={activePage}
+              setActivePage={setActivePage}
+            />
           ) : activePage.AdminDashboard ? (
             <AdminDashboard
               companyId={getCompany()}
@@ -117,7 +129,11 @@ function App() {
           ) : activePage.Login ? (
             <Login />
           ) : activePage.NewOpening ? (
-            <NewOpening companyId={getCompany()} />
+            <NewOpening
+              companyId={getCompany()}
+              activePage={activePage}
+              setActivePage={setActivePage}
+            />
           ) : activePage.Payment ? (
             <Payment />
           ) : activePage.Signup ? (
