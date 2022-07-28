@@ -147,7 +147,7 @@ const typeDefs = gql`
     location: String
     password: String
     email: String
-    phone: Int
+    phone: String
     role: Role
   }
 
@@ -159,7 +159,7 @@ const typeDefs = gql`
     location: String
     password: String
     email: String
-    phone: Int
+    phone: String
     role: String
     companyId: String
   }

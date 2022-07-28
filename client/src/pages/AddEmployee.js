@@ -13,7 +13,7 @@ const AddEmployee = ({ companyId }) => {
     password: '',
     location: '',
     email: '',
-    phone: 0,
+    phone: '',
     role: '',
     companyId,
   });
@@ -25,7 +25,6 @@ const AddEmployee = ({ companyId }) => {
 
     // build password and username based on first and last name of employee
     let passAndUser = e.target.firstName.value + e.target.lastName.value;
-    let phone = parseInt(e.target.phone.value);
 
     setFormState(
       ((formState.firstName += e.target.firstName.value),
@@ -34,7 +33,7 @@ const AddEmployee = ({ companyId }) => {
       (formState.password += passAndUser),
       (formState.location += e.target.location.value)),
       (formState.email += e.target.email.value),
-      (formState.phone = phone),
+      (formState.phone = e.target.phone.value),
       (formState.role += e.target.role.value)
     );
 
