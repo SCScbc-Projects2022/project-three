@@ -162,7 +162,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                 placeholder="Separate tags with commas"
               />
             </div>
-            <div class="mt-2">
+            <div className="mt-2">
               {company.rolesArr == undefined ? (
                 <button
                   name="AddRole"

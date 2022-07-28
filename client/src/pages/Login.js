@@ -120,7 +120,7 @@ const Login = () => {
                 id="floatingInput"
                 placeholder="name@example.com"
               />
-              <label for="floatingInput">Email address</label>
+              <label htmlFor="floatingInput">Email address</label>
             </div>
             <div className="form-floating">
               <input
@@ -130,7 +130,7 @@ const Login = () => {
                 id="floatingPassword"
                 placeholder="Password"
               />
-              <label for="floatingPassword">Password</label>
+              <label htmlFor="floatingPassword">Password</label>
             </div>
             <div className="col-12 mt-3">
               <button type="submit" className="btn btn-primary">
