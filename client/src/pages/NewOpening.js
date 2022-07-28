@@ -88,8 +88,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
       <div style={{ height: '100px' }}></div>
       <form onSubmit={(e) => handleSubmit(e)} className="container">
         <div className="row">
-          <div className="col-1"></div>
-          <div className="col-10">
+          <div className="col-12">
             <div>
               <h4>Role and Location</h4>
               <div className="col-md-4">
@@ -230,7 +229,6 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
               {error && <div>Add position failed</div>}
             </div>
           </div>
-          <div className="col-1"></div>
         </div>
       </form>
     </>
