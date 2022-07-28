@@ -71,11 +71,10 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
       <div className="container-fluid mt-4 admin-dash">
         <div className="row">
           <h1 className="fw-bold">Dashboard - {company.name}</h1>
-          {/* <h4 id="company-name">Company Name</h4> */}
           <div className="col-12 d-flex flex-column justify-content-center">
-            <div style={{ height: '50px' }}></div>
             <div>
               <h2>Openings</h2>
+              <p>Upload posts for Employees to view.</p>
               <button
                 onClick={(e) => {
                   handlePage(e);
@@ -118,9 +117,11 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 )}
               </ol>
             </div>
-            <div style={{ height: '25px' }}></div>
+            <div style={{ height: '15px' }}></div>
+            <hr></hr>
+            <h2>Employee Management</h2>
+            <p>Assign employees to available Positions.</p>
             <div>
-              <h2>Employees</h2>
               <button
                 onClick={(e) => {
                   handlePage(e);
@@ -159,9 +160,11 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 )}
               </ol>
             </div>
-            <div style={{ height: '25px' }}></div>
+            <div style={{ height: '15px' }}></div>
+            <hr></hr>
+            <h2>Position Management</h2>
+            <p>Upload new Roles and Locations</p>
             <div>
-              <h2>Active Roles</h2>
               <button
                 onClick={(e) => {
                   handlePage(e);
@@ -172,6 +175,18 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
               >
                 Add Role +
               </button>
+              <button
+                onClick={(e) => {
+                  handlePage(e);
+                }}
+                name="AddLocation"
+                type="button"
+                className="btn mx-2 btn-primary btn-lg"
+              >
+                Add Location +
+              </button>
+              <div style={{ height: '15px' }}></div>
+              <h2>Active Roles</h2>
               <ol>
                 {company.rolesArr == undefined ? (
                   <li>No Roles</li>
@@ -198,19 +213,9 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 )}
               </ol>
             </div>
-            <div style={{ height: '25px' }}></div>
+            <div style={{ height: '5px' }}></div>
             <div>
-              <h2>Locations</h2>
-              <button
-                onClick={(e) => {
-                  handlePage(e);
-                }}
-                name="AddLocation"
-                type="button"
-                className="btn btn-primary btn-lg"
-              >
-                Add Location +
-              </button>
+              <h2>Active Locations</h2>
               <ol>
                 {company.locationArr == undefined ? (
                   <li>No Locations</li>

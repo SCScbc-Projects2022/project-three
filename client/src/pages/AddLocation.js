@@ -1,16 +1,8 @@
 import React, { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { ADD_LOCATION } from '../utils/mutations';
-import { GET_COMPANY } from '../utils/queries';
 
-const AddLocation = ({ activePage, setActivePage, companyId }) => {
-  // Returns specific company
-  const { loading, data } = useQuery(GET_COMPANY, {
-    variables: { id: companyId },
-  });
-  const company = data?.company || [];
-  console.log(true, company);
-
+const AddLocation = ({ companyId }) => {
   const [formState, setFormState] = useState({
     intersection: '',
     companyId,

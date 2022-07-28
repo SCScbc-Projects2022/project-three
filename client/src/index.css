@@ -70,6 +70,7 @@ footer a {
   border: none;
   background-color: red;
   color: white;
+  margin-right: 8px;
   padding: 5px 12px;
   border-radius: 7px;
 }

@@ -18,7 +18,6 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
     variables: { id: companyId },
   });
   const company = data?.company || [];
-  console.log(true, company);
 
   const [formState, setFormState] = useState({
     firstName: '',
