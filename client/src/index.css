@@ -106,6 +106,13 @@ li {
   opacity: 95%;
 }
 
+.user_posts {
+  cursor: pointer;
+}
+.user_posts.active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
 .card.card-footer a {
   color: white;
   display: inline;
