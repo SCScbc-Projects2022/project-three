@@ -99,6 +99,9 @@ li {
   width: 100vw !important;
 }
 
+.form-check-input {
+  padding: 10px;
+}
 .footer {
   opacity: 95%;
 }
