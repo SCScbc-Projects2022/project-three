@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-//Candice doing user, tag and role
+//Candice doing user and role
 const typeDefs = gql`
   type Company {
     _id: ID
@@ -50,7 +50,7 @@ const typeDefs = gql`
     additionalInfo: String
     locationArr: [Location]
     role: Role
-    tags: [Tag]
+    tags: [String]
   }
 
   input postInput {
@@ -59,7 +59,7 @@ const typeDefs = gql`
     additionalInfo: String
     location: locationInput
     role: String
-    tags: String
+    tags: [String]
     companyId: String
   }
 
@@ -73,18 +73,8 @@ const typeDefs = gql`
     date: String
   }
 
-  type Tag {
-    _id: ID
-    title: String
-  }
-
   type Role {
     _id: ID
-    title: String
-  }
-
-  input tagInput {
-    companyId: String
     title: String
   }
 
@@ -106,8 +96,6 @@ const typeDefs = gql`
     post(_id: ID!): Post
     roles(companyId: ID!): [Role]
     role(_id: ID!): Role
-    tags(companyId: ID!): [Tag]
-    tag(_id: ID!): Tag
   }
 
   type Mutation {
@@ -134,7 +122,6 @@ const typeDefs = gql`
     removePost(Id: String!, companyId: String!): Post
     addRole(roleToSave: roleInput): Role
     removeRole(Id: String!, companyId: String!): Role
-    addTag(companyId: ID!, title: String!): Tag
     addLocation(locationToSave: locationInput): Location
     removeLocation(Id: String!, companyId: String!): Location
   }

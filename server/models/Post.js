@@ -23,8 +23,7 @@ const postSchema = new Schema(
     ],
     tags: [
       {
-        type: Schema.Types.String,
-        ref: 'Tag',
+        type: String,
       },
     ],
   },
