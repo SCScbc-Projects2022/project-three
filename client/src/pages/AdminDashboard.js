@@ -68,7 +68,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
 
   return (
     <>
-      <div className="container-fluid mt-4">
+      <div className="container-fluid mt-4 admin-dash">
         <div className="row">
           <h1 className="fw-bold">Dashboard - {company.name}</h1>
           {/* <h4 id="company-name">Company Name</h4> */}
@@ -96,6 +96,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                     return (
                       <li key={index}>
                         <button
+                          class="delete-btn"
                           name="post"
                           id={post._id}
                           onClick={(e) =>
@@ -140,6 +141,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                     return (
                       <li key={index}>
                         <button
+                          class="delete-btn"
                           name="user"
                           id={employee._id}
                           onClick={(e) =>
@@ -180,6 +182,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                     return (
                       <li key={index}>
                         <button
+                          class="delete-btn"
                           name="role"
                           id={role._id}
                           onClick={(e) =>
@@ -218,6 +221,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                     return (
                       <li key={index}>
                         <button
+                          class="delete-btn"
                           name="location"
                           id={location._id}
                           onClick={(e) =>

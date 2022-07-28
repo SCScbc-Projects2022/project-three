@@ -28,11 +28,11 @@ li {
 
 .footer {
   opacity: 95%;
-  }
+}
 
 .card.card-footer a {
-color: white;
-display: inline;
+  color: white;
+  display: inline;
 }
 
 /* header and footer edits */
@@ -66,8 +66,23 @@ footer a {
   height: 3.5rem;
 } */
 
+.delete-btn {
+  border: none;
+  background-color: red;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 7px;
+}
+
+.admin-dash ol {
+  padding: 0;
+}
+.admin-dash li {
+  margin-top: 10px;
+}
+
 .nav-item:hover {
-  color:blue;
+  color: blue;
 }
 
 @media screen and (max-width: 575px) {
