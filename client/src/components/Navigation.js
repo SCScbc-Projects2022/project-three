@@ -59,19 +59,23 @@ const Navigation = ({ setActivePage, activePage, account }) => {
                   {account == 'company' ? 'Company' : 'Employee'} Dashboard
                 </a>
               </li>
-              <li className="mx-3 nav-item">
-                <a
-                  className={`nav-link navItem ${
-                    activePage.Payment ? 'active' : ''
-                  }`}
-                  name="Payment"
-                  aria-current="page"
-                  href="#Payment"
-                  onClick={(e) => handlePage(e)}
-                >
-                  Payment
-                </a>
-              </li>
+              {account == 'company' ? (
+                <li className="mx-3 nav-item">
+                  <a
+                    className={`nav-link navItem ${
+                      activePage.Payment ? 'active' : ''
+                    }`}
+                    name="Payment"
+                    aria-current="page"
+                    href="#Payment"
+                    onClick={(e) => handlePage(e)}
+                  >
+                    Payment
+                  </a>
+                </li>
+              ) : (
+                ''
+              )}
               <li className="mx-3 nav-item">
                 <a href="/" className="nav-link navItem" onClick={logout}>
                   Logout
