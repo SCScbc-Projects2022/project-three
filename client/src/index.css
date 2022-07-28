@@ -1,0 +1,163 @@
+@font-face {
+  font-family: 'PoppinsHeader';
+  src: url('../public/Fonts/Poppins/Poppins-Bold.ttf');
+}
+@font-face {
+  font-family: 'PoppinsBody';
+  src: url('../public/Fonts/Poppins/Poppins-Medium.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'PoppinsBody', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'PoppinsHeader';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+textarea,
+p,
+input,
+input::placeholder,
+textarea::placeholder {
+  color: #333;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.5;
+}
+
+input,
+textarea {
+  font-size: 18px;
+  resize: none;
+  color: black;
+  width: 340px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  padding-top: 8px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.navItem.active {
+  color: blue;
+}
+
+li {
+  list-style: none;
+}
+
+#add-employee-form {
+  margin: 35px 0;
+}
+
+#active-employee-wrapper,
+#active-manager-wrapper {
+  margin: 35px 0;
+  background-color: aliceblue;
+}
+
+.navbar {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  padding-left: 30px;
+  padding-right: 30px;
+  background-color: dodgerblue;
+  top: 0;
+  z-index: 2;
+  margin-bottom: 15px;
+  box-shadow: 5px 0 10px 0 rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(20px);
+  font-family: 'PoppinsBody', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  top: 0 !important;
+  position: fixed !important;
+  width: 100vw !important;
+}
+
+.form-check-input {
+  padding: 10px;
+}
+.footer {
+  opacity: 95%;
+}
+
+.user_posts {
+  cursor: pointer;
+}
+.user_posts.active {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.card.card-footer a {
+  color: white;
+  display: inline;
+}
+
+/* header and footer edits */
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+#logo {
+  max-width: 8rem;
+}
+
+#navbar {
+  justify-content: space-between;
+  display: flex;
+}
+
+.delete-btn {
+  border: none;
+  background-color: red;
+  color: white;
+  margin-right: 8px;
+  padding: 5px 12px;
+  border-radius: 7px;
+}
+
+.admin-dash ol {
+  padding: 0;
+}
+.admin-dash li {
+  margin-top: 10px;
+}
+
+.nav-item:hover {
+  color: blue;
+}
+
+.navitems {
+  padding: 0;
+}
+@media screen and (max-width: 1087px) {
+  #navbar {
+    justify-content: center;
+  }
+}

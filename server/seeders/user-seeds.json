@@ -1,0 +1,146 @@
+[
+  {
+    "firstName": "Ed",
+    "lastName": "Edwards",
+    "username": "EdEdwards",
+    "password": "password1",
+    "email": "ed@brking.com",
+    "phone": "2344563224"
+  },
+  {
+    "firstName": "Sam",
+    "lastName": "Smith",
+    "username": "SamSmith",
+    "password": "password2",
+    "email": "sam@brking.com",
+    "phone": "2662343984"
+  },
+  {
+    "firstName": "Scott",
+    "lastName": "Brown",
+    "username": "ScottBr",
+    "password": "password3",
+    "email": "scott@brking.com",
+    "phone": "2344563724"
+  },
+  {
+    "firstName": "Noah",
+    "lastName": "Bernett",
+    "username": "NoahBernett",
+    "password": "password4",
+    "email": "Noah@brking.com",
+    "phone": "2367563224"
+  },
+  {
+    "firstName": "Sidney",
+    "lastName": "Beverly",
+    "username": "SidBeverly",
+    "password": "password5",
+    "email": "Sid@brking.com",
+    "phone": "2344823934"
+  },
+  {
+    "firstName": "Brielle",
+    "lastName": "Franklin",
+    "username": "BriFranklin",
+    "password": "password6",
+    "email": "Brielle@brking.com",
+    "phone": "2344563224"
+  },
+  {
+    "firstName": "Lindsey",
+    "lastName": "Jones",
+    "username": "LindseyJ",
+    "password": "password7",
+    "email": "LindseyJ@brking.com",
+    "phone": "3894673284"
+  },
+  {
+    "firstName": "Ray",
+    "lastName": "Frick",
+    "username": "RayF",
+    "password": "password8",
+    "email": "RayF@brking.com",
+    "phone": "2344553274"
+  },
+  {
+    "firstName": "Nicole",
+    "lastName": "Grant",
+    "username": "NicoleG",
+    "password": "password9",
+    "email": "NicoleG@brking.com",
+    "phone": "2342943294"
+  },
+  {
+    "firstName": "Rose",
+    "lastName": "Wood",
+    "username": "RoseW",
+    "password": "password10",
+    "email": "RoseW@brking.com",
+    "phone": "2344533874"
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Hughes",
+    "username": "JaneH",
+    "password": "password11",
+    "email": "JaneH@brking.com",
+    "phone": "2344943784"
+  },
+  {
+    "firstName": "Avery",
+    "lastName": "Kim",
+    "username": "AveryK",
+    "password": "password12",
+    "email": "AveryK@brking.com",
+    "phone": "2345803274"
+  },
+  {
+    "firstName": "Kelsey",
+    "lastName": "Lee",
+    "username": "KelseyL",
+    "password": "password13",
+    "email": "KelseyL@brking.com",
+    "phone": "2342783194"
+  },
+  {
+    "firstName": "Jacob",
+    "lastName": "Martin",
+    "username": "JacobM",
+    "password": "password14",
+    "email": "Jakemartin@brking.com",
+    "phone": "2344983054"
+  },
+  {
+    "firstName": "Gwen",
+    "lastName": "Ramirez",
+    "username": "GwenRami",
+    "password": "password15",
+    "email": "GwenRami@brking.com",
+    "phone": "2738923734"
+  },
+  {
+    "firstName": "Jaiden",
+    "lastName": "Sartori",
+    "username": "JaiSartori",
+    "password": "password16",
+    "email": "SartoriJ@brking.com",
+    "phone": "2343893484"
+  },
+  {
+    "firstName": "Vicky",
+    "lastName": "White",
+    "username": "VickyW",
+    "password": "password17",
+    "email": "VickWhite@brking.com",
+    "phone": "2343843774"
+  },
+  {
+    "firstName": "James",
+    "lastName": "Bond",
+    "username": "JamesBond",
+    "password": "password007",
+    "email": "JamesB@brking.com",
+    "phone": "2783893394"
+  }
+]
