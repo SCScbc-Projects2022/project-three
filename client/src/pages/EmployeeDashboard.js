@@ -15,44 +15,6 @@ const EmployeeDashboard = () => {
     });
   });
 
-  console.log(companies);
-
-  const handleModel = (e) => {
-    return (
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">
-              Confirm your shift
-            </h5>
-            <button
-              type="button"
-              className="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div className="modal-body">
-            <span>Yonge and Bloor</span>
-            <span className="ms-3">5:00pm to 10:00pm</span>
-          </div>
-          <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" className="btn btn-primary">
-              Confirm
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   var [active, setActive] = useState({});
   const activeChoices = document.querySelectorAll('.user_posts');
   const handleActive = (index, e) => {
@@ -138,7 +100,8 @@ const EmployeeDashboard = () => {
             <div>
               <button
                 type="button"
-                className="btn btn-primary mt-5"
+                disabled={active.location == undefined ? true : false}
+                className={`btn btn-primary mt-5`}
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
               >
