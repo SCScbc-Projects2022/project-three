@@ -35,6 +35,7 @@ const AddLocation = ({ companyId }) => {
       await addLocation({
         variables: { locationToSave: formState },
       });
+      window.location.reload(false);
     } catch (e) {
       console.error(e);
       // Clear Form state

@@ -57,6 +57,7 @@ const NewOpening = ({ companyId }) => {
       await addPost({
         variables: { postToSave: formState },
       });
+      window.location.reload(false);
     } catch (e) {
       console.error(e);
       // Clear form state

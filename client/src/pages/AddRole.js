@@ -20,6 +20,7 @@ const AddRole = ({ companyId }) => {
       await addRole({
         variables: { roleToSave: formState },
       });
+      window.location.reload(false);
     } catch (e) {
       console.error(e);
       // Clear Form state

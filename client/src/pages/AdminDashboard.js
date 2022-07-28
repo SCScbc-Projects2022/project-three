@@ -65,6 +65,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
         console.error(err);
       }
     }
+    window.location.reload(false);
   };
 
   return (

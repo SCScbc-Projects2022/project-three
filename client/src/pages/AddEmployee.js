@@ -42,7 +42,7 @@ const AddEmployee = ({ companyId }) => {
       await addEmployee({
         variables: { employeeToSave: formState },
       });
-      // Auth.login(data.addEmployee.token);
+      window.location.reload(false);
     } catch (e) {
       console.error(e);
       // Clear Form state
