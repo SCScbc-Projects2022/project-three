@@ -61,7 +61,7 @@ const Navigation = ({ setActivePage, activePage }) => {
                   Payment
                 </a>
               </li>
-              <li className='nav-item'>
+              <li className='mx-3 nav-item'>
                 <a href="/" className='nav-link navItem' onClick={logout}>
                   Logout
                 </a>

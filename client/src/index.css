@@ -1,9 +1,3 @@
-/* * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-} */
-
 body {
   font-family: 'Inter', sans-serif;
 }
@@ -19,16 +13,12 @@ li {
 #add-employee-form {
   margin: 35px 0;
 }
+
 #active-employee-wrapper,
 #active-manager-wrapper {
   margin: 35px 0;
   background-color: aliceblue;
 }
-
-/* nav img {
-  max-width: 100px;
-  margin-left: -2rem;
-} */
 
 .navbar {
   background-color: dodgerblue;
