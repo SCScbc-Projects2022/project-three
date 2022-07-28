@@ -81,7 +81,8 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <main>
+      <main id='pageControl'>
+        <div id='contentControl'>
         <Navigation activePage={activePage} setActivePage={setActivePage} />
         <section id="main-wrapper">
           {activePage.Home ? (
@@ -118,6 +119,7 @@ function App() {
             ''
           )}
         </section>
+        </div>
         <Footer />
       </main>
     </ApolloProvider>
