@@ -8,6 +8,13 @@ const EmployeeDashboard = () => {
   const { loading, data } = useQuery(GET_COMPANIES, {});
   const companies = data?.companies || [];
 
+  const activeData = [];
+  companies.forEach((company) => {
+    company.postsArr.forEach((post) => {
+      activeData.push(post);
+    });
+  });
+
   return (
     <>
       <div className="container-fluid mt-4">
@@ -41,62 +48,17 @@ const EmployeeDashboard = () => {
                     <th scope="col">Tags</th>
                   </tr>
                 </thead>
-                {companies.map((company) => {
-                  if (
-                    company.postsArr == undefined ||
-                    company.postsArr == '' ||
-                    company.postsArr.length == 0
-                  ) {
-                    return <p style={{ color: 'red' }}>No Openings</p>;
-                  } else {
-                    company.postsArr.map((post, index) => {
-                      console.log(post);
-                      return (
-                        <tbody key={index}>
-                          {
-                            <tr>
-                              <td>
-                                <button
-                                  class="delete-btn"
-                                  name="post"
-                                  id={post._id}
-                                >
-                                  X
-                                </button>
-                              </td>
-                              <td>{post.role}</td>
-                              <td>{post.location}</td>
-                              <td>
-                                {post.shiftTime.hour} - {post.shiftTime.date}
-                              </td>
-                              <td>{post.additionalInfo}</td>
-                              <td>{post.tags}</td>
-                            </tr>
-                          }
-                        </tbody>
-                      );
-                    });
-                  }
-                })}
-                {/* {companies.postsArr == undefined ? (
+                {activeData == undefined ? (
                   <p style={{ color: 'red' }}>No Openings</p>
-                ) : companies.postsArr == '' ? (
+                ) : activeData == '' ? (
                   <p style={{ color: 'red' }}>No Openings</p>
                 ) : (
-                  companies.postsArr.map((post, index) => {
+                  activeData.map((post, index) => {
                     return (
                       <tbody key={index}>
                         {
                           <tr>
-                            <td>
-                              <button
-                                class="delete-btn"
-                                name="post"
-                                id={post._id}
-                              >
-                                X
-                              </button>
-                            </td>
+                            <td>{index}</td>
                             <td>{post.role}</td>
                             <td>{post.location}</td>
                             <td>
@@ -109,7 +71,7 @@ const EmployeeDashboard = () => {
                       </tbody>
                     );
                   })
-                )} */}
+                )}
               </table>
             </div>
             <div>
