@@ -150,8 +150,9 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                         >
                           X
                         </button>
-                        {employee.firstName} - {employee.lastName} - Email:{' '}
-                        {employee.email} - Phone: {employee.phone} - Role: N/A
+                        {employee.role} @ {employee.location} -{' '}
+                        {employee.firstName} {employee.lastName} - Email:{' '}
+                        {employee.email} - Phone: {employee.phone}
                       </li>
                     );
                   })

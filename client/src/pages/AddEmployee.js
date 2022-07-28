@@ -152,43 +152,7 @@ const AddEmployee = ({ companyId }) => {
                 <option value="Hamilton">Hamilton</option>
                 <option value="Montreal">Montreal</option>
               </select>
-              <label for="floatingSelect">Original Location</label>
-            </div>
-            <div>
-              <h5 className="mt-3">Preferred locations</h5>
-              <div className="form-check form-check-inline mt-2">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox1"
-                  value="option1"
-                />
-                <label className="form-check-label" for="inlineCheckbox1">
-                  Jarvis and Front
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox2"
-                  value="option2"
-                />
-                <label className="form-check-label" for="inlineCheckbox2">
-                  Yonge and Bloor
-                </label>
-              </div>
-              <div className="form-check form-check-inline">
-                <input
-                  className="form-check-input"
-                  type="checkbox"
-                  id="inlineCheckbox2"
-                  value="option2"
-                />
-                <label className="form-check-label" for="inlineCheckbox2">
-                  Dundas and Ossington
-                </label>
-              </div>
+              <label for="floatingSelect">Choose Location</label>
             </div>
             <button type="submit" className="btn btn-outline-primary mt-5">
               Submit

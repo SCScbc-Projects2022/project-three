@@ -33,9 +33,8 @@ export const GET_COMPANY = gql`
         location
         phone
         email
-        role {
-          title
-        }
+        role
+        location
         firstName
         lastName
       }

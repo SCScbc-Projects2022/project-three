@@ -135,7 +135,7 @@ const typeDefs = gql`
     password: String
     email: String
     phone: String
-    role: Role
+    role: String
   }
 
   input userInput {

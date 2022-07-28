@@ -9,16 +9,20 @@ const { Company, Location, Post, Role, Tag, User } = require('../models');
 const db = require('../config/connection');
 
 db.once('open', async () => {
-
   // clean database
   await Post.deleteMany({});
   await Location.deleteMany({});
   await User.deleteMany({});
   await Company.deleteMany({});
   await Role.deleteMany({});
-  
+
   //bulk create each model
-  const tags = ["urgent", "picking up shift", "double pay", "advanced skills needed"];
+  const tags = [
+    'urgent',
+    'picking up shift',
+    'double pay',
+    'advanced skills needed',
+  ];
   const roles = await Role.insertMany(RoleData);
   const posts = await Post.insertMany(PostData);
   const users = await User.insertMany(UserData);
@@ -36,37 +40,37 @@ db.once('open', async () => {
   // add locations to company
   for (i = 0; i < locations.length; i++) {
     await Company.findByIdAndUpdate(
-      {_id: companies[0]._id},
-      {$addToSet: {locationArr: locations[i]._id}},
-      {new: true}
-    )
+      { _id: companies[0]._id },
+      { $addToSet: { locationArr: locations[i]._id } },
+      { new: true }
+    );
   }
 
   // add users to company
   for (i = 0; i < users.length; i++) {
     await Company.findByIdAndUpdate(
-      {_id: companies[0]._id},
-      {$addToSet: {userArr: users[i]._id}},
-      {new: true}
-    )
+      { _id: companies[0]._id },
+      { $addToSet: { userArr: users[i]._id } },
+      { new: true }
+    );
   }
 
   // add posts to company
   for (i = 0; i < posts.length; i++) {
     await Company.findByIdAndUpdate(
-      {_id: companies[0]._id},
-      {$addToSet: {postsArr: posts[i]._id}},
-      {new: true}
-    )
+      { _id: companies[0]._id },
+      { $addToSet: { postsArr: posts[i]._id } },
+      { new: true }
+    );
   }
 
   // add roles to company
   for (i = 0; i < roles.length; i++) {
     await Company.findByIdAndUpdate(
-      {_id: companies[0]._id},
-      {$addToSet: {rolesArr: roles[i]._id}},
-      {new: true}
-    )
+      { _id: companies[0]._id },
+      { $addToSet: { rolesArr: roles[i]._id } },
+      { new: true }
+    );
   }
 
   // add employees to locations
@@ -77,54 +81,64 @@ db.once('open', async () => {
     3: [9, 10, 11],
     4: [12, 13, 14],
     5: [15, 16, 17],
-  }
+  };
 
   for (i = 0; i < locations.length; i++) {
     await Location.findByIdAndUpdate(
-      {_id: locations[i]._id},
-      {$addToSet: {employees: {$each: [users[employeeDist[i][0]]._id, users[employeeDist[i][1]]._id, users[employeeDist[i][2]]._id]}}},
-      {new: true}
-    )
+      { _id: locations[i]._id },
+      {
+        $addToSet: {
+          employees: {
+            $each: [
+              users[employeeDist[i][0]]._id,
+              users[employeeDist[i][1]]._id,
+              users[employeeDist[i][2]]._id,
+            ],
+          },
+        },
+      },
+      { new: true }
+    );
   }
 
   // add location to post
   for (i = 0; i < posts.length; i++) {
     await Post.findByIdAndUpdate(
-      {_id: posts[i]._id},
-      {$addToSet: {locationArr: locations[RNG6()]._id}},
-      {new: true}
-    )
+      { _id: posts[i]._id },
+      { $addToSet: { locationArr: locations[RNG6()]._id } },
+      { new: true }
+    );
   }
 
   // add role to post
-  for (i = 0; i < posts.length; i++) {
-    await Post.findByIdAndUpdate(
-      {_id: posts[i]._id},
-      {$addToSet: {role: roles[RNG6()].title}},
-      {new: true}
-    )
-  }
+  // for (i = 0; i < posts.length; i++) {
+  //   await Post.findByIdAndUpdate(
+  //     { _id: posts[i]._id },
+  //     { $addToSet: { role: roles[RNG6()].title } },
+  //     { new: true }
+  //   );
+  // }
 
   // add tags to post
   for (i = 0; i < posts.length; i++) {
     await Post.findByIdAndUpdate(
-      {_id: posts[i]._id},
-      {$addToSet: {tags: tags[RNG3()]}},
-      {new: true}
-    )
+      { _id: posts[i]._id },
+      { $addToSet: { tags: tags[RNG3()] } },
+      { new: true }
+    );
   }
 
   // add company to role
   for (i = 0; i < roles.length; i++) {
     await Role.findByIdAndUpdate(
-      {_id: roles[i]._id},
-      {$addToSet: {companyId: companies[0]._id}},
-      {new: true}
-    )
+      { _id: roles[i]._id },
+      { $addToSet: { companyId: companies[0]._id } },
+      { new: true }
+    );
   }
 
   // add location to user
- let place = 0;
+  let place = 0;
 
   for (i = 0; i < users.length; i++) {
     switch (i) {
@@ -148,19 +162,19 @@ db.once('open', async () => {
         break;
     }
     await User.findByIdAndUpdate(
-      {_id: users[i]._id},
-      {$addToSet: {location: locations[place].intersection}},
-      {new: true}
-    )
+      { _id: users[i]._id },
+      { $addToSet: { location: locations[place].intersection } },
+      { new: true }
+    );
   }
 
   // add role to user
   for (i = 0; i < users.length; i++) {
     await User.findByIdAndUpdate(
-      {_id: users[i]._id},
-      {$addToSet: {role: roles[RNG6()].title}},
-      {new: true}
-    )
+      { _id: users[i]._id },
+      { $addToSet: { role: roles[RNG6()].title } },
+      { new: true }
+    );
   }
 
   console.log('\n DATABASE SEEDED');

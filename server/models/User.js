@@ -32,12 +32,7 @@ const userSchema = new Schema(
     location: {
       type: String,
     },
-    role: [
-      {
-        type: Schema.Types.String,
-        ref: 'Role',
-      },
-    ],
+    role: { type: String },
   },
   {
     toJSON: {
