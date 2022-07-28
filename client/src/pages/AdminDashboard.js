@@ -73,7 +73,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Dashboard</h1>
-          <h4 id="company-name">Company Name</h4>
+          {/* <h4 id="company-name">Company Name</h4> */}
           <div className="col-12 d-flex flex-column justify-content-center">
             <div style={{ height: '50px' }}></div>
             <div>
