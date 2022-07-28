@@ -6,7 +6,7 @@ const EmployeeDashboard = () => {
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Dashboard</h1>
-          <h4 id="employee-name">Employee Name</h4>
+          {/* <h4 id="employee-name">Employee Name</h4> */}
 
           <div className="col-12 d-flex flex-column justify-content-center">
             <div style={{ height: '100px' }}></div>

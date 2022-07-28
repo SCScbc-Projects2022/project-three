@@ -64,7 +64,7 @@ const AddEmployee = ({ companyId }) => {
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Add an Employee</h1>
-          <h4 id="company-name">Company Name</h4>
+          {/* <h4 id="company-name">Company Name</h4> */}
         </div>
       </div>
 
@@ -187,7 +187,7 @@ const AddEmployee = ({ companyId }) => {
                   value="option2"
                 />
                 <label className="form-check-label" for="inlineCheckbox2">
-                  Dudas and Ossington
+                  Dundas and Ossington
                 </label>
               </div>
             </div>
