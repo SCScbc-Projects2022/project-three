@@ -53,8 +53,8 @@
   
   Contact specific repository author:</br>
   [Ali](https://github.com/alimomen10) - Concept + Branding, Logo (final), Custom CSS, UI/UX, Pitch + Presentation
-  [Carlos](https://github.com/csabbah) - Team Lead, Frontend JavaScript, TypeDefs + Resolvers, Mutations, Full Stack Integration
-  [Veronica](https://github.com/TOVTC) - Database Seeds, Models, React Integration, TypeDefs + Resolvers, Queries, Documentation
+  [Carlos](https://github.com/csabbah) - Team Lead, Frontend JavaScript, TypeDefs + Resolvers, Mutations, Full Stack Integration, Custom CSS + Mobile Responsiveness
+  [Veronica](https://github.com/TOVTC) - Database Seeds, Models, React Integration, TypeDefs + Resolvers, Queries, Documentation, Heroku Deploy, Validation
   [Candice](https://github.com/candiecane7) - Debugging, Models, TypeDefs + Resolvers, Queries, Documentation
   [Cory](https://github.com/CorySillaots) - React Integration, Custom CSS, Logo Ideas
   [Anna](https://github.com/lyuhan2828) - Database Seeds
