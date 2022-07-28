@@ -33,6 +33,9 @@ export const GET_COMPANY = gql`
         location
         phone
         email
+        role {
+          title
+        }
         firstName
         lastName
       }
@@ -47,16 +50,9 @@ export const GET_COMPANY = gql`
           date
         }
         additionalInfo
-        locationArr {
-          _id
-          intersection
-        }
-        role {
-          title
-        }
-        tags {
-          title
-        }
+        location
+        role
+        tags
       }
     }
   }

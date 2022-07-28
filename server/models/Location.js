@@ -8,12 +8,6 @@ const locationSchema = new Schema({
     type: Object,
     required: true,
   },
-  employees: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-    },
-  ],
 });
 
 const Location = model('Location', locationSchema);

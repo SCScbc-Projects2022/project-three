@@ -48,8 +48,8 @@ const typeDefs = gql`
     _id: ID
     shiftTime: ShiftTime
     additionalInfo: String
-    locationArr: [Location]
-    role: Role
+    location: String
+    role: String
     tags: [String]
   }
 
@@ -57,7 +57,7 @@ const typeDefs = gql`
     _id: ID
     shiftTime: shiftTimeInput
     additionalInfo: String
-    location: locationInput
+    location: String
     role: String
     tags: [String]
     companyId: String

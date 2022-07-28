@@ -106,13 +106,13 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                         >
                           X
                         </button>
-                        Role: N/A - Location - N/A - Shift Time:{' '}
-                        {post.shiftTime.hour} - Shift Date {post.shiftTime.date}{' '}
-                        - Additional info:{' '}
+                        Role: {post.role} - Location - {post.location} - Shift
+                        Time: {post.shiftTime.hour} - Shift Date{' '}
+                        {post.shiftTime.date} - Additional info:{' '}
                         {post.additionalInfo == ''
                           ? 'N/A'
                           : post.additionalInfo}{' '}
-                        - Tags: [N/A]
+                        - Tags: {post.tags}
                       </li>
                     );
                   })

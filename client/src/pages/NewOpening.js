@@ -11,18 +11,8 @@ const NewOpening = ({ companyId }) => {
     shiftTime: { date: '', hour: '' },
     additionalInfo: '',
     role: '',
-    tags: 'TAG',
-    location: {
-      intersection: '',
-      address: {
-        number: 33,
-        street: 'this tsteet',
-        city: 'brampton',
-        country: 'canada',
-        postalCode: '3esds',
-      },
-      companyId: companyId,
-    },
+    tags: [],
+    location: '',
     companyId,
   });
 
@@ -44,13 +34,14 @@ const NewOpening = ({ companyId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     let hour = `${value[0]}:00-${value[1]}:00`;
-
+    let tags = e.target.tags.value.split(',');
     setFormState(
-      ((formState.location.intersection += e.target.location.value),
+      ((formState.location += e.target.location.value),
       (formState.role += e.target.role.value),
       (formState.shiftTime.hour += hour),
       (formState.additionalInfo += e.target.additionalInfo.value),
-      (formState.shiftTime.date += e.target.date.value))
+      ((formState.shiftTime.date += e.target.date.value),
+      tags.forEach((tag) => formState.tags.push(tag))))
     );
 
     try {
@@ -65,19 +56,8 @@ const NewOpening = ({ companyId }) => {
         shiftTime: { date: '', hour: '' },
         additionalInfo: '',
         role: '',
-        tags: 'this tag',
-        location: {
-          intersection: '',
-          address: {
-            locationName: 'test location',
-            number: 33,
-            street: 'this tsteet',
-            city: 'brampton',
-            country: 'canada',
-            postalCode: '3esds',
-          },
-          companyId: companyId,
-        },
+        tags: [],
+        location: '',
         companyId,
       });
     }
@@ -146,7 +126,11 @@ const NewOpening = ({ companyId }) => {
             </div>
             <div>
               <h4>Tags</h4>
-              <input name="additionalInfo" type="text" />
+              <input
+                name="tags"
+                type="text"
+                placeholder="Separate tags with commas"
+              />
             </div>
             <div>
               <button type="submit" className="btn btn-outline-primary mt-4">

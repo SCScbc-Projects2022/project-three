@@ -1,26 +1,35 @@
 [
   {
+    "role": "Kitchen",
     "shiftTime": {
       "start": "16:30",
       "end": "20:30",
       "date": "26/07/2022"
     },
-    "additionalInfo": "the regular employee quitted today"
+    "location": "Winston and Churchill",
+    "additionalInfo": "the regular employee quitted today",
+    "tags": ["tag1, tag2"]
   },
   {
+    "role": "Front",
     "shiftTime": {
       "start": "17:30",
       "end": "23:30",
       "date": "28/07/2022"
     },
-    "additionalInfo": "called in sick"
+    "location": "Bramalea and Mavis",
+    "additionalInfo": "called in sick",
+    "tags": ["tag1, tag2"]
   },
   {
+    "role": "Server",
     "shiftTime": {
       "start": "14:30",
       "end": "21:00",
       "date": "28/07/2022"
     },
-    "additionalInfo": "holiday pay"
+    "location": "William Parkway and Bovaird",
+    "additionalInfo": "holiday pay",
+    "tags": ["tag1, tag2"]
   }
 ]

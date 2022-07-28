@@ -9,18 +9,12 @@ const postSchema = new Schema(
     additionalInfo: {
       type: String,
     },
-    locationArr: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Location',
-      },
-    ],
-    role: [
-      {
-        type: Schema.Types.String,
-        ref: 'Role',
-      },
-    ],
+    location: {
+      type: String,
+    },
+    role: {
+      type: String,
+    },
     tags: [
       {
         type: String,
