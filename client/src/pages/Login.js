@@ -43,7 +43,7 @@ const Login = () => {
           variables: { ...formState },
         });
 
-        Auth.login(data.loginEmployee.token);
+        Auth.loginEmployee(data.loginEmployee.token);
       } catch (e) {
         // Clear state
         setFormState({ email: '', password: '' });
