@@ -45,15 +45,39 @@ color: white;
 display: inline;
 }
 
+/* header and footer edits */
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
 #logo {
   max-width: 8rem;
 }
 
-d-flex justify-content-between
-
 #navbar {
   justify-content: space-between;
   display: flex;
+}
+
+#pageControl {
+  position: relative;
+  min-height: 100vh;
+}
+
+#contentControl {
+  padding-bottom: 3.5rem;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;
+}
+
+.nav-item:hover {
+  color:blue;
 }
 
 @media screen and (max-width: 575px) {
