@@ -2,8 +2,7 @@
   {
     "role": "Kitchen",
     "shiftTime": {
-      "start": "16:30",
-      "end": "20:30",
+      "hour": "16:30 - 15:00",
       "date": "26/07/2022"
     },
     "location": "Winston and Churchill",
@@ -13,8 +12,7 @@
   {
     "role": "Front",
     "shiftTime": {
-      "start": "17:30",
-      "end": "23:30",
+      "hour": "16:30 - 15:00",
       "date": "28/07/2022"
     },
     "location": "Bramalea and Mavis",
@@ -24,8 +22,7 @@
   {
     "role": "Server",
     "shiftTime": {
-      "start": "14:30",
-      "end": "21:00",
+      "hour": "16:30 - 15:00",
       "date": "28/07/2022"
     },
     "location": "William Parkway and Bovaird",

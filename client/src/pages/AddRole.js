@@ -33,14 +33,12 @@ const AddRole = ({ companyId }) => {
 
   return (
     <>
+      <div style={{ height: '100px' }}></div>
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Add a Role</h1>
-          <h4 id="company-name">Company Name</h4>
         </div>
       </div>
-
-      <div style={{ height: '100px' }}></div>
 
       <div className="container">
         <div className="row">

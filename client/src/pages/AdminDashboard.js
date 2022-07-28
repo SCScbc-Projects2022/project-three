@@ -70,8 +70,9 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
     <>
       <div className="container-fluid mt-4 admin-dash">
         <div className="row">
+          <div style={{ height: '100px' }}></div>
           <h1 className="fw-bold">Dashboard - {company.name}</h1>
-          <div style={{ height: '25px' }}></div>
+          <div style={{ height: '20px' }}></div>
           <div className="col-12 d-flex flex-column justify-content-center">
             <div>
               <h2>Openings</h2>
@@ -154,7 +155,8 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                   <tr>
                     <th scope="col">#</th>
                     <th scope="col">Employee Role</th>
-                    <th scope="col">Employee Name and Email</th>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Employee email</th>
                     <th scope="col">Employee Number</th>
                   </tr>
                 </thead>
@@ -180,28 +182,12 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                                 X
                               </button>
                             </td>
+                            <td>{employee.role}</td>
                             <td>
-                              {employee.role
-                                ? employee.role
-                                : 'Data not inputted'}
+                              {employee.firstName} {employee.lastName}
                             </td>
-                            <td>
-                              {employee.firstName
-                                ? employee.firstName
-                                : 'Data not inputted'}{' '}
-                              {employee.lastName
-                                ? employee.lastName
-                                : 'Data not inputted'}{' '}
-                              -{' '}
-                              {employee.email
-                                ? employee.email
-                                : 'Data not inputted'}
-                            </td>
-                            <td>
-                              {employee.phone
-                                ? employee.phone
-                                : 'Data not inputted'}
-                            </td>
+                            <td>{employee.email}</td>
+                            <td>{employee.phone}</td>
                           </tr>
                         }
                       </tbody>
@@ -317,17 +303,17 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                             </td>
                             <td>
                               {location.address.city
-                                ? location.city
+                                ? location.address.city
                                 : 'Data not inputted'}
                             </td>
                             <td>
                               {location.address.country
-                                ? location.country
+                                ? location.address.country
                                 : 'Data not inputted'}
                             </td>
                             <td>
                               {location.address.postalCode
-                                ? location.postalCode
+                                ? location.address.postalCode
                                 : 'Data not inputted'}
                             </td>
                           </tr>

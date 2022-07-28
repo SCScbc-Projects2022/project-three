@@ -78,14 +78,12 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
 
   return (
     <>
+      <div style={{ height: '100px' }}></div>
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">New Opening</h1>
-          <h4 id="company-name">Company Name</h4>
         </div>
       </div>
-
-      <div style={{ height: '100px' }}></div>
       <form onSubmit={(e) => handleSubmit(e)} className="container">
         <div className="row">
           <div className="col-12">
