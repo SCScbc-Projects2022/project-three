@@ -197,7 +197,7 @@ const SignUp = () => {
               id="inputState"
               className="form-select"
             >
-              <option selected>Choose...</option>
+              <option defaultValue>Choose...</option>
               <option>Alberta</option>
               <option>British Columbia</option>
               <option>Manitoba</option>

@@ -8,7 +8,6 @@ const locationSchema = new Schema({
   address: {
     type: Object,
     required: true,
-    unique: true,
   },
 });
 

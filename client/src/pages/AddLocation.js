@@ -93,7 +93,6 @@ const AddLocation = ({ companyId, activePage, setActivePage }) => {
             className="col-10"
           >
             <div style={{ height: '50px' }}></div>
-            <form className="row g-3" />
 
             <div className="col-12">
               <label htmlFor="inputAddress" className="form-label">

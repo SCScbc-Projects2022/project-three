@@ -16,8 +16,8 @@ const EmployeeDashboard = () => {
   });
 
   var [active, setActive] = useState({});
-  const activeChoices = document.querySelectorAll('.user_posts');
   const handleActive = (e) => {
+    const activeChoices = document.querySelectorAll('.user_posts');
     activeChoices.forEach((post) => {
       post.className = 'user_posts';
       e.className = 'user_posts active';
@@ -67,9 +67,33 @@ const EmployeeDashboard = () => {
                   </tr>
                 </thead>
                 {activeData == undefined ? (
-                  <p style={{ color: 'red' }}>No Openings</p>
+                  <tbody>
+                    {
+                      <tr>
+                        <td></td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                      </tr>
+                    }
+                  </tbody>
                 ) : activeData == '' ? (
-                  <p style={{ color: 'red' }}>No Openings</p>
+                  <tbody>
+                    {
+                      <tr>
+                        <td></td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                        <td>No Data</td>
+                      </tr>
+                    }
+                  </tbody>
                 ) : (
                   activeData.map((post, index) => {
                     return (
@@ -78,7 +102,7 @@ const EmployeeDashboard = () => {
                         onClick={(e) => handleActive(e.target.parentNode)}
                       >
                         {
-                          <tr class="user_posts">
+                          <tr className="user_posts">
                             <td>{index}</td>
                             <td>{post.role}</td>
                             <td>{post.location}</td>
@@ -140,7 +164,11 @@ const EmployeeDashboard = () => {
                       >
                         Close
                       </button>
-                      <button type="button" className="btn btn-primary">
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        data-bs-dismiss="modal"
+                      >
                         Confirm
                       </button>
                     </div>

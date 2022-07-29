@@ -209,7 +209,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                 onClick={(e) => {
                   handlePage(e);
                 }}
-                className="btn btn-outline-primary mt-5"
+                className="btn btn-outline-primary mt-2"
               >
                 Add Role
               </button>
@@ -220,7 +220,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   handlePage(e);
                 }}
                 type="submit"
-                className="btn btn-outline-primary mt-5"
+                className="btn btn-outline-primary mt-2"
               >
                 Add Role
               </button>
@@ -234,7 +234,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                 onClick={(e) => {
                   handlePage(e);
                 }}
-                className="btn btn-outline-primary mt-5"
+                className="btn btn-outline-primary mx-2 mt-2"
               >
                 Add Location
               </button>
@@ -245,7 +245,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   handlePage(e);
                 }}
                 type="submit"
-                className="btn btn-outline-primary mt-5"
+                className="btn btn-outline-primary mx-2 mt-2"
               >
                 Add Location
               </button>
@@ -254,7 +254,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
             )}
 
             {company.rolesArr.length == 0 || company.locationArr.length == 0 ? (
-              <button type="submit" className="disabled mx-2 btn mt-5">
+              <button type="submit" className="disabled btn mt-2">
                 Submit
               </button>
             ) : (
