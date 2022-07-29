@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
 
 import { useQuery } from '@apollo/client';
-import { GET_COMPANIES } from '../utils/queries';
+import { GET_COMPANY } from '../utils/queries';
+
+import Auth from '../utils/auth';
 
 const EmployeeDashboard = () => {
   // Returns specific company
-  const { loading, data } = useQuery(GET_COMPANIES, {});
-  const companies = data?.companies || [];
+  const { loading, data } = useQuery(GET_COMPANY, {
+    variables: { id: Auth.getProfile().data.company },
+  });
+  const company = data?.company || [];
 
   const activeData = [];
-  companies.forEach((company) => {
-    company.postsArr.forEach((post) => {
-      activeData.push(post);
-    });
-  });
+  if (!loading) {
+    if (company.postsArr.length < 2) {
+      activeData.push(company.postsArr[0]);
+    } else {
+      company.postsArr.forEach((post) => {
+        activeData.push(post);
+      });
+    }
+  }
 
   var [active, setActive] = useState({});
   const handleActive = (e) => {

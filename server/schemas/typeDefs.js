@@ -136,6 +136,7 @@ const typeDefs = gql`
     password: String
     email: String
     phone: String
+    company: String
     role: String
   }
 
@@ -149,6 +150,7 @@ const typeDefs = gql`
     email: String
     phone: String
     role: String
+    company: String
     companyId: String
   }
 

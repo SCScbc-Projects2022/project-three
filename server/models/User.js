@@ -32,6 +32,9 @@ const userSchema = new Schema(
     location: {
       type: String,
     },
+    company: {
+      type: String,
+    },
     role: { type: String },
   },
   {

@@ -26,6 +26,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
     email: '',
     phone: '',
     role: '',
+    company: companyId,
     companyId,
   });
 
