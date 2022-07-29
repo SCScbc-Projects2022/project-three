@@ -65,6 +65,11 @@ const AddLocation = ({ companyId }) => {
     }
   };
 
+  const clearErrors = () => {
+    setErrorMessage('');
+    document.getElementById('error-message').innerHTML = '';
+  };
+
   return (
     <>
       <div style={{ height: '100px' }}></div>
@@ -92,6 +97,7 @@ const AddLocation = ({ companyId }) => {
                 Address
               </label>
               <input
+                onChange={() => clearErrors()}
                 name="address"
                 type="text"
                 className="form-control"
@@ -104,6 +110,7 @@ const AddLocation = ({ companyId }) => {
                 Suite number
               </label>
               <input
+                onChange={() => clearErrors()}
                 type="number"
                 name="number"
                 className="form-control"
@@ -116,6 +123,7 @@ const AddLocation = ({ companyId }) => {
                 Street
               </label>
               <input
+                onChange={() => clearErrors()}
                 type="text"
                 name="street"
                 className="form-control"
@@ -128,6 +136,7 @@ const AddLocation = ({ companyId }) => {
                 City
               </label>
               <input
+                onChange={() => clearErrors()}
                 name="city"
                 type="text"
                 className="form-control"
@@ -139,6 +148,7 @@ const AddLocation = ({ companyId }) => {
                 Country
               </label>
               <input
+                onChange={() => clearErrors()}
                 name="country"
                 type="text"
                 className="form-control"
@@ -150,6 +160,7 @@ const AddLocation = ({ companyId }) => {
                 Intersection
               </label>
               <input
+                onChange={() => clearErrors()}
                 id="intersection"
                 name="intersection"
                 type="text"
@@ -161,7 +172,12 @@ const AddLocation = ({ companyId }) => {
               <label htmlFor="inputState" className="form-label">
                 Province
               </label>
-              <select name="province" id="inputState" className="form-select">
+              <select
+                onChange={() => clearErrors()}
+                name="province"
+                id="inputState"
+                className="form-select"
+              >
                 <option defaultValue>Choose...</option>
                 <option>Ontario</option>
                 <option>Quebec</option>
@@ -174,6 +190,7 @@ const AddLocation = ({ companyId }) => {
                 Postal
               </label>
               <input
+                onChange={() => clearErrors()}
                 name="postalCode"
                 type="text"
                 className="form-control"
@@ -194,7 +211,12 @@ const AddLocation = ({ companyId }) => {
                   <p className="error-text">{errorMessage}</p>
                 </div>
               )}
-              {error && <div>Add Location failed</div>}
+              {error && (
+                <div id="error-message">
+                  Failed to add Location. Possible Reason: Location already
+                  exists
+                </div>
+              )}
             </div>
           </form>
           <div className="col-1"></div>

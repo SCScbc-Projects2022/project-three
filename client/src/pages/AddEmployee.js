@@ -5,9 +5,6 @@ import { GET_COMPANY } from '../utils/queries';
 import { ADD_EMPLOYEE } from '../utils/mutations';
 const { validateEmail } = require('../utils/helpers');
 
-
-
-
 const AddEmployee = ({ activePage, setActivePage, companyId }) => {
   const handlePage = (e) => {
     setActivePage({ [e.target.name]: true });
@@ -34,63 +31,59 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
 
   const [addEmployee, { error }] = useMutation(ADD_EMPLOYEE);
 
-  function validations(e) {
-
-    if (e.target.name === 'email') {
-        const isItValid = validateEmail(e.target.value);
-        if (!isItValid) {
-            setErrorMessage('This email is invalid.');
-        } else {
-            setErrorMessage('');
-        };
-    } else {
-        if (!e.target.value.length) {
-            setErrorMessage(`${e.target.name} is required.`);
-        } else {
-            setErrorMessage('');
-        }
-    }
-    if (!errorMessage) {
-        setFormState({ ...formState, [e.target.name]: e.target.value });
-    };
-};
-
+  const clearErrors = () => {
+    setErrorMessage('');
+    document.getElementById('error-message').innerHTML = '';
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // build password and username based on first and last name of employee
-    let passAndUser = e.target.firstName.value + e.target.lastName.value;
+    if (
+      e.target.firstName.value &&
+      e.target.lastName.value &&
+      e.target.firstName.value &&
+      e.target.lastName.value &&
+      e.target.location.value &&
+      e.target.email.value &&
+      e.target.phone.value &&
+      e.target.role.value
+    ) {
+      // build password and username based on first and last name of employee
+      let passAndUser = e.target.firstName.value + e.target.lastName.value;
 
-    setFormState(
-      ((formState.firstName += e.target.firstName.value),
-      (formState.lastName += e.target.lastName.value),
-      (formState.username += passAndUser),
-      (formState.password += passAndUser),
-      (formState.location += e.target.location.value)),
-      (formState.email += e.target.email.value),
-      (formState.phone = e.target.phone.value),
-      (formState.role += e.target.role.value)
-    );
+      setFormState(
+        ((formState.firstName += e.target.firstName.value),
+        (formState.lastName += e.target.lastName.value),
+        (formState.username += passAndUser),
+        (formState.password += passAndUser),
+        (formState.location += e.target.location.value)),
+        (formState.email += e.target.email.value),
+        (formState.phone = e.target.phone.value),
+        (formState.role += e.target.role.value)
+      );
 
-    try {
-      await addEmployee({
-        variables: { employeeToSave: formState },
-      });
-      window.location.reload(false);
-    } catch (e) {
-      console.error(e);
-      // Clear Form state
-      setFormState({
-        firstName: '',
-        lastName: '',
-        username: '',
-        password: '',
-        location: '',
-        email: '',
-        phone: '',
-        role: '',
-      });
+      try {
+        await addEmployee({
+          variables: { employeeToSave: formState },
+        });
+        window.location.reload(false);
+      } catch (e) {
+        console.error(e);
+        // Clear Form state
+        setFormState({
+          firstName: '',
+          lastName: '',
+          username: '',
+          password: '',
+          location: '',
+          email: '',
+          phone: '',
+          role: '',
+        });
+      }
+    } else {
+      setErrorMessage('Please fill in all fields');
     }
   };
 
@@ -119,7 +112,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   type="text"
                   className="form-control"
                   id="floatingInput"
-                  onBlur={validations}
+                  onChange={() => clearErrors()}
                 />
                 <label htmlFor="floatingInput">First Name</label>
               </div>
@@ -129,18 +122,18 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   type="text"
                   className="form-control"
                   id="floatingInput"
-                  onBlur={validations}
+                  onChange={() => clearErrors()}
                 />
                 <label htmlFor="floatingInput">Last Name</label>
               </div>
               <div>
                 <div className="form-floating mb-2">
                   <input
+                    onChange={() => clearErrors()}
                     name="email"
                     type="email"
                     className="form-control"
                     id="floatingInputValue"
-                    onBlur={validations}
                   />
                   <label htmlFor="floatingInputValue">Contact email</label>
                 </div>
@@ -148,11 +141,11 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
               <div>
                 <div className="form-floating">
                   <input
+                    onChange={() => clearErrors()}
                     name="phone"
                     type="number"
                     className="form-control"
                     id="floatingInputValue"
-                    onBlur={validations}
                   />
                   <label htmlFor="floatingInputValue">Contact number</label>
                 </div>
@@ -160,6 +153,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
               <div className="form-floating mt-2">
                 <select
                   name="role"
+                  onChange={() => clearErrors()}
                   className="form-select"
                   id="floatingSelect"
                   aria-label="Floating label select example"
@@ -184,6 +178,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
             <div className="form-floating mt-2">
               <select
                 name="location"
+                onChange={() => clearErrors()}
                 className="form-select"
                 id="floatingSelect"
                 aria-label="Floating label select example"
@@ -265,11 +260,15 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
               </button>
             )}
             {errorMessage && (
-                    <div>
-                        <p className="error-text">{errorMessage}</p>
-                    </div>
-                )}
-            {error && <div>Failed to add Employee!</div>}
+              <div>
+                <p className="error-text">{errorMessage}</p>
+              </div>
+            )}
+            {error && (
+              <div id="error-message">
+                Failed to add Employee. Possible Reason: Employee already exists
+              </div>
+            )}
           </form>
           <div className="col-1"></div>
         </div>
