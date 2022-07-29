@@ -121,6 +121,7 @@ const typeDefs = gql`
     addPost(postToSave: postInput): Post
     removePost(Id: String!, companyId: String!): Post
     addRole(roleToSave: roleInput): Role
+    updateRole(_id: String!, title: String!): Role
     removeRole(Id: String!, companyId: String!): Role
     addLocation(locationToSave: locationInput): Location
     removeLocation(Id: String!, companyId: String!): Location

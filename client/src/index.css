@@ -133,13 +133,31 @@ footer a {
   display: flex;
 }
 
-.delete-btn {
+.delete-btn,
+.edit-btn,
+.role-confirm {
   border: none;
-  background-color: red;
   color: white;
   margin-right: 8px;
   padding: 5px 12px;
   border-radius: 7px;
+}
+
+.role-inactive {
+  display: none;
+}
+
+.role-active {
+  display: unset;
+}
+
+.delete-btn {
+  background-color: red;
+}
+
+.edit-btn,
+.role-confirm {
+  background-color: green;
 }
 
 .admin-dash ol {
