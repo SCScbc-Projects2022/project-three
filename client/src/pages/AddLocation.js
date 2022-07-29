@@ -79,10 +79,9 @@ const AddLocation = ({ companyId, activePage, setActivePage }) => {
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Add Location</h1>
-          <h4 id="company-name">Company Name</h4>
+          <div style={{ height: '50px' }}></div>
         </div>
       </div>
-
       <div className="container">
         <div className="row">
           <div className="col-1"></div>
@@ -92,8 +91,6 @@ const AddLocation = ({ companyId, activePage, setActivePage }) => {
             }}
             className="col-10"
           >
-            <div style={{ height: '50px' }}></div>
-
             <div className="col-12">
               <label htmlFor="inputAddress" className="form-label">
                 Address
@@ -208,6 +205,7 @@ const AddLocation = ({ companyId, activePage, setActivePage }) => {
               >
                 Submit
               </button>
+              <div style={{ marginTop: '10px' }}></div>
               {errorMessage && (
                 <div>
                   <p className="error-text">{errorMessage}</p>

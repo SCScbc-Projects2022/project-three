@@ -35,7 +35,7 @@ const Navigation = ({ setActivePage, activePage, account }) => {
         </a>
         <div className="d-flex flex-wrap align-items-center justify-content-center">
           {Auth.loggedIn() ? (
-            <ul className="navitems mb-2 mb-lg-0 d-flex align-items-center">
+            <ul className="navitems mb-lg-0 d-flex align-items-center">
               <li className="mx-3 nav-item">
                 <a
                   className={`nav-link navItem ${
@@ -112,7 +112,10 @@ const Navigation = ({ setActivePage, activePage, account }) => {
               </li>
             </ul>
           )}
-          <h6 className="text-white mx-3 mb-0"> Staffing. Revolutionized.</h6>
+          <h6 className="staffing text-white mx-3 mb-0">
+            {' '}
+            Staffing. Revolutionized.
+          </h6>
         </div>
       </div>
     </nav>

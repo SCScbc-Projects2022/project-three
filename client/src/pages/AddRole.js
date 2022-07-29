@@ -50,6 +50,7 @@ const AddRole = ({ companyId, activePage, setActivePage }) => {
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Add a Role</h1>
+          <div style={{ height: '50px' }}></div>
         </div>
       </div>
 
@@ -71,6 +72,7 @@ const AddRole = ({ companyId, activePage, setActivePage }) => {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
+            <div style={{ marginTop: '10px' }}></div>
             {errorMessage && (
               <div>
                 <p className="error-text">{errorMessage}</p>

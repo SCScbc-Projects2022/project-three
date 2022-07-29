@@ -106,6 +106,10 @@ li {
   opacity: 95%;
 }
 
+#main-wrapper {
+  margin-top: 100px;
+}
+
 .user_posts {
   cursor: pointer;
 }
@@ -173,9 +177,66 @@ footer a {
 
 .navitems {
   padding: 0;
+  margin-bottom: 0;
 }
 @media screen and (max-width: 1087px) {
   #navbar {
     justify-content: center;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .footer {
+    height: 40px;
+  }
+  .navbar a,
+  .navbar h6,
+  th,
+  td {
+    font-size: 16px;
+  }
+
+  .navbar {
+    padding: 5px;
+  }
+
+  #logo {
+    width: 110px;
+  }
+
+  .staffing {
+    display: none;
+  }
+
+  #addBtn {
+    font-size: 15px;
+    width: 170px;
+    padding: 10px 0;
+    margin-right: 5px;
+  }
+
+  .addLocationBtn {
+    margin: 5px !important;
+    margin-left: 0 !important;
+  }
+
+  .adminDash h2,
+  .employeeDash h2 {
+    font-size: 20px;
+  }
+
+  .adminDash p {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
+
+  .employee-search {
+    width: 200px;
+  }
+  #openings {
+    margin-bottom: 0 !important;
   }
 }

@@ -96,6 +96,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Add an Employee</h1>
+          <div style={{ height: '50px' }}></div>
         </div>
       </div>
 
@@ -262,6 +263,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                 Submit
               </button>
             )}
+            <div style={{ marginTop: '10px' }}></div>
             {errorMessage && (
               <div>
                 <p className="error-text">{errorMessage}</p>
@@ -272,6 +274,11 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                 Failed to add Employee. Possible Reason: Employee already exists
               </div>
             )}
+            <div style={{ marginTop: '10px' }}></div>
+            <p>
+              Employee login: <br></br>Email: Contact email<br></br>Password:
+              First name + Last name
+            </p>
           </form>
           <div className="col-1"></div>
         </div>

@@ -80,7 +80,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
 
   return (
     <>
-      <div className="container-fluid mt-4 admin-dash">
+      <div className="adminDash container-fluid mt-4 admin-dash">
         <div className="row">
           <div style={{ height: '100px' }}></div>
           <h1 className="fw-bold">Dashboard - {company.name}</h1>
@@ -90,6 +90,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
               <h2>Openings</h2>
               <p>Upload posts for Employees to view.</p>
               <button
+                id="addBtn"
                 onClick={(e) => {
                   handlePage(e);
                 }}
@@ -100,75 +101,77 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add opening +
               </button>
               <div style={{ height: '10px' }}></div>
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Time and Date</th>
-                    <th scope="col">Additional info</th>
-                    <th scope="col">Tags</th>
-                  </tr>
-                </thead>
-                {company.postsArr == undefined ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : company.postsArr == '' ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : (
-                  company.postsArr.map((post, index) => {
-                    return (
-                      <tbody key={index}>
-                        {
-                          <tr>
-                            <td>
-                              <button
-                                className="delete-btn"
-                                name="post"
-                                id={post._id}
-                                onClick={(e) =>
-                                  deleteData(e.target.name, e.target.id)
-                                }
-                              >
-                                X
-                              </button>
-                            </td>
-                            <td>{post.role}</td>
-                            <td>{post.location}</td>
-                            <td>
-                              {post.shiftTime.hour} - {post.shiftTime.date}
-                            </td>
-                            <td>{post.additionalInfo}</td>
-                            <td>{post.tags}</td>
-                          </tr>
-                        }
-                      </tbody>
-                    );
-                  })
-                )}
-              </table>
+              <div style={{ overflowX: 'auto' }}>
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Time and Date</th>
+                      <th scope="col">Additional info</th>
+                      <th scope="col">Tags</th>
+                    </tr>
+                  </thead>
+                  {company.postsArr == undefined ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : company.postsArr == '' ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : (
+                    company.postsArr.map((post, index) => {
+                      return (
+                        <tbody key={index}>
+                          {
+                            <tr>
+                              <td>
+                                <button
+                                  className="delete-btn"
+                                  name="post"
+                                  id={post._id}
+                                  onClick={(e) =>
+                                    deleteData(e.target.name, e.target.id)
+                                  }
+                                >
+                                  X
+                                </button>
+                              </td>
+                              <td>{post.role}</td>
+                              <td>{post.location}</td>
+                              <td>
+                                {post.shiftTime.hour} - {post.shiftTime.date}
+                              </td>
+                              <td>{post.additionalInfo}</td>
+                              <td>{post.tags}</td>
+                            </tr>
+                          }
+                        </tbody>
+                      );
+                    })
+                  )}
+                </table>
+              </div>
             </div>
             <div style={{ height: '75px' }}></div>
             <hr style={{ opacity: '0.2' }}></hr>
@@ -176,6 +179,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
             <p>Assign employees to available Positions.</p>
             <div>
               <button
+                id="addBtn"
                 onClick={(e) => {
                   handlePage(e);
                 }}
@@ -186,71 +190,73 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add employee +
               </button>
               <div style={{ height: '10px' }}></div>
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Employee Role</th>
-                    <th scope="col">Employee Name</th>
-                    <th scope="col">Employee email</th>
-                    <th scope="col">Employee Number</th>
-                  </tr>
-                </thead>
-                {company.userArr == undefined ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : company.userArr == '' ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : (
-                  company.userArr.map((employee, index) => {
-                    return (
-                      <tbody key={index}>
-                        {
-                          <tr>
-                            <td>
-                              <button
-                                className="delete-btn"
-                                name="user"
-                                id={employee._id}
-                                onClick={(e) =>
-                                  deleteData(e.target.name, e.target.id)
-                                }
-                              >
-                                X
-                              </button>
-                            </td>
-                            <td>{employee.role}</td>
-                            <td>
-                              {employee.firstName} {employee.lastName}
-                            </td>
-                            <td>{employee.email}</td>
-                            <td>{employee.phone}</td>
-                          </tr>
-                        }
-                      </tbody>
-                    );
-                  })
-                )}
-              </table>
+              <div style={{ overflowX: 'auto' }}>
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Employee Role</th>
+                      <th scope="col">Employee Name</th>
+                      <th scope="col">Employee email</th>
+                      <th scope="col">Employee Number</th>
+                    </tr>
+                  </thead>
+                  {company.userArr == undefined ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : company.userArr == '' ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : (
+                    company.userArr.map((employee, index) => {
+                      return (
+                        <tbody key={index}>
+                          {
+                            <tr>
+                              <td>
+                                <button
+                                  className="delete-btn"
+                                  name="user"
+                                  id={employee._id}
+                                  onClick={(e) =>
+                                    deleteData(e.target.name, e.target.id)
+                                  }
+                                >
+                                  X
+                                </button>
+                              </td>
+                              <td>{employee.role}</td>
+                              <td>
+                                {employee.firstName} {employee.lastName}
+                              </td>
+                              <td>{employee.email}</td>
+                              <td>{employee.phone}</td>
+                            </tr>
+                          }
+                        </tbody>
+                      );
+                    })
+                  )}
+                </table>
+              </div>
             </div>
             <div style={{ height: '75px' }}></div>
             <hr style={{ opacity: '0.2' }}></hr>
@@ -258,6 +264,7 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
             <p>Upload new Roles and Locations</p>
             <div>
               <button
+                id="addBtn"
                 onClick={(e) => {
                   handlePage(e);
                 }}
@@ -268,188 +275,193 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                 Add Role +
               </button>
               <button
+                id="addBtn"
                 onClick={(e) => {
                   handlePage(e);
                 }}
                 name="AddLocation"
                 type="button"
-                className="btn mx-2 btn-primary btn-lg"
+                className="addLocationBtn btn mx-2 btn-primary btn-lg"
               >
                 Add Location +
               </button>
               <div style={{ height: '30px' }}></div>
               <h2>Active Roles</h2>
               <div style={{ height: '10px' }}></div>
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Role Title</th>
-                  </tr>
-                </thead>
-                {company.rolesArr == undefined ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : company.rolesArr == '' ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : (
-                  company.rolesArr.map((role, index) => {
-                    return (
-                      <tbody key={index}>
-                        {
-                          <tr>
-                            <td>
-                              <button
-                                className="delete-btn"
-                                name="role"
-                                id={role._id}
-                                onClick={(e) =>
-                                  deleteData(e.target.name, e.target.id)
-                                }
-                              >
-                                X
-                              </button>
-                              <button
-                                onClick={(e) => {
-                                  document.getElementById(
-                                    `role-${index}`
-                                  ).className = 'role-active';
-                                  e.target.remove();
-                                }}
-                                className="edit-btn"
-                                name="role"
-                                id={role._id}
-                              >
-                                Edit role
-                              </button>
-                              <form
-                                onSubmit={(e) => {
-                                  updateRoleData(
-                                    role._id,
-                                    e.target.newRole.value
-                                  );
-                                }}
-                                id={`role-${index}`}
-                                className="role-inactive"
-                              >
-                                <input
-                                  name="newRole"
-                                  type="text"
-                                  placeholder="Enter new Role"
-                                ></input>
+              <div style={{ overflowX: 'auto' }}>
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Role Title</th>
+                    </tr>
+                  </thead>
+                  {company.rolesArr == undefined ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : company.rolesArr == '' ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : (
+                    company.rolesArr.map((role, index) => {
+                      return (
+                        <tbody key={index}>
+                          {
+                            <tr>
+                              <td>
                                 <button
-                                  type="submit"
-                                  className="role-confirm mx-2"
+                                  className="delete-btn"
+                                  name="role"
+                                  id={role._id}
+                                  onClick={(e) =>
+                                    deleteData(e.target.name, e.target.id)
+                                  }
                                 >
-                                  Submit
+                                  X
                                 </button>
-                              </form>
-                            </td>
-                            <td>{role.title}</td>
-                          </tr>
-                        }
-                      </tbody>
-                    );
-                  })
-                )}
-              </table>
+                                <button
+                                  onClick={(e) => {
+                                    document.getElementById(
+                                      `role-${index}`
+                                    ).className = 'role-active';
+                                    e.target.remove();
+                                  }}
+                                  className="edit-btn"
+                                  name="role"
+                                  id={role._id}
+                                >
+                                  Edit role
+                                </button>
+                                <form
+                                  onSubmit={(e) => {
+                                    updateRoleData(
+                                      role._id,
+                                      e.target.newRole.value
+                                    );
+                                  }}
+                                  id={`role-${index}`}
+                                  className="role-inactive"
+                                >
+                                  <input
+                                    name="newRole"
+                                    type="text"
+                                    placeholder="Enter new Role"
+                                  ></input>
+                                  <button
+                                    type="submit"
+                                    className="role-confirm mx-2"
+                                  >
+                                    Submit
+                                  </button>
+                                </form>
+                              </td>
+                              <td>{role.title}</td>
+                            </tr>
+                          }
+                        </tbody>
+                      );
+                    })
+                  )}
+                </table>
+              </div>
             </div>
             <div style={{ height: '30px' }}></div>
             <div>
               <h2>Active Locations</h2>
               <div style={{ height: '10px' }}></div>
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Major intersection</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Postal</th>
-                  </tr>
-                </thead>
-                {company.locationArr == undefined ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : company.locationArr == '' ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : (
-                  company.locationArr.map((location, index) => {
-                    return (
-                      <tbody key={index}>
-                        {
-                          <tr>
-                            <td>
-                              <button
-                                className="delete-btn"
-                                name="location"
-                                id={location._id}
-                                onClick={(e) =>
-                                  deleteData(e.target.name, e.target.id)
-                                }
-                              >
-                                X
-                              </button>
-                            </td>
-                            <td>
-                              {location.intersection
-                                ? location.intersection
-                                : 'Data not inputted'}
-                            </td>
-                            <td>
-                              {location.address.city
-                                ? location.address.city
-                                : 'Data not inputted'}
-                            </td>
-                            <td>
-                              {location.address.country
-                                ? location.address.country
-                                : 'Data not inputted'}
-                            </td>
-                            <td>
-                              {location.address.postalCode
-                                ? location.address.postalCode
-                                : 'Data not inputted'}
-                            </td>
-                          </tr>
-                        }
-                      </tbody>
-                    );
-                  })
-                )}
-              </table>
+              <div style={{ overflowX: 'auto' }}>
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Major intersection</th>
+                      <th scope="col">City</th>
+                      <th scope="col">Country</th>
+                      <th scope="col">Postal</th>
+                    </tr>
+                  </thead>
+                  {company.locationArr == undefined ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : company.locationArr == '' ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : (
+                    company.locationArr.map((location, index) => {
+                      return (
+                        <tbody key={index}>
+                          {
+                            <tr>
+                              <td>
+                                <button
+                                  className="delete-btn"
+                                  name="location"
+                                  id={location._id}
+                                  onClick={(e) =>
+                                    deleteData(e.target.name, e.target.id)
+                                  }
+                                >
+                                  X
+                                </button>
+                              </td>
+                              <td>
+                                {location.intersection
+                                  ? location.intersection
+                                  : 'Data not inputted'}
+                              </td>
+                              <td>
+                                {location.address.city
+                                  ? location.address.city
+                                  : 'Data not inputted'}
+                              </td>
+                              <td>
+                                {location.address.country
+                                  ? location.address.country
+                                  : 'Data not inputted'}
+                              </td>
+                              <td>
+                                {location.address.postalCode
+                                  ? location.address.postalCode
+                                  : 'Data not inputted'}
+                              </td>
+                            </tr>
+                          }
+                        </tbody>
+                      );
+                    })
+                  )}
+                </table>
+              </div>
             </div>
           </div>
         </div>

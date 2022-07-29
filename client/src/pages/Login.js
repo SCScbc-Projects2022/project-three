@@ -98,7 +98,7 @@ const Login = () => {
             onSubmit={(e) => {
               handleFormSubmit(e);
             }}
-            className="col-10"
+            className="col-11"
           >
             <div style={{ height: '100px' }}></div>
             <div>
@@ -147,7 +147,7 @@ const Login = () => {
             onSubmit={(e) => {
               handleFormSubmit(e);
             }}
-            className="col-10"
+            className="col-11"
           >
             <div style={{ height: '100px' }}></div>
             <div>

@@ -35,89 +35,89 @@ const EmployeeDashboard = () => {
 
   return (
     <>
-      <div className="container-fluid mt-4">
+      <div className="employeeDash container-fluid mt-4">
         <div className="row">
+          <div style={{ height: '60px' }}></div>
           <h1 className="fw-bold">Dashboard</h1>
           <div className="col-12 d-flex flex-column justify-content-center">
-            <div style={{ height: '100px' }}></div>
+            <div style={{ height: '20px' }}></div>
             <div className="d-flex justify-content-between">
-              <h2>Openings</h2>
+              <h2 id="openings">Openings</h2>
               <div className="form-floating mb-3">
                 <input
                   type="search"
-                  className="form-control"
+                  className="employee-search"
                   id="floatingInput"
-                  placeholder="name@example.com"
+                  placeholder="Search"
                 />
-                <label htmlFor="floatingInput">
-                  <i className="bi bi-search me-2"></i>Search
-                </label>
               </div>
             </div>
             <div>
-              <table className="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Time and Date</th>
-                    <th scope="col">Additional info</th>
-                    <th scope="col">Tags</th>
-                  </tr>
-                </thead>
-                {activeData == undefined ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : activeData == '' ? (
-                  <tbody>
-                    {
-                      <tr>
-                        <td></td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                        <td>No Data</td>
-                      </tr>
-                    }
-                  </tbody>
-                ) : (
-                  activeData.map((post, index) => {
-                    return (
-                      <tbody
-                        key={index}
-                        onClick={(e) => handleActive(e.target.parentNode)}
-                      >
-                        {
-                          <tr className="user_posts">
-                            <td>{index}</td>
-                            <td>{post.role}</td>
-                            <td>{post.location}</td>
-                            <td>
-                              {post.shiftTime.hour} - {post.shiftTime.date}
-                            </td>
-                            <td>{post.additionalInfo}</td>
-                            <td>{post.tags}</td>
-                          </tr>
-                        }
-                      </tbody>
-                    );
-                  })
-                )}
-              </table>
+              <div style={{ overflowX: 'auto' }}>
+                <table className="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Location</th>
+                      <th scope="col">Time and Date</th>
+                      <th scope="col">Additional info</th>
+                      <th scope="col">Tags</th>
+                    </tr>
+                  </thead>
+                  {activeData == undefined ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : activeData == '' ? (
+                    <tbody>
+                      {
+                        <tr>
+                          <td></td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                          <td>No Data</td>
+                        </tr>
+                      }
+                    </tbody>
+                  ) : (
+                    activeData.map((post, index) => {
+                      return (
+                        <tbody
+                          key={index}
+                          onClick={(e) => handleActive(e.target.parentNode)}
+                        >
+                          {
+                            <tr className="user_posts">
+                              <td>{index}</td>
+                              <td>{post.role}</td>
+                              <td>{post.location}</td>
+                              <td>
+                                {post.shiftTime.hour} - {post.shiftTime.date}
+                              </td>
+                              <td>{post.additionalInfo}</td>
+                              <td>{post.tags}</td>
+                            </tr>
+                          }
+                        </tbody>
+                      );
+                    })
+                  )}
+                </table>
+              </div>
             </div>
             <div>
               <button

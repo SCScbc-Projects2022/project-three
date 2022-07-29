@@ -103,6 +103,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">New Opening</h1>
+          <div style={{ height: '50px' }}></div>
         </div>
       </div>
       <form onSubmit={(e) => handleSubmit(e)} className="container">
@@ -257,6 +258,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                   Submit
                 </button>
               )}
+              <div style={{ marginTop: '10px' }}></div>
               {errorMessage && (
                 <div>
                   <p className="error-text">{errorMessage}</p>
