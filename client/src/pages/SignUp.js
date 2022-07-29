@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-
+import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_COMPANY } from '../utils/mutations';
 const { validateEmail } = require('../utils/helpers');
 
-import Auth from '../utils/auth';
+
+
 
 const SignUp = () => {
   const [addCompany, { error }] = useMutation(ADD_COMPANY);
-
+  const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({
     name: '',
     username: '',
@@ -174,7 +175,6 @@ const SignUp = () => {
               className="form-control"
               id="inputAddress2"
               placeholder="Apartment, studio, or floor"
-              onBlur={validations}
             />
           </div>
           <div className="col-md-6">
@@ -235,6 +235,11 @@ const SignUp = () => {
               Sign up
             </button>
           </div>
+          {errorMessage && (
+                    <div>
+                        <p className="error-text">{errorMessage}</p>
+                    </div>
+                )}
           {error && <div>Signup failed</div>}
         </form>
       </div>

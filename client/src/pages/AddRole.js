@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_ROLE } from '../utils/mutations';
 
+
 const AddRole = ({ companyId }) => {
+  const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({
     title: '',
     companyId,
@@ -64,6 +66,11 @@ if (!errorMessage) {
             <button type="submit" className="btn btn-outline-primary">
               Submit
             </button>
+            {errorMessage && (
+                    <div>
+                        <p className="error-text">{errorMessage}</p>
+                    </div>
+                )}
             {error && <div>Add Role failed</div>}
           </form>
           <div className="col-1"></div>

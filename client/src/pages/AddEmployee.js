@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-
+import Auth from '../utils/auth';
 import { useMutation, useQuery } from '@apollo/client';
-
 import { GET_COMPANY } from '../utils/queries';
 import { ADD_EMPLOYEE } from '../utils/mutations';
 const { validateEmail } = require('../utils/helpers');
 
-import Auth from '../utils/auth';
+
+
 
 const AddEmployee = ({ activePage, setActivePage, companyId }) => {
   const handlePage = (e) => {
@@ -19,7 +19,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
     variables: { id: companyId },
   });
   const company = data?.company || [];
-
+  const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({
     firstName: '',
     lastName: '',
@@ -264,6 +264,11 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                 Submit
               </button>
             )}
+            {errorMessage && (
+                    <div>
+                        <p className="error-text">{errorMessage}</p>
+                    </div>
+                )}
             {error && <div>Failed to add Employee!</div>}
           </form>
           <div className="col-1"></div>

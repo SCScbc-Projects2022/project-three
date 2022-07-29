@@ -7,13 +7,14 @@ import { useMutation, useQuery } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { GET_COMPANY } from '../utils/queries';
 
+
 const NewOpening = ({ activePage, setActivePage, companyId }) => {
   // Returns specific company
   const { loading, data } = useQuery(GET_COMPANY, {
     variables: { id: companyId },
   });
   const company = data?.company || [];
-
+  const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({
     shiftTime: { date: '', hour: '' },
     additionalInfo: '',
@@ -235,6 +236,11 @@ if (!errorMessage) {
                   Submit
                 </button>
               )}
+              {errorMessage && (
+                    <div>
+                        <p className="error-text">{errorMessage}</p>
+                    </div>
+                )}
               {error && <div>Add position failed</div>}
             </div>
           </div>

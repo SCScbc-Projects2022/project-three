@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_LOCATION } from '../utils/mutations';
 
+
 const AddLocation = ({ companyId }) => {
+  const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({
     intersection: '',
     companyId,
@@ -191,6 +193,11 @@ const AddLocation = ({ companyId }) => {
               <button type="submit" className="btn btn-primary">
                 Submit
               </button>
+              {errorMessage && (
+                    <div>
+                        <p className="error-text">{errorMessage}</p>
+                    </div>
+                )}
               {error && <div>Add Location failed</div>}
             </div>
           </form>
