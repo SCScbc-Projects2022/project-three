@@ -164,6 +164,12 @@ const resolvers = {
       return { updatedRoleArr };
     },
 
+    updateRole: async (parent, args) => {
+      return await Role.findByIdAndUpdate(args._id, args, {
+        new: true,
+      });
+    },
+
     removeRole: async (parent, { Id, companyId }) => {
       const updatedRoles = await Company.findOneAndUpdate(
         { _id: companyId },
