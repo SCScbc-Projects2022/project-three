@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { useMutation } from '@apollo/client';
 import { ADD_COMPANY } from '../utils/mutations';
+const { validateEmail } = require('../utils/helpers');
 
 import Auth from '../utils/auth';
 
@@ -18,6 +19,27 @@ const SignUp = () => {
     province: '',
     postalCode: '',
   });
+
+  function validations(e) {
+
+    if (e.target.name === 'email') {
+        const isItValid = validateEmail(e.target.value);
+        if (!isItValid) {
+            setErrorMessage('This email is invalid.');
+        } else {
+            setErrorMessage('');
+        };
+    } else {
+        if (!e.target.value.length) {
+            setErrorMessage(`${e.target.name} is required.`);
+        } else {
+            setErrorMessage('');
+        }
+    }
+    if (!errorMessage) {
+        setFormState({ ...formState, [e.target.name]: e.target.value });
+    };
+};
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -89,6 +111,7 @@ const SignUp = () => {
               type="email"
               className="form-control"
               id="inputEmail4"
+              onBlur={validations}
             />
           </div>
           <div className="col-md-4">
@@ -100,6 +123,7 @@ const SignUp = () => {
               type="text"
               className="form-control"
               id="inputUsername"
+              onBlur={validations}
             />
           </div>
           <div className="col-md-3">
@@ -111,6 +135,7 @@ const SignUp = () => {
               type="password"
               className="form-control"
               id="inputPassword4"
+              onBlur={validations}
             />
           </div>
           <div className="col-12">
@@ -123,6 +148,7 @@ const SignUp = () => {
               className="form-control"
               id="inputCompany"
               placeholder="Company name"
+              onBlur={validations}
             />
           </div>
           <div className="col-12">
@@ -135,6 +161,7 @@ const SignUp = () => {
               className="form-control"
               id="inputAddress"
               placeholder="1234 Main St"
+              onBlur={validations}
             />
           </div>
           <div className="col-12">
@@ -147,6 +174,7 @@ const SignUp = () => {
               className="form-control"
               id="inputAddress2"
               placeholder="Apartment, studio, or floor"
+              onBlur={validations}
             />
           </div>
           <div className="col-md-6">
@@ -158,6 +186,7 @@ const SignUp = () => {
               type="text"
               className="form-control"
               id="inputCity"
+              onBlur={validations}
             />
           </div>
           <div className="col-md-4">
@@ -186,6 +215,7 @@ const SignUp = () => {
               type="text"
               className="form-control"
               id="inputZip"
+              onBlur={validations}
             />
           </div>
           <div className="col-12">

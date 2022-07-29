@@ -17,6 +17,18 @@ const AddLocation = ({ companyId }) => {
 
   const [addLocation, { error }] = useMutation(ADD_LOCATION);
 
+  function validations(e) {
+        if (!e.target.value.length) {
+            setErrorMessage(`${e.target.name} is required.`);
+        } else {
+            setErrorMessage('');
+        }
+    if (!errorMessage) {
+        setFormState({ ...formState, [e.target.name]: e.target.value });
+    };
+};
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -85,6 +97,7 @@ const AddLocation = ({ companyId }) => {
                 className="form-control"
                 id="inputAddress"
                 placeholder="1234 Main St"
+                onBlur={validations}
               />
             </div>
             <div className="col-12">
@@ -97,6 +110,7 @@ const AddLocation = ({ companyId }) => {
                 className="form-control"
                 id="suiteNumber"
                 placeholder="382"
+                onBlur={validations}
               />
             </div>
             <div className="col-12">
@@ -109,6 +123,7 @@ const AddLocation = ({ companyId }) => {
                 className="form-control"
                 id="Street"
                 placeholder="Winston Churchill"
+                onBlur={validations}
               />
             </div>
             <div className="col-md-6">
@@ -120,6 +135,7 @@ const AddLocation = ({ companyId }) => {
                 type="text"
                 className="form-control"
                 id="inputCity"
+                onBlur={validations}
               />
             </div>
             <div className="col-md-6">
@@ -143,6 +159,7 @@ const AddLocation = ({ companyId }) => {
                 type="text"
                 className="form-control"
                 placeholder="Major intersection"
+                onBlur={validations}
               />
             </div>
             <div className="col-md-4">
@@ -166,6 +183,7 @@ const AddLocation = ({ companyId }) => {
                 type="text"
                 className="form-control"
                 id="inputZip"
+                onBlur={validations}
               />
             </div>
             <div className="col-12"></div>

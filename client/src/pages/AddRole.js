@@ -11,6 +11,17 @@ const AddRole = ({ companyId }) => {
 
   const [addRole, { error }] = useMutation(ADD_ROLE);
 
+  function validations(e) {
+    if (!e.target.value.length) {
+        setErrorMessage(`${e.target.name} is required.`);
+    } else {
+        setErrorMessage('');
+    }
+if (!errorMessage) {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+};
+};
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,7 +57,7 @@ const AddRole = ({ companyId }) => {
           <form onSubmit={(e) => handleSubmit(e)} className="col-10">
             <div>
               <div className="form-floating mb-3">
-                <input name="title" type="text" className="form-control" />
+                <input name="title" type="text" className="form-control" onBlur={validations} />
                 <label htmlFor="floatingInput">Title</label>
               </div>
             </div>

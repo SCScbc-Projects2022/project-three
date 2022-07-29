@@ -4,6 +4,7 @@ import { useMutation, useQuery } from '@apollo/client';
 
 import { GET_COMPANY } from '../utils/queries';
 import { ADD_EMPLOYEE } from '../utils/mutations';
+const { validateEmail } = require('../utils/helpers');
 
 import Auth from '../utils/auth';
 
@@ -32,6 +33,28 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
   });
 
   const [addEmployee, { error }] = useMutation(ADD_EMPLOYEE);
+
+  function validations(e) {
+
+    if (e.target.name === 'email') {
+        const isItValid = validateEmail(e.target.value);
+        if (!isItValid) {
+            setErrorMessage('This email is invalid.');
+        } else {
+            setErrorMessage('');
+        };
+    } else {
+        if (!e.target.value.length) {
+            setErrorMessage(`${e.target.name} is required.`);
+        } else {
+            setErrorMessage('');
+        }
+    }
+    if (!errorMessage) {
+        setFormState({ ...formState, [e.target.name]: e.target.value });
+    };
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,6 +119,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   type="text"
                   className="form-control"
                   id="floatingInput"
+                  onBlur={validations}
                 />
                 <label htmlFor="floatingInput">First Name</label>
               </div>
@@ -105,6 +129,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                   type="text"
                   className="form-control"
                   id="floatingInput"
+                  onBlur={validations}
                 />
                 <label htmlFor="floatingInput">Last Name</label>
               </div>
@@ -115,6 +140,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                     type="email"
                     className="form-control"
                     id="floatingInputValue"
+                    onBlur={validations}
                   />
                   <label htmlFor="floatingInputValue">Contact email</label>
                 </div>
@@ -126,6 +152,7 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
                     type="number"
                     className="form-control"
                     id="floatingInputValue"
+                    onBlur={validations}
                   />
                   <label htmlFor="floatingInputValue">Contact number</label>
                 </div>

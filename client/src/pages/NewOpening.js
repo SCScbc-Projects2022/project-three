@@ -23,6 +23,17 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
     companyId,
   });
 
+  function validations(e) {
+    if (!e.target.value.length) {
+        setErrorMessage(`${e.target.name} is required.`);
+    } else {
+        setErrorMessage('');
+    }
+if (!errorMessage) {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+};
+};
+
   const handlePage = (e) => {
     setActivePage({ [e.target.name]: true });
     document.title = `Proj3 - ${e.target.innerText}`;
@@ -150,7 +161,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
             <div style={{ height: '15px' }}></div>
             <div>
               <h4>Additional Info</h4>
-              <input name="additionalInfo" type="text" />
+              <input name="additionalInfo" type="text" onBlur={validations} />
             </div>
             <div>
               <div style={{ height: '25px' }}></div>
@@ -159,6 +170,7 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
                 name="tags"
                 type="text"
                 placeholder="Separate tags with commas"
+                onBlur={validations}
               />
             </div>
             <div className="mt-2">
