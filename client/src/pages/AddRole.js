@@ -70,7 +70,7 @@ const AddRole = ({ companyId }) => {
             </button>
             {errorMessage && (
               <div>
-                <p className="error-message">{errorMessage}</p>
+                <p className="error-text">{errorMessage}</p>
               </div>
             )}
             {error && (

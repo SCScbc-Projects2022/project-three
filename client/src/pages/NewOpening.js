@@ -7,7 +7,6 @@ import { useMutation, useQuery } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { GET_COMPANY } from '../utils/queries';
 
-
 const NewOpening = ({ activePage, setActivePage, companyId }) => {
   // Returns specific company
   const { loading, data } = useQuery(GET_COMPANY, {
@@ -24,17 +23,6 @@ const NewOpening = ({ activePage, setActivePage, companyId }) => {
     companyId,
   });
 
-  function validations(e) {
-    if (!e.target.value.length) {
-        setErrorMessage(`${e.target.name} is required.`);
-    } else {
-        setErrorMessage('');
-    }
-if (!errorMessage) {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-};
-};
-
   const handlePage = (e) => {
     setActivePage({ [e.target.name]: true });
     document.title = `Proj3 - ${e.target.innerText}`;
@@ -47,6 +35,8 @@ if (!errorMessage) {
     let tempValue = [0, 0];
     tempValue[0] += value[0];
     tempValue[1] += value[1];
+
+    clearErrors();
   };
 
   function valueLabelFormat(value) {
@@ -57,34 +47,51 @@ if (!errorMessage) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     let hour = `${value[0]}:00-${value[1]}:00`;
     let tags = e.target.tags.value.split(',');
-    setFormState(
-      ((formState.location += e.target.location.value),
-      (formState.role += e.target.role.value),
-      (formState.shiftTime.hour += hour),
-      (formState.additionalInfo += e.target.additionalInfo.value),
-      ((formState.shiftTime.date += e.target.date.value),
-      tags.forEach((tag) => formState.tags.push(tag))))
-    );
 
-    try {
-      await addPost({
-        variables: { postToSave: formState },
-      });
-      window.location.reload(false);
-    } catch (e) {
-      console.error(e);
-      // Clear form state
-      setFormState({
-        shiftTime: { date: '', hour: '' },
-        additionalInfo: '',
-        role: '',
-        tags: [],
-        location: '',
-        companyId,
-      });
+    if (
+      e.target.location.value &&
+      e.target.role.value &&
+      e.target.additionalInfo.value &&
+      e.target.date.value &&
+      hour &&
+      e.target.tags.value
+    ) {
+      setFormState(
+        ((formState.location += e.target.location.value),
+        (formState.role += e.target.role.value),
+        (formState.shiftTime.hour += hour),
+        (formState.additionalInfo += e.target.additionalInfo.value),
+        ((formState.shiftTime.date += e.target.date.value),
+        tags.forEach((tag) => formState.tags.push(tag))))
+      );
+
+      try {
+        await addPost({
+          variables: { postToSave: formState },
+        });
+        window.location.reload(false);
+      } catch (e) {
+        console.error(e);
+        // Clear form state
+        setFormState({
+          shiftTime: { date: '', hour: '' },
+          additionalInfo: '',
+          role: '',
+          tags: [],
+          location: '',
+          companyId,
+        });
+      }
+    } else {
+      setErrorMessage('Please fill in all field');
     }
+  };
+  const clearErrors = () => {
+    setErrorMessage('');
+    document.getElementById('error-message').innerHTML = '';
   };
 
   return (
@@ -101,7 +108,12 @@ if (!errorMessage) {
             <div>
               <h4>Role and Location</h4>
               <div className="col-md-4">
-                <select name="role" id="inputState" className="form-select">
+                <select
+                  onChange={() => clearErrors()}
+                  name="role"
+                  id="inputState"
+                  className="form-select"
+                >
                   {company.rolesArr == undefined ? (
                     <option value="no">No Available Roles</option>
                   ) : company.rolesArr.length == 0 ? (
@@ -117,6 +129,7 @@ if (!errorMessage) {
                   )}
                 </select>
                 <select
+                  onChange={() => clearErrors()}
                   name="location"
                   id="inputState"
                   className="my-2 form-select"
@@ -141,6 +154,7 @@ if (!errorMessage) {
             <div>
               <h4>Date</h4>
               <input
+                onChange={() => clearErrors()}
                 type="date"
                 id="start"
                 name="date"
@@ -162,16 +176,20 @@ if (!errorMessage) {
             <div style={{ height: '15px' }}></div>
             <div>
               <h4>Additional Info</h4>
-              <input name="additionalInfo" type="text" onBlur={validations} />
+              <input
+                onChange={() => clearErrors()}
+                name="additionalInfo"
+                type="text"
+              />
             </div>
             <div>
               <div style={{ height: '25px' }}></div>
               <h4>Tags</h4>
               <input
+                onChange={() => clearErrors()}
                 name="tags"
                 type="text"
                 placeholder="Separate tags with commas"
-                onBlur={validations}
               />
             </div>
             <div className="mt-2">
@@ -237,11 +255,16 @@ if (!errorMessage) {
                 </button>
               )}
               {errorMessage && (
-                    <div>
-                        <p className="error-text">{errorMessage}</p>
-                    </div>
-                )}
-              {error && <div>Add position failed</div>}
+                <div>
+                  <p className="error-text">{errorMessage}</p>
+                </div>
+              )}
+              {error && (
+                <div id="error-message">
+                  Failed to add Position. Possible Reason: Position already
+                  exists
+                </div>
+              )}
             </div>
           </div>
         </div>
