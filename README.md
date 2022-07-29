@@ -52,11 +52,11 @@
   Contact repository author via [GitHub](https://github.com/SCScbc-Projects2022).</br>
   
   Contact specific repository author:</br>
-  [Ali](https://github.com/alimomen10) - Concept + Branding, Logo (final), Custom CSS, UI/UX, Pitch + Presentation
-  [Carlos](https://github.com/csabbah) - Team Lead, Frontend JavaScript, TypeDefs + Resolvers, Mutations, Full Stack Integration, Custom CSS + Mobile Responsiveness
-  [Veronica](https://github.com/TOVTC) - Database Seeds, Models, React Integration, TypeDefs + Resolvers, Queries, Documentation, Heroku Deploy, Validation
-  [Candice](https://github.com/candiecane7) - Debugging, Models, TypeDefs + Resolvers, Queries, Documentation
-  [Cory](https://github.com/CorySillaots) - Industry Consultant, React Integration, Custom CSS, Logo Ideas
+  [Ali](https://github.com/alimomen10) - Concept + Branding, Logo (final), Custom CSS, UI/UX, Pitch + Presentation</br>
+  [Carlos](https://github.com/csabbah) - Team Lead, Frontend JavaScript, TypeDefs + Resolvers, Mutations, Full Stack Integration, Custom CSS + Mobile Responsiveness</br>
+  [Veronica](https://github.com/TOVTC) - Database Seeds, Models, React Integration, TypeDefs + Resolvers, Queries, Documentation, Heroku Deploy</br>
+  [Candice](https://github.com/candiecane7) - Debugging, Models, TypeDefs, Queries, Documentation, Validation</br>
+  [Cory](https://github.com/CorySillaots) - Industry Consultant, React Integration, Custom CSS, Logo Ideas</br>
   [Anna](https://github.com/lyuhan2828) - Database Seeds
 
   ## Assignment Information - Group Project Three: MERN SPA Project
