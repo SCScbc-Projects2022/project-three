@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Home = ({ setActivePage, activePage }) => {
+const Home = ({ setActivePage, activePage, loggedIn }) => {
   const handlePage = () => {
     setActivePage({ Signup: true });
     document.title = `Proj3 - Signup`;
@@ -53,15 +53,19 @@ const Home = ({ setActivePage, activePage }) => {
             Soluta blanditiis dolor quisquam iste. Facere unde dolorum itaque?
           </p>
         </div>
-        <div className="mb-5 mt-4">
-          <button
-            onClick={() => handlePage()}
-            type="button"
-            className="btn btn-primary btn-lg"
-          >
-            Sign Up
-          </button>
-        </div>
+        {loggedIn ? (
+          ''
+        ) : (
+          <div className="mb-5 mt-4">
+            <button
+              onClick={() => handlePage()}
+              type="button"
+              className="btn btn-primary btn-lg"
+            >
+              Sign Up
+            </button>
+          </div>
+        )}
       </div>
     </>
   );

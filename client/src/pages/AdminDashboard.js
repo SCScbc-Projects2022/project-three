@@ -5,6 +5,7 @@ import {
   REMOVE_EMPLOYEE,
   REMOVE_ROLE,
   REMOVE_LOCATION,
+  UPDATE_ROLE,
 } from '../utils/mutations';
 
 const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
@@ -19,10 +20,21 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
   });
   const company = data?.company || [];
 
-  const [removePost, { postError }] = useMutation(REMOVE_POST);
-  const [removeEmployee, { userError }] = useMutation(REMOVE_EMPLOYEE);
-  const [removeRole, { roleError }] = useMutation(REMOVE_ROLE);
-  const [removeLocation, { locationError }] = useMutation(REMOVE_LOCATION);
+  const [removePost] = useMutation(REMOVE_POST);
+  const [removeEmployee] = useMutation(REMOVE_EMPLOYEE);
+  const [removeRole] = useMutation(REMOVE_ROLE);
+  const [updateRole] = useMutation(UPDATE_ROLE);
+  const [removeLocation] = useMutation(REMOVE_LOCATION);
+
+  const updateRoleData = async (_id, title) => {
+    try {
+      await updateRole({
+        variables: { _id, title },
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   const deleteData = async (data, Id) => {
     if (data == 'post') {
@@ -251,6 +263,41 @@ const AdminDashboard = ({ activePage, setActivePage, companyId }) => {
                               >
                                 X
                               </button>
+                              <button
+                                onClick={(e) => {
+                                  document.getElementById(
+                                    `role-${index}`
+                                  ).className = 'role-active';
+                                  e.target.remove();
+                                }}
+                                className="edit-btn"
+                                name="role"
+                                id={role._id}
+                              >
+                                Edit role
+                              </button>
+                              <form
+                                onSubmit={(e) => {
+                                  updateRoleData(
+                                    role._id,
+                                    e.target.newRole.value
+                                  );
+                                }}
+                                id={`role-${index}`}
+                                className="role-inactive"
+                              >
+                                <input
+                                  name="newRole"
+                                  type="text"
+                                  placeholder="Enter new Role"
+                                ></input>
+                                <button
+                                  type="submit"
+                                  className="role-confirm mx-2"
+                                >
+                                  Submit
+                                </button>
+                              </form>
                             </td>
                             <td>{role.title}</td>
                           </tr>
