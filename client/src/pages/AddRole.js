@@ -46,7 +46,7 @@ const AddRole = ({ companyId, activePage, setActivePage }) => {
 
   return (
     <>
-      <div style={{ height: '100px' }}></div>
+      <div style={{ height: '60px' }}></div>
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Add a Role</h1>

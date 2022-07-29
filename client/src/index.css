@@ -177,7 +177,7 @@ footer a {
 
 .navitems {
   padding: 0;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
 @media screen and (max-width: 1087px) {
   #navbar {
@@ -197,7 +197,7 @@ footer a {
   }
 
   .navbar {
-    padding: 5px;
+    padding: 10px;
   }
 
   #logo {
@@ -221,16 +221,20 @@ footer a {
   }
 
   .adminDash h2,
-  .employeeDash h2 {
+  .employeeDash h2,
+  h4,
+  select,
+  h2 {
     font-size: 20px;
   }
 
-  .adminDash p {
+  .adminDash p,
+  p {
     font-size: 15px;
   }
 
   h1 {
-    font-size: 25px;
+    font-size: 27px;
   }
 
   .employee-search {

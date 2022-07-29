@@ -75,7 +75,7 @@ const AddLocation = ({ companyId, activePage, setActivePage }) => {
 
   return (
     <>
-      <div style={{ height: '100px' }}></div>
+      <div style={{ height: '60px' }}></div>
       <div className="container-fluid mt-4">
         <div className="row">
           <h1 className="fw-bold">Add Location</h1>
@@ -184,7 +184,7 @@ const AddLocation = ({ companyId, activePage, setActivePage }) => {
                 <option>Nunavut</option>
               </select>
             </div>
-            <div className="col-md-2">
+            <div className="col-md-4">
               <label htmlFor="inputZip" className="form-label">
                 Postal
               </label>
