@@ -24,7 +24,6 @@ const AddRole = ({ companyId }) => {
         });
         window.location.reload(false);
       } catch (e) {
-        console.error(e);
         // Clear Form state
         setFormState({
           title: '',
@@ -38,7 +37,11 @@ const AddRole = ({ companyId }) => {
 
   const clearErrors = () => {
     setErrorMessage('');
-    document.getElementById('error-message').innerHTML = '';
+    if (document.getElementById('error-message') == null) {
+      return;
+    } else {
+      document.getElementById('error-message').innerHTML = '';
+    }
   };
 
   return (

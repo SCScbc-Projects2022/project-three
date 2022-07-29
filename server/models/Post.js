@@ -11,9 +11,11 @@ const postSchema = new Schema(
     },
     location: {
       type: String,
+      unique: true,
     },
     role: {
       type: String,
+      unique: true,
     },
     tags: [
       {

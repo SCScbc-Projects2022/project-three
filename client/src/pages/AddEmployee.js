@@ -33,7 +33,11 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
 
   const clearErrors = () => {
     setErrorMessage('');
-    document.getElementById('error-message').innerHTML = '';
+    if (document.getElementById('error-message') == null) {
+      return;
+    } else {
+      document.getElementById('error-message').innerHTML = '';
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -69,7 +73,6 @@ const AddEmployee = ({ activePage, setActivePage, companyId }) => {
         });
         window.location.reload(false);
       } catch (e) {
-        console.error(e);
         // Clear Form state
         setFormState({
           firstName: '',

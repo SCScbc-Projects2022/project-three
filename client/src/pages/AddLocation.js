@@ -46,7 +46,6 @@ const AddLocation = ({ companyId }) => {
         });
         window.location.reload(false);
       } catch (e) {
-        console.error(e);
         // Clear Form state
         setFormState({
           intersection: '',
@@ -67,7 +66,11 @@ const AddLocation = ({ companyId }) => {
 
   const clearErrors = () => {
     setErrorMessage('');
-    document.getElementById('error-message').innerHTML = '';
+    if (document.getElementById('error-message') == null) {
+      return;
+    } else {
+      document.getElementById('error-message').innerHTML = '';
+    }
   };
 
   return (
