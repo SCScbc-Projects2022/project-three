@@ -4,9 +4,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_COMPANY } from '../utils/mutations';
 const { validateEmail } = require('../utils/helpers');
 
-
-
-
 const SignUp = () => {
   const [addCompany, { error }] = useMutation(ADD_COMPANY);
   const [errorMessage, setErrorMessage] = useState('');
@@ -21,62 +18,62 @@ const SignUp = () => {
     postalCode: '',
   });
 
-  function validations(e) {
-
-    if (e.target.name === 'email') {
-        const isItValid = validateEmail(e.target.value);
-        if (!isItValid) {
-            setErrorMessage('This email is invalid.');
-        } else {
-            setErrorMessage('');
-        };
-    } else {
-        if (!e.target.value.length) {
-            setErrorMessage(`${e.target.name} is required.`);
-        } else {
-            setErrorMessage('');
-        }
-    }
-    if (!errorMessage) {
-        setFormState({ ...formState, [e.target.name]: e.target.value });
-    };
-};
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    setFormState(
-      ((formState.name += e.target.name.value),
-      (formState.username += e.target.username.value),
-      (formState.email += e.target.email.value)),
-      (formState.password += e.target.password.value),
-      (formState.address += e.target.address.value),
-      (formState.city += e.target.city.value),
-      (formState.province += e.target.province.value),
-      (formState.postalCode += e.target.postalCode.value)
-    );
+    if (
+      e.target.name.value &&
+      e.target.username.value &&
+      e.target.email.value &&
+      e.target.password.value &&
+      e.target.address.value &&
+      e.target.city.value &&
+      e.target.province.value &&
+      e.target.postalCode.value
+    ) {
+      setFormState(
+        ((formState.name += e.target.name.value),
+        (formState.username += e.target.username.value),
+        (formState.email += e.target.email.value)),
+        (formState.password += e.target.password.value),
+        (formState.address += e.target.address.value),
+        (formState.city += e.target.city.value),
+        (formState.province += e.target.province.value),
+        (formState.postalCode += e.target.postalCode.value)
+      );
 
-    // use try/catch instead of promises to handle errors
-    try {
-      // execute addCompany mutation and pass in variable data from form
-      const { data } = await addCompany({
-        variables: { ...formState },
-      });
+      // use try/catch instead of promises to handle errors
+      try {
+        // execute addCompany mutation and pass in variable data from form
+        const { data } = await addCompany({
+          variables: { ...formState },
+        });
 
-      Auth.login(data.addCompany.token);
-    } catch (e) {
-      // Clear state
-      setFormState({
-        name: '',
-        username: '',
-        email: '',
-        password: '',
-        address: '',
-        city: '',
-        province: '',
-        postalCode: '',
-      });
-      console.error(e);
+        Auth.login(data.addCompany.token);
+      } catch (e) {
+        // Clear state
+        setFormState({
+          name: '',
+          username: '',
+          email: '',
+          password: '',
+          address: '',
+          city: '',
+          province: '',
+          postalCode: '',
+        });
+      }
+    } else {
+      setErrorMessage('Please fill in all fields');
+    }
+  };
+
+  const clearErrors = () => {
+    setErrorMessage('');
+    if (document.getElementById('error-message') == null) {
+      return;
+    } else {
+      document.getElementById('error-message').innerHTML = '';
     }
   };
 
@@ -108,11 +105,11 @@ const SignUp = () => {
               Email
             </label>
             <input
+              onChange={() => clearErrors()}
               name="email"
               type="email"
               className="form-control"
               id="inputEmail4"
-              onBlur={validations}
             />
           </div>
           <div className="col-md-4">
@@ -120,11 +117,11 @@ const SignUp = () => {
               Username
             </label>
             <input
+              onChange={() => clearErrors()}
               name="username"
               type="text"
               className="form-control"
               id="inputUsername"
-              onBlur={validations}
             />
           </div>
           <div className="col-md-3">
@@ -132,11 +129,11 @@ const SignUp = () => {
               Password
             </label>
             <input
+              onChange={() => clearErrors()}
               name="password"
               type="password"
               className="form-control"
               id="inputPassword4"
-              onBlur={validations}
             />
           </div>
           <div className="col-12">
@@ -144,12 +141,12 @@ const SignUp = () => {
               Company Name
             </label>
             <input
+              onChange={() => clearErrors()}
               name="name"
               type="text"
               className="form-control"
               id="inputCompany"
               placeholder="Company name"
-              onBlur={validations}
             />
           </div>
           <div className="col-12">
@@ -157,12 +154,12 @@ const SignUp = () => {
               Address
             </label>
             <input
+              onChange={() => clearErrors()}
               name="address"
               type="text"
               className="form-control"
               id="inputAddress"
               placeholder="1234 Main St"
-              onBlur={validations}
             />
           </div>
           <div className="col-12">
@@ -170,6 +167,7 @@ const SignUp = () => {
               Address 2
             </label>
             <input
+              onChange={() => clearErrors()}
               name="address2"
               type="text"
               className="form-control"
@@ -182,18 +180,23 @@ const SignUp = () => {
               City
             </label>
             <input
+              onChange={() => clearErrors()}
               name="city"
               type="text"
               className="form-control"
               id="inputCity"
-              onBlur={validations}
             />
           </div>
           <div className="col-md-4">
             <label htmlFor="inputState" className="form-label">
               Province
             </label>
-            <select name="province" id="inputState" className="form-select">
+            <select
+              onChange={() => clearErrors()}
+              name="province"
+              id="inputState"
+              className="form-select"
+            >
               <option selected>Choose...</option>
               <option>Alberta</option>
               <option>British Columbia</option>
@@ -211,11 +214,11 @@ const SignUp = () => {
               Postal Code
             </label>
             <input
+              onChange={() => clearErrors()}
               name="postalCode"
               type="text"
               className="form-control"
               id="inputZip"
-              onBlur={validations}
             />
           </div>
           <div className="col-12">
@@ -236,11 +239,16 @@ const SignUp = () => {
             </button>
           </div>
           {errorMessage && (
-                    <div>
-                        <p className="error-text">{errorMessage}</p>
-                    </div>
-                )}
-          {error && <div>Signup failed</div>}
+            <div>
+              <p className="error-text">{errorMessage}</p>
+            </div>
+          )}
+          {error && (
+            <div id="error-message">
+              Failed to add Signup. Possible Reason: Name, Email or Username
+              already exists
+            </div>
+          )}
         </form>
       </div>
     </>
