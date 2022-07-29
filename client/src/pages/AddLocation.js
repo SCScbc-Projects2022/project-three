@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_LOCATION } from '../utils/mutations';
 
-
 const AddLocation = ({ companyId }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({
@@ -19,51 +18,50 @@ const AddLocation = ({ companyId }) => {
 
   const [addLocation, { error }] = useMutation(ADD_LOCATION);
 
-  function validations(e) {
-        if (!e.target.value.length) {
-            setErrorMessage(`${e.target.name} is required.`);
-        } else {
-            setErrorMessage('');
-        }
-    if (!errorMessage) {
-        setFormState({ ...formState, [e.target.name]: e.target.value });
-    };
-};
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let number = parseInt(e.target.number.value);
+    if (
+      e.target.intersection.value &&
+      e.target.number.value &&
+      e.target.street.value &&
+      e.target.city.value &&
+      e.target.country.value &&
+      e.target.postalCode.value
+    ) {
+      let number = parseInt(e.target.number.value);
 
-    setFormState(
-      ((formState.intersection += e.target.intersection.value),
-      ((formState.address.number += number),
-      ((formState.address.street += e.target.street.value),
-      ((formState.address.city += e.target.city.value),
-      ((formState.address.country += e.target.country.value),
-      (formState.address.postalCode += e.target.postalCode.value))))))
-    );
+      setFormState(
+        ((formState.intersection += e.target.intersection.value),
+        ((formState.address.number += number),
+        ((formState.address.street += e.target.street.value),
+        ((formState.address.city += e.target.city.value),
+        ((formState.address.country += e.target.country.value),
+        (formState.address.postalCode += e.target.postalCode.value))))))
+      );
 
-    try {
-      await addLocation({
-        variables: { locationToSave: formState },
-      });
-      window.location.reload(false);
-    } catch (e) {
-      console.error(e);
-      // Clear Form state
-      setFormState({
-        intersection: '',
-        companyId: companyId,
-        address: {
-          number: '',
-          street: '',
-          city: '',
-          country: '',
-          postalCode: '',
-        },
-      });
+      try {
+        await addLocation({
+          variables: { locationToSave: formState },
+        });
+        window.location.reload(false);
+      } catch (e) {
+        console.error(e);
+        // Clear Form state
+        setFormState({
+          intersection: '',
+          companyId: companyId,
+          address: {
+            number: '',
+            street: '',
+            city: '',
+            country: '',
+            postalCode: '',
+          },
+        });
+      }
+    } else {
+      setErrorMessage('Please fill in all fields');
     }
   };
 
@@ -99,10 +97,9 @@ const AddLocation = ({ companyId }) => {
                 className="form-control"
                 id="inputAddress"
                 placeholder="1234 Main St"
-                onBlur={validations}
               />
             </div>
-            <div className="col-12">
+            <div className="col-12 my-3">
               <label htmlFor="suiteNumber" className="form-label">
                 Suite number
               </label>
@@ -112,10 +109,9 @@ const AddLocation = ({ companyId }) => {
                 className="form-control"
                 id="suiteNumber"
                 placeholder="382"
-                onBlur={validations}
               />
             </div>
-            <div className="col-12">
+            <div className="col-12 my-3">
               <label htmlFor="Street" className="form-label">
                 Street
               </label>
@@ -125,10 +121,9 @@ const AddLocation = ({ companyId }) => {
                 className="form-control"
                 id="Street"
                 placeholder="Winston Churchill"
-                onBlur={validations}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6 my-3">
               <label htmlFor="inputCity" className="form-label">
                 City
               </label>
@@ -137,10 +132,9 @@ const AddLocation = ({ companyId }) => {
                 type="text"
                 className="form-control"
                 id="inputCity"
-                onBlur={validations}
               />
             </div>
-            <div className="col-md-6">
+            <div className="col-md-6  my-3">
               <label htmlFor="inputCountry" className="form-label">
                 Country
               </label>
@@ -151,7 +145,7 @@ const AddLocation = ({ companyId }) => {
                 id="inputCountry"
               />
             </div>
-            <div className="col-12">
+            <div className="col-12 my-3">
               <label htmlFor="intersection" className="form-label">
                 Intersection
               </label>
@@ -161,10 +155,9 @@ const AddLocation = ({ companyId }) => {
                 type="text"
                 className="form-control"
                 placeholder="Major intersection"
-                onBlur={validations}
               />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 my-3">
               <label htmlFor="inputState" className="form-label">
                 Province
               </label>
@@ -185,19 +178,22 @@ const AddLocation = ({ companyId }) => {
                 type="text"
                 className="form-control"
                 id="inputZip"
-                onBlur={validations}
               />
             </div>
             <div className="col-12"></div>
-            <div className="col-12">
-              <button type="submit" className="btn btn-primary">
+            <div className="col-12 my-3">
+              <button
+                disabled={formState.address ? false : true}
+                type="submit"
+                className="btn btn-primary"
+              >
                 Submit
               </button>
               {errorMessage && (
-                    <div>
-                        <p className="error-text">{errorMessage}</p>
-                    </div>
-                )}
+                <div>
+                  <p className="error-text">{errorMessage}</p>
+                </div>
+              )}
               {error && <div>Add Location failed</div>}
             </div>
           </form>
