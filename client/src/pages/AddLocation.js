@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_LOCATION } from '../utils/mutations';
 
-const AddLocation = ({ companyId }) => {
+const AddLocation = ({ companyId, activePage, setActivePage }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({
     intersection: '',

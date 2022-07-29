@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_ROLE } from '../utils/mutations';
 
-const AddRole = ({ companyId }) => {
+const AddRole = ({ companyId, activePage, setActivePage }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [formState, setFormState] = useState({
     title: '',
@@ -22,7 +22,7 @@ const AddRole = ({ companyId }) => {
         await addRole({
           variables: { roleToSave: formState },
         });
-        window.location.reload(false);
+        window.location.reload(true);
       } catch (e) {
         // Clear Form state
         setFormState({

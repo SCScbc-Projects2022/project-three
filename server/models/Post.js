@@ -4,18 +4,15 @@ const postSchema = new Schema(
   {
     shiftTime: {
       type: Object,
-      required: true,
     },
     additionalInfo: {
       type: String,
     },
     location: {
       type: String,
-      unique: true,
     },
     role: {
       type: String,
-      unique: true,
     },
     tags: [
       {
