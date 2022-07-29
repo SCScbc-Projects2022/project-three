@@ -5,12 +5,13 @@ const roleSchema = new Schema(
     title: {
       type: String,
       required: true,
+      unique: true,
     },
     companyId: [
       {
         type: Schema.Types.ObjectId,
         ref: 'Company',
-      }
+      },
     ],
   },
   {
